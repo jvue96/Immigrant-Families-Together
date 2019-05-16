@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Events extends Component {
     render() {
@@ -21,4 +22,9 @@ class Events extends Component {
     }
 }
 
-export default Events;
+const mapStateToProps = state => ({
+    user: state.user,
+  });
+  
+  // this allows us to use <App /> in index.js
+  export default connect(mapStateToProps)(Events);
