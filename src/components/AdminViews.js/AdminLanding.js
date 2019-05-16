@@ -36,7 +36,6 @@ class AdminLanding extends Component {
                     >CASE MANAGEMENT </button> <br/>
                     
 
-
                     <button className="adminMenuButtons" 
                     onClick={this.viewVolunteer}
                     >VOLUNTEERS</button> <br/>
