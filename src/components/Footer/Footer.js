@@ -7,8 +7,8 @@ import './Footer.css'
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 const Footer = () => (
-  <footer>
-    &copy; Prime Digital Academy
+  <footer className='footer'>
+    &copy; Immigrant Families Together
   </footer>
 );
 

@@ -1,3 +1,8 @@
-footer {
-    margin-top: 80px;
+.footer{
+margin-top: 50px;
+margin-bottom: 20px;
+text-align: center;
+font-family: 'Heebo', sans-serif;
+letter-spacing: .5px;
+color: rgb(118, 118, 118);
 }

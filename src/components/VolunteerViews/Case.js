@@ -2,22 +2,19 @@ import React, { Component } from 'react';
 import { Switch, Route, Link } from "react-router-dom";
 import "./Volunteer.css";
 
-import Notes from "./Notes";
-import Bio from "./Bio";
-import Legal from "./Legal";
-import Aid from "./Aid";
-import Team from "./Team";
-import Events from "./Events";
+import Notes from "./Notes/Notes";
+import Bio from "./Bio/Bio";
+import Legal from "./Legal/Legal";
+import Aid from "./Aid/Aid";
+import Team from "./Team/Team";
+import Events from "./Events/Events";
 
 class Case extends Component {
-
-    
 
     render() {
 
         const { path } = this.props.match;
-        console.log(`this is path: ${path}`);
-        
+
         return (
             <div>
                 <center>
