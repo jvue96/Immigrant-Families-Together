@@ -16,8 +16,16 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
+
+import AdminLanding from '../AdminViews.js/AdminLanding';
+import RegisterVolunteer from '../AdminViews.js/RegisterVolunteer';
+import Volunteers from '../AdminViews.js/Volunteers';
+
 import Events from "../AdminViews/Events";
+
 import './App.css';
+import Cases from '../AdminViews.js/Cases';
+import Events from '../AdminViews.js/Events';
 
 class App extends Component {
   componentDidMount () {
@@ -55,7 +63,39 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
+
+
+          <ProtectedRoute
+              exact
+              path="/admin-landing"
+              component={AdminLanding}
+            />
+          
+          <ProtectedRoute
+              exact
+              path="/register-volunteer"
+              component={RegisterVolunteer}
+            />
+          <ProtectedRoute
+              exact
+              path="/volunteers"
+              component={Volunteers}
+            />
+          <ProtectedRoute
+              exact
+              path="/cases"
+              component={Cases}
+            />
+          <ProtectedRoute
+              exact
+              path="/events"
+              component={Events}
+            />
+
+
+
             <Route path='/events' component={Events} />
+
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
