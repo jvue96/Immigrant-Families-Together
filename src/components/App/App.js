@@ -29,6 +29,8 @@ import SchoolForm from '../AdminViews/Cases/Forms/SchoolForm';
 import IceFacility from "../AdminViews/Cases/Forms/IceFacility";
 import SocialWorker from "../AdminViews/Cases/Forms/SocialWorker";
 import Cases from '../AdminViews/Cases/Cases';
+import AidForm from '../AdminViews/Cases/Forms/AidForm';
+
 import './App.css';
 
 /* volunteer imports */
@@ -59,7 +61,11 @@ class App extends Component {
               path="/home"
               component={UserPage}
             />
-
+            <ProtectedRoute
+            exact
+            path='/aid-form'
+            component={AidForm}
+            />
             <ProtectedRoute
             exact
             path='/events'

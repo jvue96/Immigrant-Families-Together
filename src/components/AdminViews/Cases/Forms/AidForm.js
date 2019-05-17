@@ -89,4 +89,4 @@ const mapStateToProps = state => ({
   });
   
   // this allows us to use <App /> in index.js
-  export default withRouter(connect(mapStateToProps)(MedicalForm));
+  export default withRouter(connect(mapStateToProps)(AidForm));
