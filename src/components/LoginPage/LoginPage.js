@@ -71,7 +71,6 @@ class LoginPage extends Component {
           <div>
             <input 
               className="formButton"
-              className="formButton"
               type="submit"
               name="submit"
               value="LOG IN"
