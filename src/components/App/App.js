@@ -16,18 +16,18 @@ import AdminLanding from '../AdminViews/AdminLanding';
 import RegisterVolunteer from '../AdminViews/VolunteerInfo/RegisterVolunteer';
 import Volunteers from '../AdminViews/VolunteerInfo/Volunteers';
 import Events from "../AdminViews/Events/Events";
-import AttorneyForm from '../AdminViews/Forms/AttorneyForm'
-import BondForm from '../AdminViews/Forms/BondForm';
-import FosterForm from '../AdminViews/Forms/FosterForm';
-import FundForm from '../AdminViews/Forms/FundForm';
-import GroceryForm from '../AdminViews/Forms/GroceryForm';
-import BioForm from '../AdminViews/Forms/BioForm';
-import HousingForm from '../AdminViews/Forms/HousingForm';
-import LegalStatusForm from '../AdminViews/Forms/LegalStatusForm';
-import MedicalForm from '../AdminViews/Forms/MedicalForm';
-import SchoolForm from '../AdminViews/Forms/SchoolForm';
-import IceFacility from "../AdminViews/Forms/IceFacility";
-import SocialWorker from "../AdminViews/Forms/SocialWorker";
+import AttorneyForm from '../AdminViews/Cases/Forms/AttorneyForm'
+import BondForm from '../AdminViews/Cases/Forms/BondForm';
+import FosterForm from '../AdminViews/Cases/Forms/FosterForm';
+import FundForm from '../AdminViews/Cases/Forms/FundForm';
+import GroceryForm from '../AdminViews/Cases/Forms/GroceryForm';
+import BioForm from '../AdminViews/Cases/Forms/BioForm';
+import HousingForm from '../AdminViews/Cases/Forms/HousingForm';
+import LegalStatusForm from '../AdminViews/Cases/Forms/LegalStatusForm';
+import MedicalForm from '../AdminViews/Cases/Forms/MedicalForm';
+import SchoolForm from '../AdminViews/Cases/Forms/SchoolForm';
+import IceFacility from "../AdminViews/Cases/Forms/IceFacility";
+import SocialWorker from "../AdminViews/Cases/Forms/SocialWorker";
 import Cases from '../AdminViews/Cases/Cases';
 import './App.css';
 
