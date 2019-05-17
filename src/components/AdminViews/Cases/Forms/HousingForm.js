@@ -29,6 +29,7 @@ class HousingForm extends Component {
                         <label>LIVING WITH FAMILY Y/N</label> <br/>
                         <input type="text" /> <br/>
                         <button
+                        className="formButton"
                         onClick={this.next}
                         >NEXT</button>
                     </div>

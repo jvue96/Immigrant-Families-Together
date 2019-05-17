@@ -10,6 +10,26 @@ class BioForm extends Component {
         return (
             <div>
                 <center>
+                <div className="navbar">
+                    <div className="navigation" onClick={this.toResumePage}>
+                        <h2 className="h2nav">EVENTS</h2>
+                    </div>
+                    <div className="navigation"onClick={this.toWorkPage}>
+                        <h2 className="h2nav">BIO</h2>
+                    </div>
+                    <div className="navigation"onClick={this.toDevPage}>
+                        <h2 className="h2nav">LEGAL</h2>
+                    </div>
+                    <div className="navigation" onClick={this.toResumePage}>
+                        <h2 className="h2nav">AID</h2>
+                    </div>
+                    <div className="navigation"onClick={this.toWorkPage}>
+                        <h2 className="h2nav">TEAM</h2>
+                    </div>
+                    <div className="navigation"onClick={this.toDevPage}>
+                        <h2 className="h2nav">NOTES</h2>
+                    </div>
+                </div>
                     <div>
                         <h1>
                             BIO FORM
@@ -20,7 +40,7 @@ class BioForm extends Component {
                         <input type="text" /> <br />
                         <label>LAST NAME</label> <br />
                         <input type="text" /> <br />
-                        <label>D.O.B.</label> <br />
+                        <label>D.O.B</label> <br />
                         <input type="text" /> <br />
                         <label>SPOUSE NAME</label> <br />
                         <input type="text" /> <br />
@@ -42,7 +62,7 @@ class BioForm extends Component {
                         <input type="text" /> <br />
                         <label>USA I.D Y/N</label> <br />
                         <input type="text" /> <br />
-                        <button onClick={this.next}>NEXT</button> 
+                        <button className="formButton" onClick={this.next}>NEXT</button> 
                         <br/>
                     </div>
                 </center>

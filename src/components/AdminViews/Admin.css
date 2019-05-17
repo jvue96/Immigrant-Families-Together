@@ -1,20 +1,16 @@
-.adminMenuButtons {
-    height: 50px;
-    width: 200px; 
+.adminMenuButtons{
+    height: 90px;
+    width: 325px;
+    color: #ffffff;
+    font-family: 'Heebo', sans-serif;
+    letter-spacing: 2px;
+    background-color: rgb(118, 118, 118);
+    margin-bottom: px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    border: 0px;
+    font-size: 15px;
 }
-
-.eventDivs {
-    width: 400px; 
-    background-color: grey; 
-}
-
-.caseManagementDivs {
-    height: 50px;
-    width: 400px; 
-    background-color: grey; 
-}
-
-.formDivs {
-    background-color: grey;
-    width: 200px; 
-}
+ 

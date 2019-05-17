@@ -32,6 +32,7 @@ class LegalStatusForm extends Component {
                         <input type="text" /> <br/>
                     
                         <button
+                        className="formButton"
                         onClick={this.next}
                         >NEXT</button>
                     </div>

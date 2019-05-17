@@ -17,7 +17,7 @@ class RegisterVolunteer extends Component {
                             REGISTER VOLUNTEER
                         </h1>
                     </div>
-
+                    <div className='formDivs'>
                     <label>NAME</label> <br/>
                     <input type="text" /> <br/>
                     <label>PASSWORD</label> <br/>
@@ -35,7 +35,8 @@ class RegisterVolunteer extends Component {
                     <label>SECOND LANGUAGE</label> <br/>
                     <input type="text" /> <br/>
 
-                    <button onClick={this.register}>REGISTER</button>
+                    <button className="formButton" onClick={this.register}>REGISTER</button>
+                    </div>
                 </center>
             </div>
         );
