@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router'
 
 class BondForm extends Component {
 
@@ -33,4 +35,9 @@ class BondForm extends Component {
     }
 }
 
-export default BondForm;
+const mapStateToProps = state => ({
+    user: state.user,
+  });
+  
+  // this allows us to use <App /> in index.js
+  export default withRouter(connect(mapStateToProps)(BondForm));
