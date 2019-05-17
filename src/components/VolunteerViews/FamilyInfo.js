@@ -12,10 +12,6 @@ class FamilyInfo extends Component {
                     <p> DOB: </p>
                     <p> RELATION: </p>
 
-                    <p> NAME: </p>
-                    <p> DOB: </p>
-                    <p> RELATION: </p>
-
                     <h3> CASE REFERRED BY: </h3>
 
                     <h3> DATE: </h3>
