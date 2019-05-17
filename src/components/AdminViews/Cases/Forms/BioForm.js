@@ -10,26 +10,6 @@ class BioForm extends Component {
         return (
             <div>
                 <center>
-                <div className="navbar">
-                    <div className="navigation" onClick={this.toResumePage}>
-                        <h2 className="h2nav">EVENTS</h2>
-                    </div>
-                    <div className="navigation"onClick={this.toWorkPage}>
-                        <h2 className="h2nav">BIO</h2>
-                    </div>
-                    <div className="navigation"onClick={this.toDevPage}>
-                        <h2 className="h2nav">LEGAL</h2>
-                    </div>
-                    <div className="navigation" onClick={this.toResumePage}>
-                        <h2 className="h2nav">AID</h2>
-                    </div>
-                    <div className="navigation"onClick={this.toWorkPage}>
-                        <h2 className="h2nav">TEAM</h2>
-                    </div>
-                    <div className="navigation"onClick={this.toDevPage}>
-                        <h2 className="h2nav">NOTES</h2>
-                    </div>
-                </div>
                     <div>
                         <h1>
                             BIO FORM
