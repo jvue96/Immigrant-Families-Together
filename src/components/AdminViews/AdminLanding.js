@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router'
+
 import "./Admin.css"
 
 class AdminLanding extends Component {
@@ -35,7 +39,6 @@ class AdminLanding extends Component {
                     onClick={this.viewCases}
                     >CASE MANAGEMENT </button> <br/>
                     
-
                     <button className="adminMenuButtons" 
                     onClick={this.viewVolunteer}
                     >VOLUNTEERS</button> <br/>
@@ -49,4 +52,11 @@ class AdminLanding extends Component {
     }
 }
 
-export default AdminLanding;
+
+const mapStateToProps = state => ({
+    user: state.user,
+  });
+  
+  // this allows us to use <App /> in index.js
+  export default withRouter(connect(mapStateToProps)(AdminLanding));
+
