@@ -18,10 +18,10 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 
 import AdminLanding from '../AdminViews/AdminLanding';
-import RegisterVolunteer from '../AdminViews/RegisterVolunteer';
-import Volunteers from '../AdminViews/Volunteers';
+import RegisterVolunteer from '../AdminViews/VolunteerInfo/RegisterVolunteer';
+import Volunteers from '../AdminViews/VolunteerInfo/Volunteers';
 
-import Events from "../AdminViews/Events";
+import Events from "../AdminViews/Events/Events";
 
 import AttorneyForm from '../AdminViews/Forms/AttorneyForm'
 import BondForm from '../AdminViews/Forms/BondForm';
@@ -32,13 +32,13 @@ import BioForm from '../AdminViews/Forms/BioForm';
 import HousingForm from '../AdminViews/Forms/HousingForm';
 import LegalStatusForm from '../AdminViews/Forms/LegalStatusForm';
 import MedicalForm from '../AdminViews/Forms/MedicalForm';
-import SchoolForm from '../AdminViews/SchoolForm';
-import IceFacility from "../AdminViews/IceFacility";
-import SocialWorker from "../AdminViews/SocialWorker";
+import SchoolForm from '../AdminViews/Forms/SchoolForm';
+import IceFacility from "../AdminViews/Forms/IceFacility";
+import SocialWorker from "../AdminViews/Forms/SocialWorker";
 
 
 import './App.css';
-import Cases from '../AdminViews/Cases';
+import Cases from '../AdminViews/Cases/Cases';
 
 
 class App extends Component {
