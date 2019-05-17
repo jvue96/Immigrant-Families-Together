@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   HashRouter as Router,
   Route,
@@ -6,7 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
@@ -29,6 +29,7 @@ import SchoolForm from '../AdminViews/Cases/Forms/SchoolForm';
 import IceFacility from "../AdminViews/Cases/Forms/IceFacility";
 import SocialWorker from "../AdminViews/Cases/Forms/SocialWorker";
 import Cases from '../AdminViews/Cases/Cases';
+import AidForm from '../AdminViews/Cases/Forms/AidForm';
 import './App.css';
 
 /* volunteer imports */
@@ -38,8 +39,8 @@ import VolunteerLanding from "../VolunteerViews/VolunteerLanding";
 
 
 class App extends Component {
-  componentDidMount () {
-    this.props.dispatch({type: 'FETCH_USER'})
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_USER' })
   }
 
   render() {
@@ -60,94 +61,101 @@ class App extends Component {
               component={UserPage}
             />
 
+
             <ProtectedRoute
-            exact
-            path='/events'
-            component={Events}
+              exact
+              path='/aid-form'
+              component={AidForm}
+            />
+
+            <ProtectedRoute
+              exact
+              path='/events'
+              component={Events}
             />
             <ProtectedRoute
-            exact
-            path='/attorney-form'
-            component={AttorneyForm}
+              exact
+              path='/attorney-form'
+              component={AttorneyForm}
             />
             <ProtectedRoute
-            exact
-            path='/bond-form'
-            component={BondForm}
+              exact
+              path='/bond-form'
+              component={BondForm}
             />
             <ProtectedRoute
-            exact
-            path='/foster-form'
-            component={FosterForm}
+              exact
+              path='/foster-form'
+              component={FosterForm}
             />
             <ProtectedRoute
-            exact
-            path='/fund-form'
-            component={FundForm}
+              exact
+              path='/fund-form'
+              component={FundForm}
             />
             <ProtectedRoute
-            exact
-            path='/grocery-form'
-            component={GroceryForm}
+              exact
+              path='/grocery-form'
+              component={GroceryForm}
             />
             <ProtectedRoute
-            exact
-            path='/bio-form'
-            component={BioForm}
+              exact
+              path='/bio-form'
+              component={BioForm}
             />
             <ProtectedRoute
-            exact
-            path='/housing-form'
-            component={HousingForm}
+              exact
+              path='/housing-form'
+              component={HousingForm}
             />
             <ProtectedRoute
-            exact
-            path="/ice-form"
-            component={IceFacility} />
+              exact
+              path="/ice-form"
+              component={IceFacility} />
             <ProtectedRoute
-            exact
-            path='/legal-form'
-            component={LegalStatusForm}
+              exact
+              path='/legal-form'
+              component={LegalStatusForm}
             />
             <ProtectedRoute
-            exact
-            path='/medical-form'
-            component={MedicalForm}
+              exact
+              path='/medical-form'
+              component={MedicalForm}
             />
             <ProtectedRoute
-            exact
-            path='/school-form'
-            component={SchoolForm}
+              exact
+              path='/school-form'
+              component={SchoolForm}
             />
             <ProtectedRoute
-            exact
-            path='/social-form'
-            component={SocialWorker}
+              exact
+              path='/social-form'
+              component={SocialWorker}
             />
 
 
-          <ProtectedRoute
+            <ProtectedRoute
               exact
               path="/admin-landing"
               component={AdminLanding}
             />
-          
-          <ProtectedRoute
+
+            <ProtectedRoute
               exact
               path="/register-volunteer"
               component={RegisterVolunteer}
             />
-          <ProtectedRoute
+            <ProtectedRoute
               exact
               path="/volunteers"
               component={Volunteers}
             />
-          <ProtectedRoute
+            <ProtectedRoute
               exact
               path="/cases"
               component={Cases}
             />
-          <ProtectedRoute
+            <ProtectedRoute
               exact
               path="/events"
               component={Events}
@@ -155,11 +163,11 @@ class App extends Component {
 
 
 
-          <Route path='/events' component={Events} />
+            <Route path='/events' component={Events} />
 
-          {/* volunteer views link */}
-          <ProtectedRoute path="/case" component={Case} />
-          <ProtectedRoute path="/volunteer-landing" component={VolunteerLanding} />
+            {/* volunteer views link */}
+            <ProtectedRoute path="/case" component={Case} />
+            <ProtectedRoute path="/volunteer-landing" component={VolunteerLanding} />
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
@@ -167,7 +175,8 @@ class App extends Component {
           <Footer />
         </div>
       </Router>
-  )}
+    )
+  }
 }
 
 export default connect()(App);
