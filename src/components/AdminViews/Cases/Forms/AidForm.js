@@ -3,12 +3,9 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 class AidForm extends Component {
-   
     // componentDidMount = () => {
     //     this.props.dispatch({ type: 'GET_AID_FORM' });
-    
     // }
-
     next = () => {
         // this.props.dispatch({ type: ' PUSH_AID_FORM', payload: this.state.aidForm })
         this.props.history.push('/school-form')
@@ -33,7 +30,9 @@ class AidForm extends Component {
                 [propertyName]: event.target.value,
             }
         })
-}
+        console.log(`this is state after handleChange:`, this.state);
+        
+    }
     
     render() {
         return (
@@ -49,27 +48,27 @@ class AidForm extends Component {
                         <label>GROCERY PROGRAM</label> <br/>
                         <input type="text"
                         value={this.state.aidForm.grocery_program}
-                        onChange={() =>this.handleChange('grocery_program')}/> <br/>
+                        onChange={this.handleChange('grocery_program')}/> <br/>
                         
                         <label>GROCERY PROGRAM VOLUNTEER</label> <br/>
                         <input type="text"
                         value={this.state.aidForm.grocery_program_volunteer}
-                        onChange={() => this.handleChange('grocery_program_volunteer')}/> <br/>
+                        onChange={this.handleChange('grocery_program_volunteer')}/> <br/>
                     
                         <label>GOFUNDME</label> <br/>
                         <input type="text"
                         value={this.state.aidForm.go_fund_me}
-                        onChange={()=>this.handleChange('go_fund_me')}/> <br/>
+                        onChange={this.handleChange('go_fund_me')}/> <br/>
 
                         <label>SOCIAL WORKER</label> <br/>
                         <input type="text"
                         value={this.state.aidForm.social_worker}
-                        onChange={()=>this.handleChange('social_worker')}/> <br/>
+                        onChange={this.handleChange('social_worker')}/> <br/>
                         
                         <label>SOCIAL WORKER PHONE</label> <br/>
                         <input type="text" 
                         value={this.state.aidForm.social_worker_phone}
-                        onChange={()=>this.handleChange('social_worker_phone')}/> <br/>
+                        onChange={this.handleChange('social_worker_phone')}/> <br/>
                         
                         
                         
