@@ -20,7 +20,7 @@ class BioForm extends Component {
                         <input type="text" /> <br />
                         <label>LAST NAME</label> <br />
                         <input type="text" /> <br />
-                        <label>D.OB</label> <br />
+                        <label>D.O.B.</label> <br />
                         <input type="text" /> <br />
                         <label>SPOUSE NAME</label> <br />
                         <input type="text" /> <br />
@@ -42,9 +42,8 @@ class BioForm extends Component {
                         <input type="text" /> <br />
                         <label>USA I.D Y/N</label> <br />
                         <input type="text" /> <br />
-                        <button
-                        onClick={this.next}
-                        >NEXT</button> <br />
+                        <button onClick={this.next}>NEXT</button> 
+                        <br/>
                     </div>
                 </center>
             </div>

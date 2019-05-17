@@ -17,27 +17,29 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 
-import AdminLanding from '../AdminViews.js/AdminLanding';
-import RegisterVolunteer from '../AdminViews.js/RegisterVolunteer';
-import Volunteers from '../AdminViews.js/Volunteers';
+import AdminLanding from '../AdminViews/AdminLanding';
+import RegisterVolunteer from '../AdminViews/RegisterVolunteer';
+import Volunteers from '../AdminViews/Volunteers';
 
 import Events from "../AdminViews/Events";
 
-import AttorneyForm from '../AdminViews/AttorneyForm'
-import BondForm from '../AdminViews/BondForm';
-import FosterForm from '../AdminViews/FosterForm';
-import FundForm from '../AdminViews/FundForm';
-import GroceryForm from '../AdminViews/GroceryForm';
-import BioForm from '../AdminViews/BioForm';
-import HousingForm from '../AdminViews/HousingForm';
-import LegalStatusForm from '../AdminViews/LegalStatusForm';
-import MedicalForm from '../AdminViews/MedicalForm';
+import AttorneyForm from '../AdminViews/Forms/AttorneyForm'
+import BondForm from '../AdminViews/Forms/BondForm';
+import FosterForm from '../AdminViews/Forms/FosterForm';
+import FundForm from '../AdminViews/Forms/FundForm';
+import GroceryForm from '../AdminViews/Forms/GroceryForm';
+import BioForm from '../AdminViews/Forms/BioForm';
+import HousingForm from '../AdminViews/Forms/HousingForm';
+import LegalStatusForm from '../AdminViews/Forms/LegalStatusForm';
+import MedicalForm from '../AdminViews/Forms/MedicalForm';
 import SchoolForm from '../AdminViews/SchoolForm';
+import IceFacility from "../AdminViews/IceFacility";
+import SocialWorker from "../AdminViews/SocialWorker";
 
 
 import './App.css';
-import Cases from '../AdminViews.js/Cases';
-import Events from '../AdminViews.js/Events';
+import Cases from '../AdminViews/Cases';
+
 
 class App extends Component {
   componentDidMount () {
@@ -118,6 +120,10 @@ class App extends Component {
             />
             <ProtectedRoute
             exact
+            path="/ice-form"
+            component={IceFacility} />
+            <ProtectedRoute
+            exact
             path='/legal-form'
             component={LegalStatusForm}
             />
@@ -131,7 +137,11 @@ class App extends Component {
             path='/school-form'
             component={SchoolForm}
             />
-
+            <ProtectedRoute
+            exact
+            path='/social-form'
+            component={SocialWorker}
+            />
 
 
           <ProtectedRoute
