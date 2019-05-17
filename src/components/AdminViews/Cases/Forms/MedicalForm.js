@@ -120,9 +120,13 @@ class MedicalForm extends Component {
                         onChange={this.handleChange('insurance_card_info')}/> <br/>
                         
                         <label>FEE COVERAGE</label> <br/>
-                        <input type="text"
-                        value={this.state.medicalForm.fee_coverage}
-                        onChange={this.handleChange('fee_coverage')}/> <br/>
+                        <select
+                        value={this.state.medicalForm.medical_notes}
+                        onChange={this.handleChange('medical_notes')}>
+                        <option value="0">-</option>
+                        <option value="1">True</option>
+                        <option value="2">False</option>
+                        </select> <br/>
                         
                         <label>MEDICAL NOTES</label> <br/>
                         <input type="text"
