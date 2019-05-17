@@ -1,23 +1,40 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0px;
+.test{
+    margin:none;
+    background-color: red;
+}
+
+
+h1{
+    font-family: 'Heebo', sans-serif;
+    color: rgb(118, 118, 118);
+}
+
+label{
+    font-family: 'Heebo', sans-serif;
+    letter-spacing: 1px;
+    color: rgb(118, 118, 118);
 }
 
 .alert {
-    background-color: #ff4545;
+    background-color:rgb(210, 47, 37);
     margin: 50px;
 }
 
-form {
+.formDivs {
     background-color: #dbd5d5;
-    width: 30%;
-    height: 250px;
+    width: 345px;
+    border-radius: 25px;
     margin: 20px auto;
-    padding: 25px;
-    border-radius: 2px;
+    padding-top: 20px;
 }
 
 input {
+    width: 285px;
+    height: 45px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    border-color: rgb(118, 118, 118);
     margin: 5px;
     margin-bottom: 10px;
 }
@@ -34,6 +51,23 @@ input {
 
 .log-in:hover, .log-out:hover, .register:hover {
   background-color: #008183;
+}
+
+.formButton{
+        margin-top: 10px;
+        height: 35px;
+        width: 115px;
+        color: #ffffff;
+        font-family: 'Heebo', sans-serif;
+        letter-spacing: 2px;
+        background-color: rgb(118, 118, 118);
+        margin-bottom: 20px;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 8px;
+        border: 0px;
+        font-size: 15px;
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */

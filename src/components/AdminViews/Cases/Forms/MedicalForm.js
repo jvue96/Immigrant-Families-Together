@@ -37,6 +37,7 @@ class MedicalForm extends Component {
                         <label>FEE COVERAGE</label> <br/>
                         <input type="text" /> <br/>
                         <button
+                        className="formButton"
                         onClick={this.next}
                         >NEXT</button>
                     </div>

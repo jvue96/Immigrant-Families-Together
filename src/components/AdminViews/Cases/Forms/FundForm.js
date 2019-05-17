@@ -21,7 +21,9 @@ class FundForm extends Component {
                     <div className="formDivs">
                         <label>LINK</label> <br/>
                         <input type="text" />  <br/> 
+                        
                         <button
+                        className="formButton"
                         onClick={this.next}
                         >COMPLETE CASE</button>
                     </div>

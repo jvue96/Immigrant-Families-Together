@@ -1,20 +1,22 @@
 .nav-title {
+    font-family: 'Heebo', sans-serif;
     font-size: 24px;
     font-weight: 700;
     display: inline-block;
     color: #f2f2f2;
-    padding-left: 10px;
+    text-align: center;
 }
 
 .nav {
   overflow: hidden;
-  background-color: #00acb0;
+  background-color:rgb(210, 47, 37);
+  text-align: center;
 }
 
 .nav-link {
   float: left;
   color: #f2f2f2;
-  background-color: #00acb0;
+  background-color:rgb(210, 47, 37);
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
@@ -28,9 +30,32 @@
 }
 
 .nav-link:hover {
-  background-color: #008183;
+  background-color:rgb(210, 47, 37);
 }
 
 .nav-right {
   float: right;
+}
+
+.navbar{
+  width: 359px;
+  height: 50px;
+  background-color: #000000;
+}
+
+.navigation{
+  display: inline-block;
+  background-color: #000000;
+  height:40px;
+  width: 16.6%;
+}
+
+.h2nav {
+  font-family: 'Heebo', sans-serif;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 18px;
+  margin-bottom: auto;
+  font-size: 8px;
+  color: #ffffff;
 }

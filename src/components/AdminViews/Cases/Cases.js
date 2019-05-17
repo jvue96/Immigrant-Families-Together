@@ -13,12 +13,12 @@ class Cases extends Component {
                     <div>
                         <h1>CASES MANAGEMENT</h1>
                     </div>
-                    <button className="caseManagementDivs">VIEW CASES</button> <br />
-                    <button className="caseManagementDivs"
+                    <button className="adminMenuButtons">VIEW CASES</button> <br />
+                    <button className="adminMenuButtons"
                     onClick={this.addCase}
                     >ADD NEW CASE</button> <br/> 
 
-                    <button className="caseManagementDivs">EDIT EXISTING CASE</button> <br /> 
+                    <button className="adminMenuButtons">EDIT EXISTING CASE</button> <br /> 
                 </center>
                 
             </div>
