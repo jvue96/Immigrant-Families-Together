@@ -17,6 +17,17 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import Events from "../AdminViews/Events";
+import AttorneyForm from '../AdminViews/AttorneyForm'
+import BondForm from '../AdminViews/BondForm';
+import FosterForm from '../AdminViews/FosterForm';
+import FundForm from '../AdminViews/FundForm';
+import GroceryForm from '../AdminViews/GroceryForm';
+import BioForm from '../AdminViews/BioForm';
+import HousingForm from '../AdminViews/HousingForm';
+import LegalStatusForm from '../AdminViews/LegalStatusForm';
+import MedicalForm from '../AdminViews/MedicalForm';
+import SchoolForm from '../AdminViews/SchoolForm';
+
 import './App.css';
 
 class App extends Component {
@@ -55,7 +66,61 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
-            <Route path='/events' component={Events} />
+            <ProtectedRoute
+            exact
+            path='/events'
+            component={Events}
+            />
+            <ProtectedRoute
+            exact
+            path='/attorney-form'
+            component={AttorneyForm}
+            />
+            <ProtectedRoute
+            exact
+            path='/bond-form'
+            component={BondForm}
+            />
+            <ProtectedRoute
+            exact
+            path='/foster-form'
+            component={FosterForm}
+            />
+            <ProtectedRoute
+            exact
+            path='/fund-form'
+            component={FundForm}
+            />
+            <ProtectedRoute
+            exact
+            path='/grocery-form'
+            component={GroceryForm}
+            />
+            <ProtectedRoute
+            exact
+            path='/bio-form'
+            component={BioForm}
+            />
+            <ProtectedRoute
+            exact
+            path='/housing-form'
+            component={HousingForm}
+            />
+            <ProtectedRoute
+            exact
+            path='/legal-form'
+            component={LegalStatusForm}
+            />
+            <ProtectedRoute
+            exact
+            path='/medical-form'
+            component={MedicalForm}
+            />
+            <ProtectedRoute
+            exact
+            path='/school-form'
+            component={SchoolForm}
+            />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>

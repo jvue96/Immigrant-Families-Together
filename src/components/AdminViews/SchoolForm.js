@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 class SchoolForm extends Component {
 
@@ -33,4 +35,9 @@ class SchoolForm extends Component {
     }
 }
 
-export default SchoolForm;
+const mapStateToProps = state => ({
+    user: state.user,
+  });
+  
+  // this allows us to use <App /> in index.js
+  export default withRouter(connect(mapStateToProps)(SchoolForm));

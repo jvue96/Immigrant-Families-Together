@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 class LegalStatusForm extends Component {
 
@@ -39,4 +41,9 @@ class LegalStatusForm extends Component {
     }
 }
 
-export default LegalStatusForm;
+const mapStateToProps = state => ({
+    user: state.user,
+  });
+  
+  // this allows us to use <App /> in index.js
+  export default withRouter(connect(mapStateToProps)(LegalStatusForm));
