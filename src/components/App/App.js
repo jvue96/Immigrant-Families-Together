@@ -31,6 +31,10 @@ import SocialWorker from "../AdminViews/Cases/Forms/SocialWorker";
 import Cases from '../AdminViews/Cases/Cases';
 import './App.css';
 
+/* volunteer imports */
+import Case from "../VolunteerViews/Case";
+import VolunteerLanding from "../VolunteerViews/VolunteerLanding";
+
 
 
 class App extends Component {
@@ -151,8 +155,11 @@ class App extends Component {
 
 
 
-            <Route path='/events' component={Events} />
+          <Route path='/events' component={Events} />
 
+          {/* volunteer views link */}
+          <ProtectedRoute path="/case" component={Case} />
+          <ProtectedRoute path="/volunteer-landing" component={VolunteerLanding} />
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

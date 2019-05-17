@@ -5,7 +5,17 @@ class Events extends Component {
         return (
             <div>
                 <center>
-                    <div>UPCOMING EVENTS </div>
+                    <div>
+                        <h1>
+                            UPCOMING EVENTS
+                        </h1>
+                    </div>
+                    <div className="bioDivs">
+                    <label>CASE/CLIENT</label>
+                    <label>DATE</label> <br/>
+                    <label> EVENT:</label>
+                    <p> insert text in here blah blah blah </p>
+                    </div>
                 </center>
             </div>
         );
