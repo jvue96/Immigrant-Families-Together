@@ -10,19 +10,12 @@ import {connect} from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-
-import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
-
 import AdminLanding from '../AdminViews/AdminLanding';
 import RegisterVolunteer from '../AdminViews/VolunteerInfo/RegisterVolunteer';
 import Volunteers from '../AdminViews/VolunteerInfo/Volunteers';
-
 import Events from "../AdminViews/Events/Events";
-
 import AttorneyForm from '../AdminViews/Forms/AttorneyForm'
 import BondForm from '../AdminViews/Forms/BondForm';
 import FosterForm from '../AdminViews/Forms/FosterForm';
@@ -35,10 +28,9 @@ import MedicalForm from '../AdminViews/Forms/MedicalForm';
 import SchoolForm from '../AdminViews/Forms/SchoolForm';
 import IceFacility from "../AdminViews/Forms/IceFacility";
 import SocialWorker from "../AdminViews/Forms/SocialWorker";
-
-
-import './App.css';
 import Cases from '../AdminViews/Cases/Cases';
+import './App.css';
+
 
 
 class App extends Component {
@@ -54,13 +46,6 @@ class App extends Component {
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
-            {/* Visiting localhost:3000/about will show the about page.
-            This is a route anyone can see, no login necessary */}
-            <Route
-              exact
-              path="/about"
-              component={AboutPage}
-            />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
@@ -69,13 +54,6 @@ class App extends Component {
               exact
               path="/home"
               component={UserPage}
-            />
-            {/* This works the same as the other protected route, except that if the user is logged in,
-            they will see the info page instead. */}
-            <ProtectedRoute
-              exact
-              path="/info"
-              component={InfoPage}
             />
 
             <ProtectedRoute
