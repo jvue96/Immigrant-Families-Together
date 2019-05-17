@@ -11,13 +11,10 @@ import Events from "./Events";
 
 class Case extends Component {
 
-    
-
     render() {
 
         const { path } = this.props.match;
-        console.log(`this is path: ${path}`);
-        
+
         return (
             <div>
                 <center>
