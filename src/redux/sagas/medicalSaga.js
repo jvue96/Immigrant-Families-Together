@@ -16,8 +16,21 @@ function* postMedical(action) {
     }
   }
 
+  function* getMedical(action) {
+    try{
+        console.log('GET info for medical', action);
+        const getResponse = yield axios.get('/api/forms/medical');
+        const action = {type: 'SET_MEDICAL', payload: getResponse.data};
+        yield put(action);
+    }catch (error) {
+        console.log(`Couldn't get the medical form information`);
+        alert(`Sorry couldn't get the information from the medical forms. Try again later.`)
+    }
+}
+
 function* medicalSaga() {
     yield takeLatest('ADD_MEDICAL', postMedical);
+    yield takeLatest('GET_MEDICAL', getMedical);
 }
 
 export default medicalSaga;
