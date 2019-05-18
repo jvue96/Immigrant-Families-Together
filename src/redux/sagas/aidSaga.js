@@ -3,7 +3,12 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* addAidSaga(action) {
 console.log(`inside addAidSaga, here is action:`, action);
+try {
+yield axios.post(``)
+}
+catch(error) {
 
+}
 }
 
 
