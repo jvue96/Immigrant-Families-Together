@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Volunteers extends Component {
 
@@ -17,15 +18,25 @@ class Volunteers extends Component {
     render() {
         return (
             <div>
+                
+                <div className="nav">
+                <div className="navLeft2" onClick={this.backButton}>
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div className="navTitle">
+                    <h2 className="navH2">VOLUNTEER</h2>
+                </div>
+                <div className="navRight">
+                <Link to="/home">
+                    <i class="fas fa-home"></i>
+                </Link>
+                </div>
+                </div>
+
                 <center>
-                    <div>
-                        <h1>
-                            VOLUNTEER
-                        </h1>
                         {/* map over volunteers into a table with tr's and td's  
                         includes volunteer's last name, first name, and select button that routes user to their BIO.
                         */}
-                    </div>
                     <label>SEARCH</label> <br/>
                     <input placeholder="VOLUNTEER NAME" /> <br/>
                     <button onClick={this.searchBy}> SEARCH </button>

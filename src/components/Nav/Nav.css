@@ -1,77 +1,12 @@
-
-
-.navTitle{
-  height:75px;
-  width:210px;
-  margin:none;
-  background-color:rgb(210, 47, 37);
-  display: inline-block;
-}
-
-.navH2{
-  font-family: 'Heebo', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  display: inline-block;
-  color: #f2f2f2;
-  text-align: center;
-}
-
-.navLeft{
-  height:75px;
-  width:75px;
-  margin:none;
-  background-color:rgb(210, 47, 37);
-  display: inline-block;
-}
-
-.navRight{
-  height:75px;
-  width:75px;
-  margin:none;
-  background-color:rgb(210, 47, 37);
-  display: inline-block;
-}
-
-.nav {
-  overflow: hidden;
-  margin:none;
-  background-color:rgb(210, 47, 37);
-  text-align: center;
-  width: 360px;
-  height:75px;
-  display:inline-block;
-}
-
 .nav-link {
-  float: left;
-  color: #f2f2f2;
+  height:75px;
+  font-family: 'Heebo', sans-serif;
+  width:75px;
+  margin:none;
   background-color:rgb(210, 47, 37);
-  text-align: center;
-  padding: 24px 10px;
-  text-decoration: none;
-  font-size: 15px;
-
-  /* these last two make the logout button in
-  the nav bar look like another link */
-  border:none;
-  cursor: pointer;
-  outline:0;
+  display: inline-block;
+  position: relative;
 }
-
-.nav-link:hover {
-  background-color:rgb(210, 47, 37);
-}
-
-.nav-right {
-  float: right;
-}
-
-i{
-  color: white;
-  font-size: 25px;
-}
-
 
 .subnavbar{
   width: 359px;

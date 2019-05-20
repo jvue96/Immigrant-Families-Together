@@ -13,22 +13,22 @@ import { withRouter } from 'react-router';
 class Case extends Component {
 
     eventsPages = () => {
-        this.props.history.push('/bio')
+        this.props.history.push('/events')
     }
     notesPages = () => {
-        this.props.history.push('/bio')
+        this.props.history.push('/volunteer-notes')
     }
     bioPages = () => {
         this.props.history.push('/bio')
     }
     legalPages = () => {
-        this.props.history.push('/bio')
+        this.props.history.push('/volunteer-legal')
     }
     aidPages = () => {
-        this.props.history.push('/bio')
+        this.props.history.push('/volunteer-aid')
     }
     teamPages = () => {
-        this.props.history.push('/bio')
+        this.props.history.push('/volunteer-team')
     }
 
     render() {

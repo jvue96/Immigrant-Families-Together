@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
+import AdminProtectedRoute from '../ProtectedRoute/AdminProtectedRoute'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import UserPage from '../UserPage/UserPage';
 import AdminLanding from '../AdminViews/AdminLanding';
@@ -41,6 +42,19 @@ import BioHousing from '../VolunteerViews/Bio/BioHousing'
 import BioIdentify from '../VolunteerViews/Bio/BioIdentify'
 import BioSchool from '../VolunteerViews/Bio/BioSchool'
 import BioFamilyInfo from '../VolunteerViews/Bio/BioFamilyInfo'
+import VolunteerEvents from '../VolunteerViews/Events/Events'
+import VolunteerNotes from '../VolunteerViews/Notes/Notes'
+import VolunteerLegal from '../VolunteerViews/Legal/Legal'
+import LegalIce from '../VolunteerViews/Legal/LegalIce'
+import LegalBond from '../VolunteerViews/Legal/LegalBond'
+import LegalFoster from '../VolunteerViews/Legal/LegalFoster'
+import LegalAttorney from '../VolunteerViews/Legal/LegalAttorney'
+import LegalStatus from '../VolunteerViews/Legal/LegalStatus'
+import VolunteerAid from '../VolunteerViews/Aid/Aid'
+import VolunteerSocial from '../VolunteerViews/Aid/AidSocial'
+import VolunteerGrocery from '../VolunteerViews/Aid/AidGrocery'
+import VolunteerFund from '../VolunteerViews/Aid/AidFund'
+import VolunteerTeam from '../VolunteerViews/Team/Team'
 
 
 
@@ -50,25 +64,41 @@ class App extends Component {
     this.props.dispatch({ type: 'FETCH_USER' })
   }
 
+  // homeLanding = () => {
+  //   if(this.props.reduxState.user.id === 1) {
+  //     return <Redirect exact from="/" to="/home" />
+  //   } else {
+  //     return <Redirect exact from="/" to="/volunteer-landing" />
+  //   }
+  // }
+
   render() {
     return (
       <Router>
         <div>
-          <Nav />
+
+          {/* nav for all pages */}
+          {/* <Nav /> */}
+
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
+            {/* {this.homeLanding} */}
             <Redirect exact from="/" to="/home" />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
-            <ProtectedRoute
+            
+            <AdminProtectedRoute
               exact
               path="/home"
               component={UserPage}
             />
-
-
+            <ProtectedRoute
+              exact
+              path="/volunteer-landing"
+              component={VolunteerLanding}
+            />
             <ProtectedRoute
               exact
               path='/aid-form'
@@ -197,6 +227,71 @@ class App extends Component {
               path="/bio-identification"
               component={BioIdentify}
             />
+            <ProtectedRoute
+              exact
+              path="/volunteer-events"
+              component={VolunteerEvents}
+            />
+            <ProtectedRoute
+              exact
+              path="/volunteer-notes"
+              component={VolunteerNotes}
+            />
+            <ProtectedRoute
+              exact
+              path="/volunteer-legal"
+              component={VolunteerLegal}
+            />
+            <ProtectedRoute
+              exact
+              path="/legal-ice"
+              component={LegalIce}
+            />
+            <ProtectedRoute
+              exact
+              path="/legal-bond"
+              component={LegalBond}
+            />
+            <ProtectedRoute
+              exact
+              path="/legal-foster"
+              component={LegalFoster}
+            />
+            <ProtectedRoute
+              exact
+              path="/legal-attorney"
+              component={LegalAttorney}
+            />
+            <ProtectedRoute
+              exact
+              path="/legal-status"
+              component={LegalStatus}
+            />
+            <ProtectedRoute
+              exact
+              path="/volunteer-aid"
+              component={VolunteerAid}
+            />
+            <ProtectedRoute
+              exact
+              path="/aid-social"
+              component={VolunteerSocial}
+            />
+            <ProtectedRoute
+              exact
+              path="/aid-grocery"
+              component={VolunteerGrocery}
+            />
+            <ProtectedRoute
+              exact
+              path="/aid-fund"
+              component={VolunteerFund}
+            />
+            <ProtectedRoute
+              exact
+              path="/volunteer-team"
+              component={VolunteerTeam}
+            />
 
             <Route path='/events' component={Events} />
 
@@ -214,4 +309,8 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+const mapReduxStateToProps = (reduxState) => ({
+  reduxState
+  });
+
+export default connect(mapReduxStateToProps)(App);

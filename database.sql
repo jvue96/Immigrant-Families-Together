@@ -6,7 +6,14 @@
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
+    "password" VARCHAR (1000) NOT NULL,
+    "phone" VARCHAR (80),
+    "email" VARCHAR (100),
+    "encrypted" VARCHAR(100),
+    "address" VARCHAR (200),
+    "skills" VARCHAR (500),
+    "second_language" VARCHAR (100),
+    "admin" VARCHAR (80),
 );
 
 CREATE TABLE "users" (
@@ -22,17 +29,17 @@ CREATE TABLE "users" (
     "encrypted" VARCHAR(100)
 );
 
-CREATE TABLE "users_cases" (
-    "id" SERIAL PRIMARY KEY,
-    "user_id" INT REFERENCES "users",
-    "case_id" INT REFERENCES "cases"
-);
-
 CREATE TABLE "cases" (
     "id" SERIAL PRIMARY KEY,
     "case_last_name" VARCHAR(200),
     "case_number" VARCHAR(100),
     "status" VARCHAR(100)
+);
+
+CREATE TABLE "users_cases" (
+    "id" SERIAL PRIMARY KEY,
+    "user_id" INT REFERENCES "users",
+    "case_id" INT REFERENCES "cases"
 );
 
 CREATE TABLE "events" (
@@ -41,26 +48,12 @@ CREATE TABLE "events" (
     "description" VARCHAR(2000)
 );
 
-CREATE TABLE "bio" (
-    "id" SERIAL PRIMARY KEY,
-    "case_id" INT REFERENCES "cases",
-    "primary_parent" INT REFERENCES "primary_individual",
-    "case_referred" VARCHAR(2000),
-    "case_referred_date" DATE,
-    "identification_id" INT REFERENCES "identification",
-    "medical_id" INT REFERENCES "medical",
-    "encrypted" VARCHAR(100),
-    "backstory" VARCHAR(2000),
-    "school_id" INT REFERENCES "school"
-);
-
 CREATE TABLE "school" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR (200),
     "phone" VARCHAR (20),
     "email" VARCHAR (100)
 );
-
 
 CREATE TABLE "primary_individual" (
     "id" SERIAL PRIMARY KEY,
@@ -78,14 +71,6 @@ CREATE TABLE "primary_individual" (
     "rent_paid_by" VARCHAR(100),
     "housing_notes" VARCHAR(2000),
     "living_with_family" BOOLEAN
-);
-
-CREATE TABLE "primary_children" (
-    "id" SERIAL PRIMARY KEY,
-    "child_name" VARCHAR(200),
-  	"child_dob" VARCHAR(200),
-  	"child_info" VARCHAR(2000),
-  	"primary_individual_id" INT REFERENCES "primary_individual"
 );
 
 CREATE TABLE "identification" (
@@ -115,6 +100,27 @@ CREATE TABLE "medical" (
     "medical_notes" VARCHAR(2000)
 );
 
+CREATE TABLE "bio" (
+    "id" SERIAL PRIMARY KEY,
+    "case_id" INT REFERENCES "cases",
+    "primary_parent" INT REFERENCES "primary_individual",
+    "case_referred" VARCHAR(2000),
+    "case_referred_date" DATE,
+    "identification_id" INT REFERENCES "identification",
+    "medical_id" INT REFERENCES "medical",
+    "encrypted" VARCHAR(100),
+    "backstory" VARCHAR(2000),
+    "school_id" INT REFERENCES "school"
+);
+
+CREATE TABLE "primary_children" (
+    "id" SERIAL PRIMARY KEY,
+    "child_name" VARCHAR(200),
+  	"child_dob" VARCHAR(200),
+  	"child_info" VARCHAR(2000),
+  	"primary_individual_id" INT REFERENCES "primary_individual"
+);
+
 CREATE TABLE "aid" (
     "id" SERIAL PRIMARY KEY,
     "case_id" INT REFERENCES "cases",
@@ -130,6 +136,16 @@ CREATE TABLE "notes" (
     "case_id" INT REFERENCES "cases",
     "family_notes" VARCHAR(2000),
     "date" VARCHAR(50)
+);
+
+CREATE TABLE "legal_status" (
+    "id" SERIAL PRIMARY KEY,
+    "last_court_date" DATE,
+    "last_court_date_outcome" VARCHAR(2000),
+    "next_court_date" DATE,
+    "next_court_date_outcome" VARCHAR(2000),
+    "asylum_application" BOOLEAN,
+    "work_authorization" BOOLEAN
 );
 
 CREATE TABLE "legal" (
@@ -148,12 +164,8 @@ CREATE TABLE "legal" (
     "legal_notes" VARCHAR(2000)
 );
 
-CREATE TABLE "legal_status" (
-    "id" SERIAL PRIMARY KEY,
-    "last_court_date" DATE,
-    "last_court_date_outcome" VARCHAR(2000),
-    "next_court_date" DATE,
-    "next_court_date_outcome" VARCHAR(2000),
-    "asylum_application" BOOLEAN,
-    "work_authorization" BOOLEAN
+CREATE TABLE "user" (
+   "id" SERIAL PRIMARY KEY,
+   "username" VARCHAR (80) UNIQUE NOT NULL,
+   "password" VARCHAR (1000) NOT NULL
 );
