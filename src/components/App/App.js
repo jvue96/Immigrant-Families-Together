@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
+import AdminProtectedRoute from '../ProtectedRoute/AdminProtectedRoute'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import UserPage from '../UserPage/UserPage';
 import AdminLanding from '../AdminViews/AdminLanding';
@@ -50,6 +51,14 @@ class App extends Component {
     this.props.dispatch({ type: 'FETCH_USER' })
   }
 
+  // homeLanding = () => {
+  //   if(this.props.reduxState.user.id === 1) {
+  //     return <Redirect exact from="/" to="/home" />
+  //   } else {
+  //     return <Redirect exact from="/" to="/volunteer-landing" />
+  //   }
+  // }
+
   render() {
     return (
       <Router>
@@ -57,18 +66,23 @@ class App extends Component {
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
+            {/* {this.homeLanding} */}
             <Redirect exact from="/" to="/home" />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
-            <ProtectedRoute
+            
+            <AdminProtectedRoute
               exact
               path="/home"
               component={UserPage}
             />
-
-
+            <ProtectedRoute
+              exact
+              path="/volunteer-landing"
+              component={VolunteerLanding}
+            />
             <ProtectedRoute
               exact
               path='/aid-form'
@@ -214,4 +228,8 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+const mapReduxStateToProps = (reduxState) => ({
+  reduxState
+  });
+
+export default connect(mapReduxStateToProps)(App);
