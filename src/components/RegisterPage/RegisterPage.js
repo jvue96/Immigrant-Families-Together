@@ -11,6 +11,7 @@ class RegisterPage extends Component {
     address: '',
     skills: '',
     second_language: '',
+    admin: '',
   };
 
   registerUser = (event) => {
@@ -28,6 +29,7 @@ class RegisterPage extends Component {
           address: this.state.address,
           skills: this.state.skills,
           second_language: this.state.second_language,
+          admin: this.state.admin,
         },
       });
     } else {
@@ -140,6 +142,17 @@ class RegisterPage extends Component {
                 name="second_language"
                 value={this.state.second_language}
                 onChange={this.handleInputChangeFor('second_language')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="password">
+              Admin:
+              <input
+                type="admin"
+                name="admin"
+                value={this.state.admin}
+                onChange={this.handleInputChangeFor('admin')}
               />
             </label>
           </div>
