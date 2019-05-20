@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+
 
 class RegisterVolunteer extends Component {
     
@@ -34,6 +36,21 @@ class RegisterVolunteer extends Component {
     render() {
         return (
             <div>
+
+                <div className="nav">
+                <div className="navLeft2" onClick={this.backButton}>
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div className="navTitle">
+                    <h2 className="navH2">REGISTER VOLUNTEER</h2>
+                </div>
+                <div className="navRight">
+                <Link to="/home">
+                    <i class="fas fa-home"></i>
+                </Link>
+                </div>
+                </div>
+
                 <center>
                     <div>
                         <h1>
