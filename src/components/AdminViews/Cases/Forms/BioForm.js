@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 class BioForm extends Component {
 
@@ -24,6 +26,7 @@ class BioForm extends Component {
 
     handleChange = propertyName => event => {
         console.log(`this is the propertyName:`, propertyName);
+        console.log(`this is target value:`, event.target.value)
         this.setState({
             bioForm: {
                 ...this.state.bioForm,
@@ -82,16 +85,15 @@ class BioForm extends Component {
                         <select
                         onChange={this.handleChange('passport')}
                         >
-                            <option>--</option>
+                            <option></option>
                             <option value={true}>True</option>
                             <option value={false}>False</option>
                         </select><br />
                         <label>USA I.D Y/N</label> <br />
                         <select 
-                        name={this.state.bioForm.us_id}
                         onChange={this.handleChange(`us_id`)}
                         >
-                            <option>--</option>
+                            <option></option>
                             <option value={true}>True</option>
                             <option value={false}>False</option>
                         </select><br />
@@ -103,5 +105,7 @@ class BioForm extends Component {
         );
     }
 }
-
-export default BioForm;
+const mapStateToProps = state => ({
+    user: state.user,
+  });
+  export default withRouter(connect(mapStateToProps)(BioForm));
