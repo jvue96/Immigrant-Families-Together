@@ -1,4 +1,5 @@
 
+-- create a database table titled immigrant_families
 -- USER is a reserved keyword with Postgres
 -- You must use double quotes in every query that user is in:
 -- ex. SELECT * FROM "user";
@@ -22,12 +23,6 @@ CREATE TABLE "users" (
     "encrypted" VARCHAR(100)
 );
 
-CREATE TABLE "users_cases" (
-    "id" SERIAL PRIMARY KEY,
-    "user_id" INT REFERENCES "users",
-    "case_id" INT REFERENCES "cases"
-);
-
 CREATE TABLE "cases" (
     "id" SERIAL PRIMARY KEY,
     "case_last_name" VARCHAR(200),
@@ -35,23 +30,18 @@ CREATE TABLE "cases" (
     "status" VARCHAR(100)
 );
 
+
+CREATE TABLE "users_cases" (
+    "id" SERIAL PRIMARY KEY,
+    "user_id" INT REFERENCES "users",
+    "case_id" INT REFERENCES "cases"
+);
+
+
 CREATE TABLE "events" (
     "id" SERIAL PRIMARY KEY,
     "date" DATE,
     "description" VARCHAR(2000)
-);
-
-CREATE TABLE "bio" (
-    "id" SERIAL PRIMARY KEY,
-    "case_id" INT REFERENCES "cases",
-    "primary_parent" INT REFERENCES "primary_individual",
-    "case_referred" VARCHAR(2000),
-    "case_referred_date" DATE,
-    "identification_id" INT REFERENCES "identification",
-    "medical_id" INT REFERENCES "medical",
-    "encrypted" VARCHAR(100),
-    "backstory" VARCHAR(2000),
-    "school_id" INT REFERENCES "school"
 );
 
 CREATE TABLE "school" (
@@ -60,7 +50,6 @@ CREATE TABLE "school" (
     "phone" VARCHAR (20),
     "email" VARCHAR (100)
 );
-
 
 CREATE TABLE "primary_individual" (
     "id" SERIAL PRIMARY KEY,
@@ -80,12 +69,13 @@ CREATE TABLE "primary_individual" (
     "living_with_family" BOOLEAN
 );
 
+
 CREATE TABLE "primary_children" (
     "id" SERIAL PRIMARY KEY,
     "child_name" VARCHAR(200),
-  	"child_dob" VARCHAR(200),
-  	"child_info" VARCHAR(2000),
-  	"primary_individual_id" INT REFERENCES "primary_individual"
+    "child_dob" VARCHAR(200),
+    "child_info" VARCHAR(2000),
+    "primary_individual_id" INT REFERENCES "primary_individual"
 );
 
 CREATE TABLE "identification" (
@@ -93,6 +83,23 @@ CREATE TABLE "identification" (
     "passport" BOOLEAN,
     "usa_id" BOOLEAN,
     "additional_info" VARCHAR(2000)
+);
+
+CREATE TABLE "aid" (
+    "id" SERIAL PRIMARY KEY,
+    "case_id" INT REFERENCES "cases",
+    "grocery_program" BOOLEAN,
+    "grocery_program_volunteer" VARCHAR(200),
+    "go_fund_me" VARCHAR(200),
+    "social_worker" VARCHAR(200),
+    "social_worker_phone" VARCHAR(50)
+);
+
+CREATE TABLE "notes" (
+    "id" SERIAL PRIMARY KEY,
+    "case_id" INT REFERENCES "cases",
+    "family_notes" VARCHAR(2000),
+    "date" VARCHAR(50)
 );
 
 CREATE TABLE "medical" (
@@ -115,21 +122,28 @@ CREATE TABLE "medical" (
     "medical_notes" VARCHAR(2000)
 );
 
-CREATE TABLE "aid" (
+CREATE TABLE "bio" (
     "id" SERIAL PRIMARY KEY,
     "case_id" INT REFERENCES "cases",
-    "grocery_program" BOOLEAN,
-    "grocery_program_volunteer" VARCHAR(200),
-    "go_fund_me" VARCHAR(200),
-    "social_worker" VARCHAR(200),
-    "social_worker_phone" VARCHAR(50)
+    "primary_parent" INT REFERENCES "primary_individual",
+    "case_referred" VARCHAR(2000),
+    "case_referred_date" DATE,
+    "identification_id" INT REFERENCES "identification",
+    "medical_id" INT REFERENCES "medical",
+    "encrypted" VARCHAR(100),
+    "backstory" VARCHAR(2000),
+    "school_id" INT REFERENCES "school"
 );
 
-CREATE TABLE "notes" (
+
+CREATE TABLE "legal_status" (
     "id" SERIAL PRIMARY KEY,
-    "case_id" INT REFERENCES "cases",
-    "family_notes" VARCHAR(2000),
-    "date" VARCHAR(50)
+    "last_court_date" DATE,
+    "last_court_date_outcome" VARCHAR(2000),
+    "next_court_date" DATE,
+    "next_court_date_outcome" VARCHAR(2000),
+    "asylum_application" BOOLEAN,
+    "work_authorization" BOOLEAN
 );
 
 CREATE TABLE "legal" (
@@ -146,14 +160,4 @@ CREATE TABLE "legal" (
     "attorney_fee" VARCHAR(200),
     "legal_status_id" INT REFERENCES "legal_status",
     "legal_notes" VARCHAR(2000)
-);
-
-CREATE TABLE "legal_status" (
-    "id" SERIAL PRIMARY KEY,
-    "last_court_date" DATE,
-    "last_court_date_outcome" VARCHAR(2000),
-    "next_court_date" DATE,
-    "next_court_date_outcome" VARCHAR(2000),
-    "asylum_application" BOOLEAN,
-    "work_authorization" BOOLEAN
 );

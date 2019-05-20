@@ -153,10 +153,6 @@ class App extends Component {
               component={Events}
             />
 
-
-
-          <Route path='/events' component={Events} />
-
           {/* volunteer views link */}
           <ProtectedRoute path="/case" component={Case} />
           <ProtectedRoute path="/volunteer-landing" component={VolunteerLanding} />
