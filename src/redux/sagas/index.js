@@ -5,10 +5,12 @@ import userSaga from './userSaga';
 import medicalSaga from './bioSagas/medicalSaga';
 import volunteerSaga from './volunteerSaga';
 import aidSaga from './aidSaga';
+import bioSaga from './bioSaga';
 import familySaga from './bioSagas/familySaga';
 import housingSaga from './bioSagas/housingSaga';
 import identifySaga from './bioSagas/identifySaga';
 import schoolSaga from './bioSagas/schoolSaga';
+
 
 
 
@@ -27,6 +29,7 @@ export default function* rootSaga() {
     medicalSaga(),
     volunteerSaga(),
     aidSaga(),
+    bioSaga(),
     familySaga(),
     housingSaga(),
     identifySaga(),
