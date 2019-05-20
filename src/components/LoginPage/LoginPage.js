@@ -18,6 +18,11 @@ class LoginPage extends Component {
           password: this.state.password,
         },
       });
+      // if (this.state.username==='kingmand'){
+      // this.props.history.push('/home')
+      // } else {
+      //   this.props.history.push('/volunteer-landing')
+      // }
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
