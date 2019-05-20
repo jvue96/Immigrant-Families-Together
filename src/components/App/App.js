@@ -41,6 +41,19 @@ import BioHousing from '../VolunteerViews/Bio/BioHousing'
 import BioIdentify from '../VolunteerViews/Bio/BioIdentify'
 import BioSchool from '../VolunteerViews/Bio/BioSchool'
 import BioFamilyInfo from '../VolunteerViews/Bio/BioFamilyInfo'
+import VolunteerEvents from '../VolunteerViews/Events/Events'
+import VolunteerNotes from '../VolunteerViews/Notes/Notes'
+import VolunteerLegal from '../VolunteerViews/Legal/Legal'
+import LegalIce from '../VolunteerViews/Legal/LegalIce'
+import LegalBond from '../VolunteerViews/Legal/LegalBond'
+import LegalFoster from '../VolunteerViews/Legal/LegalFoster'
+import LegalAttorney from '../VolunteerViews/Legal/LegalAttorney'
+import LegalStatus from '../VolunteerViews/Legal/LegalStatus'
+import VolunteerAid from '../VolunteerViews/Aid/Aid'
+import VolunteerSocial from '../VolunteerViews/Aid/AidSocial'
+import VolunteerGrocery from '../VolunteerViews/Aid/AidGrocery'
+import VolunteerFund from '../VolunteerViews/Aid/AidFund'
+import VolunteerTeam from '../VolunteerViews/Team/Team'
 
 
 
@@ -196,6 +209,71 @@ class App extends Component {
               exact
               path="/bio-identification"
               component={BioIdentify}
+            />
+            <ProtectedRoute
+              exact
+              path="/volunteer-events"
+              component={VolunteerEvents}
+            />
+            <ProtectedRoute
+              exact
+              path="/volunteer-notes"
+              component={VolunteerNotes}
+            />
+            <ProtectedRoute
+              exact
+              path="/volunteer-legal"
+              component={VolunteerLegal}
+            />
+            <ProtectedRoute
+              exact
+              path="/legal-ice"
+              component={LegalIce}
+            />
+            <ProtectedRoute
+              exact
+              path="/legal-bond"
+              component={LegalBond}
+            />
+            <ProtectedRoute
+              exact
+              path="/legal-foster"
+              component={LegalFoster}
+            />
+            <ProtectedRoute
+              exact
+              path="/legal-attorney"
+              component={LegalAttorney}
+            />
+            <ProtectedRoute
+              exact
+              path="/legal-status"
+              component={LegalStatus}
+            />
+            <ProtectedRoute
+              exact
+              path="/volunteer-aid"
+              component={VolunteerAid}
+            />
+            <ProtectedRoute
+              exact
+              path="/aid-social"
+              component={VolunteerSocial}
+            />
+            <ProtectedRoute
+              exact
+              path="/aid-grocery"
+              component={VolunteerGrocery}
+            />
+            <ProtectedRoute
+              exact
+              path="/aid-fund"
+              component={VolunteerFund}
+            />
+            <ProtectedRoute
+              exact
+              path="/volunteer-team"
+              component={VolunteerTeam}
             />
 
             <Route path='/events' component={Events} />

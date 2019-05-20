@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class BioIdentify extends Component {
     render() {
@@ -10,7 +11,17 @@ class BioIdentify extends Component {
                             IDENTIFY 
                         </h1>
                     </div>
-                    <label>PASSPORT: Y/N</label> <br/>
+
+                    <div>{this.props.reduxState.identifyReducer.map(id =>
+                <div>
+<p className="bioDivs">PASSPORT: {id.passport}</p>
+<p className="bioDivs">U.S. IDENTIFICATION CARD: {id.identification}</p>
+<p className="bioDivs">NOTES: {id.notes}</p>
+                </div>
+)}
+</div>
+
+                    {/* <label>PASSPORT: Y/N</label> <br/>
                     <div className="bioDivs" >
                     </div> <br/>
                     <label> US ID: Y/N</label> <br/>
@@ -18,11 +29,15 @@ class BioIdentify extends Component {
                     </div> <br/>
                     <label> NOTES </label> <br/>
                     <div className="bioDivs" >
-                    </div> <br/>
+                    </div> <br/> */}
                 </center>
             </div>
         );
     }
 }
 
-export default BioIdentify;
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+    });
+
+export default connect(mapReduxStateToProps)(BioIdentify);
