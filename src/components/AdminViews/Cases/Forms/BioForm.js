@@ -58,11 +58,11 @@ class BioForm extends Component {
                         <label>LAST NAME</label> <br />
                         <input type="text" value={this.state.bioForm.last_name} onChange={this.handleChange('last_name')}/> <br />
                         <label>D.O.B</label> <br />
-                        <input type="text" value={this.state.bioForm.dob} onChange={this.handleChange('dob')} /> <br />
+                        <input type="date" value={this.state.bioForm.dob} onChange={this.handleChange('dob')} /> <br />
                         <label>SPOUSE NAME</label> <br />
                         <input type="text" value={this.state.bioForm.spouse_first_name} onChange={this.handleChange('spouse_first_name')}/> <br />
                         <label>SPOUNSE D.O.B</label> <br />
-                        <input type="text" value={this.state.bioForm.spouse_dob} onChange={this.handleChange('spouse_dob')}/> <br />
+                        <input type="date" value={this.state.bioForm.spouse_dob} onChange={this.handleChange('spouse_dob')}/> <br />
                         <label>PHONE</label> <br />
                         <input type="text" value={this.state.bioForm.phone} onChange={this.handleChange('phone')} /> <br />
                         <label>ENCRYPTED</label> <br />
@@ -80,7 +80,7 @@ class BioForm extends Component {
                         value={this.state.bioForm.referred_by} onChange={this.handleChange('referred_by')}
                         /> <br />
                         <label>REFERENCE DATE</label> <br />
-                        <input type="text"
+                        <input type="date"
                         value={this.state.bioForm.reference_date} onChange={this.handleChange('reference_date')}
                         /> <br />
                         <label>PASSPORT Y/N</label> <br />
