@@ -1,33 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css';
+// import React from 'react';
+// import { Link } from 'react-router-dom';
+// import { connect } from 'react-redux';
+// import LogOutButton from '../LogOutButton/LogOutButton';
+// import './Nav.css';
 
 
 
-const Nav = (props) => (
-  <div className="nav">
+// const Nav = (props) => (
+//   <div className="nav">
 
-  <div className="navLeft">
-    <i class="fas fa-chevron-left"></i>
-  </div> 
+//   <div className="navLeft">
+//     <i class="fas fa-chevron-left"></i>
+//   </div> 
 
-  <div className="navTitle">
-    <h2 className="navH2">VARIABLE NAME</h2>
-  </div>
+//   <div className="navTitle">
+//     <h2 className="navH2">VARIABLE NAME</h2>
+//   </div>
 
-  <div className="navRight">
-  <Link to="/home">
-        {/* Show this link if they are logged in or not,
-        but call this link 'Home' if they are logged in,
-        and call this link 'Login / Register' if they are not */}
-        {props.user.id ? <i class="fas fa-home"></i> : 'Login'}
-      </Link>
-    </div>
+//   <div className="navRight">
+//   <Link to="/home">
+//         {/* Show this link if they are logged in or not,
+//         but call this link 'Home' if they are logged in,
+//         and call this link 'Login / Register' if they are not */}
+//         {props.user.id ? <i class="fas fa-home"></i> : 'Login'}
+//       </Link>
+//     </div>
     
-  </div>
-);
+//   </div>
+// );
 
 
 // const Nav = (props) => (
@@ -58,8 +58,11 @@ const Nav = (props) => (
 // if they are logged in, we show them a few more links 
 // if you wanted you could write this code like this:
 // const mapStateToProps = ({ user }) => ({ user });
-const mapStateToProps = state => ({
-  user: state.user,
-});
 
-export default connect(mapStateToProps)(Nav);
+
+
+// const mapStateToProps = state => ({
+//   user: state.user,
+// });
+
+// export default connect(mapStateToProps)(Nav);

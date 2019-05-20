@@ -2,6 +2,10 @@ body{
     margin:0px;
 }
 
+button{
+  font-family: 'Heebo', sans-serif;
+  color: white;
+}
 
 h1{
     font-family: 'Heebo', sans-serif;
@@ -10,17 +14,20 @@ h1{
 
 label{
     font-family: 'Heebo', sans-serif;
-    letter-spacing: 1px;
+    letter-spacing: .5px;
     color: rgb(118, 118, 118);
+    margin-bottom: 5px;
 }
 
 .alert {
-    background-color:rgb(210, 47, 37);
-    margin: 50px;
+    background-color:rgb(255, 255, 255);
+    margin: 30px;
+    font-family: 'Heebo', sans-serif;
+    text-align: center;
 }
 
 .formDivs {
-    background-color: #dbd5d5;
+    background-color: #ffffff;
     width: 345px;
     border-radius: 25px;
     margin: 20px auto;
@@ -35,7 +42,8 @@ input {
     border-radius: 15px;
     border-color: rgb(118, 118, 118);
     margin: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    margin-top:0px;
 }
 
 .log-in, .log-out, .register {
@@ -156,3 +164,119 @@ input {
     letter-spacing: .5px;
     text-align: left;
 }
+
+  .navH2{
+    font-family: 'Heebo', sans-serif;
+    font-size: 20px;
+    color: #f2f2f2;
+  }
+
+  .navH3{
+    font-family: 'Heebo', sans-serif;
+    font-size: 20px;
+    color: #f2f2f2;
+    text-align: center;
+  }
+
+  .navH4{
+    font-family: 'Heebo', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color:rgb(210, 47, 37);
+    text-align: center;
+    margin: none;
+  }
+
+  .navTitle{
+    height:75px;
+    width:225px;
+    margin:none;
+    background-color:rgb(210, 47, 37);
+    display: inline-block;
+    position: relative;
+  }
+
+  .navLeft{
+    height:75px;
+    width:75px;
+    margin:none;
+    color:white;
+    background-color:rgb(210, 47, 37);
+    display: inline-block;
+    position: relative;
+  }
+
+  .navLeft2{
+    height:75px;
+    width:75px;
+    margin:none;
+    color:rgb(210, 47, 37) !important;
+    background-color:rgb(210, 47, 37);
+    display: inline-block;
+    position: relative;
+  }
+
+  .navRight{
+    height:75px;
+    width:75px;
+    margin:none;
+    color:white;
+    background-color:rgb(210, 47, 37);
+    display: inline-block;
+    position: relative;
+  }
+
+  a:visited {
+    color: white;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: white;
+  }
+  
+  /* selected link */
+  a:active {
+    color: white;
+  }
+
+  .navRight2{
+    height:75px;
+    width:75px;
+    margin:none;
+    background-color:rgb(210, 47, 37);
+    display: inline-block;
+    position: relative;
+  }
+
+  .nav {
+    overflow: hidden;
+    margin:none;
+    background-color:rgb(210, 47, 37);
+    text-align: center;
+    width: 100%;
+    /* width: 375px; */
+    height:65px;
+  }
+
+  .nav-right {
+    color:white;
+    float: right;
+  }
+
+  i{
+    font-size: 25px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .nav-link {
+    height:65px;
+    font-family: 'Heebo', sans-serif;
+    width:75px;
+    margin:none;
+    background-color:rgb(210, 47, 37);
+    display: inline-block;
+    position: relative;
+    border-style:none;
+  }
