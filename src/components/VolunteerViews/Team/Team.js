@@ -9,7 +9,7 @@ class Team extends Component {
                         TEAM
                     </h1> 
                 </div>
-                <div> VOLUNTEERS </div>
+                <h2> VOLUNTEERS </h2>
 
                 <div className="bioDivs"
                 style={{height: 200}}>

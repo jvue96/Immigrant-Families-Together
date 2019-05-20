@@ -1,41 +1,50 @@
 import React, { Component } from 'react';
-import AidSocial from "./AidSocial";
-import AidGrocery from "./AidGrocery";
-import AidFund from "./AidFund";
+// import AidSocial from "./AidSocial";
+// import AidGrocery from "./AidGrocery";
+// import AidFund from "./AidFund";
 
 class Aid extends Component {
 
-
-    state = {
-        button: "social", 
+    socialPages = () => {
+        this.props.history.push('/aid-social')
+    }
+    groceryPages = () => {
+        this.props.history.push('/aid-grocery')
+    }
+    fundPages = () => {
+        this.props.history.push('/aid-fund')
     }
 
-    viewSelectedButton = (propertyName) => {   
-        return(event) =>{
-        this.setState({
-            [propertyName]: event.target.value,
-            });
-        }    
-    }
+    // state = {
+    //     button: "social", 
+    // }
+
+    // viewSelectedButton = (propertyName) => {   
+    //     return(event) =>{
+    //     this.setState({
+    //         [propertyName]: event.target.value,
+    //         });
+    //     }    
+    // }
 
     render() {
 
-        let div = <div>  </div>
-        if(this.state.button === "social") {
-            div = <div> <AidSocial/> </div>
-        } else if (this.state.button === "grocery") {
-            div = <div> <AidGrocery/> </div>
-        } else if (this.state.button === "fund") {
-            div = <div> <AidFund/> </div>
-        } 
+        // let div = <div>  </div>
+        // if(this.state.button === "social") {
+        //     div = <div> <AidSocial/> </div>
+        // } else if (this.state.button === "grocery") {
+        //     div = <div> <AidGrocery/> </div>
+        // } else if (this.state.button === "fund") {
+        //     div = <div> <AidFund/> </div>
+        // } 
 
         return (
             <div>
                 <center> 
-                <div> BIO </div>
+                <div> AID </div>
                 <div>
                 </div>
-                <button 
+                {/* <button 
                 onClick={this.viewSelectedButton('button')}
                 value={"social"}
                 >SOCIAL WORKER</button> 
@@ -50,7 +59,11 @@ class Aid extends Component {
                 value={"fund"}
                 >GO FUND ME</button> 
 
-                {div}
+                {div} */}
+
+                <button className="adminMenuButtons" onClick={this.socialPages}>SOCIAL WORKER</button>
+                <button className="adminMenuButtons" onClick={this.groceryPages}>GROCERY PROGRAM</button>
+                <button className="adminMenuButtons" onClick={this.fundPages}>GO FUND ME</button>
                 </center>
             </div>
         );
