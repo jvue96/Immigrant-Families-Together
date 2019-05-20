@@ -37,6 +37,8 @@ class BioForm extends Component {
     }   
 
    next = () => {
+    this.props.dispatch({ type: 'ADD_BIO', payload: this.state.bioForm })
+
        this.props.history.push('/medical-form');
 
    }
@@ -105,7 +107,11 @@ class BioForm extends Component {
         );
     }
 }
+
+
 const mapStateToProps = state => ({
     user: state.user,
   });
+  
+  // this allows us to use <App /> in index.js
   export default withRouter(connect(mapStateToProps)(BioForm));
