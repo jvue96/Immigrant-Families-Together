@@ -6,7 +6,14 @@
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
+    "password" VARCHAR (1000) NOT NULL,
+    "phone" VARCHAR (80),
+    "email" VARCHAR (100),
+    "encrypted" VARCHAR(100),
+    "address" VARCHAR (200),
+    "skills" VARCHAR (500),
+    "second_language" VARCHAR (100),
+    "admin" VARCHAR (80),
 );
 
 CREATE TABLE "users" (
