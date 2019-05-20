@@ -3,7 +3,6 @@ import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 import medicalSaga from './bioSagas/medicalSaga';
-import medicalSaga from './medicalSaga';
 import volunteerSaga from './volunteerSaga';
 import aidSaga from './aidSaga';
 import familySaga from './bioSagas/familySaga';
