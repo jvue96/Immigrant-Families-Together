@@ -12,7 +12,7 @@ router.post('/', (req, res) => {
         res.sendStatus(201);
       })
       .catch( (error) => {
-        console.log('Failed to POST medical form');
+        console.log('Failed to POST aid form, heres the error:', error);
         res.sendStatus(500);
       })
   })
