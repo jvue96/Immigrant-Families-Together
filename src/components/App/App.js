@@ -36,6 +36,13 @@ import './App.css';
 /* volunteer imports */
 import Case from "../VolunteerViews/Case";
 import VolunteerLanding from "../VolunteerViews/VolunteerLanding";
+import BioMedical from '../VolunteerViews/Bio/BioMedical'
+import Bio from '../VolunteerViews/Bio/Bio'
+import BioHousing from '../VolunteerViews/Bio/BioHousing'
+import BioIdentify from '../VolunteerViews/Bio/BioIdentify'
+import BioSchool from '../VolunteerViews/Bio/BioSchool'
+import BioFamilyInfo from '../VolunteerViews/Bio/BioFamilyInfo'
+
 
 
 
@@ -174,8 +181,36 @@ class App extends Component {
               path="/events"
               component={Events}
             />
-
-
+             <ProtectedRoute
+              exact
+              path="/bio-medical"
+              component={BioMedical}
+            />
+            <ProtectedRoute
+              exact
+              path="/bio"
+              component={Bio}
+            />
+            <ProtectedRoute
+              exact
+              path="/bio-family-info"
+              component={BioFamilyInfo}
+            />
+            <ProtectedRoute
+              exact
+              path="/bio-housing"
+              component={BioHousing}
+            />
+            <ProtectedRoute
+              exact
+              path="/bio-school"
+              component={BioSchool}
+            />
+            <ProtectedRoute
+              exact
+              path="/bio-identification"
+              component={BioIdentify}
+            />
 
             <Route path='/events' component={Events} />
 

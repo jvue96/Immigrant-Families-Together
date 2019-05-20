@@ -7,7 +7,7 @@ class AidForm extends Component {
     //     this.props.dispatch({ type: 'GET_AID_FORM' });
     // }
     next = () => {
-        // this.props.dispatch({ type: ' PUSH_AID_FORM', payload: this.state.aidForm })
+        this.props.dispatch({ type: 'ADD_AID', payload: this.state.aidForm })
         this.props.history.push('/school-form')
     }
 

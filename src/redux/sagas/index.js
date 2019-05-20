@@ -4,6 +4,8 @@ import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 import medicalSaga from './medicalSaga';
 import volunteerSaga from './volunteerSaga';
+import aidSaga from './aidSaga';
+
 
 
 
@@ -21,5 +23,6 @@ export default function* rootSaga() {
     userSaga(),
     medicalSaga(),
     volunteerSaga(),
+    aidSaga(),
   ]);
 }
