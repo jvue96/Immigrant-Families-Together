@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class BioMedical extends Component {
+
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'GET_MEDICAL' });
+        console.log('GET_MEDICAL', this.props.reduxState.medicalReducer);
+    }
+
+
     render() {
         return (
             <div>
@@ -10,7 +18,27 @@ class BioMedical extends Component {
                         MEDICAL 
                     </h1>
                 </div>
-               <div className="bioDivs"> 
+            <div>{this.props.reduxState.medicalReducer.map(medical =>
+                <div>
+<p className="bioDivs">DOCTOR NAME: {medical.doctor_name}</p>
+<p className="bioDivs">DOCTOR PHONE: {medical.doctor_phone}</p>
+<p className="bioDivs">MEDICAL CONDITIONS: {medical.medical_conditions}</p>
+<p className="bioDivs">COUNSELOR: {medical.counselor}</p>
+<p className="bioDivs">COUNSELOR PHONE: {medical.counselor_phone}</p>
+<p className="bioDivs">PEDIATRICIAN: {medical.pediatrician}</p>
+<p className="bioDivs">PEDIATRICIAN PHONE: {medical.pediatrician_phone}</p>
+<p className="bioDivs">OPTOMETRIST: {medical.optometrist}</p>
+<p className="bioDivs">OPTOMETRIST PHONE: {medical.optometrist_phone}</p>
+<p className="bioDivs">DENTIST: {medical.dentist}</p>
+<p className="bioDivs">DENTIST PHONE: {medical.dentist_phone}</p>
+<p className="bioDivs">VACCINATIONS: {medical.vaccinations}</p>
+<p className="bioDivs">INSURANCE CARD INFO: {medical.insurance_card_info}</p>
+<p className="bioDivs">FEE COVERAGE: {medical.fee_coverage}</p>
+<p className="bioDivs">MEDICAL NOTES: {medical.medical_notes}</p>
+                </div>
+)}
+</div>
+               {/* <div className="bioDivs"> 
                <label> DOCTOR </label> <span> </span> <br/> 
                <label> PHONE </label> <span> </span>
                </div> <br/> 
@@ -44,7 +72,7 @@ class BioMedical extends Component {
                </div> <br/> 
                <div className="bioDivs"> 
                <label> NOTES </label> <span> </span> <br/> 
-               </div> <br/> 
+               </div> <br/>  */}
                     
             </center>
         </div>
@@ -52,4 +80,8 @@ class BioMedical extends Component {
     }
 }
 
-export default BioMedical;
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+    });
+
+export default connect(mapReduxStateToProps)(BioMedical);
