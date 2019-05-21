@@ -38,7 +38,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-          <div className="nav">
+          <div className="nav_one_col">
               <h3 className="navH3">IMMIGRANT FAMILIES TOGETHER</h3>
           </div>
         {this.props.errors.loginMessage && (
