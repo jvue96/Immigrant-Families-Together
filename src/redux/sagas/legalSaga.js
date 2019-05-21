@@ -19,8 +19,21 @@ function* postLegal(action) {
     }
   }
 
+  function* getLegal(action) {
+    try{
+        console.log('GET info for medical', action);
+        const getResponse = yield axios.get('/api/forms/legal');
+        const action = {type: 'SET_LEGAL', payload: getResponse.data};
+        yield put(action);
+    }catch (error) {
+        console.log(`Couldn't get the medical form information`);
+        alert(`Sorry couldn't get the information from the medical forms. Try again later.`)
+    }
+}
+
 function* legalSaga() {
     yield takeLatest('ADD_LEGAL', postLegal);
+    yield takeLatest('GET_LEGAL', getLegal);
 }
 
 export default legalSaga;

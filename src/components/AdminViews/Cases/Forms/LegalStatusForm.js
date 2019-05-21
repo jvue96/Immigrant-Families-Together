@@ -16,6 +16,20 @@ class LegalStatusForm extends Component {
         }
     }
 
+    autoPopulate=()=>{
+        console.log('in autoPopulate')
+        this.setState({
+            legalForm: {
+                last_court_date: '2019-12-12',
+                last_court_date_outcome: 'deferment',
+                next_court_date: '2019-12-12', 
+                next_court_date_outcome: 'sentancing', 
+                asylum_application: false,
+                work_authorization: false,
+            }
+        })
+      }
+
     next = () => {
         //this.props.history.push('/social-form')
         this.props.history.push('/admin-landing');
@@ -99,7 +113,7 @@ class LegalStatusForm extends Component {
                         onClick={this.next}
                         >COMPLETE CASE</button>
 
-
+                    <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     </div>
                 </center>
             </div>

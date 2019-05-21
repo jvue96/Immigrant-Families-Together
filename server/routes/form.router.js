@@ -38,6 +38,17 @@ router.post('/medical', (req, res) => {
     
   });
 
+  router.get('/legal', (req, res) => {
+    console.log('Getting all legal status info');
+    pool.query(`SELECT * FROM "legal_status"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the information from the legal status form', error);
+        res.sendStatus(500);
+    })
+  });
+
 router.get('/medical', (req, res) => {
     console.log('Getting all medical info');
     pool.query(`SELECT * FROM "medical"`)
@@ -75,5 +86,30 @@ router.get('/medical', (req, res) => {
     })
   })
 
+  router.post('/aid', (req, res) => {
+    let aid = req.body;
+    console.log('Adding in aid:', aid);
+    let sqlText = `INSERT INTO aid (grocery_program, grocery_program_volunteer, go_fund_me, social_worker, social_worker_phone) VALUES 
+    ($1, $2, $3, $4, $5)`;
+    pool.query(sqlText, [aid.grocery_program, aid.grocery_program_volunteer, aid.go_fund_me, aid.social_worker, aid.social_worker_phone])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to POST aid form, heres the error:', error);
+        res.sendStatus(500);
+      })
+  })
+
+  router.get('/aid', (req, res) => {
+    console.log('Getting all aid info');
+    pool.query(`SELECT * FROM "aid"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the information from the aid forms', error);
+        res.sendStatus(500);
+    })
+  })
 
 module.exports = router;
