@@ -293,6 +293,7 @@ class App extends Component {
               component={VolunteerTeam}
             />
 
+
             <Route path='/events' component={Events} />
 
             {/* volunteer views link */}

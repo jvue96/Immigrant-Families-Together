@@ -17,6 +17,27 @@ router.post('/medical', (req, res) => {
       })
   })
 
+  router.post('/legal', (req, res) => {
+    let legal = req.body;
+    console.log('Adding in legal form:', legal);
+    let sqlText = `INSERT INTO legal_status 
+    (last_court_date, last_court_date_outcome, next_court_date, next_court_date_outcome, asylum_application, work_authorization )
+    VALUES 
+    ($1, $2, $3, $4, $5, $6)`;
+    pool.query(sqlText, [legal.last_court_date, legal.last_court_date_outcome, legal.next_court_date, 
+      legal.next_court_date_outcome, legal. asylum_application, legal.work_authorization])
+      .then( (response) => {
+        console.log(`got it`, response);
+        
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to POST legal form', error);
+        res.sendStatus(500);
+      })
+    
+  });
+
 router.get('/medical', (req, res) => {
     console.log('Getting all medical info');
     pool.query(`SELECT * FROM "medical"`)
@@ -26,6 +47,6 @@ router.get('/medical', (req, res) => {
         console.log('Something went wrong getting the information from the medical forms', error);
         res.sendStatus(500);
     })
-  })
+  });
 
 module.exports = router;

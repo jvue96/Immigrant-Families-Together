@@ -1,8 +1,10 @@
 
+-- create a database table titled immigrant_families
 -- USER is a reserved keyword with Postgres
 -- You must use double quotes in every query that user is in:
 -- ex. SELECT * FROM "user";
 -- Otherwise you will have errors!
+
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
@@ -35,6 +37,7 @@ CREATE TABLE "cases" (
     "case_number" VARCHAR(100),
     "status" VARCHAR(100)
 );
+
 
 CREATE TABLE "users_cases" (
     "id" SERIAL PRIMARY KEY,
@@ -73,11 +76,30 @@ CREATE TABLE "primary_individual" (
     "living_with_family" BOOLEAN
 );
 
+
+
 CREATE TABLE "identification" (
     "id" SERIAL PRIMARY KEY,
     "passport" BOOLEAN,
     "usa_id" BOOLEAN,
     "additional_info" VARCHAR(2000)
+);
+
+CREATE TABLE "aid" (
+    "id" SERIAL PRIMARY KEY,
+    "case_id" INT REFERENCES "cases",
+    "grocery_program" BOOLEAN,
+    "grocery_program_volunteer" VARCHAR(200),
+    "go_fund_me" VARCHAR(200),
+    "social_worker" VARCHAR(200),
+    "social_worker_phone" VARCHAR(50)
+);
+
+CREATE TABLE "notes" (
+    "id" SERIAL PRIMARY KEY,
+    "case_id" INT REFERENCES "cases",
+    "family_notes" VARCHAR(2000),
+    "date" VARCHAR(50)
 );
 
 CREATE TABLE "medical" (
@@ -121,22 +143,7 @@ CREATE TABLE "primary_children" (
   	"primary_individual_id" INT REFERENCES "primary_individual"
 );
 
-CREATE TABLE "aid" (
-    "id" SERIAL PRIMARY KEY,
-    "case_id" INT REFERENCES "cases",
-    "grocery_program" BOOLEAN,
-    "grocery_program_volunteer" VARCHAR(200),
-    "go_fund_me" VARCHAR(200),
-    "social_worker" VARCHAR(200),
-    "social_worker_phone" VARCHAR(50)
-);
 
-CREATE TABLE "notes" (
-    "id" SERIAL PRIMARY KEY,
-    "case_id" INT REFERENCES "cases",
-    "family_notes" VARCHAR(2000),
-    "date" VARCHAR(50)
-);
 
 CREATE TABLE "legal_status" (
     "id" SERIAL PRIMARY KEY,
@@ -162,10 +169,4 @@ CREATE TABLE "legal" (
     "attorney_fee" VARCHAR(200),
     "legal_status_id" INT REFERENCES "legal_status",
     "legal_notes" VARCHAR(2000)
-);
-
-CREATE TABLE "user" (
-   "id" SERIAL PRIMARY KEY,
-   "username" VARCHAR (80) UNIQUE NOT NULL,
-   "password" VARCHAR (1000) NOT NULL
 );

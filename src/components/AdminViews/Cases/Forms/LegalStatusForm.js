@@ -18,6 +18,8 @@ class LegalStatusForm extends Component {
 
     next = () => {
         this.props.history.push('/social-form')
+        console.log(this.state);   
+        this.props.dispatch({ type: 'ADD_LEGAL', payload: this.state.legalForm })
     }
 
      // set state for onChange of textfields 
@@ -32,9 +34,7 @@ class LegalStatusForm extends Component {
         }    
     }
 
-    check = () => {
-        console.log(this.state);   
-    }
+   
 
 
     render() {
@@ -47,10 +47,10 @@ class LegalStatusForm extends Component {
                         </h1>
                     </div>
                     <div className="formDivs">
-    <button onClick={this.check}> check state </button>
                         <label>LAST COURT DATE</label> <br/>
                         <input 
                         value={this.state.legalForm.last_court_date}
+                        placeholder="date format: 2019-12-12"
                         onChange={this.handleNameChange('last_court_date')}
                         type="text" /> <br/>
 
@@ -63,6 +63,7 @@ class LegalStatusForm extends Component {
                         <label>NEXT COURT DATE</label> <br/>
                         <input type="text" 
                         value={this.state.legalForm.next_court_date}
+                        placeholder="date format: 2019-12-12"
                         onChange={this.handleNameChange('next_court_date')}
                         /> <br/>
 
@@ -74,12 +75,14 @@ class LegalStatusForm extends Component {
 
                         <label>ASYLUM APPLIED FOR</label> <br/>
                         <input type="text" 
+                          placeholder="type true or false"
                           value={this.state.legalForm.asylum_application}
                           onChange={this.handleNameChange('asylum_application')}
                         /> <br/>
 
                         <label>WORK AUTH</label> <br/>
                         <input type="text" 
+                        placeholder="type true or false"
                         value={this.state.legalForm.work_authorization}
                         onChange={this.handleNameChange('work_authorization')}
                         /> <br/>
