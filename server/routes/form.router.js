@@ -28,4 +28,54 @@ router.get('/medical', (req, res) => {
     })
   })
 
+  router.post('/children', async(req, res) => {
+
+    const connection = await pool.connect()
+    let children = req.body; 
+    
+    try {
+
+      for(let i = 0; i< children.length; i++) {
+
+        let name = children[i].child_name;
+        let dob = children[i].child_dob;
+        let info = children[i].child_info;
+
+      console.log(name, dob, info);
+  
+      await connection.query('BEGIN');
+      const sqlText = `INSERT INTO primary_children
+                      (child_name, child_dob, child_info)
+                      VALUES ($1, $2, $3);`;
+      await connection.query( sqlText, [
+       name, 
+       dob,
+       info
+      ]);       
+      await connection.query('COMMIT');
+    }}
+    catch ( error ) {
+      await connection.query('ROLLBACK');
+      console.log(`Error posting chilren form`, error);
+      res.sendStatus(500); 
+    } finally {
+      // Always runs - both after successful try & after catch
+      // Put the client connection back in the pool
+      // This is super important! 
+      res.sendStatus(200); 
+      connection.release()
+    }
+  });
+
+  router.get('/children', (req, res) => {
+    console.log('Getting all medical info');
+    pool.query(`SELECT * FROM "primary_children"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the information from the children forms', error);
+        res.sendStatus(500);
+    })
+  })
+
 module.exports = router;
