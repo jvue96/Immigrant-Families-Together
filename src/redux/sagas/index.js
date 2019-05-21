@@ -11,6 +11,7 @@ import familySaga from './bioSagas/familySaga';
 import housingSaga from './bioSagas/housingSaga';
 import identifySaga from './bioSagas/identifySaga';
 import schoolSaga from './bioSagas/schoolSaga';
+import noteSaga from './noteSaga'
 
 
 // rootSaga is the primary saga.
@@ -34,5 +35,6 @@ export default function* rootSaga() {
     housingSaga(),
     identifySaga(),
     schoolSaga(),
+    noteSaga(),
   ]);
 }

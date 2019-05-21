@@ -112,4 +112,29 @@ router.get('/medical', (req, res) => {
     })
   })
 
+  router.post('/note', (req, res) => {
+    let note = req.body;
+    console.log('Adding in note:', note);
+    let sqlText = `INSERT INTO notes (family_notes, date) VALUES 
+    ($1, $2)`;
+    pool.query(sqlText, [note.family_notes, note.date])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to POST note, heres the error:', error);
+        res.sendStatus(500);
+      })
+  })
+
+  router.get('/note', (req, res) => {
+    console.log('Getting all note info');
+    pool.query(`SELECT * FROM "notes"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the notes', error);
+        res.sendStatus(500);
+    })
+  })
 module.exports = router;
