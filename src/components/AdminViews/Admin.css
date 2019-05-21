@@ -1,6 +1,7 @@
 .adminMenuButtons{
     height: 90px;
     width:80%;
+    max-width: 300px;
     color: #ffffff;
     font-family: 'Heebo', sans-serif;
     letter-spacing: 2px;

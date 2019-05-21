@@ -9,14 +9,14 @@ class Events extends Component {
 
                 <div className="nav">
                 <div className="navLeft2" onClick={this.backButton}>
-                    <i class="fas fa-chevron-left"></i>
+                    <i className="fas fa-chevron-left"></i>
                 </div>
                 <div className="navTitle">
                     <h2 className="navH2">EVENTS</h2>
                 </div>
                 <div className="navRight">
                 <Link to="/home">
-                    <i class="fas fa-home"></i>
+                    <i className="fas fa-home"></i>
                 </Link>
                 </div>
                 </div>
