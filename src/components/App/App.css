@@ -192,29 +192,6 @@ input {
     position: relative;
   }
 
-  .navLeft{
-    height:75px;
-    width:75px;
-    margin:none;
-    display: inline-block;
-    position: relative;
-  }
-
-  .navLeft2{
-    margin:none;
-    background-color:rgb(210, 47, 37);
-    display: inline-block;
-    position: relative;
-  }
-
-  .navRight{
-    height:75px;
-    width:75px;
-    margin:none;
-    background-color:rgb(210, 47, 37);
-    display: inline-block;
-    position: relative;
-  }
   
   .midButton,
   .navLeft,
@@ -230,14 +207,6 @@ input {
   
 
 
-  .navRight2{
-    height:75px;
-    width:75px;
-    margin:0;
-    display: inline-block;
-    position: relative;
-  }
-
   .nav,
   .nav_one_col {
     overflow: hidden;
@@ -248,8 +217,12 @@ input {
     height:65px;
     display:grid;
     grid-template-columns: 1fr 4fr 1fr;
+    align-items:center;
   }
 
+  .nav_one_col {
+    display:block;
+  }
   
   .nav-right {
     color:white;
@@ -273,7 +246,5 @@ input {
     border-style:none;
   }
 
-  .nav_one_col {
-    display:block;
-  }
+ 
   
