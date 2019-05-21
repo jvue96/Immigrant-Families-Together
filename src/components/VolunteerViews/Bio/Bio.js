@@ -86,7 +86,7 @@ class Bio extends Component {
 
                     {div} */}
                     <div>
-                        <button className="adminMenuButtons" onClick={this.infoPages}>FAMILY INFO</button>
+                        <button className="adminMenuButtons" onClick={this.infoPages}>GENERAL BIO</button>
                         <button className="adminMenuButtons" onClick={this.housingPages}>HOUSING</button>
                         <button className="adminMenuButtons" onClick={this.medicalPages}>MEDICAL</button>
                         <button className="adminMenuButtons" onClick={this.schoolPages}>SCHOOL</button>

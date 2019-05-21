@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 class BioFamilyInfo extends Component {
 
     componentDidMount = () => {
-        this.props.dispatch({ type: 'GET_FAMILY_INFO' });
-        console.log('GET_FAMILY_INFO', this.props.reduxState.familyReducer);
+        this.props.dispatch({ type: 'GET_BIO_INFO' });
+        console.log('GET_BIO_INFO', this.props.reduxState.familyReducer);
     }
     
     render() {
@@ -14,18 +14,25 @@ class BioFamilyInfo extends Component {
                 <center>
                     <div>
                         <h1>
-                            FAMILY INFO 
+                            GENERAL BIO
                         </h1>
                     </div>
 
-                    <div>{this.props.reduxState.familyReducer.map(family =>
+                    <div>{this.props.reduxState.bioReducer.map(bio =>
                 <div>
-<p className="bioDivs">NAME: {family.name}</p>
-<p className="bioDivs">DOB: {family.dob}</p>
-<p className="bioDivs">RELATION: {family.relation}</p>
-<p className="bioDivs">CASE REFFERED BY: {family.referral_name}</p>
-<p className="bioDivs">REFERRAL DATE: {family.referral_date}</p>
-<p className="bioDivs">BACKSTORY: {family.backstory}</p>
+<p className="bioDivs">FIRST NAME: {bio.first_name}</p>
+<p className="bioDivs">LAST NAME: {bio.last_name}</p>
+<p className="bioDivs">DOB: {bio.dob}</p>
+<p className="bioDivs">SPOUSE NAME: {bio.spouse_first_name}</p>
+<p className="bioDivs">SPOUSE DOB: {bio.spouse_dob}</p>
+<p className="bioDivs">PHONE: {bio.phone}</p>
+<p className="bioDivs">WHATSAPP USERNAME: {bio.encrypted}</p>
+<p className="bioDivs">EMAIL: {bio.email}</p>
+<p className="bioDivs">ADDRESS: {bio.address}</p>
+<p className="bioDivs">REFERRED BY: {bio.referred_by}</p>
+<p className="bioDivs">REFERRAL DATE: {bio.reference_date}</p>
+<p className="bioDivs">PASSPORT: FALSE (HARD CODED)</p>
+<p className="bioDivs">U.S. IDENTIFICATION: FALSE (HARD CODED)</p>
                 </div>
 )}
 </div>

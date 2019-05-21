@@ -26,6 +26,27 @@ class BioForm extends Component {
         }
     }
 
+    autoPopulate=()=>{
+        console.log('in autoPopulate')
+        this.setState({
+            bioForm: {
+                first_name:'Mary',
+                last_name:'Mosman',
+                dob:'07/04/1982',
+                spouse_first_name:'Rick',
+                spouse_dob:'10/31/1976',
+                phone:'555-555-5555',
+                encrypted: 'MosStar',
+                email:'MMosman@gmail.com',
+                address:'333 Spruce St Burnsville MN',
+                referred_by:'John Doe',
+                reference_date:'05/01/2019',
+                passport: false,
+                us_id: false,
+            }
+        })
+      }
+
     handleChange = propertyName => event => {
         console.log(`this is the propertyName:`, propertyName);
         console.log(`this is target value:`, event.target.value)
@@ -121,7 +142,8 @@ class BioForm extends Component {
                             <option value={true}>True</option>
                             <option value={false}>False</option>
                         </select><br />
-                        <button className="formButton" onClick={this.next}>NEXT</button> 
+                        <button className="formButton" onClick={this.next}>NEXT</button>
+                        <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
                         <br/>
                     </div>
                 </center>
