@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class BioSchool extends Component {
+
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'GET_SCHOOL' });
+        console.log('GET_SCHOOL', this.props.reduxState.schoolReducer);
+    }
+
     render() {
         return (
             <div>
@@ -14,8 +20,7 @@ class BioSchool extends Component {
 
 <div>{this.props.reduxState.schoolReducer.map(school =>
                 <div>
-<p className="bioDivs">SCHOOL NAME: {school.school}</p>
-<p className="bioDivs">SCHOOL CONTACT: {school.school_contact}</p>
+<p className="bioDivs">SCHOOL NAME: {school.name}</p>
 <p className="bioDivs">PHONE: {school.phone}</p>
 <p className="bioDivs">EMAIL: {school.email}</p>
                 </div>
