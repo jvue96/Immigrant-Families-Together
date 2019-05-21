@@ -2,6 +2,7 @@ import { all } from 'redux-saga/effects';
 import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
+import legalSaga from "./legalSaga";
 import medicalSaga from './bioSagas/medicalSaga';
 import volunteerSaga from './volunteerSaga';
 import aidSaga from './aidSaga';
@@ -10,8 +11,6 @@ import familySaga from './bioSagas/familySaga';
 import housingSaga from './bioSagas/housingSaga';
 import identifySaga from './bioSagas/identifySaga';
 import schoolSaga from './bioSagas/schoolSaga';
-
-
 
 
 // rootSaga is the primary saga.
@@ -27,6 +26,7 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     medicalSaga(),
+    legalSaga(),
     volunteerSaga(),
     aidSaga(),
     bioSaga(),
