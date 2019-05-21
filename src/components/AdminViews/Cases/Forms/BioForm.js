@@ -41,7 +41,7 @@ class BioForm extends Component {
    next = () => {
     this.props.dispatch({ type: 'ADD_BIO', payload: this.state.bioForm })
 
-       this.props.history.push('/medical-form');
+       this.props.history.push('/aid-form');
 
    }
 

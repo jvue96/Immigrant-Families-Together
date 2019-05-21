@@ -17,7 +17,9 @@ class LegalStatusForm extends Component {
     }
 
     next = () => {
-        this.props.history.push('/social-form')
+        //this.props.history.push('/social-form')
+        this.props.history.push('/admin-landing');
+        
     }
 
      // set state for onChange of textfields 
@@ -84,10 +86,17 @@ class LegalStatusForm extends Component {
                         onChange={this.handleNameChange('work_authorization')}
                         /> <br/>
                     
+                        {/* <button
+                        className="formButton"
+                        onClick={this.next}
+                        >NEXT</button> */}
+ 
                         <button
                         className="formButton"
                         onClick={this.next}
-                        >NEXT</button>
+                        >COMPLETE CASE</button>
+
+
                     </div>
                 </center>
             </div>
