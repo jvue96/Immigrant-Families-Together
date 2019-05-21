@@ -17,22 +17,45 @@ class MedicalForm extends Component {
     state = {
         medicalForm: {
             doctor_name: '',
-            doctor_phone: '',
-            medical_conditions: '',
-            counselor: '',
-            counselor_phone: '',
-            pediatrician: '',
-            pediatrician_phone: '',
-            optometrist: '',
-            optometrist_phone: '',
-            dentist: '',
-            dentist_phone: '',
-            vaccinations: '',
-            insurance_card_info: '',
-            fee_coverage: '',
-            medical_notes: ''
+                doctor_phone: '',
+                medical_conditions: '',
+                counselor: '',
+                counselor_phone: '',
+                pediatrician: '',
+                pediatrician_phone: '',
+                optometrist: '',
+                optometrist_phone: '',
+                dentist: '',
+                dentist_phone: '',
+                vaccinations: '',
+                insurance_card_info: '',
+                fee_coverage: '',
+                medical_notes: ''
         }
     }
+
+    autoPopulate=()=>{
+        console.log('in autoPopulate')
+        this.setState({
+            medicalForm: {
+                doctor_name: 'Bradley Hennen',
+                doctor_phone: '612-555-5434',
+                medical_conditions: 'diabetes',
+                counselor: 'Susan Inman',
+                counselor_phone: '763-555-5674',
+                pediatrician: 'Michael Jackson',
+                pediatrician_phone: '847-555-4225',
+                optometrist: 'Joe Thumb',
+                optometrist_phone: '763-555-4235',
+                dentist: 'Chris Smiley',
+                dentist_phone: '742-555-3754',
+                vaccinations: 'all up to date',
+                insurance_card_info: 'BCBS: 13454246',
+                fee_coverage: false,
+                medical_notes: 'in general good health'
+            }
+        })
+      }
 
     handleChange = propertyName => event => {
         this.setState({
@@ -137,6 +160,8 @@ class MedicalForm extends Component {
                         className="formButton"
                         onClick={this.next}
                         >NEXT</button>
+
+                        <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     </div>
                 </center>
             </div>
