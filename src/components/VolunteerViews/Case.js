@@ -1,15 +1,35 @@
 import React, { Component } from 'react';
 import { Switch, Route, Link } from "react-router-dom";
 import "./Volunteer.css";
-
-import Notes from "./Notes/Notes";
-import Bio from "./Bio/Bio";
-import Legal from "./Legal/Legal";
-import Aid from "./Aid/Aid";
-import Team from "./Team/Team";
-import Events from "./Events/Events";
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+// import Notes from "./Notes/Notes";
+// import Bio from "./Bio/Bio";
+// import Legal from "./Legal/Legal";
+// import Aid from "./Aid/Aid";
+// import Team from "./Team/Team";
+// import Events from "./Events/Events";
 
 class Case extends Component {
+
+    eventsPages = () => {
+        this.props.history.push('/events')
+    }
+    notesPages = () => {
+        this.props.history.push('/volunteer-notes')
+    }
+    bioPages = () => {
+        this.props.history.push('/bio')
+    }
+    legalPages = () => {
+        this.props.history.push('/volunteer-legal')
+    }
+    aidPages = () => {
+        this.props.history.push('/volunteer-aid')
+    }
+    teamPages = () => {
+        this.props.history.push('/volunteer-team')
+    }
 
     render() {
 
@@ -23,7 +43,7 @@ class Case extends Component {
                     {/* <button>LOGOUT</button>  */}
 
                     <div className="links">
-                        <Link to={`${path}/events`} className="link">Events</Link>
+                        {/* <Link to={`${path}/events`} className="link">Events</Link>
                         <Link to={`${path}/notes`} className="link">Notes</Link>
                         <Link to={`${path}/bio`} className="link">Bio</Link>
                         <Link to={`${path}/legal`} className="link">Legal</Link>
@@ -39,7 +59,13 @@ class Case extends Component {
                             <Route path={`${path}/legal`} component={Legal} />
                             <Route path={`${path}/aid`} component={Aid} />
                             <Route path={`${path}/team`} component={Team} />
-                        </Switch>
+                        </Switch> */}
+                        <button className="adminMenuButtons" onClick={this.eventsPages}>EVENTS</button>
+                        <button className="adminMenuButtons" onClick={this.notesPages}>NOTES</button>
+                        <button className="adminMenuButtons" onClick={this.bioPages}>BIO</button>
+                        <button className="adminMenuButtons" onClick={this.legalPages}>LEGAL</button>
+                        <button className="adminMenuButtons" onClick={this.aidPages}>AID</button>
+                        <button className="adminMenuButtons" onClick={this.teamPages}>TEAM</button>
                     </div>
                 </center>
             </div>
@@ -47,4 +73,9 @@ class Case extends Component {
     }
 }
 
-export default Case;
+const mapStateToProps = state => ({
+    user: state.user,
+  });
+  
+  // this allows us to use <App /> in index.js
+  export default withRouter(connect(mapStateToProps)(Case));

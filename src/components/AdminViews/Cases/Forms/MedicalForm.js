@@ -10,7 +10,7 @@ class MedicalForm extends Component {
     // }
 
     next = () => {
-        // this.props.dispatch({ type: 'POST_SOMETHING_YOOOOOO', payload: this.state.medicalForm })
+        this.props.dispatch({ type: 'ADD_MEDICAL', payload: this.state.medicalForm })
         this.props.history.push('/school-form')
     }
 

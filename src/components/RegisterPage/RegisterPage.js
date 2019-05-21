@@ -5,17 +5,31 @@ class RegisterPage extends Component {
   state = {
     username: '',
     password: '',
+    phone: '',
+    email: '',
+    encrypted: '',
+    address: '',
+    skills: '',
+    second_language: '',
+    admin: '',
   };
 
   registerUser = (event) => {
     event.preventDefault();
 
-    if (this.state.username && this.state.password) {
+    if (this.state.username && this.state.password && this.state.phone && this.state.email && this.state.encrypted && this.state.address && this.state.skills && this.state.second_language) {
       this.props.dispatch({
         type: 'REGISTER',
         payload: {
           username: this.state.username,
           password: this.state.password,
+          phone: this.state.phone,
+          email: this.state.email,
+          encrypted: this.state.encrypted,
+          address: this.state.address,
+          skills: this.state.skills,
+          second_language: this.state.second_language,
+          admin: this.state.admin,
         },
       });
     } else {
@@ -62,6 +76,83 @@ class RegisterPage extends Component {
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
+              />
+            </label>
+            </div>
+          <div>
+            <label htmlFor="password">
+              Phone:
+              <input
+                type="phone"
+                name="phone"
+                value={this.state.phone}
+                onChange={this.handleInputChangeFor('phone')}
+              />
+            </label>
+            </div>
+          <div>
+            <label htmlFor="password">
+              Email:
+              <input
+                type="email"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleInputChangeFor('email')}
+              />
+            </label>
+            </div>
+          <div>
+            <label htmlFor="password">
+              WhatsApp:
+              <input
+                type="encrypted"
+                name="encrypted"
+                value={this.state.encrypted}
+                onChange={this.handleInputChangeFor('encrypted')}
+              />
+            </label>
+            </div>
+          <div>
+            <label htmlFor="password">
+              Address:
+              <input
+                type="address"
+                name="address"
+                value={this.state.address}
+                onChange={this.handleInputChangeFor('address')}
+              />
+            </label>
+            </div>
+          <div>
+            <label htmlFor="password">
+              Special Attributes:
+              <input
+                type="skills"
+                name="skills"
+                value={this.state.skills}
+                onChange={this.handleInputChangeFor('skills')}
+              />
+            </label>
+            </div>
+          <div>
+            <label htmlFor="password">
+              Second Language:
+              <input
+                type="second_language"
+                name="second_language"
+                value={this.state.second_language}
+                onChange={this.handleInputChangeFor('second_language')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="password">
+              Admin:
+              <input
+                type="admin"
+                name="admin"
+                value={this.state.admin}
+                onChange={this.handleInputChangeFor('admin')}
               />
             </label>
           </div>

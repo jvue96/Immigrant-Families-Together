@@ -2,8 +2,13 @@ import { combineReducers } from 'redux';
 import errors from './errorsReducer';
 import loginMode from './loginModeReducer';
 import user from './userReducer';
-import medicalReducer from './medicalReducer';
 import legalReducer from "./legalReducer"; 
+import medicalReducer from './bioReducers/medicalReducer';
+import aidReducer from './aidReducer';
+import familyReducer from './bioReducers/familyReducer';
+import housingReducer from './bioReducers/housingReducer';
+import identifyReducer from './bioReducers/identifyReducer';
+import schoolReducer from './bioReducers/schoolReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +22,11 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   medicalReducer,
   legalReducer, 
+  aidReducer,
+  familyReducer,
+  housingReducer,
+  identifyReducer,
+  schoolReducer,
 });
 
 export default rootReducer;

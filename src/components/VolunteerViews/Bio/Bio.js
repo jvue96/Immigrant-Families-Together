@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
-import BioFamilyInfo from './BioFamilyInfo';
-import BioIdentify from "./BioIdentify";
-import BioSchool from "./BioSchool";
-import BioHousing from "./BioHousing";
-import BioMedical from "./BioMedical";
+// import BioFamilyInfo from './BioFamilyInfo';
+// import BioIdentify from "./BioIdentify";
+// import BioSchool from "./BioSchool";
+// import BioHousing from "./BioHousing";
+// import BioMedical from "./BioMedical";
 
 
 class Bio extends Component {
+
+    infoPages = () => {
+        this.props.history.push('/bio-family-info')
+    }
+    housingPages = () => {
+        this.props.history.push('/bio-housing')
+    }
+    medicalPages = () => {
+        this.props.history.push('/bio-medical')
+    }
+    schoolPages = () => {
+        this.props.history.push('/bio-school')
+    }
+    identificationPages = () => {
+        this.props.history.push('/bio-identification')
+    }
     
     state = {
         button: "bio", 
@@ -23,18 +39,18 @@ class Bio extends Component {
 
     render() {
 
-        let div = <div>  </div>
-        if(this.state.button === "bio") {
-            div = <div> <BioFamilyInfo/> </div>
-        } else if (this.state.button === "id") {
-            div = <div> <BioIdentify/> </div>
-        } else if (this.state.button === "school") {
-            div = <div> <BioSchool/> </div>
-        } else if (this.state.button === "housing") {
-            div = <div> <BioHousing/> </div>
-        } else if (this.state.button === "medical") {
-            div = <div> <BioMedical/> </div>
-        } 
+        // let div = <div>  </div>
+        // if(this.state.button === "bio") {
+        //     div = <div> <BioFamilyInfo/> </div>
+        // } else if (this.state.button === "id") {
+        //     div = <div> <BioIdentify/> </div>
+        // } else if (this.state.button === "school") {
+        //     div = <div> <BioSchool/> </div>
+        // } else if (this.state.button === "housing") {
+        //     div = <div> <BioHousing/> </div>
+        // } else if (this.state.button === "medical") {
+        //     div = <div> <BioMedical/> </div>
+        // } 
 
         return (
             <div>
@@ -42,7 +58,7 @@ class Bio extends Component {
                     <div> BIO </div>
                     <div>
                     </div>
-                    <button 
+                    {/* <button 
                     onClick={this.viewSelectedButton('button')}
                     value={"bio"}
                     >FAMILY INFO</button> 
@@ -68,7 +84,14 @@ class Bio extends Component {
                     >MEDICAL</button> 
                     <br/>
 
-                    {div}
+                    {div} */}
+                    <div>
+                        <button className="adminMenuButtons" onClick={this.infoPages}>FAMILY INFO</button>
+                        <button className="adminMenuButtons" onClick={this.housingPages}>HOUSING</button>
+                        <button className="adminMenuButtons" onClick={this.medicalPages}>MEDICAL</button>
+                        <button className="adminMenuButtons" onClick={this.schoolPages}>SCHOOL</button>
+                        <button className="adminMenuButtons" onClick={this.identificationPages}>IDENTIFICATION</button>
+                    </div>
                 </center>
             </div>
         );

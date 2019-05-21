@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+
 class LoginPage extends Component {
   state = {
     username: '',
@@ -18,6 +19,11 @@ class LoginPage extends Component {
           password: this.state.password,
         },
       });
+      // if (this.state.username==='kingmand'){
+      // this.props.history.push('/home')
+      // } else {
+      //   this.props.history.push('/volunteer-landing')
+      // }
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
@@ -32,6 +38,9 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
+          <div className="nav">
+              <h3 className="navH3">IMMIGRANT FAMILIES TOGETHER</h3>
+          </div>
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -46,7 +55,7 @@ class LoginPage extends Component {
           <h1>LOGIN</h1>
           <div>
             <label htmlFor="username">
-              Username:
+              USERNAME:
               <br/>
               <input
                 type="text"
@@ -58,7 +67,7 @@ class LoginPage extends Component {
           </div>
           <div>
             <label htmlFor="password">
-              Password:
+              PASSWORD:
               <br/>
               <input
                 type="password"

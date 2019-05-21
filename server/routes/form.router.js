@@ -35,6 +35,18 @@ router.post('/medical', (req, res) => {
         console.log('Failed to POST legal form', error);
         res.sendStatus(500);
       })
-  })
+    
+  });
+
+router.get('/medical', (req, res) => {
+    console.log('Getting all medical info');
+    pool.query(`SELECT * FROM "medical"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the information from the medical forms', error);
+        res.sendStatus(500);
+    })
+  });
 
 module.exports = router;

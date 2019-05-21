@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class VolunteerLanding extends Component {
+
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'GET_MEDICAL' });
+        console.log('GET_MEDICAL', this.props.reduxState.medicalReducer);
+    }
 
     searchBy = () => {
         console.log(`hit search by`);
@@ -11,6 +17,8 @@ class VolunteerLanding extends Component {
     viewCase = () => {
         this.props.history.push('/case/events')
     }
+
+    
 
     render() {
         return (
@@ -60,4 +68,8 @@ class VolunteerLanding extends Component {
     }
 }
 
-export default VolunteerLanding;
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+    });
+
+export default connect(mapReduxStateToProps)(VolunteerLanding);

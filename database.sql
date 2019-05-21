@@ -4,10 +4,18 @@
 -- You must use double quotes in every query that user is in:
 -- ex. SELECT * FROM "user";
 -- Otherwise you will have errors!
+
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
+    "password" VARCHAR (1000) NOT NULL,
+    "phone" VARCHAR (80),
+    "email" VARCHAR (100),
+    "encrypted" VARCHAR(100),
+    "address" VARCHAR (200),
+    "skills" VARCHAR (500),
+    "second_language" VARCHAR (100),
+    "admin" VARCHAR (80),
 );
 
 CREATE TABLE "users" (
@@ -36,7 +44,6 @@ CREATE TABLE "users_cases" (
     "user_id" INT REFERENCES "users",
     "case_id" INT REFERENCES "cases"
 );
-
 
 CREATE TABLE "events" (
     "id" SERIAL PRIMARY KEY,
@@ -70,13 +77,6 @@ CREATE TABLE "primary_individual" (
 );
 
 
-CREATE TABLE "primary_children" (
-    "id" SERIAL PRIMARY KEY,
-    "child_name" VARCHAR(200),
-    "child_dob" VARCHAR(200),
-    "child_info" VARCHAR(2000),
-    "primary_individual_id" INT REFERENCES "primary_individual"
-);
 
 CREATE TABLE "identification" (
     "id" SERIAL PRIMARY KEY,
@@ -134,6 +134,15 @@ CREATE TABLE "bio" (
     "backstory" VARCHAR(2000),
     "school_id" INT REFERENCES "school"
 );
+
+CREATE TABLE "primary_children" (
+    "id" SERIAL PRIMARY KEY,
+    "child_name" VARCHAR(200),
+  	"child_dob" VARCHAR(200),
+  	"child_info" VARCHAR(2000),
+  	"primary_individual_id" INT REFERENCES "primary_individual"
+);
+
 
 
 CREATE TABLE "legal_status" (
