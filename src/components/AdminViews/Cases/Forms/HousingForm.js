@@ -5,7 +5,7 @@ import { withRouter } from 'react-router'
 class HousingForm extends Component {
 
     next = () => {
-        this.props.history.push('/ice-form')
+        this.props.history.push('/bond-form')
     }
 
     render() {

@@ -13,6 +13,7 @@ import identifySaga from './bioSagas/identifySaga';
 import schoolSaga from './bioSagas/schoolSaga';
 import noteSaga from './noteSaga'
 import eventSaga from './eventSaga'
+import bondSaga from './bondSaga'
 
 
 // rootSaga is the primary saga.
@@ -38,6 +39,6 @@ export default function* rootSaga() {
     schoolSaga(),
     noteSaga(),
     eventSaga(),
-    
+    bondSaga(),
   ]);
 }
