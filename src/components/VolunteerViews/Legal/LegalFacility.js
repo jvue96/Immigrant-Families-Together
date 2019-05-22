@@ -1,40 +1,38 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class LegalBond extends Component {
+
+class LegalIce extends Component {
 
     componentDidMount = () => {
         this.props.dispatch({ type: 'GET_BOND' });
         console.log('GET_BOND', this.props.reduxState.bondReducer);
     }
-    
+
     render() {
         return (
             <div>
-               <center>
+                <center>
                     <div>
                         <h1>
-                            BOND INFO
+                            ICE FACILITY
                         </h1>
                     </div>
 
                     <div>{this.props.reduxState.bondReducer.map(bond =>
                     <div>
-                        <p className="bioDivs">BOND AMOUNT: {bond.bond_amount}</p>
-                        <p className="bioDivs">BOND PAID DATE: {bond.bond_paid_date}</p>
-                        <p className="bioDivs">BOND PAID BY: {bond.bond_paid_by}</p>
+                        <p className="bioDivs">ICE FACILITY: {bond.ice_facility}</p>
+                        <p className="bioDivs">NOTES: {bond.legal_notes}</p>
                     </div>
                     )}
                     </div>
 
 
-                    {/* <label>BOND AMOUNT: </label> <br/> 
+                    {/* <label>ICE FACILITY: </label> <br/> 
                     <div className="bioDivs"> </div> <br/> 
-                    <label>DATE PAID: </label> <br/> 
-                    <div className="bioDivs"> </div> <br/> 
-                    <label>PAID BY: </label> <br/> 
+                    <label>NOTES: </label> <br/> 
                     <div className="bioDivs"> </div> <br/>  */}
-                </center> 
+                </center>
             </div>
         );
     }
@@ -44,4 +42,4 @@ const mapReduxStateToProps = (reduxState) => ({
     reduxState
     });
 
-export default connect(mapReduxStateToProps)(LegalBond);
+export default connect(mapReduxStateToProps)(LegalIce);

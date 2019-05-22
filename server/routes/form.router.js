@@ -165,6 +165,33 @@ router.get('/medical', (req, res) => {
     })
   })
 
+
+  router.post('/bond', (req, res) => {
+    let bond = req.body;
+    console.log('Adding in bond and legal info:', bond);
+    let sqlText = `INSERT INTO legal (ice_facility, bond_amount, bond_paid_date, bond_paid_by, foster_facility, foster_facility_address, attorney, attorney_phone, attorney_fee, legal_notes) VALUES 
+    ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
+    pool.query(sqlText, [bond.ice_facility, bond.bond_amount, bond.bond_paid_date, bond.bond_paid_by, bond.foster_facility, bond.foster_facility_address, bond.attorney, bond.attorney_phone, bond.attorney_fee, bond.legal_notes])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to POST bond and legal info, heres the error:', error);
+        res.sendStatus(500);
+      })
+  })
+
+  router.get('/bond', (req, res) => {
+    console.log('Getting all bond and legal info');
+    pool.query(`SELECT * FROM "legal"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the bond and legal info', error);
+        res.sendStatus(500);
+    })
+  })
+
 router.post('/school', (req, res) => {
   let school = req.body;
   console.log('Adding in school:', school);

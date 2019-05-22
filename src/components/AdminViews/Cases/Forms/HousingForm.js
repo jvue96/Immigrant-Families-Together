@@ -4,6 +4,7 @@ import { withRouter } from 'react-router'
 
 class HousingForm extends Component {
 
+
 state= {
     housingForm: {
         address:'',
@@ -42,7 +43,7 @@ handleChange = propertyName => event => {
 next = () => {
     this.props.dispatch({ type: 'ADD_HOUSING', payload: this.state.housingForm })
 
-    this.props.history.push('/ice-form')
+        this.props.history.push('/bond-form')
 }
 
     render() {
