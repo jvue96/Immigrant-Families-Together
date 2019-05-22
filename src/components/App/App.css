@@ -34,8 +34,8 @@ label{
     padding-top: 20px;
 }
 
-input {
-    width: 285px;
+input, select {
+    width: 80%;
     height: 45px;
     border-style: solid;
     border-width: 1px;
@@ -44,6 +44,7 @@ input {
     margin: 5px;
     margin-bottom: 15px;
     margin-top:0px;
+    background:transparent;
 }
 
 .log-in, .log-out, .register {
@@ -62,8 +63,7 @@ input {
 
 .formButton{
     margin-top: 10px;
-    height: 35px;
-    width: 115px;
+    height: 45px;
     color: #ffffff;
     font-family: 'Heebo', sans-serif;
     letter-spacing: 2px;
@@ -75,12 +75,18 @@ input {
     border-radius: 8px;
     border: 0px;
     font-size: 15px;
+    max-width:300px;
+    width:80%
+}
+
+label {
+  display:block;
 }
 
 .midButton{
     height: 75px;
-    width: 275px;
-    color: #ffffff;
+    width: 90%;
+    max-width:500px;
     font-family: 'Heebo', sans-serif;
     letter-spacing: 2px;
     background-color: rgb(118, 118, 118);
@@ -105,8 +111,9 @@ input {
 }
 
 .eventDivs{
-    width:355px;
-    height: 115px;
+    width:90%;
+    max-width:500px;
+    /* height: 115px; */
     border-style: solid;
     border-width: 1px;
     border-radius: 15px;
@@ -165,16 +172,14 @@ input {
     text-align: left;
 }
 
-  .navH2{
+  .navH2,
+  .navH3{
     font-family: 'Heebo', sans-serif;
     font-size: 20px;
     color: #f2f2f2;
   }
 
   .navH3{
-    font-family: 'Heebo', sans-serif;
-    font-size: 20px;
-    color: #f2f2f2;
     text-align: center;
   }
 
@@ -188,77 +193,43 @@ input {
   }
 
   .navTitle{
-    height:75px;
-    width:225px;
-    margin:none;
-    background-color:rgb(210, 47, 37);
+    
     display: inline-block;
     position: relative;
   }
 
-  .navLeft{
-    height:75px;
-    width:75px;
-    margin:none;
-    color:white;
-    background-color:rgb(210, 47, 37);
-    display: inline-block;
-    position: relative;
-  }
-
-  .navLeft2{
-    height:75px;
-    width:75px;
-    margin:none;
-    color:rgb(210, 47, 37) !important;
-    background-color:rgb(210, 47, 37);
-    display: inline-block;
-    position: relative;
-  }
-
-  .navRight{
-    height:75px;
-    width:75px;
-    margin:none;
-    color:white;
-    background-color:rgb(210, 47, 37);
-    display: inline-block;
-    position: relative;
-  }
-
-  a:visited {
+  
+  .midButton,
+  .navLeft,
+  .navLeft2,
+  .navRight,
+  .navRight2,
+  a:visited,
+  a:hover,
+  a:active
+  {
     color: white;
   }
   
-  /* mouse over link */
-  a:hover {
-    color: white;
-  }
-  
-  /* selected link */
-  a:active {
-    color: white;
-  }
 
-  .navRight2{
-    height:75px;
-    width:75px;
-    margin:none;
-    background-color:rgb(210, 47, 37);
-    display: inline-block;
-    position: relative;
-  }
 
-  .nav {
+  .nav,
+  .nav_one_col {
     overflow: hidden;
     margin:none;
     background-color:rgb(210, 47, 37);
     text-align: center;
     width: 100%;
-    /* width: 375px; */
     height:65px;
+    display:grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    align-items:center;
   }
 
+  .nav_one_col {
+    display:block;
+  }
+  
   .nav-right {
     color:white;
     float: right;

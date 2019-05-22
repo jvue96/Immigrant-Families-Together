@@ -31,7 +31,7 @@ class AdminLanding extends Component {
 
                 <div className="nav">
                 <div className="navLeft2" onClick={this.backButton}>
-                    <i class="fas fa-chevron-left"></i>
+                    <i className="fas fa-chevron-left"></i>
                 </div>
                 <div className="navTitle">
                     <h2 className="navH2">ADMIN</h2>
