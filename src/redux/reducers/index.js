@@ -9,6 +9,7 @@ import familyReducer from './bioReducers/familyReducer';
 import housingReducer from './bioReducers/housingReducer';
 import identifyReducer from './bioReducers/identifyReducer';
 import schoolReducer from './bioReducers/schoolReducer';
+import childrenReducer from "./childrenReducer";
 import bioReducer from './bioReducers/bioReducer';
 import noteReducer from './noteReducer'
 import eventReducer from './eventReducer'
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   housingReducer,
   identifyReducer,
   schoolReducer,
+  childrenReducer,
   bioReducer,
   noteReducer,
   eventReducer,
