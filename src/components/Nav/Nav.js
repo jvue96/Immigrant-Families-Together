@@ -5,38 +5,38 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 
 const Nav = (props) => {
-    return(
-<div className="nav">
-    {props.backArrow ? 
-                <div className="navLeft2" 
-                onClick={()=>{props.history.push(props.backArrow)}}>
+    return (
+        <div className="nav">
+            {props.backArrow ?
+                <div className="navLeft2"
+                    onClick={() => { props.history.push(props.backArrow) } }>
                     <i className="fas fa-chevron-left"></i>
                 </div>
                 :
                 <div className="navLeft2"
-                onClick={()=>{props.history.goBack()}}>
+                    onClick={() => { props.history.goBack() }}>
                     <i className="fas fa-chevron-left"></i>
                 </div>
-    }
-                <div className="navTitle">
-                    <h2 className="navH2">{props.siteName}</h2>
-                </div>
-   
-                <div className="navRight2">
-                {props.home ? 
-                <Link to={props.home}>
-                <i className="fas fa-home"></i>
-                </Link>
-                :
-                <Link to='/home'>
-                <LogOutButton className="nav-link"/>
-                </Link>
+            }
+            <div className="navTitle">
+                <h2 className="navH2">{props.siteName}</h2>
+            </div>
+
+            <div className="navRight2">
+                {props.home ?
+                    <Link to={props.home}>
+                        <i className="fas fa-home"></i>
+                    </Link>
+                    :
+                    <Link to='/home'>
+                        <LogOutButton className="nav-link" />
+                    </Link>
                 }
-                
-                
-                </div>
-    }       
-                </div>    )
+
+
+            </div>
+            }
+                </div>)
 }
 
 // const Nav = (props) => (
@@ -58,7 +58,7 @@ const Nav = (props) => {
 //         {props.user.id ? <i class="fas fa-home"></i> : 'Login'}
 //       </Link>
 //     </div>
-    
+
 //   </div>
 // );
 

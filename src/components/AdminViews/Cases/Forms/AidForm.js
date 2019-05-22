@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-
+import Nav from '../../../Nav/Nav'
 class AidForm extends Component {
     // componentDidMount = () => {
     //     this.props.dispatch({ type: 'GET_AID_FORM' });
@@ -50,12 +50,8 @@ class AidForm extends Component {
     render() {
         return (
             <div>
+                <Nav />
                 <center>
-                    <div>
-                        <h1>
-                            AID FORM 
-                        </h1>
-                    </div>
                     <div className="formDivs">
                         
                         <label>GROCERY PROGRAM</label>

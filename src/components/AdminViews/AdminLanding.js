@@ -30,7 +30,6 @@ class AdminLanding extends Component {
             <div>
                 <Nav siteName='ADMIN'/>
                 
-
                 <center>
                     <div>
                         <h1>MENU</h1>
