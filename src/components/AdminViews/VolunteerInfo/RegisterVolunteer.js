@@ -67,7 +67,7 @@ class RegisterVolunteer extends Component {
                 onChange={this.handleInputChangeFor('username')}
                 />
             </label>
-         
+
             <label htmlFor="password">
               Password:
               <input
@@ -77,7 +77,7 @@ class RegisterVolunteer extends Component {
                 onChange={this.handleInputChangeFor('password')}
               />
             </label>
-            
+
             <label htmlFor="password">
               Phone:
               <input
@@ -87,7 +87,7 @@ class RegisterVolunteer extends Component {
                 onChange={this.handleInputChangeFor('phone')}
               />
             </label>
-            
+
             <label htmlFor="password">
               Email:
               <input
