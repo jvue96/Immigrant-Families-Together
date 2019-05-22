@@ -28,8 +28,8 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/forms', formRouter);
-app.use('/api/forms/aid', aidRouter)
-app.use('/api/forms/bio', bioRouter)
+// app.use('/api/forms/aid', aidRouter)
+// app.use('/api/forms/bio', bioRouter)
 // Serve static files
 app.use(express.static('build'));
 
