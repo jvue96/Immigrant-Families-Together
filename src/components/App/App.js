@@ -44,7 +44,7 @@ import BioSchool from '../VolunteerViews/Bio/BioSchool'
 import BioFamilyInfo from '../VolunteerViews/Bio/BioFamilyInfo'
 import VolunteerNotes from '../VolunteerViews/Notes/Notes'
 import VolunteerLegal from '../VolunteerViews/Legal/Legal'
-import LegalIce from '../VolunteerViews/Legal/LegalIce'
+import LegalFacility from '../VolunteerViews/Legal/LegalFacility'
 import LegalBond from '../VolunteerViews/Legal/LegalBond'
 import LegalFoster from '../VolunteerViews/Legal/LegalFoster'
 import LegalAttorney from '../VolunteerViews/Legal/LegalAttorney'
@@ -246,7 +246,7 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/legal-ice"
-              component={LegalIce}
+              component={LegalFacility}
             />
             <ProtectedRoute
               exact
