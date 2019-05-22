@@ -19,46 +19,46 @@ class VolunteerBio extends Component {
                     </div>
 
                     <div>
-                        <label>NAME</label> <br /> 
+                        <label>NAME</label>  
                         <p>JUNO, VUE </p>
                     </div>
 
                     <div>
-                        <label>LOCATION</label> <br /> 
+                        <label>LOCATION</label>  
                         <p>MINNEAPOLIS, MINNESOTA </p>
                     </div>
 
                     <div>
-                        <label>PHONE NUMBER</label> <br /> 
+                        <label>PHONE NUMBER</label>  
                         <p>651-234-4321 </p>
                     </div>
 
                     <div>
-                        <label>EMAIL</label> <br /> 
+                        <label>EMAIL</label>  
                         <p>ASDF@GMAIL.COM </p>
                     </div>
 
                     <div>
-                        <label>ENCRYPTED</label> <br /> 
+                        <label>ENCRYPTED</label>  
                         <p>App Username</p>
                     </div>
 
                     <div>
-                        <label>ADDRESS</label> <br /> 
+                        <label>ADDRESS</label>  
                         <p>1234 AVE S MINNEAPOLIS, MINNESOTA 55443</p>
                     </div>
 
                     <div>
-                        <label>SKILLS</label> <br /> 
+                        <label>SKILLS</label>  
                         <p>EATING FOOD </p>
                     </div>
 
                     <div>
-                        <label>SECOND LANGUAGE</label> <br /> 
+                        <label>SECOND LANGUAGE</label>  
                         <p>Spanish</p>
                     </div>
 
-                    <button onClick={this.assignCase}> ASSIGN CASE </button> <br/> 
+                    <button onClick={this.assignCase}> ASSIGN CASE </button>  
 
                     <h1> CASE LOAD </h1>
 

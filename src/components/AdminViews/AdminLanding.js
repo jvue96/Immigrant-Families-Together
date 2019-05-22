@@ -50,19 +50,19 @@ class AdminLanding extends Component {
 
                     <button className="adminMenuButtons"
                     onClick={this.viewEvents}
-                    >UPCOMING EVENTS</button> <br/>
+                    >UPCOMING EVENTS</button> 
 
                     <button className="adminMenuButtons"
                     onClick={this.viewCases}
-                    >CASE MANAGEMENT </button> <br/>
+                    >CASE MANAGEMENT </button> 
 
                     <button className="adminMenuButtons"
                     onClick={this.viewVolunteer}
-                    >VOLUNTEERS</button> <br/>
+                    >VOLUNTEERS</button> 
 
                     <button className="adminMenuButtons"
                     onClick={this.registerVolunteer}
-                    >REGISTER VOLUNTEER</button> <br/>
+                    >REGISTER VOLUNTEER</button> 
                 </center>
             </div>
         );

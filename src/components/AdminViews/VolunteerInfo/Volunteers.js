@@ -37,8 +37,8 @@ class Volunteers extends Component {
                         {/* map over volunteers into a table with tr's and td's  
                         includes volunteer's last name, first name, and select button that routes user to their BIO.
                         */}
-                    <label>SEARCH</label> <br/>
-                    <input placeholder="VOLUNTEER NAME" /> <br/>
+                    <label>SEARCH</label> 
+                    <input placeholder="VOLUNTEER NAME" /> 
                     <button onClick={this.searchBy}> SEARCH </button>
 
 
