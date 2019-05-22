@@ -4,27 +4,26 @@ import { withRouter } from 'react-router';
 
 class ChildForm extends Component {
 
-        state = {
-           addChild: [],
+    state = {
+        addChild: [],
 
-           childForm: {
-                child_name: '',
-                child_dob: '',
-                child_info: '',
+        childForm: {
+            child_name: '',
+            child_dob: '',
+            child_info: '',
         }
     };
 
-
-      addInput = event => {
-        this.setState({
-            childForm: {
-                child_name: '',
-                child_dob: '',
-                child_info: '',
+    // clears input fields to enable adding another child 
+    addInput = event => {
+    this.setState({
+        childForm: {
+            child_name: '',
+            child_dob: '',
+            child_info: '',
             }
         });
-        this.props.dispatch({ type: 'ADD_CHILDREN', payload: this.state.addChild })
-      };
+    };
 
       // autofill test data 
       test = () => {
@@ -38,7 +37,7 @@ class ChildForm extends Component {
         });
       }
 
-    
+    // change state to become input field values 
       handleChange = propertyName => event => {
         this.setState({
             childForm: {
@@ -48,11 +47,13 @@ class ChildForm extends Component {
         })
     }
     
+    // dispatch to childrenSaga to post data
     next = () => {
         this.props.dispatch({ type: 'ADD_CHILDREN', payload: this.state.addChild })
-        console.log(this.state);
+        this.props.history.push('/medical-form');
     }
 
+    // pushes new state to children array to create multiple children
     save = () => {
         this.state.addChild.push(this.state.childForm)
         // un comment if you want to test state after filling in input fields 
@@ -71,7 +72,7 @@ class ChildForm extends Component {
               <center>
                     <div>
                         <h1>
-                            CHILD FORM 
+                            CHILDREN FORM 
                         </h1>
                         {/* UN COMMENT TO TEST IF DATA IS IN childrenReducer */}
                         {/* {JSON.stringify(this.props.reduxState.childrenReducer)} */}
@@ -93,11 +94,13 @@ class ChildForm extends Component {
                     value={this.state.childForm.child_info }
                     onChange={this.handleChange('child_info')}/> <br/>
                 
+                {/* pushes new state to children array to create multiple children */}
                 <button 
                 className="formButton"
                 onClick={this.save}> Save
                 </button> 
 
+                {/* clears input fields to enable adding another child  */}
                 <button 
                 className="formButton"
                 style={{width: 200}}
@@ -107,6 +110,7 @@ class ChildForm extends Component {
                 <br/> 
 
 
+                {/* dispatch to childrenSaga to post data  */}
                 <button 
                 className="formButton"
                 onClick={this.next}> Next

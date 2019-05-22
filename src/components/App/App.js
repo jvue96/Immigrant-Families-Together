@@ -31,7 +31,7 @@ import IceFacility from "../AdminViews/Cases/Forms/IceFacility";
 import SocialWorker from "../AdminViews/Cases/Forms/SocialWorker";
 import Cases from '../AdminViews/Cases/Cases';
 import AidForm from '../AdminViews/Cases/Forms/AidForm';
-import ChildForm from "../AdminViews/Cases/Forms/ChildForm";
+import ChildrenForm from "../AdminViews/Cases/Forms/ChildrenForm";
 import './App.css';
 
 /* volunteer imports */
@@ -294,12 +294,10 @@ class App extends Component {
               component={VolunteerTeam}
             />
 
-            <Route path='/events' component={Events} />
-
             <ProtectedRoute
               exact
-              path="/child-form"
-              component={ChildForm}
+              path="/children-form"
+              component={ChildrenForm}
             />
 
             {/* volunteer views link */}
