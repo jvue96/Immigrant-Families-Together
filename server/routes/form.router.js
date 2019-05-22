@@ -132,6 +132,8 @@ router.get('/medical', (req, res) => {
         res.send(results.rows)
     }).catch((error) => {
         console.log('Something went wrong getting the information from the children forms', error);
+    })
+    })
 
   router.post('/aid', (req, res) => {
     let aid = req.body;
