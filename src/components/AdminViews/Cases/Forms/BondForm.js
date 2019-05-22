@@ -75,65 +75,65 @@ class BondForm extends Component {
                         </h1>
                     </div>
                     <div className="formDivs">
-                        <label>ICE FACILITY</label> <br/>
+                        <label>ICE FACILITY</label> 
                         <input type="text"
                         value={this.state.legalInfoForm.ice_facility}
                         onChange={this.handleChange('ice_facility')}
-                        /> <br/>
+                        /> 
 
-                        <label>BOND AMOUNT</label> <br/>
+                        <label>BOND AMOUNT</label> 
                         <input type="text"
                         value={this.state.legalInfoForm.bond_amount}
                         onChange={this.handleChange('bond_amount')}
-                        /> <br/>
+                        /> 
 
-                        <label>BOND PAID DATE</label> <br/>
+                        <label>BOND PAID DATE</label> 
                         <input type="text"
                         value={this.state.legalInfoForm.bond_paid_date}
                         onChange={this.handleChange('bond_paid_date')}
-                        /> <br/>
+                        /> 
 
-                        <label>BOND PAID BY</label> <br/>
+                        <label>BOND PAID BY</label> 
                         <input type="text"
                         value={this.state.legalInfoForm.bond_paid_by}
                         onChange={this.handleChange('bond_paid_by')}
-                        /> <br/>
+                        /> 
 
-                        <label>FOSTER FACILITY</label> <br/>
+                        <label>FOSTER FACILITY</label> 
                         <input type="text"
                         value={this.state.legalInfoForm.foster_facility}
                         onChange={this.handleChange('foster_facility')}
-                        /> <br/>
+                        /> 
 
-                        <label>FOSTER FACILITY ADDRESS</label> <br/>
+                        <label>FOSTER FACILITY ADDRESS</label> 
                         <input type="text"
                         value={this.state.legalInfoForm.foster_facility_address}
                         onChange={this.handleChange('foster_facility_address')}
-                        /> <br/>
+                        /> 
 
-                        <label>ATTORNEY</label> <br/>
+                        <label>ATTORNEY</label> 
                         <input type="text"
                         value={this.state.legalInfoForm.attorney}
                         onChange={this.handleChange('attorney')}
-                        /> <br/>
+                        /> 
 
-                        <label>ATTORNEY PHONE</label> <br/>
+                        <label>ATTORNEY PHONE</label> 
                         <input type="text"
                         value={this.state.legalInfoForm.attorney_phone}
                         onChange={this.handleChange('attorney_phone')}
-                        /> <br/>
+                        /> 
 
-                        <label>ATTORNEY FEE</label> <br/>
+                        <label>ATTORNEY FEE</label> 
                         <input type="text"
                         value={this.state.legalInfoForm.attorney_fee}
                         onChange={this.handleChange('attorney_fee')}
-                        /> <br/>
+                        /> 
 
-                        <label>LEGAL NOTES</label> <br/>
+                        <label>LEGAL NOTES</label> 
                         <input type="text"
                         value={this.state.legalInfoForm.legal_notes}
                         onChange={this.handleChange('legal_notes')}
-                        /> <br/>
+                        /> 
 
                         <button
                         className="formButton"

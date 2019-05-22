@@ -60,93 +60,101 @@ class RegisterVolunteer extends Component {
             <div className='formDivs'>
             <label htmlFor="username">
               Username:
+              </label>
               <input
                 type="text"
                 name="username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
                 />
-            </label>
+            
 
             <label htmlFor="password">
               Password:
+              </label>
               <input
                 type="password"
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
-            </label>
+            
 
-            <label htmlFor="password">
+            <label htmlFor="phone">
               Phone:
+              </label>
               <input
                 type="phone"
                 name="phone"
                 value={this.state.phone}
                 onChange={this.handleInputChangeFor('phone')}
               />
-            </label>
+            
 
-            <label htmlFor="password">
+            <label htmlFor="email">
               Email:
+              </label>
               <input
                 type="email"
                 name="email"
                 value={this.state.email}
                 onChange={this.handleInputChangeFor('email')}
               />
-            </label>
             
-            <label htmlFor="password">
+            
+            <label htmlFor="encrypted">
               WhatsApp:
+              </label>
               <input
                 type="encrypted"
                 name="encrypted"
                 value={this.state.encrypted}
                 onChange={this.handleInputChangeFor('encrypted')}
               />
-            </label>
             
-            <label htmlFor="password">
+            
+            <label htmlFor="address">
               Address:
+              </label>
+
               <input
                 type="address"
                 name="address"
                 value={this.state.address}
                 onChange={this.handleInputChangeFor('address')}
               />
-            </label>
             
-            <label htmlFor="password">
+            <label htmlFor="skills">
               Special Attributes:
+              </label>
               <input
                 type="skills"
                 name="skills"
                 value={this.state.skills}
                 onChange={this.handleInputChangeFor('skills')}
               />
-            </label>
+  
             
-            <label htmlFor="password">
+            <label htmlFor="second_language">
               Second Language:
+              </label>
               <input
                 type="second_language"
                 name="second_language"
                 value={this.state.second_language}
                 onChange={this.handleInputChangeFor('second_language')}
               />
-            </label>
 
-            <label htmlFor="password">
+            <label htmlFor="admin">
               Admin Access:
+              </label>
               <input
                 type="admin"
                 name="admin"
                 value={this.state.admin}
                 onChange={this.handleInputChangeFor('admin')}
               />
-            </label>
+            
           
                     <button className="formButton" onClick={this.register}>REGISTER</button>
                     </div>

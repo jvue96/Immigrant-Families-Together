@@ -2,18 +2,33 @@ body{
     margin:0px;
 }
 
-button{
+
+button,
+h1,
+label,
+.alert,
+.eventh1,
+.eventP,
+.eventBody,
+.navH2,
+.navH3,
+.nav-link,
+.formButton
+ {
   font-family: 'Heebo', sans-serif;
+
+}
+
+
+button{
   color: white;
 }
 
 h1{
-    font-family: 'Heebo', sans-serif;
     color: rgb(118, 118, 118);
 }
 
 label{
-    font-family: 'Heebo', sans-serif;
     letter-spacing: .5px;
     color: rgb(118, 118, 118);
     margin-bottom: 5px;
@@ -22,16 +37,12 @@ label{
 .alert {
     background-color:rgb(255, 255, 255);
     margin: 30px;
-    font-family: 'Heebo', sans-serif;
     text-align: center;
 }
 
 .formDivs {
     background-color: #ffffff;
-    width: 345px;
-    border-radius: 25px;
-    margin: 20px auto;
-    padding-top: 20px;
+    margin: 40px auto;
 }
 
 input, select {
@@ -41,10 +52,9 @@ input, select {
     border-width: 1px;
     border-radius: 15px;
     border-color: rgb(118, 118, 118);
-    margin: 5px;
-    margin-bottom: 15px;
-    margin-top:0px;
+    margin-bottom: 0 15px 5px;
     background:transparent;
+    padding: 0 5px;
 }
 
 .log-in, .log-out, .register {
@@ -64,19 +74,16 @@ input, select {
 .formButton{
     margin-top: 10px;
     height: 45px;
-    color: #ffffff;
-    font-family: 'Heebo', sans-serif;
     letter-spacing: 2px;
     background-color: rgb(118, 118, 118);
     margin-bottom: 20px;
     margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
     border-radius: 8px;
     border: 0px;
     font-size: 15px;
     max-width:300px;
-    width:80%
+    width:80%;
+    color: white;
 }
 
 label {
@@ -87,7 +94,6 @@ label {
     height: 75px;
     width: 90%;
     max-width:500px;
-    font-family: 'Heebo', sans-serif;
     letter-spacing: 2px;
     background-color: rgb(118, 118, 118);
     margin-bottom: 15px;
@@ -146,7 +152,6 @@ label {
     margin-bottom:0px;
     font-size: 15px;
     color: rgb(118, 118, 118);
-    font-family: 'Heebo', sans-serif;
     letter-spacing: .5px;
     text-align: left;
 }
@@ -157,7 +162,6 @@ label {
     margin-bottom:0px;
     font-size: 15px;
     color: rgb(118, 118, 118);
-    font-family: 'Heebo', sans-serif;
     letter-spacing: .5px;
     text-align: right;
 }
@@ -167,14 +171,12 @@ label {
     margin-top:0px;
     font-size: 12px;
     color: rgb(118, 118, 118);
-    font-family: 'Heebo', sans-serif;
     letter-spacing: .5px;
     text-align: left;
 }
 
   .navH2,
   .navH3{
-    font-family: 'Heebo', sans-serif;
     font-size: 20px;
     color: #f2f2f2;
   }
@@ -229,11 +231,7 @@ label {
   .nav_one_col {
     display:block;
   }
-  
-  .nav-right {
-    color:white;
-    float: right;
-  }
+
 
   i{
     font-size: 25px;
@@ -243,7 +241,6 @@ label {
 
   .nav-link {
     height:65px;
-    font-family: 'Heebo', sans-serif;
     width:75px;
     margin:none;
     background-color:rgb(210, 47, 37);

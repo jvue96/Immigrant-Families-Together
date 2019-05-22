@@ -70,16 +70,16 @@ next = () => {
                         </h1>
                     </div>
                     <div className="formDivs">
-                        <label>ADDRESS</label> <br/>
-                        <input type="text" value={this.state.housingForm.address} onChange={this.handleChange('address')}/> <br/>
-                        <label>MONTHLY RENT</label> <br/>
-                        <input type="text" value={this.state.housingForm.rent} onChange={this.handleChange('rent')}/> <br/>
-                        <label>RENT PAID BY</label> <br/>
-                        <input type="text" value={this.state.housingForm.paid_by} onChange={this.handleChange('paid_by')}/> <br/>
-                        <label>UTILITIES</label> <br/>
-                        <input type="text" value={this.state.housingForm.utilities} onChange={this.handleChange('utilities')}/> <br/>
-                        <label>LIVING WITH FAMILY Y/N</label> <br/>
-                        <input type="text" value={this.state.housingForm.living_with_fam} onChange={this.handleChange('living_with_fam')}/> <br/>
+                        <label>ADDRESS</label> 
+                        <input type="text" value={this.state.housingForm.address} onChange={this.handleChange('address')}/> 
+                        <label>MONTHLY RENT</label> 
+                        <input type="text" value={this.state.housingForm.rent} onChange={this.handleChange('rent')}/> 
+                        <label>RENT PAID BY</label> 
+                        <input type="text" value={this.state.housingForm.paid_by} onChange={this.handleChange('paid_by')}/> 
+                        <label>UTILITIES</label> 
+                        <input type="text" value={this.state.housingForm.utilities} onChange={this.handleChange('utilities')}/> 
+                        <label>LIVING WITH FAMILY Y/N</label> 
+                        <input type="text" value={this.state.housingForm.living_with_fam} onChange={this.handleChange('living_with_fam')}/> 
                         <button
                             className="formButton"
                             onClick={this.next}>

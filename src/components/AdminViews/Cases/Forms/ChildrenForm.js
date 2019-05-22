@@ -94,20 +94,20 @@ class ChildForm extends Component {
                     </div>
                     <div className="formDivs">
 
-                    <label>NAME</label> <br/>
+                    <label>NAME</label> 
                     <input type="text"
                     value={this.state.childForm.child_name}
-                    onChange={this.handleChange('child_name')}/> <br/>
+                    onChange={this.handleChange('child_name')}/> 
     
-                    <label>DOB</label> <br/>
+                    <label>DOB</label> 
                     <input type="text"
                     value={this.state.childForm.child_dob}
-                    onChange={this.handleChange('child_dob')}/> <br/>
+                    onChange={this.handleChange('child_dob')}/> 
                 
-                    <label>INFO</label> <br/>
+                    <label>INFO</label> 
                     <input type="text"
                     value={this.state.childForm.child_info }
-                    onChange={this.handleChange('child_info')}/> <br/>
+                    onChange={this.handleChange('child_info')}/> 
                 
                 {/* pushes new state to children array to create multiple children */}
                 <button 
@@ -122,7 +122,7 @@ class ChildForm extends Component {
                 onClick={this.addInput}> Add Another Child
                 </button>
 
-                <br/> 
+                 
 
 
                 {/* dispatch to childrenSaga to post data  */}
@@ -131,7 +131,7 @@ class ChildForm extends Component {
                 onClick={this.next}> Next
                 </button>
 
-                <br/> <button onClick={this.test}> TEST DATA </button>
+                 <button onClick={this.test}> TEST DATA </button>
                 </div>
             </center> 
           </div>

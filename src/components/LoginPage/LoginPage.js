@@ -50,41 +50,38 @@ class LoginPage extends Component {
           </h2>
         )}
         <center>
-        <div>
+        
         <form onSubmit={this.login}>
           <h1>LOGIN</h1>
-          <div>
+          
             <label htmlFor="username">
               USERNAME:
-              <br/>
+              </label>
               <input
                 type="text"
                 name="username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
-            </label>
-          </div>
-          <div>
+          
             <label htmlFor="password">
               PASSWORD:
-              <br/>
+              </label>
               <input
                 type="password"
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
-            </label>
-          </div>
-          <div>
+      
+      
             <input 
               className="formButton"
               type="submit"
               name="submit"
               value="LOG IN"
             />
-          </div>
+      
         </form>
           <button
             type="button"
@@ -93,7 +90,6 @@ class LoginPage extends Component {
           >
             REGISTER
           </button>
-          </div>
         </center>
       </div>
     );

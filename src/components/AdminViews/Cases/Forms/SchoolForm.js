@@ -69,12 +69,12 @@ next = () => {
                         </h1>
                     </div>
                     <div className="formDivs">
-                        <label>SCHOOL NAME</label> <br/>
-                        <input type="text" value={this.state.schoolForm.name} onChange={this.handleChange('name')}/><br/>
-                        <label>PHONE NUMBER</label> <br/>
-                        <input type="text" value={this.state.schoolForm.phone} onChange={this.handleChange('phone')}/><br/>
-                        <label>EMAIL</label> <br/>
-                        <input type="text" value={this.state.schoolForm.email} onChange={this.handleChange('email')}/> <br/>
+                        <label>SCHOOL NAME</label> 
+                        <input type="text" value={this.state.schoolForm.name} onChange={this.handleChange('name')}/>
+                        <label>PHONE NUMBER</label> 
+                        <input type="text" value={this.state.schoolForm.phone} onChange={this.handleChange('phone')}/>
+                        <label>EMAIL</label> 
+                        <input type="text" value={this.state.schoolForm.email} onChange={this.handleChange('email')}/> 
                         <button
                             className="formButton"
                             onClick={this.next}>
