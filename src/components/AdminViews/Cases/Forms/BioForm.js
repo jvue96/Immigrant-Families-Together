@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
-
 class BioForm extends Component {
 
     state= {
@@ -57,19 +56,18 @@ class BioForm extends Component {
             }
         })
         console.log(`this is state after handleChange:`, this.state)
-    }   
+    }
 
    next = () => {
     this.props.dispatch({ type: 'ADD_BIO', payload: this.state.bioForm })
 
-       this.props.history.push('/aid-form');
+    this.props.history.push('/children-form');
 
    }
 
     backButton = () => {
     this.props.history.push(`/cases`)
   }
-
 
     render() {
         return (

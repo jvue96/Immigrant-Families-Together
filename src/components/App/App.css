@@ -252,5 +252,13 @@ label {
     border-style:none;
   }
 
- 
-  
+  .hiddenButton{
+    height: 50px;
+    width: 150px;
+    background: transparent;
+    border: none !important;
+}
+
+.hiddenButton:focus{
+    outline:0
+}

@@ -9,7 +9,11 @@ import familyReducer from './bioReducers/familyReducer';
 import housingReducer from './bioReducers/housingReducer';
 import identifyReducer from './bioReducers/identifyReducer';
 import schoolReducer from './bioReducers/schoolReducer';
+import childrenReducer from "./childrenReducer";
 import bioReducer from './bioReducers/bioReducer';
+import noteReducer from './noteReducer'
+import eventReducer from './eventReducer'
+import bondReducer from './bondReducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -28,7 +32,11 @@ const rootReducer = combineReducers({
   housingReducer,
   identifyReducer,
   schoolReducer,
+  childrenReducer,
   bioReducer,
+  noteReducer,
+  eventReducer,
+  bondReducer,
 });
 
 export default rootReducer;

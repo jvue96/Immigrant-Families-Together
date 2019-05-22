@@ -12,10 +12,21 @@ console.log(`error posting to DB:`, error);
 }
 }
 
-
+function* getAid(action) {
+    try{
+        console.log('GET info for aid', action);
+        const getResponse = yield axios.get('/api/forms/aid');
+        const action = {type: 'SET_AID', payload: getResponse.data};
+        yield put(action);
+    }catch (error) {
+        console.log(`Couldn't get the aid form information`);
+        alert(`Sorry couldn't get the information from the aid forms. Try again later.`)
+    }
+}
 
 function* aidSaga() {
     yield takeLatest(`ADD_AID`, addAidSaga)
+    yield takeLatest(`GET_AID`, getAid)
 }
 
 

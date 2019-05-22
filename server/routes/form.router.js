@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.post('/medical', (req, res) => {
     let medical = req.body;
-    console.log('Adding in tattoo:', medical);
+    console.log('Adding in medical:', medical);
     let sqlText = `INSERT INTO medical (doctor_name, doctor_phone, medical_conditions, counselor, counselor_phone, pediatrician, pediatrician_phone, optometrist, optometrist_phone, dentist, dentist_phone, vaccinations, insurance_card_info, fee_coverage, medical_notes) VALUES 
     ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)`;
     pool.query(sqlText, [medical.doctor_name, medical.doctor_phone, medical.medical_conditions, medical.counselor, medical.counselor_phone, medical.pediatrician, medical.pediatrician_phone, medical.optometrist, medical.optometrist_phone, medical.dentist, medical.dentist_phone, medical.vaccinations, medical.insurance_card_info, medical.fee_coverage, medical.medical_notes])
@@ -36,6 +36,17 @@ router.post('/medical', (req, res) => {
         res.sendStatus(500);
       })
     
+  });
+
+  router.get('/legal', (req, res) => {
+    console.log('Getting all legal status info');
+    pool.query(`SELECT * FROM "legal_status"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the information from the legal status form', error);
+        res.sendStatus(500);
+    })
   });
 
 router.get('/medical', (req, res) => {
@@ -74,6 +85,215 @@ router.get('/medical', (req, res) => {
         res.sendStatus(500);
     })
   })
+
+  router.post('/children', async(req, res) => {
+
+    const connection = await pool.connect()
+    let children = req.body; 
+    
+    try {
+
+      for(let i = 0; i< children.length; i++) {
+
+        let name = children[i].child_name;
+        let dob = children[i].child_dob;
+        let info = children[i].child_info;
+
+      console.log(name, dob, info);
+  
+      await connection.query('BEGIN');
+      const sqlText = `INSERT INTO primary_children
+                      (child_name, child_dob, child_info)
+                      VALUES ($1, $2, $3);`;
+      await connection.query( sqlText, [
+       name, 
+       dob,
+       info
+      ]);       
+      await connection.query('COMMIT');
+    }}
+    catch ( error ) {
+      await connection.query('ROLLBACK');
+      console.log(`Error posting chilren form`, error);
+      res.sendStatus(500); 
+    } finally {
+      // Always runs - both after successful try & after catch
+      // Put the client connection back in the pool
+      // This is super important! 
+      res.sendStatus(200); 
+      connection.release()
+    }
+  });
+
+  router.get('/children', (req, res) => {
+    console.log('Getting all medical info');
+    pool.query(`SELECT * FROM "primary_children"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the information from the children forms', error);
+    })
+    })
+
+  router.post('/aid', (req, res) => {
+    let aid = req.body;
+    console.log('Adding in aid:', aid);
+    let sqlText = `INSERT INTO aid (grocery_program, grocery_program_volunteer, go_fund_me, social_worker, social_worker_phone) VALUES 
+    ($1, $2, $3, $4, $5)`;
+    pool.query(sqlText, [aid.grocery_program, aid.grocery_program_volunteer, aid.go_fund_me, aid.social_worker, aid.social_worker_phone])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to POST aid form, heres the error:', error);
+        res.sendStatus(500);
+      })
+  })
+
+  router.get('/aid', (req, res) => {
+    console.log('Getting all aid info');
+    pool.query(`SELECT * FROM "aid"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the information from the aid forms', error);
+        res.sendStatus(500);
+    })
+  })
+
+
+  router.post('/note', (req, res) => {
+    let note = req.body;
+    console.log('Adding in note:', note);
+    let sqlText = `INSERT INTO notes (family_notes, date) VALUES 
+    ($1, $2)`;
+    pool.query(sqlText, [note.family_notes, note.date])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to POST note, heres the error:', error);
+        res.sendStatus(500);
+      })
+  })
+
+  router.get('/note', (req, res) => {
+    console.log('Getting all note info');
+    pool.query(`SELECT * FROM "notes"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the notes', error);
+
+        res.sendStatus(500);
+    })
+  })
+
+
+  router.post('/event', (req, res) => {
+    let event = req.body;
+    console.log('Adding in event:', event);
+    let sqlText = `INSERT INTO events (date, description) VALUES 
+    ($1, $2)`;
+    pool.query(sqlText, [event.date, event.description])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to POST event, heres the error:', error);
+        res.sendStatus(500);
+      })
+  })
+
+  router.get('/event', (req, res) => {
+    console.log('Getting all event info');
+    pool.query(`SELECT * FROM "events"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the events', error);
+        res.sendStatus(500);
+    })
+  })
+
+
+  router.post('/bond', (req, res) => {
+    let bond = req.body;
+    console.log('Adding in bond and legal info:', bond);
+    let sqlText = `INSERT INTO legal (ice_facility, bond_amount, bond_paid_date, bond_paid_by, foster_facility, foster_facility_address, attorney, attorney_phone, attorney_fee, legal_notes) VALUES 
+    ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
+    pool.query(sqlText, [bond.ice_facility, bond.bond_amount, bond.bond_paid_date, bond.bond_paid_by, bond.foster_facility, bond.foster_facility_address, bond.attorney, bond.attorney_phone, bond.attorney_fee, bond.legal_notes])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to POST bond and legal info, heres the error:', error);
+        res.sendStatus(500);
+      })
+  })
+
+  router.get('/bond', (req, res) => {
+    console.log('Getting all bond and legal info');
+    pool.query(`SELECT * FROM "legal"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the bond and legal info', error);
+        res.sendStatus(500);
+    })
+  })
+
+router.post('/school', (req, res) => {
+  let school = req.body;
+  console.log('Adding in school:', school);
+  let sqlText = `INSERT INTO school (name, phone, email) VALUES 
+  ($1, $2, $3)`;
+  pool.query(sqlText, [school.name, school.phone, school.email])
+    .then( (response) => {
+      res.sendStatus(201);
+    })
+    .catch( (error) => {
+      console.log('Failed to POST medical form');
+      res.sendStatus(500);
+    })
+})
+
+router.get('/school', (req, res) => {
+    console.log('Getting all school info');
+    pool.query(`SELECT * FROM "school"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the information from the school forms', error);
+        res.sendStatus(500);
+    })
+})
+
+router.post('/housing', (req, res) => {
+  let housing = req.body;
+  console.log('Adding in housing:', housing);
+  let sqlText = `INSERT INTO housing (address, rent, paid_by, utilities, living_with_fam) VALUES 
+  ($1, $2, $3, $4, $5)`;
+  pool.query(sqlText, [housing.address, housing.rent, housing.paid_by, housing.utilities, housing.living_with_fam])
+    .then( (response) => {
+      res.sendStatus(201);
+    })
+    .catch( (error) => {
+      console.log('Failed to POST housing form');
+      res.sendStatus(500);
+    })
+})
+
+router.get('/housing', (req, res) => {
+    console.log('Getting all housing info');
+    pool.query(`SELECT * FROM "housing"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the information from the housing forms', error);
+        res.sendStatus(500);
+    })
+})
 
 
 module.exports = router;

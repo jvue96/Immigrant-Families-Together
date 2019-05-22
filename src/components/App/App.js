@@ -31,6 +31,7 @@ import IceFacility from "../AdminViews/Cases/Forms/IceFacility";
 import SocialWorker from "../AdminViews/Cases/Forms/SocialWorker";
 import Cases from '../AdminViews/Cases/Cases';
 import AidForm from '../AdminViews/Cases/Forms/AidForm';
+import ChildrenForm from "../AdminViews/Cases/Forms/ChildrenForm";
 import './App.css';
 
 /* volunteer imports */
@@ -42,10 +43,9 @@ import BioHousing from '../VolunteerViews/Bio/BioHousing'
 import BioIdentify from '../VolunteerViews/Bio/BioIdentify'
 import BioSchool from '../VolunteerViews/Bio/BioSchool'
 import BioFamilyInfo from '../VolunteerViews/Bio/BioFamilyInfo'
-import VolunteerEvents from '../VolunteerViews/Events/Events'
 import VolunteerNotes from '../VolunteerViews/Notes/Notes'
 import VolunteerLegal from '../VolunteerViews/Legal/Legal'
-import LegalIce from '../VolunteerViews/Legal/LegalIce'
+import LegalFacility from '../VolunteerViews/Legal/LegalFacility'
 import LegalBond from '../VolunteerViews/Legal/LegalBond'
 import LegalFoster from '../VolunteerViews/Legal/LegalFoster'
 import LegalAttorney from '../VolunteerViews/Legal/LegalAttorney'
@@ -55,6 +55,8 @@ import VolunteerSocial from '../VolunteerViews/Aid/AidSocial'
 import VolunteerGrocery from '../VolunteerViews/Aid/AidGrocery'
 import VolunteerFund from '../VolunteerViews/Aid/AidFund'
 import VolunteerTeam from '../VolunteerViews/Team/Team'
+import VolunteerEvents from '../VolunteerViews/Events/VolunteerEvents'
+import AddVolunteerEvent from '../VolunteerViews/Events/AddVolunteerEvent'
 
 
 
@@ -245,7 +247,7 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/legal-ice"
-              component={LegalIce}
+              component={LegalFacility}
             />
             <ProtectedRoute
               exact
@@ -292,9 +294,23 @@ class App extends Component {
               path="/volunteer-team"
               component={VolunteerTeam}
             />
+            <ProtectedRoute
+              exact
+              path="/volunteer-events"
+              component={VolunteerEvents}
+            />
+            <ProtectedRoute
+              exact
+              path="/add-event"
+              component={AddVolunteerEvent}
+            />
 
 
-            <Route path='/events' component={Events} />
+            <ProtectedRoute
+              exact
+              path="/children-form"
+              component={ChildrenForm}
+            />
 
             {/* volunteer views link */}
             <ProtectedRoute path="/case" component={Case} />
