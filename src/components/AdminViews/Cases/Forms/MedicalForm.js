@@ -1,36 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import qs from 'query-string';
 
 class MedicalForm extends Component {
    
-    // componentDidMount = () => {
-    //     this.props.dispatch({ type: 'GET_ME_SOMETHING_YOOOO' });
-    //     console.log('GET_ME_SOMETHING_YOOOO', this.props.reduxState.SOMETHING);
-    // }
+    componentDidMount = () => {
+        const searchObject = qs.parse(this.props.location.search)
+        console.log('medicalForm searchObject', searchObject);
+        this.setState({
+            medicalForm:{
+                ...this.state.medicalForm,
+                case_id: searchObject.id,
+            }
+        })  
+    }
 
     next = () => {
         this.props.dispatch({ type: 'ADD_MEDICAL', payload: this.state.medicalForm })
-        this.props.history.push('/school-form')
+        this.props.history.push(`/school-form?id=${this.state.medicalForm.case_id}`)
     }
 
     state = {
         medicalForm: {
+            case_id: this.props.reduxState.caseReducer.rows[0].id,
             doctor_name: '',
-                doctor_phone: '',
-                medical_conditions: '',
-                counselor: '',
-                counselor_phone: '',
-                pediatrician: '',
-                pediatrician_phone: '',
-                optometrist: '',
-                optometrist_phone: '',
-                dentist: '',
-                dentist_phone: '',
-                vaccinations: '',
-                insurance_card_info: '',
-                fee_coverage: '',
-                medical_notes: ''
+            doctor_phone: '',
+            medical_conditions: '',
+            counselor: '',
+            counselor_phone: '',
+            pediatrician: '',
+            pediatrician_phone: '',
+            optometrist: '',
+            optometrist_phone: '',
+            dentist: '',
+            dentist_phone: '',
+            vaccinations: '',
+            insurance_card_info: '',
+            fee_coverage: '',
+            medical_notes: ''
         }
     }
 
@@ -38,6 +46,7 @@ class MedicalForm extends Component {
         console.log('in autoPopulate')
         this.setState({
             medicalForm: {
+                case_id: this.props.reduxState.caseReducer.rows[0].id,
                 doctor_name: 'Bradley Hennen',
                 doctor_phone: '612-555-5434',
                 medical_conditions: 'diabetes',
@@ -169,9 +178,9 @@ class MedicalForm extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    user: state.user,
-  });
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
   
   // this allows us to use <App /> in index.js
   export default withRouter(connect(mapStateToProps)(MedicalForm));

@@ -46,6 +46,7 @@ class ChildForm extends Component {
                 /* check if group has decided if database table dob is varchar or date, delete this line when done */
                 child_dob: '2019-12-12',
                 child_info: 'rock star',
+                case_id: this.props.reduxState.caseReducer.rows[0].id,
             }
         });
       }

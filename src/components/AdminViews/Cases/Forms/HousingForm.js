@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
+import qs from 'query-string';
 
 class HousingForm extends Component {
 
+    componentDidMount = () => {
+        const searchObject = qs.parse(this.props.location.search)
+        console.log('housingForm searchObject', searchObject);
+        this.setState({
+            housingForm:{
+                ...this.state.housingForm,
+                case_id: searchObject.id,
+            }
+        })  
+    }
 
 state= {
     housingForm: {
+        case_id: this.props.reduxState.caseReducer.rows[0].id,
         address:'',
         rent:'',
         paid_by:'',
@@ -19,6 +31,7 @@ fillstate = (event) => {
     event.preventDefault();
     this.setState({
         housingForm:{
+            case_id: this.props.reduxState.caseReducer.rows[0].id,
             address:'1234 Fake St Minneapolis, MN',
             rent:'$1100',
             paid_by:'Client',
@@ -43,7 +56,7 @@ handleChange = propertyName => event => {
 next = () => {
     this.props.dispatch({ type: 'ADD_HOUSING', payload: this.state.housingForm })
 
-        this.props.history.push('/bond-form')
+        this.props.history.push(`/bond-form?id=${this.state.housingForm.case_id}`)
 }
 
     render() {
@@ -79,9 +92,9 @@ next = () => {
     }
 }
 
-const mapStateToProps = state => ({
-    user: state.user,
-  });
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
   
   // this allows us to use <App /> in index.js
   export default withRouter(connect(mapStateToProps)(HousingForm));
