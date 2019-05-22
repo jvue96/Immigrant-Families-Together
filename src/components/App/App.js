@@ -43,10 +43,9 @@ import BioHousing from '../VolunteerViews/Bio/BioHousing'
 import BioIdentify from '../VolunteerViews/Bio/BioIdentify'
 import BioSchool from '../VolunteerViews/Bio/BioSchool'
 import BioFamilyInfo from '../VolunteerViews/Bio/BioFamilyInfo'
-import VolunteerEvents from '../VolunteerViews/Events/Events'
 import VolunteerNotes from '../VolunteerViews/Notes/Notes'
 import VolunteerLegal from '../VolunteerViews/Legal/Legal'
-import LegalIce from '../VolunteerViews/Legal/LegalIce'
+import LegalFacility from '../VolunteerViews/Legal/LegalFacility'
 import LegalBond from '../VolunteerViews/Legal/LegalBond'
 import LegalFoster from '../VolunteerViews/Legal/LegalFoster'
 import LegalAttorney from '../VolunteerViews/Legal/LegalAttorney'
@@ -56,6 +55,8 @@ import VolunteerSocial from '../VolunteerViews/Aid/AidSocial'
 import VolunteerGrocery from '../VolunteerViews/Aid/AidGrocery'
 import VolunteerFund from '../VolunteerViews/Aid/AidFund'
 import VolunteerTeam from '../VolunteerViews/Team/Team'
+import VolunteerEvents from '../VolunteerViews/Events/VolunteerEvents'
+import AddVolunteerEvent from '../VolunteerViews/Events/AddVolunteerEvent'
 
 
 
@@ -246,7 +247,7 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/legal-ice"
-              component={LegalIce}
+              component={LegalFacility}
             />
             <ProtectedRoute
               exact
@@ -293,6 +294,17 @@ class App extends Component {
               path="/volunteer-team"
               component={VolunteerTeam}
             />
+            <ProtectedRoute
+              exact
+              path="/volunteer-events"
+              component={VolunteerEvents}
+            />
+            <ProtectedRoute
+              exact
+              path="/add-event"
+              component={AddVolunteerEvent}
+            />
+
 
             <ProtectedRoute
               exact

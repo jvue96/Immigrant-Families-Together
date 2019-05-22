@@ -8,7 +8,7 @@ class AidForm extends Component {
     // }
     next = () => {
         this.props.dispatch({ type: 'ADD_AID', payload: this.state.aidForm })
-        this.props.history.push('/school-form')
+        this.props.history.push('/medical-form')
     }
 
     state = {
@@ -20,6 +20,19 @@ class AidForm extends Component {
             social_worker_phone: ''
         }
     }
+
+    autoPopulate=()=>{
+        console.log('in autoPopulate')
+        this.setState({
+            aidForm: {
+                grocery_program: true,
+                grocery_program_volunteer: 'Juno Vue',
+                go_fund_me: 'www.gofundme.com/CHF4567644',
+                social_worker: 'Joe Schdedyghtesz',
+                social_worker_phone: '763-555-7542'
+            }
+        })
+      }
 
     handleChange = propertyName => event => {
         console.log(`handleChange has been fired with this propertyName:`, propertyName);
@@ -76,6 +89,7 @@ class AidForm extends Component {
                         className="formButton"
                         onClick={this.next}
                         >NEXT</button>
+                        <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     </div>
                 </center>
             </div>

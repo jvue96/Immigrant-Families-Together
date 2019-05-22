@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LegalIce from "./LegalIce";
+// import LegalIce from "./LegalIce";
 // import LegalBond from "./LegalBond";
 // import LegalFoster from "./LegalFoster";
 // import LegalAttorney from "./LegalAttorney";

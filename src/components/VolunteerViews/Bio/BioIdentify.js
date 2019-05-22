@@ -2,21 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class BioIdentify extends Component {
+
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'GET_BIO_INFO' });
+        console.log('GET_BIO_INFO', this.props.reduxState.familyReducer);
+    }
+
     render() {
         return (
             <div>
                 <center>
                     <div>
                         <h1>
-                            IDENTIFY 
+                            IDENTIFICATION 
                         </h1>
                     </div>
 
-                    <div>{this.props.reduxState.identifyReducer.map(id =>
+                    <div>{this.props.reduxState.bioReducer.map(id =>
                 <div>
-<p className="bioDivs">PASSPORT: {id.passport}</p>
-<p className="bioDivs">U.S. IDENTIFICATION CARD: {id.identification}</p>
-<p className="bioDivs">NOTES: {id.notes}</p>
+<p className="bioDivs">PASSPORT: FALSE (HARD CODED)</p>
+<p className="bioDivs">U.S. IDENTIFICATION: FALSE (HARD CODED)</p>
+<p className="bioDivs">NOTES: THIS NEEDS TO BE ADDED </p>
                 </div>
 )}
 </div>

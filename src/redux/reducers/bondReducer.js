@@ -1,10 +1,10 @@
-const aidReducer = (state = [], action) => {
+const bondReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_AID':
+        case 'SET_BOND':
             return action.payload;
         default:
             return state;
     }
 }
 
-export default aidReducer;
+export default bondReducer;
