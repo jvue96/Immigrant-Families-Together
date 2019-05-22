@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class Cases extends Component {
 
     addCase = () => {
-        this.props.history.push('/bio-form')
+        this.props.history.push('/create-case')
     }
  
     viewCase = () => {
