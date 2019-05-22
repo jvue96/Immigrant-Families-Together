@@ -112,6 +112,59 @@ router.get('/medical', (req, res) => {
     })
   })
 
+
+  router.post('/note', (req, res) => {
+    let note = req.body;
+    console.log('Adding in note:', note);
+    let sqlText = `INSERT INTO notes (family_notes, date) VALUES 
+    ($1, $2)`;
+    pool.query(sqlText, [note.family_notes, note.date])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to POST note, heres the error:', error);
+        res.sendStatus(500);
+      })
+  })
+
+  router.get('/note', (req, res) => {
+    console.log('Getting all note info');
+    pool.query(`SELECT * FROM "notes"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the notes', error);
+        res.sendStatus(500);
+    })
+  })
+
+  router.post('/event', (req, res) => {
+    let event = req.body;
+    console.log('Adding in event:', event);
+    let sqlText = `INSERT INTO events (date, description) VALUES 
+    ($1, $2)`;
+    pool.query(sqlText, [event.date, event.description])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to POST event, heres the error:', error);
+        res.sendStatus(500);
+      })
+  })
+
+  router.get('/event', (req, res) => {
+    console.log('Getting all event info');
+    pool.query(`SELECT * FROM "events"`)
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the events', error);
+        res.sendStatus(500);
+    })
+  })
+
 router.post('/school', (req, res) => {
   let school = req.body;
   console.log('Adding in school:', school);

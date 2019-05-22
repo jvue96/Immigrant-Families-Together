@@ -84,7 +84,7 @@ class LegalStatusForm extends Component {
                         /> <br/>
 
                         <label>TOPIC</label> <br/>
-                        <input type="text" 
+                        <input type="text"
                          value={this.state.legalForm.next_court_date_outcome}
                          onChange={this.handleNameChange('next_court_date_outcome')}
                         /> <br/>
