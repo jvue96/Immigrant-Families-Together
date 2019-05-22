@@ -11,10 +11,10 @@ function* addBond(action) {
     }
   }
 
-function* getBond(action) {
+function* getBond(payload) {
     try{
-        console.log('GET newly added bond and legal info', action);
-        const getResponse = yield axios.get('/api/forms/bond');
+        console.log('GET newly added bond and legal info', payload);
+        const getResponse = yield axios.get(`/api/forms/bond/${payload}`);
         const action = {type: 'SET_BOND', payload: getResponse.data};
         yield put(action);
     }catch (error) {

@@ -63,9 +63,9 @@ router.get('/medical', (req, res) => {
   router.post('/bio', (req, res) => {
     let bio = req.body;
     console.log('Adding in primary individual:', bio);
-    let sqlText = `INSERT INTO primary_individual (last_name, first_name, dob, spouse_first_name, spouse_dob, phone, email, address, referred_by, reference_date, passport, us_id, encrypted) VALUES 
-    ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`;
-    pool.query(sqlText, [bio.last_name, bio.first_name, bio.dob, bio.spouse_first_name, bio.spouse_dob, bio.phone, bio.email, bio.address, bio.referred_by, bio.reference_date, bio.passport, bio.us_id, bio.encrypted])
+    let sqlText = `INSERT INTO primary_individual (case_id, last_name, first_name, dob, spouse_first_name, spouse_dob, phone, email, address, referred_by, reference_date, passport, us_id, encrypted) VALUES 
+    ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)`;
+    pool.query(sqlText, [bio.case_id, bio.last_name, bio.first_name, bio.dob, bio.spouse_first_name, bio.spouse_dob, bio.phone, bio.email, bio.address, bio.referred_by, bio.reference_date, bio.passport, bio.us_id, bio.encrypted])
       .then( (response) => {
         res.sendStatus(201);
       })
@@ -232,16 +232,18 @@ router.get('/medical', (req, res) => {
       })
   })
 
-  router.get('/bond', (req, res) => {
-    console.log('Getting all bond and legal info');
-    pool.query(`SELECT * FROM "legal"`)
-    .then((results) => {
-        res.send(results.rows)
-    }).catch((error) => {
-        console.log('Something went wrong getting the bond and legal info', error);
-        res.sendStatus(500);
-    })
-  })
+  // router.get('/bond/:id', (req, res) => {
+  //   console.log('Getting all bond and legal info');
+  //   console.log('Getting ONE current id', req.params.id);
+  //   const sqlText = `SELECT * FROM "legal" WHERE "case_id" = $1;`
+  //   pool.query(sqlText, [req.params.case_id])
+  //   .then((results) => {
+  //       res.send(results.rows)
+  //   }).catch((error) => {
+  //       console.log('Something went wrong getting the bond and legal info', error);
+  //       res.sendStatus(500);
+  //   })
+  // })
 
 router.post('/school', (req, res) => {
   let school = req.body;
@@ -292,6 +294,22 @@ router.get('/housing', (req, res) => {
     }).catch((error) => {
         console.log('Something went wrong getting the information from the housing forms', error);
         res.sendStatus(500);
+    })
+})
+
+router.post('/case', (req, res) => {
+  let cases = req.body;
+  console.log('Adding a new case:', cases);
+  let sqlText = `INSERT INTO cases (case_last_name, case_number, status) VALUES 
+  ($1, $2, $3) RETURNING id`;
+  pool.query(sqlText, [cases.case_last_name, cases.case_number, cases.status])
+    .then( (response) => {
+      // res.sendStatus(201);
+      res.send(response)
+    })
+    .catch( (error) => {
+      console.log('Failed to POST new case');
+      res.sendStatus(500);
     })
 })
 
