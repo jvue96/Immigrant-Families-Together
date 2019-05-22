@@ -18,12 +18,12 @@ class FosterForm extends Component {
                         </h1>
                     </div>
                     <div className="formDivs">
-                        <label>FOSTER FACILITY</label> <br/>
-                        <input type="text" /> <br/>
-                        <label>ADDRESS</label> <br/>
-                        <input type="text" /> <br/>
-                        <label>PHONE</label> <br/>
-                        <input type="text" /> <br/>
+                        <label>FOSTER FACILITY</label> 
+                        <input type="text" /> 
+                        <label>ADDRESS</label> 
+                        <input type="text" /> 
+                        <label>PHONE</label> 
+                        <input type="text" /> 
                     
                         <button
                         className="formButton"

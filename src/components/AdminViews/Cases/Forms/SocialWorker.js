@@ -17,12 +17,12 @@ class SocialWorker extends Component {
                         </h1>
                     </div>
                     <div className="formDivs">
-                        <label>NAME</label> <br/>
-                        <input type="text" /> <br/>
-                        <label>PHONE</label> <br/>
-                        <input type="text" /> <br/>
-                        <label>EMAIL</label> <br/>
-                        <input type="text" /> <br/>
+                        <label>NAME</label> 
+                        <input type="text" /> 
+                        <label>PHONE</label> 
+                        <input type="text" /> 
+                        <label>EMAIL</label> 
+                        <input type="text" /> 
                         
                         <button
                         className="formButton"

@@ -63,45 +63,45 @@ class LegalStatusForm extends Component {
                         </h1>
                     </div>
                     <div className="formDivs">
-                        <label>LAST COURT DATE</label> <br/>
+                        <label>LAST COURT DATE</label> 
                         <input 
                         value={this.state.legalForm.last_court_date}
                         placeholder="date format: 2019-12-12"
                         onChange={this.handleNameChange('last_court_date')}
-                        type="text" /> <br/>
+                        type="text" /> 
 
-                        <label>OUTCOME</label> <br/>
+                        <label>OUTCOME</label> 
                         <input type="text" 
                          value={this.state.legalForm.last_court_date_outcome}
                          onChange={this.handleNameChange('last_court_date_outcome')}
-                        /> <br/>
+                        /> 
 
-                        <label>NEXT COURT DATE</label> <br/>
+                        <label>NEXT COURT DATE</label> 
                         <input type="text" 
                         value={this.state.legalForm.next_court_date}
                         placeholder="date format: 2019-12-12"
                         onChange={this.handleNameChange('next_court_date')}
-                        /> <br/>
+                        /> 
 
-                        <label>TOPIC</label> <br/>
+                        <label>TOPIC</label> 
                         <input type="text"
                          value={this.state.legalForm.next_court_date_outcome}
                          onChange={this.handleNameChange('next_court_date_outcome')}
-                        /> <br/>
+                        /> 
 
-                        <label>ASYLUM APPLIED FOR</label> <br/>
+                        <label>ASYLUM APPLIED FOR</label> 
                         <input type="text" 
                           placeholder="type true or false"
                           value={this.state.legalForm.asylum_application}
                           onChange={this.handleNameChange('asylum_application')}
-                        /> <br/>
+                        /> 
 
-                        <label>WORK AUTH</label> <br/>
+                        <label>WORK AUTH</label> 
                         <input type="text" 
                         placeholder="type true or false"
                         value={this.state.legalForm.work_authorization}
                         onChange={this.handleNameChange('work_authorization')}
-                        /> <br/>
+                        /> 
                     
                         {/* <button
                         className="formButton"

@@ -94,55 +94,55 @@ class BioForm extends Component {
                         </h1>
                     </div>
                     <div className="formDivs" >
-                        <label>FIRST NAME</label> <br />
-                        <input type="text" value={this.state.bioForm.first_name} onChange={this.handleChange('first_name')}/> <br />
-                        <label>LAST NAME</label> <br />
-                        <input type="text" value={this.state.bioForm.last_name} onChange={this.handleChange('last_name')}/> <br />
-                        <label>D.O.B</label> <br />
-                        <input type="date" value={this.state.bioForm.dob} onChange={this.handleChange('dob')} /> <br />
-                        <label>SPOUSE NAME</label> <br />
-                        <input type="text" value={this.state.bioForm.spouse_first_name} onChange={this.handleChange('spouse_first_name')}/> <br />
-                        <label>SPOUNSE D.O.B</label> <br />
-                        <input type="date" value={this.state.bioForm.spouse_dob} onChange={this.handleChange('spouse_dob')}/> <br />
-                        <label>PHONE</label> <br />
-                        <input type="text" value={this.state.bioForm.phone} onChange={this.handleChange('phone')} /> <br />
-                        <label>ENCRYPTED</label> <br />
+                        <label>FIRST NAME</label> 
+                        <input type="text" value={this.state.bioForm.first_name} onChange={this.handleChange('first_name')}/> 
+                        <label>LAST NAME</label> 
+                        <input type="text" value={this.state.bioForm.last_name} onChange={this.handleChange('last_name')}/> 
+                        <label>D.O.B</label> 
+                        <input type="date" value={this.state.bioForm.dob} onChange={this.handleChange('dob')} /> 
+                        <label>SPOUSE NAME</label> 
+                        <input type="text" value={this.state.bioForm.spouse_first_name} onChange={this.handleChange('spouse_first_name')}/> 
+                        <label>SPOUNSE D.O.B</label> 
+                        <input type="date" value={this.state.bioForm.spouse_dob} onChange={this.handleChange('spouse_dob')}/> 
+                        <label>PHONE</label> 
+                        <input type="text" value={this.state.bioForm.phone} onChange={this.handleChange('phone')} /> 
+                        <label>ENCRYPTED</label> 
                         <input type="text" 
-                        value={this.state.bioForm.encrypted} onChange={this.handleChange('encrypted')} /> <br />
-                        <label>EMAIL</label> <br />
+                        value={this.state.bioForm.encrypted} onChange={this.handleChange('encrypted')} /> 
+                        <label>EMAIL</label> 
                         <input type="text" 
                          value={this.state.bioForm.email} onChange={this.handleChange('email')} 
-                        /> <br />
-                        <label>ADDRESS</label> <br />
+                        /> 
+                        <label>ADDRESS</label> 
                         <input type="text"
-                         value={this.state.bioForm.address} onChange={this.handleChange('address')} /> <br />
-                        <label>REFERRED BY</label> <br />
+                         value={this.state.bioForm.address} onChange={this.handleChange('address')} /> 
+                        <label>REFERRED BY</label> 
                         <input type="text" 
                         value={this.state.bioForm.referred_by} onChange={this.handleChange('referred_by')}
-                        /> <br />
-                        <label>REFERENCE DATE</label> <br />
+                        /> 
+                        <label>REFERENCE DATE</label> 
                         <input type="date"
                         value={this.state.bioForm.reference_date} onChange={this.handleChange('reference_date')}
-                        /> <br />
-                        <label>PASSPORT Y/N</label> <br />
+                        /> 
+                        <label>PASSPORT Y/N</label> 
                         <select
                         onChange={this.handleChange('passport')}
                         >
                             <option></option>
                             <option value={true}>True</option>
                             <option value={false}>False</option>
-                        </select><br />
-                        <label>USA I.D Y/N</label> <br />
+                        </select>
+                        <label>USA I.D Y/N</label> 
                         <select 
                         onChange={this.handleChange(`us_id`)}
                         >
                             <option></option>
                             <option value={true}>True</option>
                             <option value={false}>False</option>
-                        </select><br />
+                        </select>
                         <button className="formButton" onClick={this.next}>NEXT</button>
                         <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
-                        <br/>
+                        
                     </div>
                 </center>
             </div>

@@ -16,10 +16,10 @@ class IceFacility extends Component {
                         </h1>
                     </div>
                     <div className="formDivs">
-                        <label>NAME</label> <br/>
-                        <input type="text" /> <br/>
-                        <label>NOTES</label> <br/>
-                        <input type="text" /> <br/>
+                        <label>NAME</label> 
+                        <input type="text" /> 
+                        <label>NOTES</label> 
+                        <input type="text" /> 
                     
                         <button
                         className="formButton"

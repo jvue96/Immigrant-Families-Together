@@ -19,8 +19,8 @@ class FundForm extends Component {
                         </h1>
                     </div>
                     <div className="formDivs">
-                        <label>LINK</label> <br/>
-                        <input type="text" />  <br/> 
+                        <label>LINK</label> 
+                        <input type="text" />   
                         
                         <button
                         className="formButton"

@@ -22,7 +22,7 @@ class CaseList extends Component {
                         </h1>
                     </div>
                     <label>SEARCH:</label>
-                    <input placeholder="NAME" type="text" /> <br/>
+                    <input placeholder="NAME" type="text" /> 
                     <button onClick={this.searchBy}>SEARCH</button>
 
                     <table>

@@ -18,12 +18,12 @@ class GroceryForm extends Component {
                         </h1>
                     </div>
                     <div className="formDivs">
-                        <label>GROCERY PROGRAM Y/S</label> <br/>
-                        <input type="text" /> <br/>
-                        <label>CONTACT NUMBER(FOR WHO?)</label> <br/>
-                        <input type="text" /> <br/>
-                        <label>VOLUNTEER(VOLUNTEER FOR WHAT?)</label> <br/>
-                        <input type="text" /> <br/>
+                        <label>GROCERY PROGRAM Y/S</label> 
+                        <input type="text" /> 
+                        <label>CONTACT NUMBER(FOR WHO?)</label> 
+                        <input type="text" /> 
+                        <label>VOLUNTEER(VOLUNTEER FOR WHAT?)</label> 
+                        <input type="text" /> 
                     
                         <button
                         className="formButton"

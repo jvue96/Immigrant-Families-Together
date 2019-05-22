@@ -77,84 +77,84 @@ class MedicalForm extends Component {
                     </div>
                     <div className="formDivs">
                         
-                        <label>PRIMARY DOCTOR NAME</label> <br/>
+                        <label>PRIMARY DOCTOR NAME</label> 
                         <input type="text"
                         value={this.state.medicalForm.doctor_name}
-                        onChange={this.handleChange('doctor_name')}/> <br/>
+                        onChange={this.handleChange('doctor_name')}/> 
                         
-                        <label>PRIMARY DOCTOR PHONE</label> <br/>
+                        <label>PRIMARY DOCTOR PHONE</label> 
                         <input type="text"
                         value={this.state.medicalForm.doctor_phone}
-                        onChange={this.handleChange('doctor_phone')}/> <br/>
+                        onChange={this.handleChange('doctor_phone')}/> 
                     
-                        <label>MEDICAL CONDITIONS</label> <br/>
+                        <label>MEDICAL CONDITIONS</label> 
                         <input type="text"
                         value={this.state.medicalForm.medical_conditions}
-                        onChange={this.handleChange('medical_conditions')}/> <br/>
+                        onChange={this.handleChange('medical_conditions')}/> 
 
-                        <label>COUNSELOR NAME</label> <br/>
+                        <label>COUNSELOR NAME</label> 
                         <input type="text"
                         value={this.state.medicalForm.counselor}
-                        onChange={this.handleChange('counselor')}/> <br/>
+                        onChange={this.handleChange('counselor')}/> 
                         
-                        <label>COUNSELOR PHONE</label> <br/>
+                        <label>COUNSELOR PHONE</label> 
                         <input type="text" 
                         value={this.state.medicalForm.counselor_phone}
-                        onChange={this.handleChange('counselor_phone')}/> <br/>
+                        onChange={this.handleChange('counselor_phone')}/> 
                         
-                        <label>PEDIATRICIAN NAME</label> <br/>
+                        <label>PEDIATRICIAN NAME</label> 
                         <input type="text"
                         value={this.state.medicalForm.pediatrician}
-                        onChange={this.handleChange('pediatrician')}/> <br/>
+                        onChange={this.handleChange('pediatrician')}/> 
                         
-                        <label>PEDIATRICIAN PHONE</label> <br/>
+                        <label>PEDIATRICIAN PHONE</label> 
                         <input type="text"
                         value={this.state.medicalForm.pediatrician_phone}
-                        onChange={this.handleChange('pediatrician_phone')}/> <br/>
+                        onChange={this.handleChange('pediatrician_phone')}/> 
                        
-                        <label>OPTOMETRIST NAME</label> <br/>
+                        <label>OPTOMETRIST NAME</label> 
                         <input type="text"
                         value={this.state.medicalForm.optometrist}
-                        onChange={this.handleChange('optometrist')}/> <br/>
+                        onChange={this.handleChange('optometrist')}/> 
                         
-                        <label>OPTOMETRIST PHONE</label> <br/>
+                        <label>OPTOMETRIST PHONE</label> 
                         <input type="text"
                         value={this.state.medicalForm.optometrist_phone}
-                        onChange={this.handleChange('optometrist_phone')}/> <br/>
+                        onChange={this.handleChange('optometrist_phone')}/> 
                         
-                        <label>DENTIST NAME</label> <br/>
+                        <label>DENTIST NAME</label> 
                         <input type="text"
                         value={this.state.medicalForm.dentist}
-                        onChange={this.handleChange('dentist')}/> <br/>
+                        onChange={this.handleChange('dentist')}/> 
                         
-                        <label>DENTIST PHONE</label> <br/>
+                        <label>DENTIST PHONE</label> 
                         <input type="text"
                         value={this.state.medicalForm.dentist_phone}
-                        onChange={this.handleChange('dentist_phone')}/> <br/>
+                        onChange={this.handleChange('dentist_phone')}/> 
                         
-                        <label>VACCINATIONS</label> <br/>
+                        <label>VACCINATIONS</label> 
                         <input type="text"
                         value={this.state.medicalForm.vaccinations}
-                        onChange={this.handleChange('vaccinations')}/> <br/>
+                        onChange={this.handleChange('vaccinations')}/> 
                         
-                        <label>INSRUANCE CARD INFO</label> <br/>
+                        <label>INSRUANCE CARD INFO</label> 
                         <input type="text"
                         value={this.state.medicalForm.insurance_card_info}
-                        onChange={this.handleChange('insurance_card_info')}/> <br/>
+                        onChange={this.handleChange('insurance_card_info')}/> 
                         
-                        <label>FEE COVERAGE</label> <br/>
+                        <label>FEE COVERAGE</label> 
                         <select
                         value={this.state.medicalForm.fee_coverage}
                         onChange={this.handleChange('fee_coverage')}>
                         <option value="0">-</option>
                         <option value="True">True</option>
                         <option value="False">False</option>
-                        </select> <br/>
+                        </select> 
                         
-                        <label>MEDICAL NOTES</label> <br/>
+                        <label>MEDICAL NOTES</label> 
                         <input type="text"
                         value={this.state.medicalForm.medical_notes}
-                        onChange={this.handleChange('medical_notes')}/> <br/>
+                        onChange={this.handleChange('medical_notes')}/> 
                         
                         <button
                         className="formButton"

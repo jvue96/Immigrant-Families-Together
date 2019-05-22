@@ -58,30 +58,30 @@ class AidForm extends Component {
                     </div>
                     <div className="formDivs">
                         
-                        <label>GROCERY PROGRAM</label> <br/>
+                        <label>GROCERY PROGRAM</label>
                         <input type="text"
                         value={this.state.aidForm.grocery_program}
-                        onChange={this.handleChange('grocery_program')}/> <br/>
+                        onChange={this.handleChange('grocery_program')}/>
                         
-                        <label>GROCERY PROGRAM VOLUNTEER</label> <br/>
+                        <label>GROCERY PROGRAM VOLUNTEER</label>
                         <input type="text"
                         value={this.state.aidForm.grocery_program_volunteer}
-                        onChange={this.handleChange('grocery_program_volunteer')}/> <br/>
+                        onChange={this.handleChange('grocery_program_volunteer')}/> 
                     
-                        <label>GOFUNDME</label> <br/>
+                        <label>GOFUNDME</label> 
                         <input type="text"
                         value={this.state.aidForm.go_fund_me}
-                        onChange={this.handleChange('go_fund_me')}/> <br/>
+                        onChange={this.handleChange('go_fund_me')}/> 
 
-                        <label>SOCIAL WORKER</label> <br/>
+                        <label>SOCIAL WORKER</label> 
                         <input type="text"
                         value={this.state.aidForm.social_worker}
-                        onChange={this.handleChange('social_worker')}/> <br/>
+                        onChange={this.handleChange('social_worker')}/> 
                         
-                        <label>SOCIAL WORKER PHONE</label> <br/>
+                        <label>SOCIAL WORKER PHONE</label> 
                         <input type="text" 
                         value={this.state.aidForm.social_worker_phone}
-                        onChange={this.handleChange('social_worker_phone')}/> <br/>
+                        onChange={this.handleChange('social_worker_phone')}/> 
                         
                         
                         

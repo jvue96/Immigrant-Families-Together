@@ -38,15 +38,15 @@ class Cases extends Component {
 
                    <button className="adminMenuButtons"
                     onClick={this.viewCase}
-                   >VIEW CASES</button> <br />
+                   >VIEW CASES</button> 
 
                    <button className="adminMenuButtons"
                    onClick={this.addCase}
-                   >ADD NEW CASE</button> <br/>
+                   >ADD NEW CASE</button> 
 
                    <button className="adminMenuButtons"
                    onClick={this.editCase}
-                   >EDIT EXISTING CASE</button> <br />
+                   >EDIT EXISTING CASE</button> 
                </center>
                 
             </div>
