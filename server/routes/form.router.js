@@ -5,9 +5,9 @@ const router = express.Router();
 router.post('/medical', (req, res) => {
     let medical = req.body;
     console.log('Adding in medical:', medical);
-    let sqlText = `INSERT INTO medical (doctor_name, doctor_phone, medical_conditions, counselor, counselor_phone, pediatrician, pediatrician_phone, optometrist, optometrist_phone, dentist, dentist_phone, vaccinations, insurance_card_info, fee_coverage, medical_notes) VALUES 
-    ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)`;
-    pool.query(sqlText, [medical.doctor_name, medical.doctor_phone, medical.medical_conditions, medical.counselor, medical.counselor_phone, medical.pediatrician, medical.pediatrician_phone, medical.optometrist, medical.optometrist_phone, medical.dentist, medical.dentist_phone, medical.vaccinations, medical.insurance_card_info, medical.fee_coverage, medical.medical_notes])
+    let sqlText = `INSERT INTO medical (case_id, doctor_name, doctor_phone, medical_conditions, counselor, counselor_phone, pediatrician, pediatrician_phone, optometrist, optometrist_phone, dentist, dentist_phone, vaccinations, insurance_card_info, fee_coverage, medical_notes) VALUES 
+    ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)`;
+    pool.query(sqlText, [medical.case_id, medical.doctor_name, medical.doctor_phone, medical.medical_conditions, medical.counselor, medical.counselor_phone, medical.pediatrician, medical.pediatrician_phone, medical.optometrist, medical.optometrist_phone, medical.dentist, medical.dentist_phone, medical.vaccinations, medical.insurance_card_info, medical.fee_coverage, medical.medical_notes])
       .then( (response) => {
         res.sendStatus(201);
       })
@@ -21,10 +21,10 @@ router.post('/medical', (req, res) => {
     let legal = req.body;
     console.log('Adding in legal form:', legal);
     let sqlText = `INSERT INTO legal_status 
-    (last_court_date, last_court_date_outcome, next_court_date, next_court_date_outcome, asylum_application, work_authorization )
+    (case_id, last_court_date, last_court_date_outcome, next_court_date, next_court_date_outcome, asylum_application, work_authorization )
     VALUES 
-    ($1, $2, $3, $4, $5, $6)`;
-    pool.query(sqlText, [legal.last_court_date, legal.last_court_date_outcome, legal.next_court_date, 
+    ($1, $2, $3, $4, $5, $6, $7)`;
+    pool.query(sqlText, [legal.case_id, legal.last_court_date, legal.last_court_date_outcome, legal.next_court_date, 
       legal.next_court_date_outcome, legal. asylum_application, legal.work_authorization])
       .then( (response) => {
         console.log(`got it`, response);
@@ -95,20 +95,22 @@ router.get('/medical', (req, res) => {
 
       for(let i = 0; i< children.length; i++) {
 
+        let id = children[i].case_id;
         let name = children[i].child_name;
         let dob = children[i].child_dob;
         let info = children[i].child_info;
 
-      console.log(name, dob, info);
+      console.log(name, dob, info, id);
   
       await connection.query('BEGIN');
       const sqlText = `INSERT INTO primary_children
-                      (child_name, child_dob, child_info)
-                      VALUES ($1, $2, $3);`;
+                      (child_name, child_dob, child_info, case_id)
+                      VALUES ($1, $2, $3, $4);`;
       await connection.query( sqlText, [
        name, 
        dob,
-       info
+       info,
+       id
       ]);       
       await connection.query('COMMIT');
     }}
@@ -220,9 +222,9 @@ router.get('/medical', (req, res) => {
   router.post('/bond', (req, res) => {
     let bond = req.body;
     console.log('Adding in bond and legal info:', bond);
-    let sqlText = `INSERT INTO legal (ice_facility, bond_amount, bond_paid_date, bond_paid_by, foster_facility, foster_facility_address, attorney, attorney_phone, attorney_fee, legal_notes) VALUES 
-    ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
-    pool.query(sqlText, [bond.ice_facility, bond.bond_amount, bond.bond_paid_date, bond.bond_paid_by, bond.foster_facility, bond.foster_facility_address, bond.attorney, bond.attorney_phone, bond.attorney_fee, bond.legal_notes])
+    let sqlText = `INSERT INTO legal (case_id, ice_facility, bond_amount, bond_paid_date, bond_paid_by, foster_facility, foster_facility_address, attorney, attorney_phone, attorney_fee, legal_notes) VALUES 
+    ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`;
+    pool.query(sqlText, [bond.case_id, bond.ice_facility, bond.bond_amount, bond.bond_paid_date, bond.bond_paid_by, bond.foster_facility, bond.foster_facility_address, bond.attorney, bond.attorney_phone, bond.attorney_fee, bond.legal_notes])
       .then( (response) => {
         res.sendStatus(201);
       })
@@ -248,14 +250,14 @@ router.get('/medical', (req, res) => {
 router.post('/school', (req, res) => {
   let school = req.body;
   console.log('Adding in school:', school);
-  let sqlText = `INSERT INTO school (name, phone, email) VALUES 
-  ($1, $2, $3)`;
-  pool.query(sqlText, [school.name, school.phone, school.email])
+  let sqlText = `INSERT INTO school (name, phone, email, case_id) VALUES 
+  ($1, $2, $3, $4)`;
+  pool.query(sqlText, [school.name, school.phone, school.email, school.case_id])
     .then( (response) => {
       res.sendStatus(201);
     })
     .catch( (error) => {
-      console.log('Failed to POST medical form');
+      console.log('Failed to POST school form');
       res.sendStatus(500);
     })
 })
@@ -274,9 +276,9 @@ router.get('/school', (req, res) => {
 router.post('/housing', (req, res) => {
   let housing = req.body;
   console.log('Adding in housing:', housing);
-  let sqlText = `INSERT INTO housing (address, rent, paid_by, utilities, living_with_fam) VALUES 
-  ($1, $2, $3, $4, $5)`;
-  pool.query(sqlText, [housing.address, housing.rent, housing.paid_by, housing.utilities, housing.living_with_fam])
+  let sqlText = `INSERT INTO housing (address, rent, paid_by, utilities, living_with_fam, case_id) VALUES 
+  ($1, $2, $3, $4, $5, $6)`;
+  pool.query(sqlText, [housing.address, housing.rent, housing.paid_by, housing.utilities, housing.living_with_fam, housing.case_id])
     .then( (response) => {
       res.sendStatus(201);
     })
