@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import Nav from '../../Nav/Nav'
+ 
 class BioFamilyInfo extends Component {
 
     componentDidMount = () => {
@@ -11,13 +12,9 @@ class BioFamilyInfo extends Component {
     render() {
         return (
             <div>
+                <Nav pageName='FAMILY INFO' volunteer home='/home' />
                 <center>
-                    <div>
-                        <h1>
-                            GENERAL BIO
-                        </h1>
-                    </div>
-
+                   
                     <div>{this.props.reduxState.bioReducer.map(bio =>
                 <div>
 <p className="bioDivs">FIRST NAME: {bio.first_name}</p>

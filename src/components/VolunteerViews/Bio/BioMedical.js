@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav'
 
 class BioMedical extends Component {
 
@@ -12,12 +13,8 @@ class BioMedical extends Component {
     render() {
         return (
             <div>
+                 <Nav pageName='MEDICAL' volunteer home='/home' /> 
             <center>
-                <div>
-                    <h1>
-                        MEDICAL 
-                    </h1>
-                </div>
             <div>{this.props.reduxState.medicalReducer.map(medical =>
                 <div>
 <p className="bioDivs">DOCTOR NAME: {medical.doctor_name}</p>
