@@ -100,9 +100,7 @@ class ChildForm extends Component {
                     onChange={this.handleChange('child_name')}/> 
     
                     <label>DOB</label> 
-                    <input type="text"
-                    value={this.state.childForm.child_dob}
-                    onChange={this.handleChange('child_dob')}/> 
+                    <input type="date" value={this.state.childForm.child_dob} onChange={this.handleChange('child_dob')} /> 
                 
                     <label>INFO</label> 
                     <input type="text"
@@ -130,7 +128,7 @@ class ChildForm extends Component {
                 className="formButton"
                 onClick={this.next}> Next
                 </button>
-
+<br/>
                  <button onClick={this.test}> TEST DATA </button>
                 </div>
             </center> 
