@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
+import Nav from '../../Nav/Nav'
 
 class Team extends Component {
     render() {
         return (
+            <div>
+ <Nav pageName='TEAM' volunteer home='/home' /> 
             <center> 
-                <div> 
-                    <h1> 
-                        TEAM
-                    </h1> 
-                </div>
                 <h2> VOLUNTEERS </h2>
 
                 <div className="bioDivs"
@@ -24,6 +22,8 @@ class Team extends Component {
 
                 </div>
             </center>
+            </div>
+
         );
     }
 }

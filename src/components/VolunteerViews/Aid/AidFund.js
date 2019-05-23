@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav'
 import qs from 'query-string';
+
 
 class AidFund extends Component {
 
@@ -13,13 +15,8 @@ class AidFund extends Component {
     render() {
         return (
             <div>
-                 <center>
-                    <div>
-                        <h1>
-                            GO FUND ME
-                        </h1>
-                    </div>
-
+                <Nav pageName='GOFUNDME' volunteer home='/home' /> 
+                 <center>  
                     <div>{this.props.reduxState.aidReducer.map(aid =>
                 <div>
 <p className="bioDivs">GOFUNDME LINK: {aid.go_fund_me}</p>

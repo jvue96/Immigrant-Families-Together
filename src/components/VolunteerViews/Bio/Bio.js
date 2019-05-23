@@ -7,6 +7,7 @@ import { withRouter } from 'react-router';
 // import BioHousing from "./BioHousing";
 // import BioMedical from "./BioMedical";
 
+import Nav from '../../Nav/Nav'
 
 class Bio extends Component {
 
@@ -58,10 +59,9 @@ class Bio extends Component {
 
         return (
             <div>
+                <Nav pageName='BIO' volunteer home='/home' /> 
                 <center> 
-                    <div> BIO </div>
-                    <div>
-                    </div>
+                 
                     {/* <button 
                     onClick={this.viewSelectedButton('button')}
                     value={"bio"}

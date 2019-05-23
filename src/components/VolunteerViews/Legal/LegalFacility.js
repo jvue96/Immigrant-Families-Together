@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav';
 import qs from 'query-string';
+
 
 class LegalIce extends Component {
 
@@ -14,12 +16,9 @@ class LegalIce extends Component {
     render() {
         return (
             <div>
+                 <Nav pageName='ICE FACILITY' volunteer home='/home' /> 
+
                 <center>
-                    <div>
-                        <h1>
-                            ICE FACILITY
-                        </h1>
-                    </div>
 
                     <div>{this.props.reduxState.bondReducer.map(bond =>
                     <div>

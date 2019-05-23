@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 // import LegalFoster from "./LegalFoster";
 // import LegalAttorney from "./LegalAttorney";
 // import LegalStatus from "./LegalStatus";
-
+import Nav from '../../Nav/Nav'
 
 class Legal extends Component {
 
@@ -55,8 +55,10 @@ class Legal extends Component {
         // } 
 
         return (
+            <>
+            <Nav pageName='LEGAL' volunteer home='/home' /> 
+
             <center> 
-           <div> LEGAL </div>
                 <div>
                 </div>
                 {/* <button 
@@ -96,6 +98,7 @@ class Legal extends Component {
                         <button className="adminMenuButtons" onClick={this.statusPages}>LEGAL STATUS</button>
                     </div>
         </center>
+        </>
         );
     }
 }

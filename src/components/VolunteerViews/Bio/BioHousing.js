@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav'
 import qs from 'query-string';
 
 class BioHousing extends Component {
@@ -14,12 +15,8 @@ class BioHousing extends Component {
     render() {
         return (
             <div>
+ <Nav pageName='HOUSING' volunteer home='/home' /> 
             <center>
-                <div>
-                    <h1>
-                        HOUSING 
-                    </h1>                 
-                </div>
 
 
 <div>{this.props.reduxState.housingReducer.map(housing =>

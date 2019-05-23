@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav'
 
+
+ 
 class AddEvent extends Component {
 
     state = {
@@ -42,6 +45,7 @@ class AddEvent extends Component {
     render() {
         return (
             <div>
+                <Nav pageName='VOLUNTEER EVENT' volunteer home='/home' /> 
             <label>EVENT DATE:</label>
             <input type="text" 
                 value={this.state.addEvent.date}
