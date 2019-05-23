@@ -1,25 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav';
+
 
 class Events extends Component {
     render() {
         return (
             <div>
-
-                <div className="nav">
-                <div className="navLeft2" onClick={this.backButton}>
-                    <i className="fas fa-chevron-left"></i>
-                </div>
-                <div className="navTitle">
-                    <h2 className="navH2">EVENTS</h2>
-                </div>
-                <div className="navRight">
-                <Link to="/home">
-                    <i className="fas fa-home"></i>
-                </Link>
-                </div>
-                </div>
+  <Nav pageName='EVENTS' home='/home'/>
+               
 
                 <center>
                     <button className="midButton">NEW EVENT</button> 
