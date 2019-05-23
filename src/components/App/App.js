@@ -31,6 +31,7 @@ import Cases from '../AdminViews/Cases/Cases';
 import AidForm from '../AdminViews/Cases/Forms/AidForm';
 import ChildrenForm from "../AdminViews/Cases/Forms/ChildrenForm";
 import CreateCase from '../AdminViews/Cases/Forms/CreateCase';
+import VolunteerBio from "../AdminViews/VolunteerInfo/VolunteerBio"; 
 import './App.css';
 
 /* volunteer imports */
@@ -308,12 +309,15 @@ class App extends Component {
               path="/create-case"
               component={CreateCase}
             />
-
-
             <ProtectedRoute
               exact
               path="/children-form"
               component={ChildrenForm}
+            />
+            <ProtectedRoute
+              exact
+              path="/volunteer-bio"
+              component={VolunteerBio}
             />
 
             {/* volunteer views link */}
