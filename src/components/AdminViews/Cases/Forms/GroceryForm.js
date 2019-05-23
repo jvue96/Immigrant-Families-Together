@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
+import Nav from '../../../Nav/Nav'
 
 class GroceryForm extends Component {
 
@@ -11,12 +12,9 @@ class GroceryForm extends Component {
     render() {
         return (
             <div>
+                <Nav pageName='GROCERY FORM' home='/home'/>
+
                 <center>
-                    <div>
-                        <h1>
-                            GROCERY FORM
-                        </h1>
-                    </div>
                     <div className="formDivs">
                         <label>GROCERY PROGRAM Y/S</label> 
                         <input type="text" /> 

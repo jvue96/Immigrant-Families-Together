@@ -2,7 +2,6 @@ body{
     margin:0px;
 }
 
-
 button,
 h1,
 label,
@@ -16,7 +15,6 @@ label,
 .formButton
  {
   font-family: 'Heebo', sans-serif;
-
 }
 
 
@@ -93,7 +91,7 @@ label {
 .midButton{
     height: 75px;
     width: 90%;
-    max-width:500px;
+    max-width:300px;
     letter-spacing: 2px;
     background-color: rgb(118, 118, 118);
     margin-bottom: 15px;
@@ -116,10 +114,17 @@ label {
     cursor: pointer;
 }
 
+.eventDivs,
+form,
+.formDivs,
+center {
+max-width:500px;
+margin:auto;
+}
+
+
 .eventDivs{
     width:90%;
-    max-width:500px;
-    /* height: 115px; */
     border-style: solid;
     border-width: 1px;
     border-radius: 15px;
@@ -133,6 +138,9 @@ label {
     height:30px;
     display:inline-flex;
 }
+
+
+
 
 .cardHeadLeft{
     width:50%;

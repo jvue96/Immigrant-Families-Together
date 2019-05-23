@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
+import Nav from '../../../Nav/Nav'
+
 
 class FosterForm extends Component {
 
@@ -11,12 +13,10 @@ class FosterForm extends Component {
     render() {
         return (
             <div>
+                <Nav pageName='FOSTER FORM' home='/home'/>
+
                 <center>
-                    <div>
-                        <h1>
-                            FOSTER FORM
-                        </h1>
-                    </div>
+
                     <div className="formDivs">
                         <label>FOSTER FACILITY</label> 
                         <input type="text" /> 

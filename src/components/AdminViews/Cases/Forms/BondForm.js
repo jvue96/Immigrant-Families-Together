@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
+import Nav from '../../../Nav/Nav'
 import qs from 'query-string';
 
 class BondForm extends Component {
@@ -68,12 +69,9 @@ class BondForm extends Component {
     render() {
         return (
             <div>
+                <Nav pageName='BOND FORM' home='/home'/>
+
                  <center>
-                    <div>
-                        <h1>
-                            BOND FORM
-                        </h1>
-                    </div>
                     <div className="formDivs">
                         <label>ICE FACILITY</label> 
                         <input type="text"

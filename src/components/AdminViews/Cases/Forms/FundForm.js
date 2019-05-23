@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
+import Nav from '../../../Nav/Nav'
 
 class FundForm extends Component {
 
@@ -12,12 +13,9 @@ class FundForm extends Component {
     render() {
         return (
             <div>
+                <Nav pageName='GOFUNDME FORM' home='/home'/>
+
                   <center>
-                    <div>
-                        <h1>
-                            GO FUND ME FORM 
-                        </h1>
-                    </div>
                     <div className="formDivs">
                         <label>LINK</label> 
                         <input type="text" />   

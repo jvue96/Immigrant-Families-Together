@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
+import Nav from '../../../Nav/Nav'
 import qs from 'query-string';
+
 
 class HousingForm extends Component {
 
@@ -62,13 +64,10 @@ next = () => {
     render() {
         return (
             <div>
+                <Nav pageName='HOUSING' home='/home'/>
+
     <button className="hiddenButton" onClick={this.fillstate}></button>
                 <center>
-                    <div>
-                        <h1>
-                            HOUSING
-                        </h1>
-                    </div>
                     <div className="formDivs">
                         <label>ADDRESS</label> 
                         <input type="text" value={this.state.housingForm.address} onChange={this.handleChange('address')}/> 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
+import Nav from '../../../Nav/Nav'
 import qs from 'query-string';
 
 class BioForm extends Component {
@@ -88,20 +89,9 @@ class BioForm extends Component {
     render() {
         return (
             <div>
+                <Nav pageName='BIO' backArrow='/cases' home='/home'/>
+
                 {JSON.stringify(this.state)}
-                <div className="nav">
-                <div className="navLeft" onClick={this.backButton}>
-                    <i class="fas fa-chevron-left"></i>
-                </div>
-                <div className="navTitle">
-                    <h2 className="navH2">BIO</h2>
-                </div>
-                <div className="navRight">
-                <Link to="/home">
-                    <i class="fas fa-home"></i>
-                </Link>
-                </div>
-                </div>
                 
                 <center>
                     <div>

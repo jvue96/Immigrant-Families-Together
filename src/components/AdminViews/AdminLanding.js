@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
-
+import Nav from '../Nav/Nav'
 import "./Admin.css"
 
 class AdminLanding extends Component {
@@ -28,21 +28,8 @@ class AdminLanding extends Component {
     render() {
         return (
             <div>
-
-                <div className="nav">
-                <div className="navLeft2" onClick={this.backButton}>
-                    <i className="fas fa-chevron-left"></i>
-                </div>
-                <div className="navTitle">
-                    <h2 className="navH2">ADMIN</h2>
-                </div>
-                <div className="navRight2">
-                <Link to="/home">
-                    <LogOutButton className="nav-link"/>
-                </Link>
-                </div>
-                </div>
-
+                <Nav pageName='ADMIN'/>
+                
                 <center>
                     <div>
                         <h1>MENU</h1>
