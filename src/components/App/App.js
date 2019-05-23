@@ -31,6 +31,7 @@ import Cases from '../AdminViews/Cases/Cases';
 import AidForm from '../AdminViews/Cases/Forms/AidForm';
 import ChildrenForm from "../AdminViews/Cases/Forms/ChildrenForm";
 import CreateCase from '../AdminViews/Cases/Forms/CreateCase';
+import CaseList from '../AdminViews/Cases/CaseList';
 import './App.css';
 
 /* volunteer imports */
@@ -192,6 +193,11 @@ class App extends Component {
               exact
               path="/cases"
               component={Cases}
+            />
+            <ProtectedRoute
+              exact
+              path="/case-list"
+              component={CaseList}
             />
             <ProtectedRoute
               exact
