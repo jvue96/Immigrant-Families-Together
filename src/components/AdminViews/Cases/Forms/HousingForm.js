@@ -58,7 +58,7 @@ handleChange = propertyName => event => {
 next = () => {
     this.props.dispatch({ type: 'ADD_HOUSING', payload: this.state.housingForm })
 
-        this.props.history.push(`/bond-form?id=${this.state.housingForm.case_id}`)
+        this.props.history.push(`/aid-form?id=${this.state.housingForm.case_id}`)
 }
 
     render() {
