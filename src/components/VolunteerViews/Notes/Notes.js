@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav'
 
 class Notes extends Component {
 
@@ -45,12 +46,10 @@ class Notes extends Component {
 
     render() {
         return (
+            <div>
+            <Nav pageName='NOTES' volunteer home='/home' /> 
+
             <center> 
-                    <div> 
-                        <h1>
-                            NOTES
-                        </h1>
-                    </div>
                     <label>ADD NOTE:</label>
                     <input type="text" 
                         value={this.state.addNote.family_notes}
@@ -84,6 +83,7 @@ class Notes extends Component {
 
                     
             </center>
+            </div>
         );
     }
 }
