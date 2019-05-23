@@ -2,11 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import Nav from '../../../Nav/Nav'
+import qs from 'query-string';
 
 class BondForm extends Component {
 
+    componentDidMount = () => {
+        const searchObject = qs.parse(this.props.location.search)
+        console.log('legalInfoForm searchObject', searchObject);
+        this.setState({
+            legalInfoForm:{
+                ...this.state.legalInfoForm,
+                case_id: searchObject.id,
+            }
+        })  
+    }
+
     state = {
         legalInfoForm: {
+            case_id: this.props.reduxState.caseReducer.rows[0].id,
             ice_facility: '',
             bond_amount: '',
             bond_paid_date: '',
@@ -24,6 +37,7 @@ class BondForm extends Component {
         console.log('in autoPopulate')
         this.setState({
             legalInfoForm: {
+                case_id: this.props.reduxState.caseReducer.rows[0].id,
                 ice_facility: 'North of the Border',
                 bond_amount: 50000,
                 bond_paid_date: '2019-04-09',
@@ -40,7 +54,7 @@ class BondForm extends Component {
 
     next = () => {
         this.props.dispatch({ type: 'ADD_BOND', payload: this.state.legalInfoForm })
-        this.props.history.push('/legal-form')
+        this.props.history.push(`/legal-form?id=${this.state.legalInfoForm.case_id}`)
     }
 
     handleChange = propertyName => event => {
@@ -132,9 +146,9 @@ class BondForm extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    user: state.user,
-  });
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
   
   // this allows us to use <App /> in index.js
   export default withRouter(connect(mapStateToProps)(BondForm));

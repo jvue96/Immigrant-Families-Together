@@ -2,11 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Nav from '../../../Nav/Nav'
+import qs from 'query-string';
+
 
 class LegalStatusForm extends Component {
 
+    componentDidMount = () => {
+        const searchObject = qs.parse(this.props.location.search)
+        console.log('legalForm searchObject', searchObject);
+        this.setState({
+            legalForm:{
+                ...this.state.legalForm,
+                case_id: searchObject.id,
+            }
+        })  
+    }
+
     state = {
         legalForm: {
+            case_id: this.props.reduxState.caseReducer.rows[0].id,
             last_court_date: '',
             last_court_date_outcome: '',
             next_court_date: '', 
@@ -21,6 +35,7 @@ class LegalStatusForm extends Component {
         console.log('in autoPopulate')
         this.setState({
             legalForm: {
+                case_id: this.props.reduxState.caseReducer.rows[0].id,
                 last_court_date: '2019-12-12',
                 last_court_date_outcome: 'deferment',
                 next_court_date: '2019-12-12', 
@@ -33,7 +48,7 @@ class LegalStatusForm extends Component {
 
     next = () => {
         //this.props.history.push('/social-form')
-        this.props.history.push('/admin-landing');
+        this.props.history.push(`/admin-landing?id=${this.state.legalForm.case_id}`);
         console.log(this.state);   
         this.props.dispatch({ type: 'ADD_LEGAL', payload: this.state.legalForm })
 
@@ -118,9 +133,9 @@ class LegalStatusForm extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    user: state.user,
-  });
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
   
   // this allows us to use <App /> in index.js
   export default withRouter(connect(mapStateToProps)(LegalStatusForm));

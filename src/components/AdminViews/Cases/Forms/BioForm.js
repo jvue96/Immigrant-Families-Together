@@ -3,10 +3,24 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import Nav from '../../../Nav/Nav'
+import qs from 'query-string';
+
 class BioForm extends Component {
+
+    componentDidMount = () => {
+        const searchObject = qs.parse(this.props.location.search)
+        console.log('searchObject', searchObject);
+        this.setState({
+            bioForm:{
+                ...this.state.bioForm,
+                case_id: searchObject.id,
+            }
+        })  
+    }
 
     state= {
         bioForm: {
+            case_id: '',
             first_name:'',
             last_name:'',
             dob:'',
@@ -26,9 +40,12 @@ class BioForm extends Component {
     }
 
     autoPopulate=()=>{
+        const searchObject = qs.parse(this.props.location.search)
+        console.log('searchObject', searchObject);
         console.log('in autoPopulate')
         this.setState({
             bioForm: {
+                case_id: searchObject.id,
                 first_name:'Mary',
                 last_name:'Mosman',
                 dob:'07/04/1982',
@@ -61,7 +78,7 @@ class BioForm extends Component {
    next = () => {
     this.props.dispatch({ type: 'ADD_BIO', payload: this.state.bioForm })
 
-    this.props.history.push('/children-form');
+    this.props.history.push(`/children-form?id=${this.state.bioForm.case_id}`);
 
    }
 
@@ -73,6 +90,8 @@ class BioForm extends Component {
         return (
             <div>
                 <Nav pageName='BIO' backArrow='/cases' home='/home'/>
+
+                {JSON.stringify(this.state)}
                 
                 <center>
                     <div>

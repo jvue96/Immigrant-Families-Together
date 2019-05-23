@@ -2,11 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Nav from '../../../Nav/Nav'
+import qs from 'query-string';
+
 
 class SchoolForm extends Component {
 
+componentDidMount = () => {
+    const searchObject = qs.parse(this.props.location.search)
+    console.log('schoolForm searchObject', searchObject);
+    this.setState({
+        schoolForm:{
+            ...this.state.schoolForm,
+            case_id: searchObject.id,
+        }
+    })  
+}
+
 state= {
     schoolForm: {
+        case_id: this.props.reduxState.caseReducer.rows[0].id,
         name:'',
         phone:'',
         email:'',
@@ -17,6 +31,7 @@ fillstate = (event) => {
     event.preventDefault();
     this.setState({
         schoolForm:{
+        case_id: this.props.reduxState.caseReducer.rows[0].id,
         name:'Dale`s Elementary',
         phone:'222-222-2222',
         email:'DaleSchool@dale.edu',
@@ -39,7 +54,7 @@ handleChange = propertyName => event => {
 next = () => {
     this.props.dispatch({ type: 'ADD_SCHOOL', payload: this.state.schoolForm })
 
-    this.props.history.push('/housing-form')
+    this.props.history.push(`/housing-form?id=${this.state.schoolForm.case_id}`)
 }
 
 
@@ -71,9 +86,9 @@ next = () => {
     }
 }
 
-const mapStateToProps = state => ({
-    user: state.user,
-  });
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
   
   // this allows us to use <App /> in index.js
   export default withRouter(connect(mapStateToProps)(SchoolForm));

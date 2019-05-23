@@ -5,7 +5,7 @@ import Nav from '../../Nav/Nav'
 class Cases extends Component {
 
     addCase = () => {
-        this.props.history.push('/bio-form')
+        this.props.history.push('/create-case')
     }
  
     viewCase = () => {

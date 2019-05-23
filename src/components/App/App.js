@@ -32,6 +32,7 @@ import SocialWorker from "../AdminViews/Cases/Forms/SocialWorker";
 import Cases from '../AdminViews/Cases/Cases';
 import AidForm from '../AdminViews/Cases/Forms/AidForm';
 import ChildrenForm from "../AdminViews/Cases/Forms/ChildrenForm";
+import CreateCase from '../AdminViews/Cases/Forms/CreateCase';
 import './App.css';
 
 /* volunteer imports */
@@ -303,6 +304,11 @@ class App extends Component {
               exact
               path="/add-event"
               component={AddVolunteerEvent}
+            />
+            <ProtectedRoute
+              exact
+              path="/create-case"
+              component={CreateCase}
             />
 
 

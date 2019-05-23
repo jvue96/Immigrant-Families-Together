@@ -15,6 +15,7 @@ import schoolSaga from './bioSagas/schoolSaga';
 import noteSaga from './noteSaga'
 import eventSaga from './eventSaga'
 import bondSaga from './bondSaga'
+import caseSaga from './caseSaga'
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -42,5 +43,6 @@ export default function* rootSaga() {
     noteSaga(),
     eventSaga(),
     bondSaga(),
+    caseSaga(),
   ]);
 }

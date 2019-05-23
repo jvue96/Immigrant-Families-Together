@@ -4,6 +4,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* postChildren(action) {
 
     try {
+        console.log('CHILDREN POST PAYLOAD', action.payload);
         
         yield axios.post(`/api/forms/children`, action.payload);
     
