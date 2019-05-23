@@ -34,10 +34,8 @@ class BioForm extends Component {
             reference_date:'',
             passport: true,
             us_id: true,
-
-
         }
-    }
+    };
 
     autoPopulate=()=>{
         const searchObject = qs.parse(this.props.location.search)
