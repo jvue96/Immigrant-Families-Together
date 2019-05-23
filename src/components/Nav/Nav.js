@@ -39,8 +39,11 @@ const Nav = (props) => {
             }
             
                 </div>
-                {/* subnav for volunteer pages will go here */}
-                <SubNav />
+        {props.volunteer ? 
+                <SubNav />:
+               <>
+               </>
+            }
                 </>
                 )
 }
