@@ -39,7 +39,7 @@ import VolunteerLanding from "../VolunteerViews/VolunteerLanding";
 import BioMedical from '../VolunteerViews/Bio/BioMedical'
 import Bio from '../VolunteerViews/Bio/Bio'
 import BioHousing from '../VolunteerViews/Bio/BioHousing'
-import BioIdentify from '../VolunteerViews/Bio/BioIdentify'
+//import BioIdentify from '../VolunteerViews/Bio/BioIdentify'
 import BioSchool from '../VolunteerViews/Bio/BioSchool'
 import BioFamilyInfo from '../VolunteerViews/Bio/BioFamilyInfo'
 import VolunteerNotes from '../VolunteerViews/Notes/Notes'
@@ -223,11 +223,11 @@ class App extends Component {
               path="/bio-school"
               component={BioSchool}
             />
-            <ProtectedRoute
+            {/* <ProtectedRoute
               exact
               path="/bio-identification"
               component={BioIdentify}
-            />
+            /> */}
             <ProtectedRoute
               exact
               path="/volunteer-events"
