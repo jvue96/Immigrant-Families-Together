@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import Nav from '../../../Nav/Nav'
 
 class LegalStatusForm extends Component {
 
@@ -56,12 +57,8 @@ class LegalStatusForm extends Component {
     render() {
         return (
             <div>
+                <Nav pageName='LEGAL STATUS FORM' home='/home'/>
                 <center>
-                    <div>
-                        <h1>
-                            LEGAL STATUS FORM
-                        </h1>
-                    </div>
                     <div className="formDivs">
                         <label>LAST COURT DATE</label> 
                         <input 

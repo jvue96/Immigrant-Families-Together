@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import Nav from '../../../Nav/Nav';
 
 class ChildForm extends Component {
 
@@ -69,14 +70,10 @@ class ChildForm extends Component {
 
         return (
           <div>
+              <Nav pageName='CHILDREN FORM' home='/home'/>
               <center>
-                    <div>
-                        <h1>
-                            CHILDREN FORM 
-                        </h1>
                         {/* UN COMMENT TO TEST IF DATA IS IN childrenReducer */}
                         {/* {JSON.stringify(this.props.reduxState.childrenReducer)} */}
-                    </div>
                     <div className="formDivs">
 
                     <label>NAME</label> 

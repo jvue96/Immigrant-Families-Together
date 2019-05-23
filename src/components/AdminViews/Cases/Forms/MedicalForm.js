@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import Nav from '../../../Nav/Nav'
 
 class MedicalForm extends Component {
    
@@ -69,12 +70,9 @@ class MedicalForm extends Component {
     render() {
         return (
             <div>
+                <Nav pageName='MEDICAL FORM' home='/home'/>
+
                 <center>
-                    <div>
-                        <h1>
-                            MEDICAL FORM 
-                        </h1>
-                    </div>
                     <div className="formDivs">
                         
                         <label>PRIMARY DOCTOR NAME</label> 

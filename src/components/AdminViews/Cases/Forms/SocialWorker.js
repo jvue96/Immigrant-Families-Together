@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Nav from '../../../Nav/Nav'
 
 class SocialWorker extends Component {
 
@@ -10,12 +11,9 @@ class SocialWorker extends Component {
     render() {
         return (
             <div>
+                <Nav pageName='SOCIAL WORKER FORM' home='/home'/>
                  <center>
-                    <div>
-                        <h1>
-                            SOCIAL WORKER FORM
-                        </h1>
-                    </div>
+                   
                     <div className="formDivs">
                         <label>NAME</label> 
                         <input type="text" /> 

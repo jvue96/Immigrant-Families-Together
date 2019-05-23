@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Nav from '../../../Nav/Nav'
 class IceFacility extends Component {
 
     next = () => {
@@ -9,12 +9,9 @@ class IceFacility extends Component {
     render() {
         return (
             <div>
+                <Nav pageName='ICE FACILITY' home='/home'/>
+
                  <center>
-                    <div>
-                        <h1>
-                            ICE FACILITY
-                        </h1>
-                    </div>
                     <div className="formDivs">
                         <label>NAME</label> 
                         <input type="text" /> 
