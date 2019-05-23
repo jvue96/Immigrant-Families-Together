@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 // import AidSocial from "./AidSocial";
 // import AidGrocery from "./AidGrocery";
 // import AidFund from "./AidFund";
+import Nav from '../../Nav/Nav'
+
+
+
+
+
 
 class Aid extends Component {
 
     socialPages = () => {
-        this.props.history.push('/aid-social')
+        this.props.history.push(`/aid-social?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     groceryPages = () => {
-        this.props.history.push('/aid-grocery')
+        this.props.history.push(`/aid-grocery?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     fundPages = () => {
-        this.props.history.push('/aid-fund')
+        this.props.history.push(`/aid-fund?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
 
     // state = {
@@ -40,10 +48,9 @@ class Aid extends Component {
 
         return (
             <div>
+                 <Nav pageName='AID' volunteer home='/home' /> 
+
                 <center> 
-                <div> AID </div>
-                <div>
-                </div>
                 {/* <button 
                 onClick={this.viewSelectedButton('button')}
                 value={"social"}
@@ -70,4 +77,9 @@ class Aid extends Component {
     }
 }
 
-export default Aid;
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+});
+  
+  // this allows us to use <App /> in index.js
+  export default withRouter(connect(mapReduxStateToProps)(Aid));

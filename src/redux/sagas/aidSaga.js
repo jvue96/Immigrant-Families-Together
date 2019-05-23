@@ -12,10 +12,12 @@ console.log(`error posting to DB:`, error);
 }
 }
 
-function* getAid(action) {
+function* getAid(parse) {
+    console.log('LEGAL ICE FACILITY INFO payload', parse.payload);
+    const case_id = parse.payload;
     try{
-        console.log('GET info for aid', action);
-        const getResponse = yield axios.get('/api/forms/aid');
+        console.log('GET info for aid', case_id);
+        const getResponse = yield axios.get(`/api/forms/aid/${case_id}`);
         const action = {type: 'SET_AID', payload: getResponse.data};
         yield put(action);
     }catch (error) {

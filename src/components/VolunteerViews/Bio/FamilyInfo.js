@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-
+import Nav from '../../Nav/Nav'
+ 
 class FamilyInfo extends Component {
     render() {
         return (
             <div>
+                <Nav pageName='FAMILY INFO' volunteer home='/home' />
                 <center>
-                    <div> <h3> FAMILY INFO </h3> </div>
                     <p> display in cards and map? </p>
 
                     <p> NAME: </p>

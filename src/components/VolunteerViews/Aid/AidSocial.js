@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav'
+import qs from 'query-string';
+
 
 class AidSocial extends Component {
 
     componentDidMount = () => {
-        this.props.dispatch({ type: 'GET_AID' });
-        console.log('GET_AID', this.props.reduxState.aidReducer);
+        const searchObject = qs.parse(this.props.location.search)
+        console.log('GENERAL BioMedical searchObject', searchObject.id);
+        this.props.dispatch({ type: 'GET_AID', payload: searchObject.id });
     }
     
     render() {
         return (
             <div>
+                 <Nav pageName='SOCIAL WORKER' volunteer home='/home' /> 
+
                 <center>
-                    <div>
-                        <h1>
-                            SOCIAL WORKER 
-                        </h1>
-                    </div>
+                   
 
                     <div>{this.props.reduxState.aidReducer.map(aid =>
                 <div>
