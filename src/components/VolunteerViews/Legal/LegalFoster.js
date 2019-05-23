@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav'
 
 class LegalFoster extends Component {
 
@@ -11,12 +12,9 @@ class LegalFoster extends Component {
     render() {
         return (
             <div>
+ <Nav pageName='FOSTER FACILITY' volunteer home='/home' /> 
+
                 <center>
-                    <div>
-                        <h1>
-                            FOSTER FACILITY
-                        </h1>
-                    </div>
 
                     <div>{this.props.reduxState.bondReducer.map(bond =>
                     <div>

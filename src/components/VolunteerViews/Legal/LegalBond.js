@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav'
+
 
 class LegalBond extends Component {
 
@@ -11,13 +13,8 @@ class LegalBond extends Component {
     render() {
         return (
             <div>
+                 <Nav pageName='BOND INFO' volunteer home='/home' /> 
                <center>
-                    <div>
-                        <h1>
-                            BOND INFO
-                        </h1>
-                    </div>
-
                     <div>{this.props.reduxState.bondReducer.map(bond =>
                     <div>
                         <p className="bioDivs">BOND AMOUNT: {bond.bond_amount}</p>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav'
 
 class LegalStatus extends Component {
 
@@ -10,13 +11,8 @@ class LegalStatus extends Component {
     render() {
         return (
             <div>
+             <Nav pageName='LEGAL STATUS' volunteer home='/home' /> 
                 <center>
-                    <div>
-                        <h1>
-                            LEGAL STATUS
-                        </h1>
-                    </div>
-
                     <div>{this.props.reduxState.legalReducer.map(legal =>
                 <div>
 <p className="bioDivs">LAST COURT DATE: {legal.last_court_date}</p>
