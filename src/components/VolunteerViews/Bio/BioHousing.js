@@ -19,16 +19,17 @@ class BioHousing extends Component {
             <center>
 
 
-<div>{this.props.reduxState.housingReducer.map(housing =>
-<div>
-<p className="bioDivs">ADDRESS: {housing.address}</p>
-<p className="bioDivs">MONTLY RENT: {housing.rent}</p>
-<p className="bioDivs">RENT PAID BY: {housing.rent_paid_by}</p>
-<p className="bioDivs">UTILITIES: {housing.utilities}</p>
-<p className="bioDivs">LIVING WITH FAMILY: {housing.living_with_family}</p>
-</div>
-)}
-</div>
+                <div>
+                {this.props.reduxState.housingReducer.map(housing =>
+                    <div>
+                        <p className="bioDivs">ADDRESS: {housing.address}</p>
+                        <p className="bioDivs">MONTLY RENT: {housing.rent}</p>
+                        <p className="bioDivs">RENT PAID BY: {housing.rent_paid_by}</p>
+                        <p className="bioDivs">UTILITIES: {housing.utilities}</p>
+                        <p className="bioDivs">LIVING WITH FAMILY: {housing.living_with_family}</p>
+                    </div>
+                )}
+                </div>
 
 
 
