@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav'
+import qs from 'query-string';
 
 class LegalStatus extends Component {
 
     componentDidMount = () => {
-        this.props.dispatch({ type: 'GET_LEGAL' });
-        console.log('GET_LEGAL', this.props.reduxState.legalReducer);
+        const searchObject = qs.parse(this.props.location.search)
+        console.log('LEGAL STATUS searchObject', searchObject.id);
+        this.props.dispatch({ type: 'GET_LEGAL', payload: searchObject.id });
     }
     render() {
         return (
             <div>
+             <Nav pageName='LEGAL STATUS' volunteer home='/home' /> 
                 <center>
-                    <div>
-                        <h1>
-                            LEGAL STATUS
-                        </h1>
-                    </div>
-
                     <div>{this.props.reduxState.legalReducer.map(legal =>
                 <div>
 <p className="bioDivs">LAST COURT DATE: {legal.last_court_date}</p>

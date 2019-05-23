@@ -1,37 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav'
 
 class Events extends Component {
     componentDidMount = () => {
         this.props.dispatch({ type: 'GET_EVENT' });
         console.log('GET_EVENT', this.props.reduxState.eventReducer);
     }
-
-    
     newEvent = () => {
         console.log(`clicked add event! `);
         this.props.history.push('/add-event')
     }
-
     render() {
         return (
             <div>
-
-                <div className="nav">
-                <div className="navLeft2" onClick={this.backButton}>
-                    <i class="fas fa-chevron-left"></i>
-                </div>
-                <div className="navTitle">
-                    <h2 className="navH2">EVENTS</h2>
-                </div>
-                <div className="navRight">
-                <Link to="/home">
-                    <i class="fas fa-home"></i>
-                </Link>
-                </div>
-                </div>
-
+ <Nav pageName='EVENTS' volunteer home='/home' /> 
                 <center>
                     <button className="midButton" onClick={this.newEvent}>NEW EVENT</button> 
 

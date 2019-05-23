@@ -2,41 +2,46 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css';
-
+import SubNav from '../SubNav/SubNav'
+import '../App/App.css'
 const Nav = (props) => {
     return (
-        <div className="nav">
-            {props.backArrow ?
-                <div className="navLeft2"
-                    onClick={() => { props.history.push(props.backArrow) } }>
-                    <i className="fas fa-chevron-left"></i>
-                </div>
-                :
-                <div className="navLeft2"
-                    onClick={() => { props.history.goBack() }}>
-                    <i className="fas fa-chevron-left"></i>
-                </div>
-            }
-            <div className="navTitle">
-                <h2 className="navH2">{props.pageName}</h2>
-            </div>
-
-            <div className="navRight2">
-                {props.home ?
-                    <Link to={props.home}>
-                        <i className="fas fa-home"></i>
-                    </Link>
+        <>
+            <div className="nav">
+                {props.backArrow ?
+                    <div className="navLeft2"
+                        onClick={() => { props.history.push(props.backArrow) }}>
+                        <i className="fas fa-chevron-left"></i>
+                    </div>
                     :
-                    <Link to='/home'>
-                        <LogOutButton className="nav-link" />
-                    </Link>
+                    <div className="navLeft2"
+                        onClick={() => { props.history.goBack() }}>
+                        <i className="fas fa-chevron-left"></i>
+                    </div>
                 }
+                <div className="navTitle">
+                    <h2 className="navH2">{props.pageName}</h2>
+                </div>
 
-
+                <div className="navRight2">
+                    {props.home ?
+                        <Link to={props.home}>
+                            <i className="fas fa-home"></i>
+                        </Link>
+                        :
+                        <Link to='/home'>
+                            <LogOutButton className="nav-link" />
+                        </Link>
+                    }
+                </div>
             </div>
+            {props.volunteer ?
+                <SubNav /> :
+                <>
+                </>
             }
-                </div>)
+        </>
+    )
 }
 
 // const Nav = (props) => (

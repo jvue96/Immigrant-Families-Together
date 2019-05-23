@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav'
+import qs from 'query-string';
+
 
 class LegalFoster extends Component {
 
     componentDidMount = () => {
-        this.props.dispatch({ type: 'GET_BOND' });
-        console.log('GET_BOND', this.props.reduxState.bondReducer);
+        const searchObject = qs.parse(this.props.location.search)
+        console.log('BOND searchObject', searchObject.id);
+        this.props.dispatch({ type: 'GET_BOND', payload: searchObject.id });
     }
 
     render() {
         return (
             <div>
+ <Nav pageName='FOSTER FACILITY' volunteer home='/home' /> 
+
                 <center>
-                    <div>
-                        <h1>
-                            FOSTER FACILITY
-                        </h1>
-                    </div>
 
                     <div>{this.props.reduxState.bondReducer.map(bond =>
                     <div>
