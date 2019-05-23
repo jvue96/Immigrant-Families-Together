@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import qs from 'query-string';
 
 class BioFamilyInfo extends Component {
 
     componentDidMount = () => {
-        this.props.dispatch({ type: 'GET_BIO_INFO' });
-        console.log('GET_BIO_INFO', this.props.reduxState.familyReducer);
+        const searchObject = qs.parse(this.props.location.search)
+        console.log('GENERAL BIO searchObject', searchObject.id);
+        this.props.dispatch({ type: 'GET_BIO_INFO', payload: searchObject.id });
+        console.log('GET_BIO_INFO', this.props.reduxState.bioReducer);
     }
     
     render() {

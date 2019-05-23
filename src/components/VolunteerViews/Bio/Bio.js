@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 // import BioFamilyInfo from './BioFamilyInfo';
 // import BioIdentify from "./BioIdentify";
 // import BioSchool from "./BioSchool";
@@ -8,20 +10,22 @@ import React, { Component } from 'react';
 
 class Bio extends Component {
 
-    infoPages = () => {
-        this.props.history.push('/bio-family-info')
+    infoPages = (event) => {
+        console.log('PAYLOAF FOR GET FAMILY INFO', event.currentTarget.value);
+        // this.props.dispatch({type: 'GET_CURRENT_ID', payload: event.currentTarget.value})
+        this.props.history.push(`/bio-family-info?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     housingPages = () => {
-        this.props.history.push('/bio-housing')
+        this.props.history.push(`/bio-housing?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     medicalPages = () => {
-        this.props.history.push('/bio-medical')
+        this.props.history.push(`/bio-medical?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     schoolPages = () => {
-        this.props.history.push('/bio-school')
+        this.props.history.push(`/bio-school?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     identificationPages = () => {
-        this.props.history.push('/bio-identification')
+        this.props.history.push(`/bio-identification?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     
     state = {
@@ -86,7 +90,7 @@ class Bio extends Component {
 
                     {div} */}
                     <div>
-                        <button className="adminMenuButtons" onClick={this.infoPages}>GENERAL BIO</button>
+                        <button className="adminMenuButtons" onClick={this.infoPages} value={this.props.reduxState.caseIdReducer[0].id}>GENERAL BIO</button>
                         <button className="adminMenuButtons" onClick={this.housingPages}>HOUSING</button>
                         <button className="adminMenuButtons" onClick={this.medicalPages}>MEDICAL</button>
                         <button className="adminMenuButtons" onClick={this.schoolPages}>SCHOOL</button>
@@ -98,4 +102,9 @@ class Bio extends Component {
     }
 }
 
-export default Bio;
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+});
+  
+  // this allows us to use <App /> in index.js
+  export default withRouter(connect(mapReduxStateToProps)(Bio));
