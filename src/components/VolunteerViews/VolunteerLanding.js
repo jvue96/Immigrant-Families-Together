@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class VolunteerLanding extends Component {
 
     componentDidMount = () => {
-        this.props.dispatch({ type: 'GET_MEDICAL' });
+        // this.props.dispatch({ type: 'GET_MEDICAL' });
         this.props.dispatch({ type: 'GET_CASES' });
         console.log('GET_MEDICAL', this.props.reduxState.medicalReducer);
     }

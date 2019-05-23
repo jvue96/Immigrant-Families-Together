@@ -11,10 +11,12 @@ function* postSchool(action) {
     }
   }
 
-  function* getSchool(action) {
+  function* getSchool(parse) {
+    console.log('family school info payload', parse.payload);
+    const case_id = parse.payload;
     try{
-        console.log('GET info for school', action);
-        const getResponse = yield axios.get('/api/forms/school');
+        console.log('GET info for school', case_id);
+        const getResponse = yield axios.get(`/api/forms/school/${case_id}`);
         const action = {type: 'SET_SCHOOL', payload: getResponse.data};
         yield put(action);
     }catch (error) {
