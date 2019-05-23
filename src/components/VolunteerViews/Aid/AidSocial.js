@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from '../../Nav/Nav'
 
 class AidSocial extends Component {
 
@@ -11,12 +12,10 @@ class AidSocial extends Component {
     render() {
         return (
             <div>
+                 <Nav pageName='SOCIAL WORKER' volunteer home='/home' /> 
+
                 <center>
-                    <div>
-                        <h1>
-                            SOCIAL WORKER 
-                        </h1>
-                    </div>
+                   
 
                     <div>{this.props.reduxState.aidReducer.map(aid =>
                 <div>

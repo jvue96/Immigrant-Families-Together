@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 // import AidSocial from "./AidSocial";
 // import AidGrocery from "./AidGrocery";
 // import AidFund from "./AidFund";
+import Nav from '../../Nav/Nav'
+
+
+
+
+
 
 class Aid extends Component {
 
@@ -40,10 +46,9 @@ class Aid extends Component {
 
         return (
             <div>
+                 <Nav pageName='AID' volunteer home='/home' /> 
+
                 <center> 
-                <div> AID </div>
-                <div>
-                </div>
                 {/* <button 
                 onClick={this.viewSelectedButton('button')}
                 value={"social"}
