@@ -30,22 +30,22 @@ class Case extends Component {
     // }
 
     eventsPages = () => {
-        this.props.history.push('/volunteer-events')
+        this.props.history.push(`/volunteer-events?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     notesPages = () => {
-        this.props.history.push('/volunteer-notes')
+        this.props.history.push(`/volunteer-notes?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     bioPages = () => {
-        this.props.history.push(`/bio?id=${this.props.reduxState.caseIdReducer.id}`)
+        this.props.history.push(`/bio?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     legalPages = () => {
-        this.props.history.push('/volunteer-legal')
+        this.props.history.push(`/volunteer-legal?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     aidPages = () => {
-        this.props.history.push('/volunteer-aid')
+        this.props.history.push(`/volunteer-aid?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     teamPages = () => {
-        this.props.history.push('/volunteer-team')
+        this.props.history.push(`/volunteer-team?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
 
     render() {

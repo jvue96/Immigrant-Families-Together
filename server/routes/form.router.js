@@ -49,9 +49,11 @@ router.post('/medical', (req, res) => {
     })
   });
 
-router.get('/medical', (req, res) => {
+router.get('/medical/:id', (req, res) => {
     console.log('Getting all medical info');
-    pool.query(`SELECT * FROM "medical"`)
+    console.log('Getting current id FOR BIO MEDICAL INFO', req.params.id);
+    const sqlText = `SELECT * FROM "medical" WHERE "case_id" = $1`
+    pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {
@@ -75,9 +77,11 @@ router.get('/medical', (req, res) => {
       })
   })
 
-  router.get('/bio', (req, res) => {
+  router.get('/bio/:id', (req, res) => {
     console.log('Getting all bio info');
-    pool.query(`SELECT * FROM "primary_individual"`)
+    console.log('Getting current id FOR BIO FAMILY INFO', req.params.id);
+    const sqlText = `SELECT * FROM "primary_individual" WHERE "case_id" = $1`
+    pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {

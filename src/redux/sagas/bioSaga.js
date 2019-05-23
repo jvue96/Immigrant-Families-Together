@@ -12,14 +12,16 @@ console.log(`error posting to DB:`, error);
 }
 }
 
-function* getBioSaga(action) {
+function* getBioSaga(kitty) {
+    console.log('family bio info payload', kitty.payload);
+    const taco = kitty.payload;
     try{
-        console.log('GET info from bio form', action);
-        const getResponse = yield axios.get('/api/forms/bio');
+        console.log('GET info from bio form', taco);
+        const getResponse = yield axios.get(`/api/forms/bio/${taco}`);
         const action = {type: 'SET_BIO', payload: getResponse.data};
         yield put(action);
     }catch (error) {
-        console.log(`Couldn't get the bio form information`);
+        console.log(`Couldn't get the bio form information`, error);
         alert(`Sorry couldn't get the information from the bio forms. Try again later.`)
     }
 }
