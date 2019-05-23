@@ -36,7 +36,7 @@ const Nav = (props) => {
 
 
             </div>
-            }
+            
             
                 </div>
         {props.volunteer ? 

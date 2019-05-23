@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-
+import Nav from '../../../Nav/Nav'
 class CreateCase extends Component {
     
     next = (event) => {
@@ -53,12 +53,9 @@ class CreateCase extends Component {
     render() {
         return (
             <div>
+                <Nav pageName='CREATE CASE' home='/home' /> 
                 <center>
-                    <div>
-                        <h1>
-                            CREATE A NEW CASE 
-                        </h1>
-                    </div>
+                 
                     <div className="formDivs">
                         
                         <label>LAST NAME</label> <br/>
