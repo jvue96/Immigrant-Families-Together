@@ -14,8 +14,22 @@ function* registerUser(action) {
   }
 }
 
+function* getUser(action) {
+  try{
+    console.log('GET all volunteers', action);
+    const getResponse = yield axios.get('/api/user/register');
+    const action = {type: 'SET_VOLUNTEER', payload: getResponse.data};
+    yield put(action);
+}catch (error) {
+    console.log(`Couldn't get all the volunteers`);
+    alert(`Sorry couldn't get all the volunteers. Try again later.`)
+}
+}
+
+
 function* registrationSaga() {
   yield takeLatest('ADD_NEW_VOLUNTEER', registerUser);
+  yield takeLatest('GET_ALL_VOLUNTEER', getUser);
 }
 
 export default registrationSaga;
