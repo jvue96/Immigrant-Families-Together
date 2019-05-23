@@ -31,7 +31,7 @@ class VolunteerLanding extends Component {
     render() {
         return (
             <div>
-                <Nav pageName='VOLUNTEER LANDING' />
+                <Nav volunteer pageName='VOLUNTEER LANDING' />
 
                 <center> 
                     <label>SEARCH: </label>
