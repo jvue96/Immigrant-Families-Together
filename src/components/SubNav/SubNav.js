@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {withRouter, Link} from 'react-router-dom';
-import '../Nav/Nav.css'
+import '../App/App.css'
 const SubNav = () => {
         return (
             <div className="subnavbar">

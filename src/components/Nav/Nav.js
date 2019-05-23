@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css';
 import SubNav from '../SubNav/SubNav'
+import '../App/App.css'
 const Nav = (props) => {
     return (
         <>
