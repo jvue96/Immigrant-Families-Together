@@ -5,7 +5,12 @@ class VolunteerLanding extends Component {
 
     componentDidMount = () => {
         this.props.dispatch({ type: 'GET_MEDICAL' });
+        this.props.dispatch({ type: 'GET_CASES' });
         console.log('GET_MEDICAL', this.props.reduxState.medicalReducer);
+    }
+
+    state = {
+        hello: 'hello', 
     }
 
     searchBy = () => {
@@ -14,8 +19,11 @@ class VolunteerLanding extends Component {
         // this basic set up does not impliment on click of name, go to their file. 
     }
 
-    viewCase = () => {
-        this.props.history.push('/case/events')
+    viewCase = (event) => {
+        
+        console.log(event.target.dataset.value);
+        this.props.dispatch({type: 'GET_CURRENT_ID', payload: event.target.dataset.value})
+        this.props.history.push(`/case/events?id=${event.target.dataset.value}`)
     }
 
     
@@ -31,37 +39,35 @@ class VolunteerLanding extends Component {
                     <input style={{width: 150, height: 20}} type="text" placeholder="CASE NUMBER / NAME" /> <br/>
                     <button onClick={this.searchBy}> SEARCH </button> 
 
-                    <p>NOTE: will volunteer click on name? a box? what's the visual to indicate clicking/selecting </p>
-                    <p>click "Vue" to go to tabs for individual case </p>
+                    {/* {JSON.stringify(this.props.reduxState.allCasesReducer)} */}
+                  
 
                     {/* show all cases assigned to volunteer */}
-                    <table>
+                    {this.props.reduxState.allCasesReducer.map( (cases, index) => {
+                    return (
+                    <table key={index}>
                         <thead>
                             <tr>
                                 <td>LAST NAME</td>
-                                <td>FIRST NAME</td>
+                                <td>ID NUMBER</td>
                             </tr>
                         </thead>
                     {/* map over cases assigned to volunteer */}
                         <tbody>
                             <tr>
-                                <td onClick={this.viewCase}>VUE</td>
-                                <td>JUNO</td>
-                            </tr>
-                            <tr>
-                                <td>RAGSDALE</td>
-                                <td>BEN</td>
-                            </tr>
-                            <tr>
-                                <td>DOUGLAS</td>
-                                <td>KINGMAN</td>
-                            </tr>
-                            <tr>
-                                <td>SCHLACHTENHAUFEN</td>
-                                <td>JOE</td>
+                                <td 
+                                data-value={cases.id}
+                                onClick={this.viewCase}>
+                                    {cases.case_last_name}
+                                </td>
+                                <td>
+                                    {cases.case_number}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
+                      )
+                    })}  
                 </center>
             </div>
         );
@@ -70,6 +76,6 @@ class VolunteerLanding extends Component {
 
 const mapReduxStateToProps = (reduxState) => ({
     reduxState
-    });
+});
 
 export default connect(mapReduxStateToProps)(VolunteerLanding);

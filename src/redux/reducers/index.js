@@ -15,6 +15,8 @@ import noteReducer from './noteReducer';
 import eventReducer from './eventReducer';
 import bondReducer from './bondReducer';
 import caseReducer from './caseReducer';
+import allCasesReducer from "../reducers/allCasesReducer"; 
+import caseIdReducer from "../reducers/caseIdReducer"; 
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -39,6 +41,8 @@ const rootReducer = combineReducers({
   eventReducer,
   bondReducer,
   caseReducer,
+  allCasesReducer,
+  caseIdReducer, 
 });
 
 export default rootReducer;

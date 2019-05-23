@@ -313,5 +313,31 @@ router.post('/case', (req, res) => {
     })
 })
 
+router.get('/all-cases', (req, res) => {
+  console.log(`Getting all cases`);
+  pool.query(`SELECT * FROM cases`)
+  .then((results) => {
+      res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting the information from the cases table', error);
+      res.sendStatus(500);
+  })
+})
+
+/*  */
+router.get('/all-cases/:id', (req, res) => {
+  console.log(`234p98234 REQ PARAMS ID `, req.params.id);
+  console.log(`Getting all cases`);
+  const sqlText = `SELECT * FROM cases WHERE id = $1 `;
+  pool.query(sqlText, [req.params.id])
+  .then((results) => {
+      res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting the information from the cases table', error);
+      res.sendStatus(500);
+  })
+
+  
+})
 
 module.exports = router;
