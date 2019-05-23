@@ -19,7 +19,7 @@ const Nav = (props) => {
                 </div>
             }
             <div className="navTitle">
-                <h2 className="navH2">{props.siteName}</h2>
+                <h2 className="navH2">{props.pageName}</h2>
             </div>
 
             <div className="navRight2">

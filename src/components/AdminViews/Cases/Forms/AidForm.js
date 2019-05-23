@@ -50,7 +50,8 @@ class AidForm extends Component {
     render() {
         return (
             <div>
-                <Nav />
+            <Nav pageName='AID FORM' backArrow='/cases' home='/cases' />
+
                 <center>
                     <div className="formDivs">
                         

@@ -28,7 +28,7 @@ class AdminLanding extends Component {
     render() {
         return (
             <div>
-                <Nav siteName='ADMIN'/>
+                <Nav pageName='ADMIN'/>
                 
                 <center>
                     <div>
