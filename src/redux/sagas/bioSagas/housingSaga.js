@@ -11,10 +11,12 @@ function* postHousing(action) {
     }
   }
 
-  function* getHousing(action) {
+  function* getHousing(parse) {
+    console.log('family bio info payload', parse.payload);
+    const case_id = parse.payload;
     try{
-        console.log('GET info for housing', action);
-        const getResponse = yield axios.get('/api/forms/housing');
+        console.log('GET info for housing', case_id);
+        const getResponse = yield axios.get(`/api/forms/housing/${case_id}`);
         const action = {type: 'SET_HOUSING', payload: getResponse.data};
         yield put(action);
     }catch (error) {
