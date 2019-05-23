@@ -7,9 +7,11 @@ class Volunteers extends Component {
         this.props.dispatch({ type: 'GET_ALL_VOLUNTEER' });
     }
 
-    viewVolunteer = () => {
+    viewVolunteer = (event) => {
         console.log(`hit view volunteer!`);
-        this.props.history.push('/volunteer-landing')
+        console.log(`!!!!0o9i8765`,event.target.dataset.value);
+        // this.props.history.push('/volunteer-landing')
+        this.props.history.push(`/volunteer-bio?id=${event.target.dataset.value}`)
     }
 
     searchBy = () => {
@@ -40,6 +42,7 @@ class Volunteers extends Component {
 
             {this.props.reduxState.volunteerReducer.map( (users, index) => {
                     return (
+    
                     <table key={index}>
                         <thead>
                             <tr>

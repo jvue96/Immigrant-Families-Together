@@ -26,10 +26,25 @@ function* getUser(action) {
 }
 }
 
+function* getVolBio(parse) {
+  console.log('VOLUNTEER BIO payload', parse.payload);
+  const user_id = parse.payload;
+  try{
+    console.log('GET info for VOLUNTEER BIO', user_id);
+    const getResponse = yield axios.get(`/api/user/register/${user_id}`);
+    const action = {type: 'SET_VOLUNTEER_BIO', payload: getResponse.data};
+    yield put(action);
+  }
+  catch{
+
+  }
+}
+
 
 function* registrationSaga() {
   yield takeLatest('ADD_NEW_VOLUNTEER', registerUser);
   yield takeLatest('GET_ALL_VOLUNTEER', getUser);
+  yield takeLatest('GET_VOLUNTEER_BIO', getVolBio);
 }
 
 export default registrationSaga;
