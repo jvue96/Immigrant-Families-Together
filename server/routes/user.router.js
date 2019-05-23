@@ -44,6 +44,16 @@ router.post('/login', userStrategy.authenticate('local'), (req, res) => {
   res.sendStatus(200);
 });
 
+router.get('/register', (req, res) => {
+  console.log('Getting all volunteers');
+  pool.query(`SELECT * FROM "user"`)
+  .then((results) => {
+      res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting the volunteers', error);
+  })
+  })
+
 // clear all server session information about this user
 router.post('/logout', (req, res) => {
   // Use passport's built-in method to log out the user

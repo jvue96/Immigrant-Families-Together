@@ -17,6 +17,7 @@ import bondReducer from './bondReducer';
 import caseReducer from './caseReducer';
 import allCasesReducer from "../reducers/allCasesReducer"; 
 import caseIdReducer from "../reducers/caseIdReducer"; 
+import volunteerReducer from '../reducers/volunteerReducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -43,6 +44,7 @@ const rootReducer = combineReducers({
   caseReducer,
   allCasesReducer,
   caseIdReducer, 
+  volunteerReducer,
 });
 
 export default rootReducer;
