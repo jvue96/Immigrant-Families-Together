@@ -13,19 +13,17 @@
   background-color: #000000;
 }
 
-.subnavigation{
+.subNavSection{
   display: inline-block;
-  background-color: #000000;
-  height:40px;
   width: 16.6%;
 }
 
-.subh2nav {
+.subNavSection a  {
+  text-decoration: none;
   font-family: 'Heebo', sans-serif;
   letter-spacing: 1px;
   text-align: center;
-  margin-top: 18px;
-  margin-bottom: auto;
-  font-size: 8px;
   color: #ffffff;
+  font-size: .75em;
+  padding-top: 3px;
 }

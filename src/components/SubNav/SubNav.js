@@ -1,33 +1,43 @@
-// import React, { Component } from 'react';
-// import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {withRouter, Link} from 'react-router-dom';
+import '../Nav/Nav.css'
+const SubNav = () => {
+        return (
+            <div className="subnavbar">
+            <div className="subNavSection">
+            <Link to='/events'>     
+                <h3>EVENTS</h3>
+                    </Link>
+            </div>
+            <div className="subNavSection">
+            <Link to='/events'>  
+                <h3>BIO</h3>
+                </Link>
+            </div>
+            <div className="subNavSection">
+            <Link to='/events'>  
+                <h3>LEGAL</h3>
+                </Link>
+            </div>
+            <div className="subNavSection">
+            <Link to='/events'>  
+                <h3>AID</h3>
+                </Link>
+            </div>
+            <div className="subNavSection">
+            <Link to='/events'>  
+                <h3>TEAM</h3>
+                </Link>
+            </div>
+            <div className="subNavSection">
+            <Link to='/events'>  
+                <h3>NOTES</h3>
+                </Link>
+            </div>
+            </div>
+        )
+    }
 
-
-// class SubNav extends Component {
-
-//     render() {
-//         return (
-//             <div className="subnavbar">
-//             <div className="navigation" onClick={this.toResumePage}>
-//                 <h2 className="h2nav">EVENTS</h2>
-//             </div>
-//             <div className="navigation"onClick={this.toWorkPage}>
-//                 <h2 className="h2nav">BIO</h2>
-//             </div>
-//             <div className="subavigation"onClick={this.toDevPage}>
-//                 <h2 className="h2nav">LEGAL</h2>
-//             </div>
-//             <div className="navigation" onClick={this.toResumePage}>
-//                 <h2 className="subh2nav">AID</h2>
-//             </div>
-//             <div className="navigation"onClick={this.toWorkPage}>
-//                 <h2 className="h2nav">TEAM</h2>
-//             </div>
-//             <div className="navigation"onClick={this.toDevPage}>
-//                 <h2 className="h2nav">NOTES</h2>
-//             </div>
-//             </div>
-//         );
-//     }
-
-// export default connect(mapStateToProps)(SubNav);
+export default withRouter(SubNav);
   

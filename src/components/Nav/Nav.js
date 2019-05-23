@@ -3,9 +3,10 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
-
+import SubNav from '../SubNav/SubNav'
 const Nav = (props) => {
     return (
+        <>
         <div className="nav">
             {props.backArrow ?
                 <div className="navLeft2"
@@ -36,7 +37,12 @@ const Nav = (props) => {
 
             </div>
             }
-                </div>)
+            
+                </div>
+                {/* subnav for volunteer pages will go here */}
+                <SubNav />
+                </>
+                )
 }
 
 // const Nav = (props) => (
