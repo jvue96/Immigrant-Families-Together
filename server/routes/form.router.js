@@ -41,7 +41,7 @@ router.post('/medical', (req, res) => {
   router.get('/legal/:id', (req, res) => {
     console.log('Getting all legal status info');
     console.log('Getting LEGAL STATUS INFORMATION ID', req.params.id);
-    const sqlText = `SELECT * FROM "legal_status"WHERE "case_id" = $1;`
+    const sqlText = `SELECT * FROM "legal_status" WHERE "case_id" = $1;`
     pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
@@ -158,9 +158,11 @@ router.get('/medical/:id', (req, res) => {
       })
   })
 
-  router.get('/aid', (req, res) => {
+  router.get('/aid/:id', (req, res) => {
     console.log('Getting all aid info');
-    pool.query(`SELECT * FROM "aid"`)
+    console.log('Getting AID INFORMATION ID', req.params.id);
+    const sqlText = `SELECT * FROM "aid" WHERE "case_id" = $1`
+    pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {
