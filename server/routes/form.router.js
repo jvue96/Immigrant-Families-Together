@@ -309,9 +309,11 @@ router.post('/housing', (req, res) => {
     })
 })
 
-router.get('/housing', (req, res) => {
+router.get('/housing/:id', (req, res) => {
     console.log('Getting all housing info');
-    pool.query(`SELECT * FROM "housing"`)
+    console.log('Getting HOUSING INFORMATION ID', req.params.id);
+    const sqlText = `SELECT * FROM "housing" WHERE "case_id" = $1`
+    pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {
