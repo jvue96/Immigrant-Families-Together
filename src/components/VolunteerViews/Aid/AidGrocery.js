@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../Nav/Nav'
+import qs from 'query-string';
 
 class AidGrocery extends Component {
 
     componentDidMount = () => {
-        this.props.dispatch({ type: 'GET_AID' });
-        console.log('GET_AID', this.props.reduxState.aidReducer);
+        const searchObject = qs.parse(this.props.location.search)
+        console.log('GENERAL BioMedical searchObject', searchObject.id);
+        this.props.dispatch({ type: 'GET_AID', payload: searchObject.id });
     }
     
     render() {
@@ -16,7 +18,8 @@ class AidGrocery extends Component {
                 <center>                    
                     <div>{this.props.reduxState.aidReducer.map(aid =>
                 <div>
-<p className="bioDivs">GROCERY PROGRAM: {aid.grocery_program}</p>
+{/* <p className="bioDivs">GROCERY PROGRAM: {aid.grocery_program}</p> */}
+<p className="bioDivs">GROCERY PROGRAM: NEED TO GET BOOLEANS WORKING</p>
 <p className="bioDivs">GROCERY PROGRAM VOLUNTEER: {aid.grocery_program_volunteer}</p>
                 </div>
 )}

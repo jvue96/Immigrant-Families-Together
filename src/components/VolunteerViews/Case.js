@@ -3,6 +3,8 @@ import { Switch, Route, Link } from "react-router-dom";
 import "./Volunteer.css";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import qs from 'query-string';
+
 // import Notes from "./Notes/Notes";
 // import Bio from "./Bio/Bio";
 // import Legal from "./Legal/Legal";
@@ -12,23 +14,38 @@ import { withRouter } from 'react-router';
 
 class Case extends Component {
 
+    // componentDidMount = () => {
+    //     const searchObject = qs.parse(this.props.location.search)
+    //     console.log('searchObject', searchObject);
+    //     this.setState({
+    //         case:{
+    //             ...this.state.case,
+    //             case_id: searchObject.id,
+    //         }
+    //     })  
+    // }
+
+    // state= {
+
+    // }
+
     eventsPages = () => {
-        this.props.history.push('/volunteer-events')
+        this.props.history.push(`/volunteer-events?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     notesPages = () => {
-        this.props.history.push('/volunteer-notes')
+        this.props.history.push(`/volunteer-notes?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     bioPages = () => {
-        this.props.history.push('/bio')
+        this.props.history.push(`/bio?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     legalPages = () => {
-        this.props.history.push('/volunteer-legal')
+        this.props.history.push(`/volunteer-legal?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     aidPages = () => {
-        this.props.history.push('/volunteer-aid')
+        this.props.history.push(`/volunteer-aid?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     teamPages = () => {
-        this.props.history.push('/volunteer-team')
+        this.props.history.push(`/volunteer-team?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
 
     render() {
@@ -73,9 +90,9 @@ class Case extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    user: state.user,
-  });
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+});
   
   // this allows us to use <App /> in index.js
-  export default withRouter(connect(mapStateToProps)(Case));
+  export default withRouter(connect(mapReduxStateToProps)(Case));

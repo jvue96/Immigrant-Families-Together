@@ -38,9 +38,11 @@ router.post('/medical', (req, res) => {
     
   });
 
-  router.get('/legal', (req, res) => {
+  router.get('/legal/:id', (req, res) => {
     console.log('Getting all legal status info');
-    pool.query(`SELECT * FROM "legal_status"`)
+    console.log('Getting LEGAL STATUS INFORMATION ID', req.params.id);
+    const sqlText = `SELECT * FROM "legal_status" WHERE "case_id" = $1;`
+    pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {
@@ -49,9 +51,11 @@ router.post('/medical', (req, res) => {
     })
   });
 
-router.get('/medical', (req, res) => {
+router.get('/medical/:id', (req, res) => {
     console.log('Getting all medical info');
-    pool.query(`SELECT * FROM "medical"`)
+    console.log('Getting current id FOR BIO MEDICAL INFO', req.params.id);
+    const sqlText = `SELECT * FROM "medical" WHERE "case_id" = $1`
+    pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {
@@ -75,9 +79,11 @@ router.get('/medical', (req, res) => {
       })
   })
 
-  router.get('/bio', (req, res) => {
+  router.get('/bio/:id', (req, res) => {
     console.log('Getting all bio info');
-    pool.query(`SELECT * FROM "primary_individual"`)
+    console.log('Getting current id FOR BIO FAMILY INFO', req.params.id);
+    const sqlText = `SELECT * FROM "primary_individual" WHERE "case_id" = $1`
+    pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {
@@ -152,9 +158,11 @@ router.get('/medical', (req, res) => {
       })
   })
 
-  router.get('/aid', (req, res) => {
+  router.get('/aid/:id', (req, res) => {
     console.log('Getting all aid info');
-    pool.query(`SELECT * FROM "aid"`)
+    console.log('Getting AID INFORMATION ID', req.params.id);
+    const sqlText = `SELECT * FROM "aid" WHERE "case_id" = $1`
+    pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {
@@ -234,11 +242,24 @@ router.get('/medical', (req, res) => {
       })
   })
 
-  // router.get('/bond/:id', (req, res) => {
+  router.get('/bond/:id', (req, res) => {
+    console.log('Getting all bond and legal info');
+    console.log('Getting LEGAL INFORMATION ID', req.params.id);
+    const sqlText = `SELECT * FROM "legal" WHERE "case_id" = $1;`
+    pool.query(sqlText, [req.params.id])
+    .then((results) => {
+        res.send(results.rows)
+    }).catch((error) => {
+        console.log('Something went wrong getting the bond and legal info', error);
+        res.sendStatus(500);
+    })
+  })
+
+  // router.get('/bond', (req, res) => {
   //   console.log('Getting all bond and legal info');
-  //   console.log('Getting ONE current id', req.params.id);
-  //   const sqlText = `SELECT * FROM "legal" WHERE "case_id" = $1;`
-  //   pool.query(sqlText, [req.params.case_id])
+  //   console.log('Getting ONE current id');
+  //   const sqlText = `SELECT * FROM "legal"`
+  //   pool.query(sqlText)
   //   .then((results) => {
   //       res.send(results.rows)
   //   }).catch((error) => {
@@ -288,9 +309,11 @@ router.post('/housing', (req, res) => {
     })
 })
 
-router.get('/housing', (req, res) => {
+router.get('/housing/:id', (req, res) => {
     console.log('Getting all housing info');
-    pool.query(`SELECT * FROM "housing"`)
+    console.log('Getting HOUSING INFORMATION ID', req.params.id);
+    const sqlText = `SELECT * FROM "housing" WHERE "case_id" = $1`
+    pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {

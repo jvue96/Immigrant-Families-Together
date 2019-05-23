@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../Nav/Nav'
+import qs from 'query-string';
 
 class BioMedical extends Component {
 
     componentDidMount = () => {
-        this.props.dispatch({ type: 'GET_MEDICAL' });
-        console.log('GET_MEDICAL', this.props.reduxState.medicalReducer);
+        // this.props.dispatch({ type: 'GET_MEDICAL' });
+        // console.log('GET_MEDICAL', this.props.reduxState.medicalReducer);
+        const searchObject = qs.parse(this.props.location.search)
+        console.log('GENERAL BioMedical searchObject', searchObject.id);
+        this.props.dispatch({ type: 'GET_MEDICAL', payload: searchObject.id });
+        console.log('GET_MEDICAL', this.props.reduxState.bioReducer);
     }
 
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 // import LegalIce from "./LegalIce";
 // import LegalBond from "./LegalBond";
 // import LegalFoster from "./LegalFoster";
@@ -10,19 +11,19 @@ class Legal extends Component {
 
 
     icePages = () => {
-        this.props.history.push('/legal-ice')
+        this.props.history.push(`/legal-ice?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     bondPages = () => {
-        this.props.history.push('/legal-bond')
+        this.props.history.push(`/legal-bond?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     fosterPages = () => {
-        this.props.history.push('/legal-foster')
+        this.props.history.push(`/legal-foster?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     attorneyPages = () => {
-        this.props.history.push('/legal-attorney')
+        this.props.history.push(`/legal-attorney?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     statusPages = () => {
-        this.props.history.push('/legal-status')
+        this.props.history.push(`/legal-status?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
 
     state = {
@@ -102,4 +103,8 @@ class Legal extends Component {
     }
 }
 
-export default Legal;
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+    });
+
+export default connect(mapReduxStateToProps)(Legal);

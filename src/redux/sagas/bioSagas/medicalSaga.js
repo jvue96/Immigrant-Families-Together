@@ -16,10 +16,12 @@ function* postMedical(action) {
     }
   }
 
-  function* getMedical(action) {
+  function* getMedical(parse) {
+    console.log('family bio info payload', parse.payload);
+    const case_id = parse.payload;
     try{
-        console.log('GET info for medical', action);
-        const getResponse = yield axios.get('/api/forms/medical');
+        console.log('GET info for medical', case_id);
+        const getResponse = yield axios.get(`/api/forms/medical/${case_id}`);
         const action = {type: 'SET_MEDICAL', payload: getResponse.data};
         yield put(action);
     }catch (error) {

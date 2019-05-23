@@ -19,10 +19,12 @@ function* postLegal(action) {
     }
   }
 
-  function* getLegal(action) {
+  function* getLegal(parse) {
+    console.log('LEGAL STATUS INFO payload', parse.payload);
+    const case_id = parse.payload;
     try{
-        console.log('GET info for medical', action);
-        const getResponse = yield axios.get('/api/forms/legal');
+        console.log('GET info for LEGAL STATUS', case_id);
+        const getResponse = yield axios.get(`/api/forms/legal/${case_id}`);
         const action = {type: 'SET_LEGAL', payload: getResponse.data};
         yield put(action);
     }catch (error) {
