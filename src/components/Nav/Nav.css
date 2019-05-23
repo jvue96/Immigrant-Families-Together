@@ -11,19 +11,21 @@
 .subnavbar{
   height: 50px;
   background-color: #000000;
+  display: grid;
+  align-items: center;
+  grid-auto-flow:column;
 }
 
-.subNavSection{
-  display: inline-block;
-  width: 16.6%;
-}
 
 .subNavSection a  {
   text-decoration: none;
   font-family: 'Heebo', sans-serif;
   letter-spacing: 1px;
-  text-align: center;
   color: #ffffff;
-  font-size: .75em;
-  padding-top: 3px;
+  font-size: .65em;
+  text-align: center;
+}
+
+.subNavSection:first-of-type {
+  padding-left:5px;
 }
