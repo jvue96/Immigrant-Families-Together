@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import qs from 'query-string';
 import Nav from '../../Nav/Nav'
+
 
 class BioSchool extends Component {
 
     componentDidMount = () => {
-        this.props.dispatch({ type: 'GET_SCHOOL' });
-        console.log('GET_SCHOOL', this.props.reduxState.schoolReducer);
+        const searchObject = qs.parse(this.props.location.search)
+        console.log('School searchObject', searchObject.id);
+        this.props.dispatch({ type: 'GET_SCHOOL', payload: searchObject.id });
+        console.log('GET_SCHOOL', this.props.reduxState.bioReducer);
     }
 
     render() {

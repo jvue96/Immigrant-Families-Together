@@ -92,7 +92,7 @@ class BioForm extends Component {
                 <Nav pageName='BIO' backArrow='/cases' home='/home'/>
 
                 {JSON.stringify(this.state)}
-                
+                  
                 <center>
                     <div>
                         <h1>

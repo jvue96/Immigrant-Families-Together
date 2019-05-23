@@ -11,10 +11,12 @@ function* postIdentify(action) {
     }
   }
 
-  function* getIdentify(action) {
+  function* getIdentify(parse) {
+    console.log('ID info payload', parse.payload);
+    const case_id = parse.payload;
     try{
-        console.log('GET info for identification', action);
-        const getResponse = yield axios.get('/api/forms/identify');
+        console.log('GET info for identification', case_id);
+        const getResponse = yield axios.get(`/api/forms/identify/${case_id}`);
         const action = {type: 'SET_IDENTIFY', payload: getResponse.data};
         yield put(action);
     }catch (error) {

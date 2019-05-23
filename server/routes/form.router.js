@@ -283,9 +283,11 @@ router.post('/school', (req, res) => {
     })
 })
 
-router.get('/school', (req, res) => {
+router.get('/school/:id', (req, res) => {
     console.log('Getting all school info');
-    pool.query(`SELECT * FROM "school"`)
+    console.log('Getting current id for school info', req.params.id);
+    const sqlText = `SELECT * FROM "school" WHERE "case_id" = $1`
+    pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {
@@ -321,6 +323,19 @@ router.get('/housing/:id', (req, res) => {
         res.sendStatus(500);
     })
 })
+
+// router.get('/bio-identification/:id', (req, res) => {
+//   console.log('Getting all ID info');
+//   console.log('Getting current id for ID info', req.params.id);
+//   const sqlText = `SELECT * FROM "identification" WHERE "case_id" = $1`
+//   pool.query(sqlText, [req.params.id])
+//   .then((results) => {
+//       res.send(results.rows)
+//   }).catch((error) => {
+//       console.log('Something went wrong getting the information from the school forms', error);
+//       res.sendStatus(500);
+//   })
+// })
 
 router.post('/case', (req, res) => {
   let cases = req.body;
