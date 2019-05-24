@@ -306,3 +306,40 @@ input {
 .subNavSection:first-of-type {
   padding-left:5px;
 }
+
+table{
+  width: 90%;
+  background-color: #ffffff;
+  border: .5px solid rgb(153, 153, 153);;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+thead{
+  width: 100%;
+  background-color: #D22F25;
+  color: white;
+  font-family: 'Heebo', sans-serif;
+
+}
+
+th {
+padding:3px;
+align-content: center;
+}
+
+td{
+  text-align: left;
+  font-family: 'Heebo', sans-serif;
+  padding: 10px;
+  align-content: center;
+  color: rgb(97, 97, 97);
+  
+}
+
+tr:nth-child(even) {
+  background-color: #d6d6d6;
+  border-radius: 8px;
+}

@@ -87,7 +87,7 @@ class ChildForm extends Component {
 
               <Nav pageName='CHILDREN FORM' home='/home'/>
 
-              {JSON.stringify(this.state)}
+              {/* {JSON.stringify(this.state)} */}
 
               <center>
                         {/* UN COMMENT TO TEST IF DATA IS IN childrenReducer */}
@@ -129,7 +129,11 @@ class ChildForm extends Component {
                 onClick={this.next}> Next
                 </button>
 <br/>
-                 <button onClick={this.test}> TEST DATA </button>
+                 <button className="formButton" 
+                 onClick={this.test}> 
+                 TEST DATA
+                 </button>
+                 
                 </div>
             </center> 
           </div>

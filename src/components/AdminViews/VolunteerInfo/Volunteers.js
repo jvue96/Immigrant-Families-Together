@@ -39,47 +39,31 @@ class Volunteers extends Component {
                         */}
                     <label>SEARCH</label> 
                     <input placeholder="VOLUNTEER NAME" /> 
-                    <button onClick={this.searchBy}> SEARCH </button>
+                    <button className="formButton" onClick={this.searchBy}> SEARCH </button>
 
-
-            <p> * For now, click on Vue to see template for volunteer bio * </p>
                     <table>
                         <thead>
                             <tr>
-                                <td>LAST NAME </td>
-                                <td>FIRST NAME </td>
+                                <th>LAST NAME </th>
+                                <th>FIRST NAME </th>
                             </tr>
                         </thead>
                         <tbody>
-                                <tr>
-                                    <td onClick={this.viewVolunteer}>VUE</td>
+                                <tr onClick={this.viewVolunteer}>
+                                    <td>VUE</td>
                                     <td>JUNO</td>
-                                    <td>
-                                        <button>
-                                            SELECT
-                                        </button>
-                                    </td>
                                 </tr>
-                                <tr>
+                                <tr onClick={this.viewVolunteer}>
                                     <td>RAGSDALE</td>
                                     <td>BEN</td>
-                                        <button>
-                                            SELECT
-                                        </button>
                                 </tr>
-                                <tr>
+                                <tr onClick={this.viewVolunteer}>
                                     <td>DOUGLAS</td>
                                     <td>KINGMAN</td>
-                                        <button>
-                                            SELECT
-                                        </button>
                                 </tr>
-                                <tr>
-                                    <td>SCHLACHTENHAUFEN</td>
-                                    <td>JOE</td>
-                                        <button>
-                                            SELECT
-                                        </button>
+                                <tr onClick={this.viewVolunteer}>
+                                    <td>Schlach</td>
+                                    <td>Joe</td>
                                 </tr>
                             </tbody>
                     </table>

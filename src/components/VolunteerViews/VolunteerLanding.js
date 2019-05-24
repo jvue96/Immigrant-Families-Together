@@ -43,31 +43,31 @@ class VolunteerLanding extends Component {
                   
 
                     {/* show all cases assigned to volunteer */}
-                    {this.props.reduxState.allCasesReducer.map( (cases, index) => {
-                    return (
-                    <table key={index}>
+                    {/* {this.props.reduxState.allCasesReducer.map( (cases, index) => { */}
+                    {/* return ( */}
+                    <table>
                         <thead>
                             <tr>
-                                <td>LAST NAME</td>
-                                <td>ID NUMBER</td>
+                                <th>LAST NAME</th>
+                                <th>ID NUMBER</th>
                             </tr>
                         </thead>
                     {/* map over cases assigned to volunteer */}
                         <tbody>
-                            <tr>
-                                <td 
-                                data-value={cases.id}
-                                onClick={this.viewCase}>
+                        {this.props.reduxState.allCasesReducer.map( (cases, i) => {
+                            return (
+                            <tr key={i} onClick={this.viewCase}>
+                                <td data-value={cases.id}>
                                     {cases.case_last_name}
                                 </td>
                                 <td>
                                     {cases.case_number}
                                 </td>
                             </tr>
+                            )  
+                            })}
                         </tbody>
                     </table>
-                      )
-                    })}  
                 </center>
             </div>
         );

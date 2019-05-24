@@ -65,8 +65,6 @@ next = () => {
         return (
             <div>
                 <Nav pageName='HOUSING' home='/home'/>
-
-    <button className="hiddenButton" onClick={this.fillstate}></button>
                 <center>
                     <div className="formDivs">
                         <label>ADDRESS</label> 
@@ -91,6 +89,10 @@ next = () => {
                             className="formButton"
                             onClick={this.next}>
                             NEXT
+                        </button>
+                        <button className="formButton"
+                        onClick={this.fillstate}>
+                            Fill Info
                         </button>
                     </div>
                 </center>
