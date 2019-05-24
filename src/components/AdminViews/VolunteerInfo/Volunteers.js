@@ -38,42 +38,36 @@ class Volunteers extends Component {
     
                     <label>SEARCH</label> 
                     <input placeholder="VOLUNTEER NAME" /> 
-                    <button onClick={this.searchBy}> SEARCH </button>
+                    <button className="formButton" onClick={this.searchBy}> SEARCH </button>
 
-            {this.props.reduxState.volunteerReducer.map( (users, index) => {
-                    return (
-    
-                    <table key={index}>
+                    <table>
                         <thead>
                             <tr>
-                                <td>USERNAME</td>
-                                <td>EMAIL</td>
-                                <td>ADDRESS</td>
+                                <th>LAST NAME </th>
+                                <th>FIRST NAME </th>
+          
                             </tr>
                         </thead>
                     {/* map over cases assigned to volunteer */}
                         <tbody>
-                            <tr>
-                                <td 
-                                data-value={users.id}
-                                onClick={this.viewVolunteer}>
-                                    {users.username}
-                                </td>
-                                <td
-                                data-value={users.id}
-                                onClick={this.viewVolunteer}>
-                                    {users.email}
-                                </td>
-                                <td
-                                data-value={users.id}
-                                onClick={this.viewVolunteer}>
-                                    {users.address}
-                                </td>
-                            </tr>
-                        </tbody>
+                                <tr onClick={this.viewVolunteer}>
+                                    <td>VUE</td>
+                                    <td>JUNO</td>
+                                </tr>
+                                <tr onClick={this.viewVolunteer}>
+                                    <td>RAGSDALE</td>
+                                    <td>BEN</td>
+                                </tr>
+                                <tr onClick={this.viewVolunteer}>
+                                    <td>DOUGLAS</td>
+                                    <td>KINGMAN</td>
+                                </tr>
+                                <tr onClick={this.viewVolunteer}>
+                                    <td>Schlach</td>
+                                    <td>Joe</td>
+                                </tr>
+                            </tbody>
                     </table>
-                      )
-                    })}  
                 </center>
             </div>
         );

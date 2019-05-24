@@ -65,8 +65,6 @@ next = () => {
         return (
             <div>
                 <Nav pageName='HOUSING' home='/home'/>
-
-    <button className="hiddenButton" onClick={this.fillstate}></button>
                 <center>
                     <div className="formDivs">
                         <label>ADDRESS</label> 
@@ -76,13 +74,25 @@ next = () => {
                         <label>RENT PAID BY</label> 
                         <input type="text" value={this.state.housingForm.paid_by} onChange={this.handleChange('paid_by')}/> 
                         <label>UTILITIES</label> 
-                        <input type="text" value={this.state.housingForm.utilities} onChange={this.handleChange('utilities')}/> 
-                        <label>LIVING WITH FAMILY Y/N</label> 
-                        <input type="text" value={this.state.housingForm.living_with_fam} onChange={this.handleChange('living_with_fam')}/> 
+                        <input type="text" value={this.state.housingForm.living_with_fam}  onChange={this.handleChange('living_with_fam')}/> 
+                        <label>LIVING WITH FAMILY</label> 
+                        <select 
+                        onChange={this.handleChange(`us_id`)}
+                        >
+                            <option>-</option>
+                            <option
+                            selected="selected"
+                            value={true}>True</option>
+                            <option value={false}>False</option>
+                        </select>
                         <button
                             className="formButton"
                             onClick={this.next}>
                             NEXT
+                        </button>
+                        <button className="formButton"
+                        onClick={this.fillstate}>
+                            Fill Info
                         </button>
                     </div>
                 </center>
