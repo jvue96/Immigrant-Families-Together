@@ -26,10 +26,42 @@ function* getUser(action) {
 }
 }
 
+function* getVolBio(parse) {
+  console.log('VOLUNTEER BIO payload', parse.payload);
+  const user_id = parse.payload;
+  try{
+    console.log('GET info for VOLUNTEER BIO', user_id);
+    const getResponse = yield axios.get(`/api/user/register/${user_id}`);
+    const action = {type: 'SET_VOLUNTEER_BIO', payload: getResponse.data};
+    yield put(action);
+  }
+  catch{
+
+  }
+}
+
+function* getVolunteer(action) {
+  try {
+
+  console.log(`action.payload is: `, action.payload);
+  const volunteer = action.payload.search;
+  
+  const response = yield axios.get(`/api/forms/volunteer`, action.payload);
+
+  
+  // yield put({ type: 'SET_ENTRIES', payload: response.data})
+  }
+  catch (error) {
+    console.log(`Couldn't get user's entries`, error);
+  }
+}
+
 
 function* registrationSaga() {
   yield takeLatest('ADD_NEW_VOLUNTEER', registerUser);
   yield takeLatest('GET_ALL_VOLUNTEER', getUser);
+  yield takeLatest('GET_VOLUNTEER_BIO', getVolBio);
+  yield takeLatest('SEARCH_VOLUNTEER', getVolunteer);
 }
 
 export default registrationSaga;

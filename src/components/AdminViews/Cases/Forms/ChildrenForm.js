@@ -87,7 +87,7 @@ class ChildForm extends Component {
 
               <Nav pageName='CHILDREN FORM' home='/home'/>
 
-              {JSON.stringify(this.state)}
+              {/* {JSON.stringify(this.state)} */}
 
               <center>
                         {/* UN COMMENT TO TEST IF DATA IS IN childrenReducer */}
@@ -100,9 +100,7 @@ class ChildForm extends Component {
                     onChange={this.handleChange('child_name')}/> 
     
                     <label>DOB</label> 
-                    <input type="text"
-                    value={this.state.childForm.child_dob}
-                    onChange={this.handleChange('child_dob')}/> 
+                    <input type="date" value={this.state.childForm.child_dob} onChange={this.handleChange('child_dob')} /> 
                 
                     <label>INFO</label> 
                     <input type="text"
@@ -130,8 +128,12 @@ class ChildForm extends Component {
                 className="formButton"
                 onClick={this.next}> Next
                 </button>
-
-                 <button onClick={this.test}> TEST DATA </button>
+<br/>
+                 <button className="formButton" 
+                 onClick={this.test}> 
+                 TEST DATA
+                 </button>
+                 
                 </div>
             </center> 
           </div>

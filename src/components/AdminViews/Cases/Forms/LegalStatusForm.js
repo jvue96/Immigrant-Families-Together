@@ -76,11 +76,7 @@ class LegalStatusForm extends Component {
                 <center>
                     <div className="formDivs">
                         <label>LAST COURT DATE</label> 
-                        <input 
-                        value={this.state.legalForm.last_court_date}
-                        placeholder="date format: 2019-12-12"
-                        onChange={this.handleNameChange('last_court_date')}
-                        type="text" /> 
+                        <input type="date" value={this.state.legalForm.last_court_date} onChange={this.handleNameChange('last_court_date')} />
 
                         <label>OUTCOME</label> 
                         <input type="text" 
@@ -89,11 +85,7 @@ class LegalStatusForm extends Component {
                         /> 
 
                         <label>NEXT COURT DATE</label> 
-                        <input type="text" 
-                        value={this.state.legalForm.next_court_date}
-                        placeholder="date format: 2019-12-12"
-                        onChange={this.handleNameChange('next_court_date')}
-                        /> 
+                        <input type="date" value={this.state.legalForm.next_court_date} onChange={this.handleNameChange('next_court_date')} />
 
                         <label>TOPIC</label> 
                         <input type="text"

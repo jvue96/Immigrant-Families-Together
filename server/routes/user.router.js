@@ -61,4 +61,17 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.get('/register/:id', (req, res) => {
+  console.log('Getting all volunteer bio info');
+  console.log(`Getting volunteer bio info, req.params.id`, req.params.id);
+  const sqlText = `SELECT * FROM "user" WHERE "id" = $1;`
+  pool.query(sqlText, [req.params.id])
+  .then((results) => {
+      res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting the volunteer bio info', error);
+      res.sendStatus(500);
+  })
+})
+
 module.exports = router;
