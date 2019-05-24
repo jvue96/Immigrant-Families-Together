@@ -17,9 +17,10 @@ label,
   font-family: 'Heebo', sans-serif;
 }
 
-
+thead td,
 button{
   color: white;
+  letter-spacing: 1px;
 }
 
 h1{
