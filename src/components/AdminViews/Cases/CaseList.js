@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Nav from '../../Nav/Nav';
+import { connect } from 'react-redux';
 
 class CaseList extends Component {
 
@@ -12,32 +14,40 @@ class CaseList extends Component {
         
     }
 
+    selectCase = (id) => {
+        console.log(`in selectCase, heres id:`, id);
+        
+    }
+
+    componentDidMount() {
+        this.props.dispatch({ type: 'GET_CASES' });
+    }
+
     render() {
         return (
             <div>
+                <Nav pageName='CASE LIST' home='/home' />
                 <center>
-                    <div>
-                        <h1>
-                            CASE LIST
-                        </h1>
-                    </div>
-                    <label>SEARCH:</label>
-                    <input placeholder="NAME" type="text" /> 
-                    <button onClick={this.searchBy}>SEARCH</button>
+                <label>SEARCH:</label>
+                 <input placeholder="NAME" type="text" /> 
+                <button onClick={this.searchBy}>SEARCH</button>
 
                     <table>
                         <thead>
-                            <tr>
+                                <tr>
                                 <td>LAST NAME </td>
-                                <td>FIRST NAME </td>
-                            </tr>
+                                <td>CASE NUMBER </td>
+                                <td>ASSIGN CASE</td>
+                                </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Douglas</td>
-                                <td>Kingman</td>
+                            {this.props.reduxState.allCasesReducer.map(i => 
+                                <tr onClick={()=>this.selectCase(i.id)} key={i.id}>
+                                <td>{i.case_last_name}</td>
+                                <td>{i.case_number}</td>
                                 <td><button onClick={this.assignCase}>Assign Case</button></td>
-                            </tr>
+                                  </tr>
+                            )}
                         </tbody>
                     </table>
                 </center>
@@ -45,5 +55,9 @@ class CaseList extends Component {
         );
     }
 }
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+    });
+  
 
-export default CaseList;
+export default connect(mapReduxStateToProps)(CaseList);
