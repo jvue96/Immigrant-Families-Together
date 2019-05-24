@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Volunteers extends Component {
 
-    viewVolunteer = () => {
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'GET_ALL_VOLUNTEER' });
+    }
+
+    viewVolunteer = (event) => {
         console.log(`hit view volunteer!`);
-        // do something to view volunteer information 
-        // currently routes to generic volunteer bio 
-        this.props.history.push('/volunteer-bio')
+        console.log(`!!!!0o9i8765`,event.target.dataset.value);
+        // this.props.history.push('/volunteer-landing')
+        this.props.history.push(`/volunteer-bio?id=${event.target.dataset.value}`)
     }
 
     searchBy = () => {
-        console.log(`hit serach button!`);
+        console.log(`hit search button!`);
         // do something to search for volunteer 
     }
 
@@ -24,19 +28,14 @@ class Volunteers extends Component {
                     <i class="fas fa-chevron-left"></i>
                 </div>
                 <div className="navTitle">
-                    <h2 className="navH2">VOLUNTEER</h2>
+                    <h2 className="navH2">ALL VOLUNTEER</h2>
                 </div>
                 <div className="navRight">
-                <Link to="/home">
-                    <i class="fas fa-home"></i>
-                </Link>
                 </div>
                 </div>
 
                 <center>
-                        {/* map over volunteers into a table with tr's and td's  
-                        includes volunteer's last name, first name, and select button that routes user to their BIO.
-                        */}
+    
                     <label>SEARCH</label> 
                     <input placeholder="VOLUNTEER NAME" /> 
                     <button className="formButton" onClick={this.searchBy}> SEARCH </button>
@@ -46,8 +45,10 @@ class Volunteers extends Component {
                             <tr>
                                 <th>LAST NAME </th>
                                 <th>FIRST NAME </th>
+          
                             </tr>
                         </thead>
+                    {/* map over cases assigned to volunteer */}
                         <tbody>
                                 <tr onClick={this.viewVolunteer}>
                                     <td>VUE</td>
@@ -73,4 +74,8 @@ class Volunteers extends Component {
     }
 }
 
-export default Volunteers;
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+});
+
+export default connect(mapReduxStateToProps)(Volunteers);

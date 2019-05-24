@@ -9,10 +9,6 @@ class VolunteerLanding extends Component {
         console.log('GET_MEDICAL', this.props.reduxState.medicalReducer);
     }
 
-    state = {
-        hello: 'hello', 
-    }
-
     searchBy = () => {
         console.log(`hit search by`);
         // incorporpoate transition from clicking case name to individual case. 

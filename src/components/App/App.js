@@ -31,6 +31,7 @@ import Cases from '../AdminViews/Cases/Cases';
 import AidForm from '../AdminViews/Cases/Forms/AidForm';
 import ChildrenForm from "../AdminViews/Cases/Forms/ChildrenForm";
 import CreateCase from '../AdminViews/Cases/Forms/CreateCase';
+import VolunteerBio from "../AdminViews/VolunteerInfo/VolunteerBio"; 
 import './App.css';
 
 /* volunteer imports */
@@ -39,7 +40,7 @@ import VolunteerLanding from "../VolunteerViews/VolunteerLanding";
 import BioMedical from '../VolunteerViews/Bio/BioMedical'
 import Bio from '../VolunteerViews/Bio/Bio'
 import BioHousing from '../VolunteerViews/Bio/BioHousing'
-import BioIdentify from '../VolunteerViews/Bio/BioIdentify'
+//import BioIdentify from '../VolunteerViews/Bio/BioIdentify'
 import BioSchool from '../VolunteerViews/Bio/BioSchool'
 import BioFamilyInfo from '../VolunteerViews/Bio/BioFamilyInfo'
 import VolunteerNotes from '../VolunteerViews/Notes/Notes'
@@ -223,11 +224,11 @@ class App extends Component {
               path="/bio-school"
               component={BioSchool}
             />
-            <ProtectedRoute
+            {/* <ProtectedRoute
               exact
               path="/bio-identification"
               component={BioIdentify}
-            />
+            /> */}
             <ProtectedRoute
               exact
               path="/volunteer-events"
@@ -308,12 +309,15 @@ class App extends Component {
               path="/create-case"
               component={CreateCase}
             />
-
-
             <ProtectedRoute
               exact
               path="/children-form"
               component={ChildrenForm}
+            />
+            <ProtectedRoute
+              exact
+              path="/volunteer-bio"
+              component={VolunteerBio}
             />
 
             {/* volunteer views link */}

@@ -94,7 +94,7 @@ class Bio extends Component {
                         <button className="adminMenuButtons" onClick={this.housingPages}>HOUSING</button>
                         <button className="adminMenuButtons" onClick={this.medicalPages}>MEDICAL</button>
                         <button className="adminMenuButtons" onClick={this.schoolPages}>SCHOOL</button>
-                        <button className="adminMenuButtons" onClick={this.identificationPages}>IDENTIFICATION</button>
+                        {/* <button className="adminMenuButtons" onClick={this.identificationPages}>IDENTIFICATION</button> */}
                     </div>
                 </center>
             </div>
