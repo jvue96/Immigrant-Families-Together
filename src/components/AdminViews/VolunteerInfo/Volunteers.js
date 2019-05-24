@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 
 class Volunteers extends Component {
 
+    state = {
+        search: '',
+    }
+
     componentDidMount = () => {
         this.props.dispatch({ type: 'GET_ALL_VOLUNTEER' });
     }
@@ -14,9 +18,18 @@ class Volunteers extends Component {
         this.props.history.push(`/volunteer-bio?id=${event.target.dataset.value}`)
     }
 
-    searchBy = () => {
-        console.log(`hit search button!`);
-        // do something to search for volunteer 
+    handleChange = (event) => { 
+        this.setState({
+            search: event.target.value,
+        }) 
+    }
+
+    searchBy = (event) => {
+        this.setState({ 
+            search: event.target.value, 
+        });
+        console.log(this.state);
+        this.props.dispatch({type: 'SEARCH_VOLUNTEER', payload: this.state });
     }
 
     render() {
@@ -24,50 +37,58 @@ class Volunteers extends Component {
             <div>
                 
                 <div className="nav">
-                <div className="navLeft2" onClick={this.backButton}>
-                    <i class="fas fa-chevron-left"></i>
+                    <div className="navLeft2" onClick={this.backButton}>
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div className="navTitle">
+                        <h2 className="navH2">ALL VOLUNTEER</h2>
+                    </div>
+                    <div className="navRight">
+                    </div>
                 </div>
-                <div className="navTitle">
-                    <h2 className="navH2">ALL VOLUNTEER</h2>
-                </div>
-                <div className="navRight">
-                </div>
-                </div>
-
                 <center>
-    
-                    <label>SEARCH</label> 
-                    <input placeholder="VOLUNTEER NAME" /> 
-                    <button className="formButton" onClick={this.searchBy}> SEARCH </button>
+                    <input 
+                        onChange={this.handleChange}
+                        style={{width: 150, height: 20}} 
+                        type="text" placeholder="CASE NUMBER / NAME" /> <br/>
+                    <button 
+                    className="formButton"
+                    onClick={this.searchBy}> SEARCH </button> 
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>LAST NAME </th>
-                                <th>FIRST NAME </th>
-          
-                            </tr>
-                        </thead>
-                    {/* map over cases assigned to volunteer */}
-                        <tbody>
-                                <tr onClick={this.viewVolunteer}>
-                                    <td>VUE</td>
-                                    <td>JUNO</td>
+                {this.props.reduxState.volunteerReducer.map( (users, index) => {
+                        return (
+        
+                        <table key={index} style={{width:300}}>
+                            <thead>
+                                <tr>
+                                    <td>USERNAME</td>
+                                    <td>EMAIL</td>
+                                    <td>ADDRESS</td>
                                 </tr>
-                                <tr onClick={this.viewVolunteer}>
-                                    <td>RAGSDALE</td>
-                                    <td>BEN</td>
-                                </tr>
-                                <tr onClick={this.viewVolunteer}>
-                                    <td>DOUGLAS</td>
-                                    <td>KINGMAN</td>
-                                </tr>
-                                <tr onClick={this.viewVolunteer}>
-                                    <td>Schlach</td>
-                                    <td>Joe</td>
+                            </thead>
+                        {/* map over cases assigned to volunteer */}
+                            <tbody>
+                                <tr>
+                                    <td 
+                                    data-value={users.id}
+                                    onClick={this.viewVolunteer}>
+                                        {users.username}
+                                    </td>
+                                    <td
+                                    data-value={users.id}
+                                    onClick={this.viewVolunteer}>
+                                        {users.email}
+                                    </td>
+                                    <td
+                                    data-value={users.id}
+                                    onClick={this.viewVolunteer}>
+                                        {users.address}
+                                    </td>
                                 </tr>
                             </tbody>
-                    </table>
+                        </table>
+                        )
+                        })}  
                 </center>
             </div>
         );

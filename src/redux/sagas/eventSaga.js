@@ -11,15 +11,29 @@ function* addEvent(action) {
     }
   }
 
-function* getEvent(action) {
-    try{
-        console.log('GET newly added event', action);
-        const getResponse = yield axios.get('/api/forms/event');
+// function* getEvent(action) {
+//     try{
+//         console.log('GET newly added event', action);
+//         const getResponse = yield axios.get('/api/forms/event');
+//         const action = {type: 'SET_EVENT', payload: getResponse.data};
+//         yield put(action);
+//     }catch (error) {
+//         console.log(`Couldn't get the newly created event`);
+//         alert(`Sorry couldn't get the newly created event. Try again later.`)
+//     }
+// }
+
+function* getEvent(parse) {
+    console.log('EVENT INFO payload', parse.payload);
+    const event_id = parse.payload;
+    try {
+        console.log('GET info for EVENT INFO', event_id);
+        const getResponse = yield axios.get(`/api/forms/event/${event_id}`);
         const action = {type: 'SET_EVENT', payload: getResponse.data};
         yield put(action);
-    }catch (error) {
-        console.log(`Couldn't get the newly created event`);
-        alert(`Sorry couldn't get the newly created event. Try again later.`)
+    } catch (error) {
+        console.log(`Couldn't get the event  information`);
+        alert(`Sorry couldn't get the information from the event. Try again later.`)
     }
 }
 
