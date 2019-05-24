@@ -42,12 +42,17 @@ function* getCaseId(action) {
     }
   }
 
+  function* getCaseSearch(action) {
+      console.log('payload in search', action.payload)
+  }
+
 
 function* caseSaga() {
     yield takeLatest('ADD_CASE', postCase);
     /* volunteer landing page  */
     yield takeLatest('GET_CASES', getCases);
     yield takeLatest('GET_CURRENT_ID', getCaseId);
+    yield takeLatest('GET_CASES_SEARCH', getCaseSearch)
 
 }
 

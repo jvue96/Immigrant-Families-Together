@@ -86,7 +86,7 @@ input, select {
 label {
   display:block;
 }
-
+.searchButton,
 .midButton{
     height: 75px;
     width: 90%;
@@ -101,6 +101,12 @@ label {
     border: 0px;
     font-size: 15px;
 }
+
+.searchButton {
+  height:initial;
+  padding: 10px 0;
+}
+
 /* This line makes the "Register" and "Login" buttons look like links */
 .link-button {
     background:none;

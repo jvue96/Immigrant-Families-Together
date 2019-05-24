@@ -4,12 +4,24 @@ import { connect } from 'react-redux';
 
 class CaseList extends Component {
 
+state = {
+    search: '',
+}
+
+    setSearch = (event) => {
+        this.setState({
+            search: event.target.value
+        })
+        console.log(this.state);
+    }
+
     assignCase = () => {
         alert(`You've assigned a case to ___ !`);
         // do something here to assigned case and add into relevant databases 
     }
 
     searchBy = () => {
+        this.props.dispatch({type:'GET_CASES_SEARCH', payload:this.state})
         console.log(`Do something for a search by!`);
         
     }
@@ -29,15 +41,15 @@ class CaseList extends Component {
                 <Nav pageName='CASE LIST' home='/home' />
                 <center>
                 <label>SEARCH:</label>
-                 <input placeholder="NAME" type="text" /> 
-                <button onClick={this.searchBy}>SEARCH</button>
+                 <input onChange={this.setSearch} placeholder="NAME" type="text" /> 
+                <button className='searchButton' onClick={this.searchBy}>SEARCH</button>
 
                     <table>
                         <thead>
                                 <tr>
                                 <td>LAST NAME </td>
                                 <td>CASE NUMBER </td>
-                                <td>ASSIGN CASE</td>
+                                {/* <td>ASSIGN CASE</td> */}
                                 </tr>
                         </thead>
                         <tbody>
@@ -45,7 +57,7 @@ class CaseList extends Component {
                                 <tr onClick={()=>this.selectCase(i.id)} key={i.id}>
                                 <td>{i.case_last_name}</td>
                                 <td>{i.case_number}</td>
-                                <td><button onClick={this.assignCase}>Assign Case</button></td>
+                                {/* <td><button onClick={this.assignCase}>Assign Case</button></td> */}
                                   </tr>
                             )}
                         </tbody>
