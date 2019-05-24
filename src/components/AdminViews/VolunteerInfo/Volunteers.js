@@ -47,7 +47,6 @@ class Volunteers extends Component {
                     </div>
                 </div>
                 <center>
-    
                     <input 
                         onChange={this.handleChange}
                         style={{width: 150, height: 20}} 

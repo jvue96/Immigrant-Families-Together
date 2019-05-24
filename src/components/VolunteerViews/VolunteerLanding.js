@@ -22,17 +22,16 @@ class VolunteerLanding extends Component {
                     <div>
                         <h1> VOLUNTEER LANDING </h1>
                     </div>
-
                     {/* show all cases assigned to volunteer */}
-                    
                     <table>
                         <thead>
                             <tr>
-                                <td>LAST NAME</td>
-                                <td>ID NUMBER</td>
+                                <th>LAST NAME</th>
+                                <th>ID NUMBER</th>
                             </tr>
                         </thead>
                         <tbody>
+
                         {this.props.reduxState.allCasesReducer.map( (cases, index) => {
                         return (
                             <tr key={index}>
