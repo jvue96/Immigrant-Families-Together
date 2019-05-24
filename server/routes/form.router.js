@@ -203,9 +203,9 @@ router.get('/medical/:id', (req, res) => {
   router.post('/event', (req, res) => {
     let event = req.body;
     console.log('Adding in event:', event);
-    let sqlText = `INSERT INTO events (date, description) VALUES 
-    ($1, $2)`;
-    pool.query(sqlText, [event.date, event.description])
+    let sqlText = `INSERT INTO events (date, description, case_id) VALUES 
+    ($1, $2, $3)`;
+    pool.query(sqlText, [event.date, event.description, event.case_id])
       .then( (response) => {
         res.sendStatus(201);
       })
@@ -215,9 +215,10 @@ router.get('/medical/:id', (req, res) => {
       })
   })
 
-  router.get('/event', (req, res) => {
+  router.get('/event/:id', (req, res) => {
     console.log('Getting all event info');
-    pool.query(`SELECT * FROM "events"`)
+    const sqlText = `SELECT * FROM "events" WHERE "case_id" = $1;`
+    pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {
@@ -376,8 +377,36 @@ router.get('/all-cases/:id', (req, res) => {
       console.log('Something went wrong getting the information from the cases table', error);
       res.sendStatus(500);
   })
+})
 
+router.get('/volunteer', (req, res) => {
+  console.log(`HIT SERACH BY VOLUNTEER`);
   
+  // console.log(req.params);
+
+  // const id = req.params.id; 
+  // const keyword = req.params.keyword; 
+  
+  // const queryText =   `SELECT * FROM "entries"
+  //                     JOIN "images" ON "images"."entries_id" = "entries"."id"
+  //                     WHERE "user_id" = ${id}
+  //                     AND (
+  //                     "description" LIKE '%${keyword}%' OR "description" ILIKE '%${keyword}%' OR
+  //                     "title" LIKE '%${keyword}%' OR "title" ILIKE '%${keyword}%' OR
+  //                     "location" LIKE '%${keyword}%' OR "location" ILIKE '%${keyword}%' OR
+  //                     "url" LIKE '%${keyword}%' OR "url" ILIKE '%${keyword}%')`;
+
+  // pool.query(queryText)
+  //   .then ((result) => { res.send(result.rows);
+  //     console.log(result.rows);
+      
+
+  //   })
+  //   .catch((err) => {
+  //     console.log(`Error getting entries containing KEYWORD`, err);
+  //     res.sendStatus(500); 
+      
+  //   });
 })
 
 module.exports = router;

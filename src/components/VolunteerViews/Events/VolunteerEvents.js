@@ -2,60 +2,61 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Nav from '../../Nav/Nav'
+import qs from 'query-string';
+import moment from 'moment'
 
 class Events extends Component {
+
     componentDidMount = () => {
-        this.props.dispatch({ type: 'GET_EVENT' });
-        console.log('GET_EVENT', this.props.reduxState.eventReducer);
+        const searchObject = qs.parse(this.props.location.search)
+        console.log('EVENT searchObject', searchObject.id);
+        this.props.dispatch({ type: 'GET_EVENT', payload: searchObject.id });
     }
+
+
     newEvent = () => {
         console.log(`clicked add event! `);
         this.props.history.push(`/add-event?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
+
+    formatDate = (date) => {
+        let entryDate =  moment(date).format("MMM Do YY"); 
+        return entryDate; 
+    }
+
     render() {
         return (
             <div>
- <Nav pageName='EVENTS' volunteer home='/home' /> 
-                <center>
-                    <button className="midButton" onClick={this.newEvent}>NEW EVENT</button> 
+                <Nav pageName='EVENTS' volunteer home='/home' /> 
+                    <center>
+                        <button className="midButton" onClick={this.newEvent}>NEW EVENT</button> 
+        
+                        <table>
+                        <thead>
+                            <tr>
+                                <th>DATE</th>
+                                <th>DESCRIPTION</th>
+                            </tr>
+                        </thead>
+                    {/* map over cases assigned to volunteer */}
+                        <tbody>
+                        {this.props.reduxState.eventReducer.map((event, i) => {
+                            return (
+                            <tr key={i} onClick={this.viewCase}>
+                                <td data-value={event.id}>
+                                    {this.formatDate(event.date)}
+                                </td>
+                                <td>
+                                    {event.description}
+                                </td>
+                            </tr>
+                            )
+                            })}
+                        </tbody>
+                    </table>
 
-                    <div>{this.props.reduxState.eventReducer.map(event =>
-                <div>
-<p className="bioDivs">DATE: {event.date}</p>
-<p className="bioDivs">EVENT DESCRIPTION: {event.description}</p>
+                    </center>
                 </div>
-)}
-</div>
-
-
-                    {/* <div className="eventDivs" >
-                        <div className='cardHead'>
-                            <div className='cardHeadLeft'>
-                                <h1 className="eventh1">CLIENT NAME</h1>
-                            </div>
-                            <div className='cardHeadRight'>
-                                <p className="eventP">1-1-2019</p> 
-                            </div>
-                        </div>
-                        <h1 className="eventh1">EVENT:</h1>
-                        <p className="eventBody"> Client has a court date on 1-1-19 in downtown minneapolis at 1pm.</p>
-                    </div>
-
-                    <div className="eventDivs" >
-                        <div className='cardHead'>
-                            <div className='cardHeadLeft'>
-                                <h1 className="eventh1">CLIENT NAME</h1>
-                            </div>
-                            <div className='cardHeadRight'>
-                                <p className="eventP">12-15-2018</p> 
-                            </div>
-                        </div>
-                        <h1 className="eventh1">EVENT:</h1>
-                        <p className="eventBody"> Client has a housing meeting in uptowntown minneapolis at 1pm.</p>
-                    </div> */}
-
-                </center>
-            </div>
         );
     }
 }
@@ -63,7 +64,7 @@ class Events extends Component {
 
 const mapReduxStateToProps = (reduxState) => ({
     reduxState
-    });
+});
 
 export default connect(mapReduxStateToProps)(Events);
 
