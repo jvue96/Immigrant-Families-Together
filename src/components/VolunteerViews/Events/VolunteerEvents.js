@@ -10,7 +10,7 @@ class Events extends Component {
     }
     newEvent = () => {
         console.log(`clicked add event! `);
-        this.props.history.push('/add-event')
+        this.props.history.push(`/add-event?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
     render() {
         return (
