@@ -44,10 +44,16 @@ function* getCaseId(action) {
 
   function* getCaseSearch(action) {
       console.log('payload in search', action.payload);
-      
-      const searchResponse = yield axios.get(`/api/forms/all-cases/?q=${action.payload.search}`);
+      try{
+      const searchResponse = yield axios.get(`/api/forms/all-cases/search/?q=${action.payload.search}`);
       console.log(`this is seearch response from getcasessearch:`, searchResponse);
-      
+      const setCases = {type: 'SET_ALL_CASES', payload: searchResponse.data};
+      yield put(setCases);
+    }
+    catch (error) {
+        alert(`There was an error when searching for cases. Please try again later.`)
+        console.log(`error when trying to getCaseSearch:`, error)
+    }
   }
 
 

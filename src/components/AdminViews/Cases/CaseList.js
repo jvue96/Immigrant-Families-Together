@@ -23,7 +23,6 @@ class CaseList extends Component {
     searchBy = () => {
         this.props.dispatch({ type: 'GET_CASES_SEARCH', payload: this.state });
         console.log(`Do something for a search by!`);
-        this.props.history.push(`/case-list?q=${this.state.search}`)
     }
 
     selectCase = (id) => {
@@ -33,13 +32,9 @@ class CaseList extends Component {
 
     componentDidMount() {
         //checks to see if there is a query selector
-        if (!window.location.href.includes('?')) {
+       
             this.props.dispatch({ type: 'GET_CASES' });
-        }
-        else {
-            this.props.dispatch({type: 'GET_SEARCH_RESULTS'})
-        } 
-    }
+       }
 
 
     render() {
