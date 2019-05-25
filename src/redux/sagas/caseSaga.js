@@ -43,7 +43,10 @@ function* getCaseId(action) {
   }
 
   function* getCaseSearch(action) {
-      console.log('payload in search', action.payload)
+      console.log('payload in search', action.payload);
+      
+      const searchResponse = yield axios.get(`/api/forms/all-cases/search/?q=${action.payload}`);
+      
   }
 
 

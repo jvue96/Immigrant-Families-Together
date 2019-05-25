@@ -379,6 +379,13 @@ router.get('/all-cases/:id', (req, res) => {
   })
 })
 
+
+router.get('/all-cases/search/:query', (req,res) => {
+
+  console.log('in get case search');
+  console.log(req.query);
+})
+
 router.get('/volunteer', (req, res) => {
   console.log(`HIT SERACH BY VOLUNTEER`);
   

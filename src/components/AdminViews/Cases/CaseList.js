@@ -36,6 +36,9 @@ class CaseList extends Component {
         if (!window.location.href.includes('?')) {
             this.props.dispatch({ type: 'GET_CASES' });
         }
+        else {
+            this.props.dispatch({type: 'GET_SEARCH_RESULTS'})
+        } 
     }
 
 
