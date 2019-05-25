@@ -360,7 +360,7 @@ router.get('/all-cases', (req, res) => {
 
   if (req.query !== '{}') {
     let queryText = `SELECT * FROM cases WHERE (case_last_name ILIKE $1 OR case_number ILIKE $1);`;
-    pool.query(queryText, [`%${req.query.q}%`])
+    pool.query(queryText, ['%'+req.query.q+'%'])
     .then(results=>{
       res.send(results.rows)
     })
