@@ -100,10 +100,15 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/volunteer-landing"
+              path="/home"
               component={VolunteerLanding}
             />
             <ProtectedRoute
+              exact
+              path="/volunteer-landing"
+              component={VolunteerLanding}
+            />
+            <AdminProtectedRoute
               exact
               path='/aid-form'
               component={AidForm}
@@ -114,56 +119,56 @@ class App extends Component {
               path='/events'
               component={Events}
             />
-            <ProtectedRoute
+            <AdminProtectedRoute
               exact
               path='/attorney-form'
               component={AttorneyForm}
             />
-            <ProtectedRoute
+            <AdminProtectedRoute
               exact
               path='/bond-form'
               component={BondForm}
             />
-            <ProtectedRoute
+            <AdminProtectedRoute
               exact
               path='/foster-form'
               component={FosterForm}
             />
-            <ProtectedRoute
+            <AdminProtectedRoute
               exact
               path='/fund-form'
               component={FundForm}
             />
-            <ProtectedRoute
+            <AdminProtectedRoute
               exact
               path='/grocery-form'
               component={GroceryForm}
             />
-            <ProtectedRoute
+            <AdminProtectedRoute
               exact
               path='/bio-form'
               component={BioForm}
             />
-            <ProtectedRoute
+            <AdminProtectedRoute
               exact
               path='/housing-form'
               component={HousingForm}
             />
-            <ProtectedRoute
+            <AdminProtectedRoute
               exact
               path="/ice-form"
               component={IceFacility} />
-            <ProtectedRoute
+            <AdminProtectedRoute
               exact
               path='/legal-form'
               component={LegalStatusForm}
             />
-            <ProtectedRoute
+            <AdminProtectedRoute
               exact
               path='/medical-form'
               component={MedicalForm}
             />
-            <ProtectedRoute
+            <AdminProtectedRoute
               exact
               path='/school-form'
               component={SchoolForm}
@@ -175,13 +180,13 @@ class App extends Component {
             />
 
 
-            <ProtectedRoute
+            <AdminProtectedRoute
               exact
               path="/admin-landing"
               component={AdminLanding}
             />
 
-            <ProtectedRoute
+            <AdminProtectedRoute
               exact
               path="/register-volunteer"
               component={RegisterVolunteer}

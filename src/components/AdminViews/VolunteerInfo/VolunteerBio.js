@@ -9,6 +9,7 @@ class VolunteerBio extends Component {
         const searchObject = qs.parse(this.props.location.search)
         console.log('Individual volunteer bio searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_VOLUNTEER_BIO', payload: searchObject.id });
+        this.props.dispatch({ type: 'GET_CASES'});
         // console.log('GET_VOLUNTEER_BIO', this.props.reduxState.bioReducer);
     }
 
@@ -79,8 +80,18 @@ class VolunteerBio extends Component {
                     </section> 
 
                     )})}
-
-                    <button onClick={this.assignCase}> ASSIGN CASE </button>  
+<label>ASSIGN CASE</label> 
+<select
+// onChange={this.handleChange('assign')}
+>
+    <option>-</option>
+    {this.props.reduxState.allCasesReducer.map(cases => (
+    <option>
+        {cases.case_number}
+    </option>
+    ))}
+</select>
+                    <button className="formButton" onClick={this.assignCase}> ASSIGN CASE </button>  
 
 
                     {/* MAP OVER CASES ASSIGNED TO VOLUNTEER */}
