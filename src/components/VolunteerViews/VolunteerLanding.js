@@ -12,7 +12,7 @@ class VolunteerLanding extends Component {
     viewCase = (event) => {
         console.log(event.target.dataset.value);
         this.props.dispatch({type: 'GET_CURRENT_ID', payload: event.target.dataset.value})
-        this.props.history.push(`/case/events?id=${event.target.dataset.value}`)
+        this.props.history.push(`/volunteer-events?id=${event.target.dataset.value}`)
     }
 
     render() {
