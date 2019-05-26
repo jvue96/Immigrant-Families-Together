@@ -153,9 +153,11 @@ class MedicalForm extends Component {
                         <select
                         value={this.state.medicalForm.fee_coverage}
                         onChange={this.handleChange('fee_coverage')}>
-                        <option value="0">-</option>
-                        <option value="True">True</option>
-                        <option value="False">False</option>
+                        <option>-</option>
+                        <option
+                        selected="selected"
+                        value={true}>True</option>
+                        <option value={false}>False</option>
                         </select> 
                         
                         <label>MEDICAL NOTES</label> 

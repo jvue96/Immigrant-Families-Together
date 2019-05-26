@@ -42,12 +42,27 @@ function* getCaseId(action) {
     }
   }
 
+  function* getCaseSearch(action) {
+      console.log('payload in search', action.payload);
+      try{
+      const searchResponse = yield axios.get(`/api/forms/all-cases/search/?q=${action.payload.search}`);
+      console.log(`this is seearch response from getcasessearch:`, searchResponse);
+      const setCases = {type: 'SET_ALL_CASES', payload: searchResponse.data};
+      yield put(setCases);
+    }
+    catch (error) {
+        alert(`There was an error when searching for cases. Please try again later.`)
+        console.log(`error when trying to getCaseSearch:`, error)
+    }
+  }
+
 
 function* caseSaga() {
     yield takeLatest('ADD_CASE', postCase);
     /* volunteer landing page  */
     yield takeLatest('GET_CASES', getCases);
     yield takeLatest('GET_CURRENT_ID', getCaseId);
+    yield takeLatest('GET_CASES_SEARCH', getCaseSearch)
 
 }
 

@@ -86,10 +86,7 @@ class BondForm extends Component {
                         /> 
 
                         <label>BOND PAID DATE</label> 
-                        <input type="text"
-                        value={this.state.legalInfoForm.bond_paid_date}
-                        onChange={this.handleChange('bond_paid_date')}
-                        /> 
+                        <input type="date" value={this.state.legalInfoForm.bond_paid_date} onChange={this.handleChange('bond_paid_date')} />
 
                         <label>BOND PAID BY</label> 
                         <input type="text"

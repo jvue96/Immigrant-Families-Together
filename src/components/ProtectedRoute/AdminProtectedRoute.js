@@ -3,6 +3,7 @@ import {Route} from 'react-router-dom'
 import {connect} from 'react-redux';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import VolunteerLanding from "../VolunteerViews/VolunteerLanding";
 // import UserPage from '../UserPage/UserPage'
 
 // A Custom Wrapper Component -- This will keep our code DRY.
@@ -28,18 +29,28 @@ const AdminProtectedRoute = (props) => {
 
   let ComponentToShow;
 
+  // if(user.admin === 'yes') {
+  //   // if the user is logged in (only logged in users have ids)
+  //   // show the component that is protected
+  //   ComponentToShow = ComponentToProtect;
+  // } else if (loginMode === 'login') {
+  //   // if they are not logged in, check the loginMode on Redux State
+  //   // if the mode is 'login', show the LoginPage
+  //   ComponentToShow = LoginPage;
+  // } else {
+  //   // the the user is not logged in and the mode is not 'login'
+  //   // show the RegisterPage
+  //   ComponentToShow = RegisterPage;
+  // }
+
   if(user.admin === 'yes') {
     // if the user is logged in (only logged in users have ids)
     // show the component that is protected
     ComponentToShow = ComponentToProtect;
-  } else if (loginMode === 'login') {
-    // if they are not logged in, check the loginMode on Redux State
-    // if the mode is 'login', show the LoginPage
-    ComponentToShow = LoginPage;
   } else {
     // the the user is not logged in and the mode is not 'login'
     // show the RegisterPage
-    ComponentToShow = RegisterPage;
+    ComponentToShow = VolunteerLanding;
   }
 
   // We return a Route component that gets added to our list of routes

@@ -2,7 +2,7 @@ const caseReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_CASE':
             return action.payload;
-        default:
+         default:
             return state;
     }
 }

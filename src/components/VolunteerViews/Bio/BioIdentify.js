@@ -3,9 +3,9 @@
 // import { connect } from 'react-redux';
 // import qs from 'query-string';
 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Nav from '../../Nav/Nav'
+// import React, { Component } from 'react';
+// import { connect } from 'react-redux';
+// import Nav from '../../Nav/Nav'
 
 
 // class BioIdentify extends Component {
@@ -37,19 +37,19 @@ import Nav from '../../Nav/Nav'
 // )}
 // </div>
 
-    render() {
-        return (
-            <div>
-<Nav pageName='IDENTIFICATION' volunteer home='/home' /> 
-                <center>
-                    <div>{this.props.reduxState.bioReducer.map(id =>
-                <div>
-<p className="bioDivs">PASSPORT: FALSE (HARD CODED)</p>
-<p className="bioDivs">U.S. IDENTIFICATION: FALSE (HARD CODED)</p>
-<p className="bioDivs">NOTES: THIS NEEDS TO BE ADDED </p>
-                </div>
-)}
-</div>
+//     render() {
+//         return (
+//             <div>
+// <Nav pageName='IDENTIFICATION' volunteer home='/home' /> 
+//                 <center>
+//                     <div>{this.props.reduxState.bioReducer.map(id =>
+//                 <div>
+// <p className="bioDivs">PASSPORT: FALSE (HARD CODED)</p>
+// <p className="bioDivs">U.S. IDENTIFICATION: FALSE (HARD CODED)</p>
+// <p className="bioDivs">NOTES: THIS NEEDS TO BE ADDED </p>
+//                 </div>
+// )}
+// </div>
 
 
 //                     {/* <label>PASSPORT: Y/N</label> <br/>

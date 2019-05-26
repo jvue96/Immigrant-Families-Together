@@ -32,12 +32,10 @@ class BioForm extends Component {
             address:'',
             referred_by:'',
             reference_date:'',
-            passport: false,
-            us_id: false,
-
-
+            passport: true,
+            us_id: true,
         }
-    }
+    };
 
     autoPopulate=()=>{
         const searchObject = qs.parse(this.props.location.search)
@@ -48,17 +46,17 @@ class BioForm extends Component {
                 case_id: searchObject.id,
                 first_name:'Mary',
                 last_name:'Mosman',
-                dob:'07/04/1982',
+                dob:'1982-04-07',
                 spouse_first_name:'Rick',
-                spouse_dob:'10/31/1976',
+                spouse_dob:'1976-10-31',
                 phone:'555-555-5555',
                 encrypted: 'MosStar',
                 email:'MMosman@gmail.com',
                 address:'333 Spruce St Burnsville MN',
                 referred_by:'John Doe',
-                reference_date:'05/01/2019',
-                passport: false,
-                us_id: false,
+                reference_date:'2019-01-05',
+                passport: !this.state.bioForm.passport,
+                us_id: !this.state.bioForm.us_id,
             }
         })
       }
@@ -87,11 +85,12 @@ class BioForm extends Component {
   }
 
     render() {
+
         return (
             <div>
                 <Nav pageName='BIO' backArrow='/cases' home='/home'/>
 
-                {JSON.stringify(this.state)}
+                {/* {JSON.stringify(this.state)} */}
                   
                 <center>
                     <div>
@@ -130,20 +129,25 @@ class BioForm extends Component {
                         <input type="date"
                         value={this.state.bioForm.reference_date} onChange={this.handleChange('reference_date')}
                         /> 
-                        <label>PASSPORT Y/N</label> 
+                        <label>PASSPORT</label> 
                         <select
                         onChange={this.handleChange('passport')}
                         >
-                            <option></option>
-                            <option value={true}>True</option>
+                            <option>-</option>
+                            <option 
+                            selected="selected"
+                            value={true}>True</option>
                             <option value={false}>False</option>
                         </select>
-                        <label>USA I.D Y/N</label> 
+
+                        <label>USA I.D</label> 
                         <select 
                         onChange={this.handleChange(`us_id`)}
                         >
-                            <option></option>
-                            <option value={true}>True</option>
+                            <option>-</option>
+                            <option 
+                            selected="selected"
+                            value={true}>True</option>
                             <option value={false}>False</option>
                         </select>
                         <button className="formButton" onClick={this.next}>NEXT</button>
