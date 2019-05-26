@@ -171,6 +171,20 @@ router.get('/medical/:id', (req, res) => {
     })
   })
 
+  router.put('/edit-aid/:id', (req, res) => {
+    let aid = req.body;
+    console.log('PUT in aid edit:', aid);
+    let sqlText = `UPDATE "aid" SET "grocery_program" = $1, "grocery_program_volunteer" = $2, "go_fund_me" = $3, "social_worker" = $4, "social_worker_phone" = $5 WHERE "case_id" = $6`;
+    pool.query(sqlText, [aid.grocery_program, aid.grocery_program_volunteer, aid.go_fund_me, aid.social_worker, aid.social_worker_phone, aid.case_id])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to PUT for aid form edits');
+        res.sendStatus(500);
+      })
+  })
+
 
   router.post('/note', (req, res) => {
     let note = req.body;

@@ -31,9 +31,11 @@ import Cases from '../AdminViews/Cases/Cases';
 import AidForm from '../AdminViews/Cases/Forms/AidForm';
 import ChildrenForm from "../AdminViews/Cases/Forms/ChildrenForm";
 import CreateCase from '../AdminViews/Cases/Forms/CreateCase';
-
+import EditCasesLanding from '../AdminViews/Cases/EditCasesLanding'
+import EditCases from '../AdminViews/Cases/EditCases'
 import CaseList from '../AdminViews/Cases/CaseList';
-import VolunteerBio from "../AdminViews/VolunteerInfo/VolunteerBio"; 
+import VolunteerBio from "../AdminViews/VolunteerInfo/VolunteerBio";
+import AidEdit from '../AdminViews/Cases/EditForms/AidEdit'
 import './App.css';
 
 /* volunteer imports */
@@ -330,6 +332,21 @@ class App extends Component {
               exact
               path="/volunteer-bio"
               component={VolunteerBio}
+            />
+            <ProtectedRoute
+              exact
+              path="/edit-list"
+              component={EditCasesLanding}
+            />
+            <ProtectedRoute
+              exact
+              path="/edit-case"
+              component={EditCases}
+            />
+            <ProtectedRoute
+              exact
+              path="/aid-edit"
+              component={AidEdit}
             />
 
             {/* volunteer views link */}
