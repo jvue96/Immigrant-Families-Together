@@ -6,7 +6,7 @@ const SubNav = () => {
         return (
             <div className="subnavbar">
             <div className="subNavSection">
-            <Link to='/volunteer-notes'>     
+            <Link to='/volunteer-events'>     
                 <h3>EVENTS</h3>
                     </Link>
             </div>
