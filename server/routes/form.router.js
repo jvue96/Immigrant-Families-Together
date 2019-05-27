@@ -433,4 +433,33 @@ router.get('/volunteer', (req, res) => {
   //   });
 })
 
+router.post('/assign', (req, res) => {
+  let cases = req.body;
+  console.log('Assigning a volunteer to a new case:', cases);
+  let sqlText = `INSERT INTO users_cases (user_id, case_id) VALUES 
+  ($1, $2)`;
+  pool.query(sqlText, [cases.user_id, cases.case_id])
+    .then( (response) => {
+      res.send(response)
+    })
+    .catch( (error) => {
+      console.log('Failed to POST the ASSIGN VOLUNTEER TO CASE', error);
+      res.sendStatus(500);
+    })
+})
+
+//WRITE A WHERE TO LIST ONLY THE TEAM MEMBERS ASSIGN TO THE CASE
+router.get('/assign', (req, res) => {
+  console.log(`Getting team from volunteer view`);
+  const sqlText = `SELECT "user"."username", "user"."phone", "user"."email", "user"."encrypted", "user"."address", "user"."skills", "user"."second_language" FROM users_cases
+  JOIN "user" ON "users_cases"."user_id" = "user"."id"`;
+  pool.query(sqlText)
+  .then((results) => {
+      res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting the team information', error);
+      res.sendStatus(500);
+  })
+})
+
 module.exports = router;

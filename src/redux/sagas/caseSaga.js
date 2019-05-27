@@ -56,6 +56,15 @@ function* getCaseId(action) {
     }
   }
 
+  function* assignCase(action) {
+    try { 
+        yield axios.post(`/api/forms/assign`, action.payload);
+    } catch (error) {
+        console.log(`Couldn't POST the assign the volunteer to a case`, error);
+        alert(`Sorry couldn't assign the volunteer to a case. Try again later.`)
+    }
+  }
+
 
 function* caseSaga() {
     yield takeLatest('ADD_CASE', postCase);
@@ -63,7 +72,7 @@ function* caseSaga() {
     yield takeLatest('GET_CASES', getCases);
     yield takeLatest('GET_CURRENT_ID', getCaseId);
     yield takeLatest('GET_CASES_SEARCH', getCaseSearch)
-
+    yield takeLatest('ASSIGN_CASE', assignCase)
 }
 
 export default caseSaga;
