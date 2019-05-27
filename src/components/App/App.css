@@ -264,6 +264,9 @@ input {
     display:block;
   }
 
+  a > i {
+    color:white;
+  }
 
   i{
     font-size: 25px;
