@@ -4,6 +4,7 @@ body{
 
 button,
 h1,
+h2,
 label,
 .alert,
 .eventh1,
@@ -23,9 +24,11 @@ button{
   letter-spacing: 1px;
 }
 
-h1{
+h1,h2{
     color: rgb(118, 118, 118);
 }
+
+
 
 label{
     letter-spacing: .5px;
@@ -353,3 +356,4 @@ tr:nth-child(even) {
   background-color: #d6d6d6;
   border-radius: 8px;
 }
+

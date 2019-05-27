@@ -33,6 +33,16 @@ class Case extends Component {
         number: '',
     }
 
+    updateState = (caseName, caseNumber) => {
+        console.log(`hello caseName and caseNumber`, caseName, caseNumber);
+    this.setState({
+        name: caseName,
+        number: caseNumber
+    });
+    
+}
+
+
     componentDidMount() {
         let qsId = qs.parse(this.props.location.search)
         console.log(`this is  qsid`,qsId)
@@ -40,6 +50,15 @@ class Case extends Component {
         //console.log(`this is last name in case id reducer:`, this.props.reduxState.caseIdReducer[0]);
     }
 
+    //this was done to get the props when state was changed. it was necessary to eventually getting the redux state case stuff onto 
+    componentDidUpdate(prevProps) {
+        if(this.props.reduxState.caseIdReducer !== prevProps.reduxState.caseIdReducer) {
+            console.log(`inside prevprops update, this matches ok`, this.props.reduxState.caseIdReducer[0].case_last_name)
+            let caseName = this.props.reduxState.caseIdReducer[0].case_last_name;
+            let caseNumber = this.props.reduxState.caseIdReducer[0].case_number;
+            this.updateState(caseName, caseNumber);
+        }
+    }
 
     eventsPages = () => {
         this.props.history.push(`/volunteer-events?id=${this.props.reduxState.caseIdReducer[0].id}`)
@@ -67,17 +86,13 @@ class Case extends Component {
         return (
             <div>
             <Nav pageName='CASE' home='/home' /> 
-
                 <center>
-                <div>
+                <div className='caseHeader'>
                 {this.props.reduxState.user.admin==='yes'?
-                
-                <h1>    
-                    {/* {this.props.reduxState.caseIdReducer[0]} */}
-                {/* {this.props.reduxState.caseIdReducer[0].case_last_name} : {this.props.reduxState.caseIdReducer[0].case_number} */}
-                </h1>
-                
-                   
+                <div>
+                <h1>Case Name: {this.state.name}</h1>
+                <h2>Case Number: {this.state.number}</h2>
+                </div>    
              :
         <h1>VOLUNTEER CASES</h1>   
                 
