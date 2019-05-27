@@ -42,15 +42,17 @@ const AdminProtectedRoute = (props) => {
   //   // show the RegisterPage
   //   ComponentToShow = RegisterPage;
   // }
-
   if(user.admin === 'yes') {
     // if the user is logged in (only logged in users have ids)
     // show the component that is protected
     ComponentToShow = ComponentToProtect;
-  } else {
+    
+  } else if(user.id){
     // the the user is not logged in and the mode is not 'login'
     // show the RegisterPage
     ComponentToShow = VolunteerLanding;
+  } else {
+    ComponentToShow = LoginPage;
   }
 
   // We return a Route component that gets added to our list of routes
