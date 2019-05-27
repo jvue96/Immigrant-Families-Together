@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Switch, Route, Link } from "react-router-dom";
+import Nav from '../Nav/Nav'
 import "./Volunteer.css";
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+
 import qs from 'query-string';
 
 // import Notes from "./Notes/Notes";
@@ -24,10 +26,20 @@ class Case extends Component {
     //         }
     //     })  
     // }
+  
 
-    // state= {
+    state= {
+        name: '',
+        number: '',
+    }
 
-    // }
+    componentDidMount() {
+        let qsId = qs.parse(this.props.location.search)
+        console.log(`this is  qsid`,qsId)
+        this.props.dispatch({ type: 'GET_CURRENT_ID', payload: qsId.id });
+        //console.log(`this is last name in case id reducer:`, this.props.reduxState.caseIdReducer[0]);
+    }
+
 
     eventsPages = () => {
         this.props.history.push(`/volunteer-events?id=${this.props.reduxState.caseIdReducer[0].id}`)
@@ -51,11 +63,26 @@ class Case extends Component {
     render() {
 
         const { path } = this.props.match;
-
+        
         return (
             <div>
+            <Nav pageName='CASE' home='/home' /> 
+
                 <center>
-                    <div><h1>VOLUNTEER CASES</h1></div> 
+                <div>
+                {this.props.reduxState.user.admin==='yes'?
+                
+                <h1>    
+                    {/* {this.props.reduxState.caseIdReducer[0]} */}
+                {/* {this.props.reduxState.caseIdReducer[0].case_last_name} : {this.props.reduxState.caseIdReducer[0].case_number} */}
+                </h1>
+                
+                   
+             :
+        <h1>VOLUNTEER CASES</h1>   
+                
+                }   
+</div>
                     
                     {/* <button>LOGOUT</button>  */}
 
