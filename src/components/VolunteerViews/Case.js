@@ -89,10 +89,11 @@ class Case extends Component {
                 <center>
                 <div className='caseHeader'>
                 {this.props.reduxState.user.admin==='yes'?
-                <div>
+                //the header changes depending on the status of the user 
+                <>
                 <h1>Case Name: {this.state.name}</h1>
                 <h2>Case Number: {this.state.number}</h2>
-                </div>    
+                </>    
              :
         <h1>VOLUNTEER CASES</h1>   
                 

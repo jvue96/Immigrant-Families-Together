@@ -28,7 +28,13 @@ h1,h2{
     color: rgb(118, 118, 118);
 }
 
-
+/*for case.js*/
+.caseHeader h1 {
+  margin-bottom:0;
+}
+.caseHeader h2 {
+  margin-top:5px;
+}
 
 label{
     letter-spacing: .5px;
