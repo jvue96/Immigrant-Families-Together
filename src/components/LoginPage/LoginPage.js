@@ -24,6 +24,7 @@ class LoginPage extends Component {
       // } else {
       //   this.props.history.push('/volunteer-landing')
       // }
+      this.props.history.push('/home');
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
