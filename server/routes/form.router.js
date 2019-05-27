@@ -164,6 +164,8 @@ router.get('/medical/:id', (req, res) => {
     const sqlText = `SELECT * FROM "aid" WHERE "case_id" = $1`
     pool.query(sqlText, [req.params.id])
     .then((results) => {
+        console.log(results.rows);
+        
         res.send(results.rows)
     }).catch((error) => {
         console.log('Something went wrong getting the information from the aid forms', error);
@@ -180,7 +182,7 @@ router.get('/medical/:id', (req, res) => {
         res.sendStatus(201);
       })
       .catch( (error) => {
-        console.log('Failed to PUT for aid form edits');
+        console.log('Failed to PUT for aid form edits', error);
         res.sendStatus(500);
       })
   })

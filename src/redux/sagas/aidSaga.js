@@ -29,9 +29,9 @@ function* getAid(parse) {
 function* editAid(action) {
     console.log('PUT for editing aid form', action.payload);
     try {
-        yield axios.put(`/api/forms/edit-aid/${action.payload.case_id}`, action.payload);
-        // yield put({ type: 'GET_AID' });
-    }catch (error) {
+        const getResponse = yield axios.put(`/api/forms/edit-aid/${action.payload.case_id}`, action.payload);
+        yield put({ type: 'SET_AID', payload: getResponse.data });
+    } catch (error) {
         console.log(`Couldn't PUT the current user`);
         alert(`Sorry couldn't edit the current entry. Try again later.`)
     }

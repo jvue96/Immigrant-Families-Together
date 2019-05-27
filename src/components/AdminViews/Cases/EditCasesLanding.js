@@ -33,7 +33,7 @@ class EditCasesLanding extends Component {
     componentDidMount() {
         //checks to see if there is a query selector
        
-            this.props.dispatch({ type: 'GET_CASES' });
+        this.props.dispatch({ type: 'GET_CASES' });
        }
 
 

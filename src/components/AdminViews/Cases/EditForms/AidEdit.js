@@ -7,7 +7,6 @@ import qs from 'query-string';
 
 class AidEdit extends Component {
 
-
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
         console.log('aidForm searchObject', searchObject);
@@ -16,23 +15,14 @@ class AidEdit extends Component {
             aidForm:{
                 ...this.state.aidForm,
                 case_id: searchObject.id,
-        //         grocery_program: this.props.reduxState.aidReducer.grocery_program,
-        //         grocery_program_volunteer: this.props.reduxState.aidReducer[0].grocery_program_volunteer,
-        //         go_fund_me: this.props.reduxState.aidReducer[0].go_fund_me,
-        //         social_worker: this.props.reduxState.aidReducer[0].social_worker,
-        //         social_worker_phone: this.props.reduxState.aidReducer[0].social_worker_phone
             }
         }) 
-    }
-    next = () => {
-        this.props.dispatch({type:'PUT_AID', payload: this.state.aidForm});
-        this.props.history.push(`/edit-case?id=${this.state.aidForm.case_id}`)
     }
 
     state = {
         aidForm: {
             case_id: this.props.reduxState.caseReducer.rows[0].id,
-            grocery_program: this.props.reduxState.aidReducer.grocery_program,
+            grocery_program: '',
             grocery_program_volunteer: '',
             go_fund_me: '',
             social_worker: '',
@@ -40,18 +30,60 @@ class AidEdit extends Component {
         }
     }
 
+    next = () => {
+        this.props.dispatch({type:'PUT_AID', payload: this.state.aidForm});
+        this.props.history.push(`/edit-case?id=${this.state.aidForm.case_id}`)
+        console.log(this.state);   
+    }
 
     handleChange = propertyName => event => {
-        console.log(`handleChange has been fired with this propertyName:`, propertyName);
-        
+        console.log(`handleChange has been fired with this propertyName:`, [propertyName]);
+
         this.setState({
-            aidForm: {
+            aidForm: { 
                 ...this.state.aidForm,
-                [propertyName]: event.target.defaultValue,
+                [propertyName]: event.target.value,
             }
-        })
-        console.log(`this is state after handleChange:`, this.state);
+        })        
         
+          if(this.state.aidForm.grocery_program === "") {
+            this.setState({
+                aidForm: {
+                    ...this.state.aidForm,
+                    grocery_program: this.props.reduxState.aidReducer[0].grocery_program,
+                }
+            })
+            
+        } else if (this.state.aidForm.grocery_program_volunteer === "") {
+            this.setState({
+                aidForm: {
+                    ...this.state.aidForm,
+                    grocery_program_volunteer: this.props.reduxState.aidReducer[0].grocery_program_volunteer,
+                }
+            })
+        } else if (this.state.aidForm.go_fund_me === "") {
+            this.setState({
+                aidForm: {
+                    ...this.state.aidForm,
+                    go_fund_me: this.props.reduxState.aidReducer[0].go_fund_me,
+                }
+            })
+        } else if (this.state.aidForm.social_worker === "") {
+            this.setState({
+                aidForm: {
+                    ...this.state.aidForm,
+                    social_worker: this.props.reduxState.aidReducer[0].social_worker,
+                }
+            })
+        }  else if (this.state.aidForm.social_worker_phone === "") {
+            this.setState({
+                aidForm: {
+                    ...this.state.aidForm,
+                    social_worker_phone: this.props.reduxState.aidReducer[0].social_worker_phone,
+                }
+            })
+        }
+        console.log(`this is state after handleChange:`, this.state);
     }
     
     render() {
@@ -60,7 +92,9 @@ class AidEdit extends Component {
             <Nav pageName='AID FORM' backArrow='/cases' home='/cases' />
             
                 <center>
-                <div>{this.props.reduxState.aidReducer.map(aid =>
+                    {JSON.stringify(this.props.reduxState.aidReducer)}
+                <div>
+                {this.props.reduxState.aidReducer.map(aid =>
                     <div className="formDivs">
                         
                         <label>GROCERY PROGRAM</label>
@@ -95,7 +129,8 @@ class AidEdit extends Component {
                         onClick={this.next}
                         >UPDATE FORM</button>
                     </div>
-                    )}</div>
+                    )}
+                    </div>
                 </center>
             
             </div>
@@ -103,9 +138,6 @@ class AidEdit extends Component {
     }
 }
 
-// const mapStateToProps = state => ({
-//     user: state.user,
-//   });
 
 const mapStateToProps = reduxState => ({
     reduxState,
