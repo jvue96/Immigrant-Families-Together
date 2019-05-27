@@ -27,6 +27,7 @@ class CaseList extends Component {
 
     selectCase = (id) => {
         console.log(`in selectCase, heres id:`, id);
+        this.props.history.push(`/case/?id=${id}&admin=true`);
 
     }
 
