@@ -9,6 +9,8 @@ class EditCases extends Component {
     componentDidMount = () => {
         this.props.dispatch({type: 'ADD_CASE'})
         const searchObject = qs.parse(this.props.location.search)
+        this.props.dispatch({ type: 'GET_AID', payload: searchObject.id });
+        this.props.dispatch({ type: 'GET_LEGAL', payload: searchObject.id });
         console.log('formRoutes searchObject', searchObject);
         this.setState({
             formRoutes:{
@@ -39,7 +41,7 @@ class EditCases extends Component {
         this.props.history.push(`/bond-form?id=${this.state.formRoutes.id}`)
     }
     legalStatusForm = () => {
-        this.props.history.push(`/legal-form?id=${this.state.formRoutes.id}`)
+        this.props.history.push(`/legal-edit?id=${this.state.formRoutes.id}`)
     }
     
     state = {
