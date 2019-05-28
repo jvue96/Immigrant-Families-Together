@@ -77,17 +77,18 @@ class BioEdit extends Component {
             <div>
                 <Nav pageName='BIO' backArrow='/cases' home='/home'/>
 
-                {JSON.stringify(this.props.reduxState.bioReducer)}
+                {/* {JSON.stringify(this.props.reduxState.bioReducer)}
 
-                {JSON.stringify(this.state.bioForm)}
+                {JSON.stringify(this.state.bioForm)} */}
                 <center>
                     <div>
                         <h1>
                             BIO FORM
                         </h1>
                     </div>
-                    {this.props.reduxState.bioReducer.map(bio =>
-                    <div className="formDivs" >
+                    {this.props.reduxState.bioReducer.map((bio, index) =>
+
+                    <div className="formDivs" key={index}>
                         <label>FIRST NAME</label> 
                         <input type="text" 
                         defaultValue={bio.first_name}
@@ -149,9 +150,7 @@ class BioEdit extends Component {
                         onChange={this.handleChange('passport')}
                         >
                             <option>-</option>
-                            <option 
-                            selected="selected"
-                            value={true}>True</option>
+                            <option value={true}>True</option>
                             <option value={false}>False</option>
                         </select>
 
@@ -161,9 +160,7 @@ class BioEdit extends Component {
                         onChange={this.handleChange(`us_id`)}
                         >
                             <option>-</option>
-                            <option 
-                            selected="selected"
-                            value={true}>True</option>
+                            <option value={true}>True</option>
                             <option value={false}>False</option>
                         </select>
                         <button className="formButton" onClick={this.next}>UPDATE FORM</button>
