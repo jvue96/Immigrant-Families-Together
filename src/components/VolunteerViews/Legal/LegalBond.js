@@ -18,10 +18,17 @@ class LegalBond extends Component {
                  <Nav pageName='BOND INFO' volunteer home='/home' /> 
                <center>
                     <div>{this.props.reduxState.bondReducer.map(bond =>
-                    <div>
-                        <p className="bioDivs">BOND AMOUNT: {bond.bond_amount}</p>
-                        <p className="bioDivs">BOND PAID DATE: {bond.bond_paid_date}</p>
-                        <p className="bioDivs">BOND PAID BY: {bond.bond_paid_by}</p>
+                     <div className="bioCard">
+                        <hr/>
+                        <label>BOND AMOUNT:</label>
+                        <p className="PCard"> {bond.bond_amount}</p>
+                        <hr/>
+                        <label>BOND PAID DATE:</label>
+                        <p className="PCard"> {bond.bond_paid_date}</p>
+                        <hr/>
+                        <label>BOND PAID BY:</label>
+                        <p className="PCard"> {bond.bond_paid_by}</p>
+                        <hr/>
                     </div>
                     )}
                     </div>

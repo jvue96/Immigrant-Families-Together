@@ -20,11 +20,18 @@ class BioSchool extends Component {
                 <center>
 
 <div>{this.props.reduxState.schoolReducer.map(school =>
-                <div>
-<p className="bioDivs">SCHOOL NAME: {school.name}</p>
-<p className="bioDivs">PHONE: {school.phone}</p>
-<p className="bioDivs">EMAIL: {school.email}</p>
-                </div>
+            <div className="bioCard">
+                <hr/>
+                <label>SCHOOL NAME:</label>
+                <p className="PCard"> {school.name}</p>
+                <hr/>
+                <label>PHONE:</label>
+                <p className="PCard"> {school.phone}</p>
+                <hr/>
+                <label>EMAIL:</label>
+                <p className="PCard"> {school.email}</p>
+                <hr/>
+            </div>
 )}
 </div>
 
