@@ -56,8 +56,9 @@ next = () => {
                 <Nav pageName='SCHOOL' home='/home'/>
                 <center>
                     {/* <pre>{JSON.stringify(this.state)}</pre> */}
-                    {this.props.reduxState.schoolReducer.map(school =>
-                    <div className="formDivs">
+                    {this.props.reduxState.schoolReducer.map((school,index) =>
+
+                    <div className="formDivs" key={index}>
                         <label>SCHOOL NAME</label> 
                         <input type="text"
                         defaultValue={school.name}

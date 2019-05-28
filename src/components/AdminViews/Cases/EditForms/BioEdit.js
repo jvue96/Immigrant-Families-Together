@@ -4,6 +4,7 @@ import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import Nav from '../../../Nav/Nav'
 import qs from 'query-string';
+import moment from 'moment'; 
 
 class BioEdit extends Component {
 
@@ -61,6 +62,12 @@ class BioEdit extends Component {
         })
     }
 
+     // format date from database to display correctly for inputs' defaultValues 
+     formatDate = (date) => {
+        let entryDate =  moment(date).format("YYYY-MM-DD"); 
+        return entryDate; 
+    }
+
    next = () => {
     this.props.dispatch({type:'PUT_BIO', payload: this.state.bioForm});
     this.props.history.push(`/edit-case?id=${this.state.bioForm.case_id}`)
@@ -100,8 +107,8 @@ class BioEdit extends Component {
                         onChange={this.handleChange('last_name')}/> 
 
                         <label>D.O.B</label> 
-                        <input type="text"
-                        defaultValue={bio.dob}
+                        <input type="date"
+                        defaultValue={this.formatDate(bio.dob)}
                         onChange={this.handleChange('dob')} />
 
                         <label>SPOUSE NAME</label> 
@@ -110,8 +117,8 @@ class BioEdit extends Component {
                         onChange={this.handleChange('spouse_first_name')}/> 
 
                         <label>SPOUSE D.O.B</label> 
-                        <input type="text"
-                        defaultValue={bio.spouse_dob}
+                        <input type="date"
+                        defaultValue={this.formatDate(bio.spouse_dob)}
                         onChange={this.handleChange('spouse_dob')}/> 
 
                         <label>PHONE</label> 

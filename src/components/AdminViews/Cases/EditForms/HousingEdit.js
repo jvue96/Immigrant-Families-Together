@@ -58,30 +58,31 @@ next = () => {
             <div>
                 <Nav pageName='HOUSING' home='/home'/>
                 <center>
-                {this.props.reduxState.housingReducer.map(housing =>
-                    <div className="formDivs">
+                {this.props.reduxState.housingReducer.map((housing,index) =>
+
+                    <div className="formDivs" key={index}>
                         <label>ADDRESS</label> 
                         <input type="text"
                         defaultValue={housing.address}
-                        value={this.state.housingForm.address}
+                        // value={this.state.housingForm.address}
                         onChange={this.handleChange('address')}/> 
 
                         <label>MONTHLY RENT</label> 
                         <input type="text"
                         defaultValue={housing.rent}
-                        value={this.state.housingForm.rent}
+                        // value={this.state.housingForm.rent}
                         onChange={this.handleChange('rent')}/> 
 
                         <label>RENT PAID BY</label> 
                         <input type="text"
                         defaultValue={housing.paid_by}
-                        value={this.state.housingForm.paid_by}
+                        // value={this.state.housingForm.paid_by}
                         onChange={this.handleChange('paid_by')}/> 
 
                         <label>UTILITIES</label> 
                         <input type="text"
                         defaultValue={housing.utilities}
-                        value={this.state.housingForm.utilities}
+                        // value={this.state.housingForm.utilities}
                         onChange={this.handleChange('utilities')}/> 
 
                         <label>LIVING WITH FAMILY</label> 
@@ -89,11 +90,8 @@ next = () => {
                         defaultValue={housing.living_with_fam}
                         onChange={this.handleChange(`living_with_fam`)}
                         >
-                            <option>-</option>
-                            <option
-                            selected="selected"
-                            value={true}>True</option>
-                            <option value={false}>False</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
                         </select>
 
                         <button
