@@ -110,13 +110,13 @@ class EditCases extends Component {
 
                     {div} */}
                     <div>
-                        <button className="adminMenuButtons" onClick={this.bioForm}>GENERAL BIO FORM</button>
-                        <button className="adminMenuButtons" onClick={this.medicalForm}>MEDICAL FORM</button>
-                        <button className="adminMenuButtons" onClick={this.schoolForm}>SCHOOL FORM</button>
-                        <button className="adminMenuButtons" onClick={this.housingForm}>HOUSING FORM</button>
-                        <button className="adminMenuButtons" onClick={this.aidForm}>AID FORM</button>
-                        <button className="adminMenuButtons" onClick={this.bondForm}>BOND FORM</button>
-                        <button className="adminMenuButtons" onClick={this.legalStatusForm}>LEGAL STATUS FORM</button>
+                        <button className="adminMenuButtons" onClick={this.bioForm}>EDIT GENERAL BIO</button>
+                        <button className="adminMenuButtons" onClick={this.medicalForm}>EDIT MEDICAL</button>
+                        <button className="adminMenuButtons" onClick={this.schoolForm}>EDIT SCHOOL</button>
+                        <button className="adminMenuButtons" onClick={this.housingForm}>EDIT HOUSING</button>
+                        <button className="adminMenuButtons" onClick={this.aidForm}>EDIT AID</button>
+                        <button className="adminMenuButtons" onClick={this.bondForm}>EDIT BOND</button>
+                        <button className="adminMenuButtons" onClick={this.legalStatusForm}>EDIT LEGAL STATUS</button>
                         {/* <button className="adminMenuButtons" onClick={this.identificationPages}>IDENTIFICATION</button> */}
                     </div>
                 </center>
