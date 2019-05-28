@@ -18,7 +18,7 @@ function* getAllEvents(action) {
     try {
         let result = yield axios.get(`/api/forms/events`)
         console.log('hello from getAllEvents Try!, heres the result', result)
-        const eventsAction = {type: 'SET_ALL_EVENTS', payload: result};
+        const eventsAction = {type: 'SET_ALL_EVENTS', payload: result.data};
         yield put(eventsAction);
     }
     catch(error) {

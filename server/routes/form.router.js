@@ -247,7 +247,9 @@ router.get('/medical/:id', (req, res) => {
   router.get('/events', (req,res) => {
     let sqlText = `SELECT events.date, events.description, cases.case_last_name, cases.case_number FROM events
     JOIN cases ON cases.id = events.case_id
-    GROUP BY cases.case_last_name, events.date, events.description, cases.case_number;`
+    GROUP BY cases.case_last_name, events.date, events.description, cases.case_number 
+    ORDER BY events.date ASC
+    `
 pool.query(sqlText)
 .then(results => {
   res.send(results.rows)

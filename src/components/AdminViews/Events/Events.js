@@ -2,9 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Nav from '../../Nav/Nav';
-
+import moment from 'moment';
 
 class Events extends Component {
+    
+    componentDidMount() {
+        this.props.dispatch({type:'GET_ALL_EVENTS'})
+    }
+
+    
     render() {
         return (
             <div>
@@ -12,33 +18,23 @@ class Events extends Component {
                
 
                 <center>
-                    <button className="midButton">NEW EVENT</button> 
-
-                    <div className="eventDivs" >
+                    <h1>Upcoming Events</h1>
+            {this.props.allEvents.map((event, i) =>
+                    <div key={i} className="eventDivs" >
                         <div className='cardHead'>
                             <div className='cardHeadLeft'>
-                                <h1 className="eventh1">CLIENT NAME</h1>
+                                <h1 className="eventh1">Last Name: {event.case_last_name}</h1>
+                                <h2 className="eventh1">Case #: {event.case_number}</h2>
                             </div>
                             <div className='cardHeadRight'>
-                                <p className="eventP">1-1-2019</p> 
+                                <p className="eventP">Date: {moment(event.date).format('L')}</p> 
                             </div>
                         </div>
                         <h1 className="eventh1">EVENT:</h1>
-                        <p className="eventBody"> Client has a court date on 1-1-19 in downtown minneapolis at 1pm.</p>
+                        <p className="eventBody">{event.description}</p>
                     </div>
-
-                    <div className="eventDivs" >
-                        <div className='cardHead'>
-                            <div className='cardHeadLeft'>
-                                <h1 className="eventh1">CLIENT NAME</h1>
-                            </div>
-                            <div className='cardHeadRight'>
-                                <p className="eventP">12-15-2018</p> 
-                            </div>
-                        </div>
-                        <h1 className="eventh1">EVENT:</h1>
-                        <p className="eventBody"> Client has a housing meeting in uptowntown minneapolis at 1pm.</p>
-                    </div>
+            )}
+                  
 
                 </center>
             </div>
@@ -49,6 +45,7 @@ class Events extends Component {
 
 const mapStateToProps = state => ({
     user: state.user,
+    allEvents: state.allEventsReducer,
   });
   
   // this allows us to use <App /> in index.js

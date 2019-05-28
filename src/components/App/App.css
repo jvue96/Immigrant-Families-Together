@@ -159,7 +159,6 @@ input {
 
 .cardHead{
     width: 100%;
-    height:30px;
     display:inline-flex;
 }
 
@@ -168,13 +167,11 @@ input {
 
 .cardHeadLeft{
     width:50%;
-    height:30px;
     justify-content: left;
 }
 
 .cardHeadRight{
     width:50%;
-    height:30px;
     justify-content: right;
 }
 
