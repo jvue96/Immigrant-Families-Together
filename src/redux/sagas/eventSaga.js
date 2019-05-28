@@ -11,6 +11,21 @@ function* addEvent(action) {
     }
   }
 
+
+function* getAllEvents(action) {
+    console.log('inside getAllEvents', action);
+
+    try {
+        let result = yield axios.get(`/api/forms/events`)
+        console.log('hello from getAllEvents Try!, heres the result', result)
+        const eventsAction = {type: 'SET_ALL_EVENTS', payload: result};
+        yield put(eventsAction);
+    }
+    catch(error) {
+        console.log('this is the error in getAllEvents:', error)
+    }
+}
+
 // function* getEvent(action) {
 //     try{
 //         console.log('GET newly added event', action);
@@ -42,6 +57,7 @@ function* getEvent(parse) {
 function* eventSaga() {
     yield takeLatest(`ADD_EVENT`, addEvent)
     yield takeLatest(`GET_EVENT`, getEvent)
+    yield takeLatest(`GET_ALL_EVENTS`, getAllEvents)
 }
 
 
