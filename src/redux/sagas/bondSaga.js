@@ -51,11 +51,22 @@ function* getBond(parse) {
 //     }
 // }
 
+function* editBond(action) {
+    try {
+        const getResponse = yield axios.put(`/api/forms/edit-bond/${action.payload.case_id}`, action.payload);
+        yield put({ type: 'SET_BOND', payload: getResponse.data });
+    } catch (error) {
+        console.log(`Couldn't PUT the current user`);
+        alert(`Sorry couldn't edit the current entry. Try again later.`)
+    }
+}
+
 
 
 function* bondSaga() {
     yield takeLatest(`ADD_BOND`, addBond)
     yield takeLatest(`GET_BOND`, getBond)
+    yield takeLatest(`PUT_BOND`, editBond)
 }
 
 

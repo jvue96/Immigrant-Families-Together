@@ -31,8 +31,8 @@ class AidEdit extends Component {
     }
 
     next = () => {
-        this.props.dispatch({type:'PUT_AID', payload: this.state.aidForm});
-        this.props.history.push(`/edit-case?id=${this.state.aidForm.case_id}`)
+        // this.props.dispatch({type:'PUT_AID', payload: this.state.aidForm});
+        // this.props.history.push(`/edit-case?id=${this.state.aidForm.case_id}`)
         console.log(this.state);   
     }
 
