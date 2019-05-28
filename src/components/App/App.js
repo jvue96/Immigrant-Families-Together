@@ -373,6 +373,9 @@ class App extends Component {
               exact
               path="/housing-edit"
               component={HousingEdit}
+            />
+            <ProtectedRoute
+              exact
               path="/legal-edit"
               component={LegalEdit}
             />
