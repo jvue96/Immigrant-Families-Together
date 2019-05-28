@@ -8,7 +8,6 @@ function* postLegal(action) {
     try {
         console.log('POSTING LEGAL FORM *****', action);
         const response = yield axios.post(`/api/forms/legal`, action.payload);
-
         /* ******* the saga will post, but enabling this set reducer will throw a bug, not quite sure whats wrong.  */
         /* reducer doesn't function  */
         // const action = {type: 'SET_LEGAL', payload: response.data};
@@ -32,10 +31,20 @@ function* postLegal(action) {
         alert(`Sorry couldn't get the information from the medical forms. Try again later.`)
     }
 }
+  function* editLegal(action) {
+    try {
+        const getResponse = yield axios.put(`/api/forms/edit-legal/${action.payload.case_id}`, action.payload);
+        yield put({ type: 'SET_LEGAL', payload: getResponse.data });
+    } catch (error) {
+        console.log(`Couldn't PUT the current user`);
+        alert(`Sorry couldn't edit the current entry. Try again later.`)
+    }
+}
 
 function* legalSaga() {
     yield takeLatest('ADD_LEGAL', postLegal);
     yield takeLatest('GET_LEGAL', getLegal);
+    yield takeLatest('PUT_LEGAL', editLegal);
 }
 
 export default legalSaga;

@@ -40,6 +40,8 @@ import BioEdit from '../AdminViews/Cases/EditForms/BioEdit'
 import MedicalEdit from '../AdminViews/Cases/EditForms/MedicalEdit'
 import SchoolEdit from '../AdminViews/Cases/EditForms/SchoolEdit'
 import HousingEdit from '../AdminViews/Cases/EditForms/HousingEdit'
+import LegalEdit from "../AdminViews/Cases/EditForms/LegalEdit";
+import BondEdit from "../AdminViews/Cases/EditForms/BondEdit"; 
 import './App.css';
 
 /* volunteer imports */
@@ -371,6 +373,13 @@ class App extends Component {
               exact
               path="/housing-edit"
               component={HousingEdit}
+              path="/legal-edit"
+              component={LegalEdit}
+            />
+            <ProtectedRoute
+              exact
+              path="/bond-edit"
+              component={BondEdit}
             />
 
             {/* volunteer views link */}
