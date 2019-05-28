@@ -244,6 +244,29 @@ router.get('/medical/:id', (req, res) => {
   })
 
 
+  //new router for search events 
+
+  router.get('/events/search/', (req, res) => {
+    console.log(`this is query in all events search`, req.query);
+    let queryText = `SELECT * FROM events WHERE (date ILIKE $1 OR description ILIKE $1);`;
+      pool.query(queryText, ['%'+req.query.q+'%'])
+      .then(results=>{
+        console.log(`this is result from event search query,`, results.rows)
+        res.send(results.rows)
+      })
+      .catch(error => {
+        res.sendStatus(500);
+        console.log(`this was error when trying to search events:`, error);
+        
+      })
+  })
+
+
+
+  //end search events 
+
+
+
   router.post('/bond', (req, res) => {
     let bond = req.body;
     console.log('Adding in bond and legal info:', bond);
