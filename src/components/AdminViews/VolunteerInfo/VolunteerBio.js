@@ -59,51 +59,57 @@ class VolunteerBio extends Component {
 
                         
                     <section>
-                    <div>
-                        <label>NAME</label>  
-                        <p>{users.username}</p>
-                    </div>
-
-                    <div>
-                        <label>LOCATION</label>  
-                        <p>{users.address}</p>
-                    </div>
-
-                    <div>
-                        <label>PHONE NUMBER</label>  
-                        <p>{users.phone}</p>
-                    </div>
-
-                    <div>
-                        <label>EMAIL</label>  
-                        <p>{users.email}</p>
-                    </div>
-
-                    <div>
-                        <label>ENCRYPTED</label>  
-                        <p>{users.encrypted}
-                        what's supposed to be here? 
-                        </p>
-                    </div>
-
-                    <div>
-                        <label>ADDRESS</label>  
-                        <p>{users.address}</p>
-                    </div>
-
-                    <div>
-                        <label>SKILLS</label>  
-                        <p>{users.skills}</p>
-                    </div>
-
-                    <div>
-                        <label>SECOND LANGUAGE</label>  
-                        <p>{users.second_language}</p>
+                    <div className="bioCard">
+                        <hr/>
+                        <div>
+                            <label>NAME</label>  
+                            <p className="PCard">{users.username}</p>
+                        </div>
+                        <hr/>
+                        <div>
+                            <label>LOCATION</label>  
+                            <p className="PCard">{users.address}</p>
+                        </div>
+                        <hr/>
+                        <div>
+                            <label>PHONE NUMBER</label>  
+                            <p className="PCard">{users.phone}</p>
+                        </div>
+                        <hr/>
+                        <div>
+                            <label>EMAIL</label>  
+                            <p className="PCard">{users.email}</p>
+                        </div>
+                        <hr/>
+                        <div>
+                            <label>ENCRYPTED</label>  
+                            <p className="PCard">{users.encrypted}
+                            what's supposed to be here? 
+                            </p>
+                        </div>
+                        <hr/>
+                        <div>
+                            <label>ADDRESS</label>  
+                            <p className="PCard">{users.address}</p>
+                        </div>
+                        <hr/>
+                        <div>
+                            <label>SKILLS</label>  
+                            <p className="PCard">{users.skills}</p>
+                        </div>
+                        <hr/>
+                        <div>
+                            <label>SECOND LANGUAGE</label>  
+                            <p className="PCard">{users.second_language}</p>
+                        </div>
+                        <hr/>
                     </div>
                     </section> 
 
                     )})}
-<label>ASSIGN CASE</label> 
+<h1>
+    ASSIGN CASE
+</h1> 
 <select
 onChange={this.handleChange('case_id')}
 >

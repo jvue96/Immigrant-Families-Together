@@ -17,7 +17,7 @@ class Team extends Component {
             <div>
  <Nav pageName='TEAM' volunteer home='/home' /> 
             <center> 
-                <h2> VOLUNTEERS </h2>
+                <h1> VOLUNTEERS </h1>
                 {this.props.reduxState.teamReducer.map(team => (
                 <div className="bioDivs"
                 style={{height: 200}}>
