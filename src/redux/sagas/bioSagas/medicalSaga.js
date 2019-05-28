@@ -30,9 +30,21 @@ function* postMedical(action) {
     }
 }
 
+function* editMedical(action) {
+    console.log('PUT for editing medical form', action.payload);
+    try {
+        const getResponse = yield axios.put(`/api/forms/edit-medical/${action.payload.case_id}`, action.payload);
+        yield put({ type: 'SET_MEDICAL', payload: getResponse.data });
+    } catch (error) {
+        console.log(`Couldn't PUT the current user`);
+        alert(`Sorry couldn't edit the current entry. Try again later.`)
+    }
+  }
+
 function* medicalSaga() {
     yield takeLatest('ADD_MEDICAL', postMedical);
     yield takeLatest('GET_MEDICAL', getMedical);
+    yield takeLatest('PUT_MEDICAL', editMedical);
 }
 
 export default medicalSaga;

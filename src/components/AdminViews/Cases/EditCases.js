@@ -11,6 +11,9 @@ class EditCases extends Component {
         const searchObject = qs.parse(this.props.location.search)
         this.props.dispatch({ type: 'GET_AID', payload: searchObject.id });
         this.props.dispatch({ type: 'GET_BIO_INFO', payload: searchObject.id });
+        this.props.dispatch({ type: 'GET_MEDICAL', payload: searchObject.id });
+        this.props.dispatch({ type: 'GET_SCHOOL', payload: searchObject.id });
+        this.props.dispatch({ type: 'GET_HOUSING', payload: searchObject.id });
         console.log('formRoutes searchObject', searchObject);
         this.setState({
             formRoutes:{
@@ -26,13 +29,13 @@ class EditCases extends Component {
         this.props.history.push(`/bio-edit?id=${this.state.formRoutes.id}`)
     }
     medicalForm = () => {
-        this.props.history.push(`/medical-form?id=${this.state.formRoutes.id}`)
+        this.props.history.push(`/medical-edit?id=${this.state.formRoutes.id}`)
     }
     schoolForm = () => {
-        this.props.history.push(`/school-form?id=${this.state.formRoutes.id}`)
+        this.props.history.push(`/school-edit?id=${this.state.formRoutes.id}`)
     }
     housingForm = () => {
-        this.props.history.push(`/housing-form?id=${this.state.formRoutes.id}`)
+        this.props.history.push(`/housing-edit?id=${this.state.formRoutes.id}`)
     }
     aidForm = () => {
         this.props.history.push(`/aid-edit?id=${this.state.formRoutes.id}`)

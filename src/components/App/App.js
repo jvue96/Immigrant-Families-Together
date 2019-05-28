@@ -37,6 +37,9 @@ import CaseList from '../AdminViews/Cases/CaseList';
 import VolunteerBio from "../AdminViews/VolunteerInfo/VolunteerBio";
 import AidEdit from '../AdminViews/Cases/EditForms/AidEdit'
 import BioEdit from '../AdminViews/Cases/EditForms/BioEdit'
+import MedicalEdit from '../AdminViews/Cases/EditForms/MedicalEdit'
+import SchoolEdit from '../AdminViews/Cases/EditForms/SchoolEdit'
+import HousingEdit from '../AdminViews/Cases/EditForms/HousingEdit'
 import './App.css';
 
 /* volunteer imports */
@@ -353,6 +356,21 @@ class App extends Component {
               exact
               path="/bio-edit"
               component={BioEdit}
+            />
+            <ProtectedRoute
+              exact
+              path="/medical-edit"
+              component={MedicalEdit}
+            />
+            <ProtectedRoute
+              exact
+              path="/school-edit"
+              component={SchoolEdit}
+            />
+            <ProtectedRoute
+              exact
+              path="/housing-edit"
+              component={HousingEdit}
             />
 
             {/* volunteer views link */}

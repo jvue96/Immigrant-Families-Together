@@ -15,6 +15,11 @@ class AidEdit extends Component {
             aidForm:{
                 ...this.state.aidForm,
                 case_id: searchObject.id,
+                grocery_program: this.props.reduxState.aidReducer[0].grocery_program, 
+                grocery_program_volunteer: this.props.reduxState.aidReducer[0].grocery_program_volunteer, 
+                go_fund_me: this.props.reduxState.aidReducer[0].go_fund_me, 
+                social_worker: this.props.reduxState.aidReducer[0].social_worker, 
+                social_worker_phone: this.props.reduxState.aidReducer[0].social_worker_phone, 
             }
         }) 
     }
@@ -45,45 +50,6 @@ class AidEdit extends Component {
                 [propertyName]: event.target.value,
             }
         })        
-        
-          if(this.state.aidForm.grocery_program === "") {
-            this.setState({
-                aidForm: {
-                    ...this.state.aidForm,
-                    grocery_program: this.props.reduxState.aidReducer[0].grocery_program,
-                }
-            })
-            
-        } else if (this.state.aidForm.grocery_program_volunteer === "") {
-            this.setState({
-                aidForm: {
-                    ...this.state.aidForm,
-                    grocery_program_volunteer: this.props.reduxState.aidReducer[0].grocery_program_volunteer,
-                }
-            })
-        } else if (this.state.aidForm.go_fund_me === "") {
-            this.setState({
-                aidForm: {
-                    ...this.state.aidForm,
-                    go_fund_me: this.props.reduxState.aidReducer[0].go_fund_me,
-                }
-            })
-        } else if (this.state.aidForm.social_worker === "") {
-            this.setState({
-                aidForm: {
-                    ...this.state.aidForm,
-                    social_worker: this.props.reduxState.aidReducer[0].social_worker,
-                }
-            })
-        }  else if (this.state.aidForm.social_worker_phone === "") {
-            this.setState({
-                aidForm: {
-                    ...this.state.aidForm,
-                    social_worker_phone: this.props.reduxState.aidReducer[0].social_worker_phone,
-                }
-            })
-        }
-        console.log(`this is state after handleChange:`, this.state);
     }
     
     render() {

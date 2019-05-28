@@ -25,9 +25,21 @@ function* postHousing(action) {
     }
 }
 
+function* editHousing(action) {
+    console.log('PUT for editing housing form', action.payload);
+    try {
+        const getResponse = yield axios.put(`/api/forms/edit-housing/${action.payload.case_id}`, action.payload);
+        yield put({ type: 'SET_HOUSING', payload: getResponse.data });
+    } catch (error) {
+        console.log(`Couldn't PUT the current user`);
+        alert(`Sorry couldn't edit the current entry. Try again later.`)
+    }
+  }
+
 function* housingSaga() {
     yield takeLatest('ADD_HOUSING', postHousing);
     yield takeLatest('GET_HOUSING', getHousing);
+    yield takeLatest('PUT_HOUSING', editHousing);
 }
 
 export default housingSaga;

@@ -15,6 +15,19 @@ class BioEdit extends Component {
             bioForm:{
                 ...this.state.bioForm,
                 case_id: searchObject.id,
+                first_name: this.props.reduxState.bioReducer[0].first_name, 
+                last_name: this.props.reduxState.bioReducer[0].last_name, 
+                dob: this.props.reduxState.bioReducer[0].dob, 
+                spouse_first_name: this.props.reduxState.bioReducer[0].spouse_first_name, 
+                spouse_dob: this.props.reduxState.bioReducer[0].spouse_dob, 
+                phone: this.props.reduxState.bioReducer[0].phone,
+                encrypted: this.props.reduxState.bioReducer[0].encrypted, 
+                email: this.props.reduxState.bioReducer[0].email, 
+                address: this.props.reduxState.bioReducer[0].address, 
+                referred_by: this.props.reduxState.bioReducer[0].referred_by, 
+                reference_date: this.props.reduxState.bioReducer[0].reference_date, 
+                passport: this.props.reduxState.bioReducer[0].passport,
+                us_id: this.props.reduxState.bioReducer[0].us_id,
             }
         })  
     }
@@ -39,108 +52,13 @@ class BioEdit extends Component {
     };
 
     handleChange = propertyName => event => {
-        console.log(`this is the propertyName:`, propertyName);
-        console.log(`this is target value:`, event.target.value)
+        
         this.setState({
             bioForm: {
                 ...this.state.bioForm,
                 [propertyName]: event.target.value,
             }
         })
-        if(this.state.bioForm.first_name === "") {
-            this.setState({
-                bioForm: {
-                    ...this.state.bioForm,
-                    first_name: this.props.reduxState.bioReducer[0].first_name,
-                }
-            })
-            
-        } else if (this.state.bioForm.last_name === "") {
-            this.setState({
-                bioForm: {
-                    ...this.state.bioForm,
-                    last_name: this.props.reduxState.bioReducer[0].last_name,
-                }
-            })
-        } else if (this.state.bioForm.dob === "") {
-            this.setState({
-                bioForm: {
-                    ...this.state.bioForm,
-                    dob: this.props.reduxState.bioReducer[0].dob,
-                }
-            })
-        } else if (this.state.bioForm.spouse_first_name === "") {
-            this.setState({
-                bioForm: {
-                    ...this.state.bioForm,
-                    spouse_first_name: this.props.reduxState.bioReducer[0].spouse_first_name,
-                }
-            })
-        }  else if (this.state.bioForm.spouse_dob === "") {
-            this.setState({
-                bioForm: {
-                    ...this.state.bioForm,
-                    spouse_dob: this.props.reduxState.bioReducer[0].spouse_dob,
-                }
-            })
-        } else if (this.state.bioForm.phone === "") {
-            this.setState({
-                bioForm: {
-                    ...this.state.bioForm,
-                    phone: this.props.reduxState.bioReducer[0].phone,
-                }
-            })
-        } else if (this.state.bioForm.encrypted === "") {
-            this.setState({
-                bioForm: {
-                    ...this.state.bioForm,
-                    encrypted: this.props.reduxState.bioReducer[0].encrypted,
-                }
-            })
-        } else if (this.state.bioForm.email === "") {
-            this.setState({
-                bioForm: {
-                    ...this.state.bioForm,
-                    email: this.props.reduxState.bioReducer[0].email,
-                }
-            })
-        } else if (this.state.bioForm.address === "") {
-            this.setState({
-                bioForm: {
-                    ...this.state.bioForm,
-                    address: this.props.reduxState.bioReducer[0].address,
-                }
-            })
-        } else if (this.state.bioForm.referred_by === "") {
-            this.setState({
-                bioForm: {
-                    ...this.state.bioForm,
-                    referred_by: this.props.reduxState.bioReducer[0].referred_by,
-                }
-            })
-        } else if (this.state.bioForm.reference_date === "") {
-            this.setState({
-                bioForm: {
-                    ...this.state.bioForm,
-                    reference_date: this.props.reduxState.bioReducer[0].reference_date,
-                }
-            })
-        } else if (this.state.bioForm.passport === "") {
-            this.setState({
-                bioForm: {
-                    ...this.state.bioForm,
-                    passport: this.props.reduxState.bioReducer[0].passport,
-                }
-            })
-        } else if (this.state.bioForm.us_id === "") {
-            this.setState({
-                bioForm: {
-                    ...this.state.bioForm,
-                    us_id: this.props.reduxState.bioReducer[0].us_id,
-                }
-            })
-        }
-        console.log(`this is state after handleChange:`, this.state);
     }
 
    next = () => {
