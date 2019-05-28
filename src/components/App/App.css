@@ -363,3 +363,18 @@ tr:nth-child(even) {
   border-radius: 8px;
 }
 
+.PCard {
+  font-family: 'Heebo', sans-serif;
+  margin-top: 0px;
+  margin-bottom: 8px;
+  letter-spacing: .5px;
+  color: rgb(118, 118, 118);
+  font-size: 15px; 
+}
+
+.bioCard {
+  width:80%;
+  border-radius: 8px;
+  /* padding:10px; */
+  /* background-color: #d6d6d6; */
+}
