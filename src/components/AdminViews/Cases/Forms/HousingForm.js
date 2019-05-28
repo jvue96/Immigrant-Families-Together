@@ -38,7 +38,7 @@ fillstate = (event) => {
             rent:'$1100',
             paid_by:'Client',
             utilities:'$150',
-            living_with_fam:'yes',
+            living_with_fam: true,
     },
     })
     }
@@ -74,10 +74,10 @@ next = () => {
                         <label>RENT PAID BY</label> 
                         <input type="text" value={this.state.housingForm.paid_by} onChange={this.handleChange('paid_by')}/> 
                         <label>UTILITIES</label> 
-                        <input type="text" value={this.state.housingForm.living_with_fam}  onChange={this.handleChange('living_with_fam')}/> 
+                        <input type="text" value={this.state.housingForm.utilities}  onChange={this.handleChange('utilities')}/> 
                         <label>LIVING WITH FAMILY</label> 
                         <select 
-                        onChange={this.handleChange(`us_id`)}
+                        onChange={this.handleChange(`living_with_fam`)}
                         >
                             <option>-</option>
                             <option

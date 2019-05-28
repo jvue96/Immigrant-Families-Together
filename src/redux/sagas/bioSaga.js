@@ -26,11 +26,23 @@ function* getBioSaga(kitty) {
     }
 }
 
+function* editBio(action) {
+    console.log('PUT for editing bio form', action.payload);
+    try {
+        const getResponse = yield axios.put(`/api/forms/edit-bio/${action.payload.case_id}`, action.payload);
+        yield put({ type: 'SET_BIO', payload: getResponse.data });
+    } catch (error) {
+        console.log(`Couldn't PUT the current user`, error);
+        alert(`Sorry couldn't edit the current entry. Try again later.`)
+    }
+  }
+
 
 
 function* bioSaga() {
     yield takeLatest(`ADD_BIO`, addBioSaga)
     yield takeLatest(`GET_BIO_INFO`, getBioSaga)
+    yield takeLatest(`PUT_BIO`, editBio)
 }
 
 

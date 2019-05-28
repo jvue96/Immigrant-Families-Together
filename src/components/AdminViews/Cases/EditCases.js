@@ -9,6 +9,13 @@ class EditCases extends Component {
     componentDidMount = () => {
         this.props.dispatch({type: 'ADD_CASE'})
         const searchObject = qs.parse(this.props.location.search)
+        this.props.dispatch({ type: 'GET_AID', payload: searchObject.id });
+        this.props.dispatch({ type: 'GET_BIO_INFO', payload: searchObject.id });
+        this.props.dispatch({ type: 'GET_MEDICAL', payload: searchObject.id });
+        this.props.dispatch({ type: 'GET_SCHOOL', payload: searchObject.id });
+        this.props.dispatch({ type: 'GET_HOUSING', payload: searchObject.id });
+        this.props.dispatch({ type: 'GET_LEGAL', payload: searchObject.id });
+        this.props.dispatch({ type: 'GET_BOND', payload: searchObject.id });
         console.log('formRoutes searchObject', searchObject);
         this.setState({
             formRoutes:{
@@ -21,25 +28,25 @@ class EditCases extends Component {
     bioForm = (event) => {
         console.log('PAYLOAD FOR GET FAMILY INFO', event.currentTarget.value);
         // this.props.dispatch({type: 'GET_CURRENT_ID', payload: event.currentTarget.value})
-        this.props.history.push(`/bio-form?id=${this.state.formRoutes.id}`)
+        this.props.history.push(`/bio-edit?id=${this.state.formRoutes.id}`)
     }
     medicalForm = () => {
-        this.props.history.push(`/medical-form?id=${this.state.formRoutes.id}`)
+        this.props.history.push(`/medical-edit?id=${this.state.formRoutes.id}`)
     }
     schoolForm = () => {
-        this.props.history.push(`/school-form?id=${this.state.formRoutes.id}`)
+        this.props.history.push(`/school-edit?id=${this.state.formRoutes.id}`)
     }
     housingForm = () => {
-        this.props.history.push(`/housing-form?id=${this.state.formRoutes.id}`)
+        this.props.history.push(`/housing-edit?id=${this.state.formRoutes.id}`)
     }
     aidForm = () => {
         this.props.history.push(`/aid-edit?id=${this.state.formRoutes.id}`)
     }
     bondForm = () => {
-        this.props.history.push(`/bond-form?id=${this.state.formRoutes.id}`)
+        this.props.history.push(`/bond-edit?id=${this.state.formRoutes.id}`)
     }
     legalStatusForm = () => {
-        this.props.history.push(`/legal-form?id=${this.state.formRoutes.id}`)
+        this.props.history.push(`/legal-edit?id=${this.state.formRoutes.id}`)
     }
     
     state = {
@@ -96,6 +103,7 @@ class EditCases extends Component {
                     onClick={this.viewSelectedButton('button')}
                     value={"housing"}
                     >HOUSING</button> 
+                    // fjfjf
 
                     <button
                     onClick={this.viewSelectedButton('button')}
@@ -105,13 +113,13 @@ class EditCases extends Component {
 
                     {div} */}
                     <div>
-                        <button className="adminMenuButtons" onClick={this.bioForm}>GENERAL BIO FORM</button>
-                        <button className="adminMenuButtons" onClick={this.medicalForm}>MEDICAL FORM</button>
-                        <button className="adminMenuButtons" onClick={this.schoolForm}>SCHOOL FORM</button>
-                        <button className="adminMenuButtons" onClick={this.housingForm}>HOUSING FORM</button>
-                        <button className="adminMenuButtons" onClick={this.aidForm}>AID FORM</button>
-                        <button className="adminMenuButtons" onClick={this.bondForm}>BOND FORM</button>
-                        <button className="adminMenuButtons" onClick={this.legalStatusForm}>LEGAL STATUS FORM</button>
+                        <button className="adminMenuButtons" onClick={this.bioForm}>EDIT GENERAL BIO</button>
+                        <button className="adminMenuButtons" onClick={this.medicalForm}>EDIT MEDICAL</button>
+                        <button className="adminMenuButtons" onClick={this.schoolForm}>EDIT SCHOOL</button>
+                        <button className="adminMenuButtons" onClick={this.housingForm}>EDIT HOUSING</button>
+                        <button className="adminMenuButtons" onClick={this.aidForm}>EDIT AID</button>
+                        <button className="adminMenuButtons" onClick={this.bondForm}>EDIT BOND</button>
+                        <button className="adminMenuButtons" onClick={this.legalStatusForm}>EDIT LEGAL STATUS</button>
                         {/* <button className="adminMenuButtons" onClick={this.identificationPages}>IDENTIFICATION</button> */}
                     </div>
                 </center>
