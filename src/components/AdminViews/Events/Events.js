@@ -6,6 +6,22 @@ import moment from 'moment';
 
 class Events extends Component {
     
+
+    state = {
+        search: '',
+    }
+
+    setSearch = (event) => {
+        this.setState({
+            search: event.target.value
+        })
+        console.log(this.state);
+    }
+
+  searchBy = () => {
+        this.props.dispatch({ type: 'GET_SEARCH_EVENTS', payload: this.state });
+    }
+
     componentDidMount() {
         this.props.dispatch({type:'GET_ALL_EVENTS'})
     }
@@ -19,6 +35,9 @@ class Events extends Component {
 
                 <center>
                     <h1>Upcoming Events</h1>
+                    <h2>Search Cases</h2>
+                    <input onChange={this.setSearch} placeholder="Search by" type="text" />
+                    <button className='searchButton' onClick={this.searchBy}>SEARCH</button>
             {this.props.allEvents.map((event, i) =>
                     <div key={i} className="eventDivs" >
                         <div className='cardHead'>

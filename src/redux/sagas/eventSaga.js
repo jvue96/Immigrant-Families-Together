@@ -26,6 +26,23 @@ function* getAllEvents(action) {
     }
 }
 
+
+function* getSearchEvents(action) {
+    console.log('inside geSearchEvents', action);
+
+    try {
+        const searchResponse = yield axios.get(`/api/forms/events/search/?q=${action.payload.search}`);
+      console.log(`this is seearch response from events search:`, searchResponse);
+      const setCases = {type: 'SET_ALL_EVENTS', payload: searchResponse.data};
+      yield put(setCases)
+    }
+    catch(error) {
+        console.log('this is the error in getAllEvents:', error)
+    }
+}
+
+
+
 // function* getEvent(action) {
 //     try{
 //         console.log('GET newly added event', action);
@@ -58,6 +75,7 @@ function* eventSaga() {
     yield takeLatest(`ADD_EVENT`, addEvent)
     yield takeLatest(`GET_EVENT`, getEvent)
     yield takeLatest(`GET_ALL_EVENTS`, getAllEvents)
+    yield takeLatest(`GET_SEARCH_EVENTS`, getSearchEvents)
 }
 
 
