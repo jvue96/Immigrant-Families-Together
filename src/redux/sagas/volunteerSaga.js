@@ -40,7 +40,9 @@ function* getVolBio(parse) {
   }
 }
 
-function* getVolunteer(action) {
+function* getVolunteerSearch(action) {
+  
+  
   try {
 
   console.log(`action.payload is: `, action.payload);
@@ -75,7 +77,7 @@ function* registrationSaga() {
   yield takeLatest('ADD_NEW_VOLUNTEER', registerUser);
   yield takeLatest('GET_ALL_VOLUNTEER', getUser);
   yield takeLatest('GET_VOLUNTEER_BIO', getVolBio);
-  yield takeLatest('SEARCH_VOLUNTEER', getVolunteer);
+  yield takeLatest('SEARCH_VOLUNTEER', getVolunteerSearch);
   yield takeLatest('GET_TEAM', getTeam);
 }
 

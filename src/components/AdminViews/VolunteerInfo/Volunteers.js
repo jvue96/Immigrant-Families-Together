@@ -12,8 +12,8 @@ class Volunteers extends Component {
     }
 
     viewVolunteer = (event) => {
-        console.log(`hit view volunteer!`);
-        console.log(`!!!!0o9i8765`,event.target.dataset.value);
+        // console.log(`hit view volunteer!`);
+        // console.log(`!!!!0o9i8765`,event.target.dataset.value);
         // this.props.history.push('/volunteer-landing')
         this.props.history.push(`/volunteer-bio?id=${event.target.dataset.value}`)
     }
@@ -21,15 +21,13 @@ class Volunteers extends Component {
     handleChange = (event) => { 
         this.setState({
             search: event.target.value,
-        }) 
+        })
+        console.log(`this is state inside of handleChange:`, this.state);         
     }
 
     searchBy = (event) => {
-        this.setState({ 
-            search: event.target.value, 
-        });
-        console.log(this.state);
-        this.props.dispatch({type: 'SEARCH_VOLUNTEER', payload: this.state });
+        console.log(`inside searchBy, here is state:`, this.state);
+      this.props.dispatch({type: 'SEARCH_VOLUNTEER', payload: this.state });
     }
 
     render() {
