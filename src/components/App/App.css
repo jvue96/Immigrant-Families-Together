@@ -381,6 +381,7 @@ tr:nth-child(even) {
 
 .noteCard {
   width:80%;
+  margin:5px;
   padding:10px;
   border-radius: 8px;
   border: .5px solid rgb(153, 153, 153);;

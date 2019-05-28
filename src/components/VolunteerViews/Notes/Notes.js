@@ -35,7 +35,7 @@ class Notes extends Component {
                 [propertyName]: event.target.value,
                 }
             });
-        }    
+        } 
     }
 
     addNote = () => {
@@ -54,8 +54,8 @@ class Notes extends Component {
                     <input type="text" 
                         value={this.state.addNote.family_notes}
                         onChange={this.handleNameChange('family_notes')}/>
-                        <label>NOTE DATE:</label>
-                    <input type="text" 
+                    <label>NOTE DATE:</label>
+                    <input type="date"
                         value={this.state.addNote.date}
                         onChange={this.handleNameChange('date')}/>
                     <button className="formButton" onClick={this.addNote}>ADD</button> 
