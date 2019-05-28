@@ -37,6 +37,7 @@ import CaseList from '../AdminViews/Cases/CaseList';
 import VolunteerBio from "../AdminViews/VolunteerInfo/VolunteerBio";
 import AidEdit from '../AdminViews/Cases/EditForms/AidEdit'
 import LegalEdit from "../AdminViews/Cases/EditForms/LegalEdit";
+import BondEdit from "../AdminViews/Cases/EditForms/BondEdit"; 
 import './App.css';
 
 /* volunteer imports */
@@ -353,6 +354,11 @@ class App extends Component {
               exact
               path="/legal-edit"
               component={LegalEdit}
+            />
+            <ProtectedRoute
+              exact
+              path="/bond-edit"
+              component={BondEdit}
             />
 
             {/* volunteer views link */}

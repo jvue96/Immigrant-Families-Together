@@ -297,6 +297,41 @@ router.get('/medical/:id', (req, res) => {
     })
   })
 
+  router.put('/edit-bond/:id', (req, res) => {
+    let bond = req.body;
+    let sqlText = `UPDATE "legal" 
+                    SET "ice_facility" = $1, 
+                    "bond_amount" = $2, 
+                    "bond_paid_date" = $3, 
+                    "bond_paid_by" = $4,
+                    "foster_facility" = $5, 
+                    "foster_facility_address" = $6, 
+                    "attorney" = $7,
+                    "attorney_phone" = $8,
+                    "attorney_fee" = $9,
+                    "legal_notes" = $10
+                    WHERE "case_id" = $11`;
+    pool.query(sqlText, [bond.ice_facility, 
+                          bond.bond_amount, 
+                          bond.bond_paid_date, 
+                          bond.bond_paid_by,
+                          bond.foster_facility, 
+                          bond.foster_facility_address, 
+                          bond.attorney, 
+                          bond.attorney_phone, 
+                          bond.attorney_fee, 
+                          bond.legal_notes, 
+                          bond.case_id,
+                        ])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to PUT for bond form edits', error);
+        res.sendStatus(500);
+      })
+  })
+
   // router.get('/bond', (req, res) => {
   //   console.log('Getting all bond and legal info');
   //   console.log('Getting ONE current id');

@@ -11,6 +11,7 @@ class EditCases extends Component {
         const searchObject = qs.parse(this.props.location.search)
         this.props.dispatch({ type: 'GET_AID', payload: searchObject.id });
         this.props.dispatch({ type: 'GET_LEGAL', payload: searchObject.id });
+        this.props.dispatch({ type: 'GET_BOND', payload: searchObject.id });
         console.log('formRoutes searchObject', searchObject);
         this.setState({
             formRoutes:{
@@ -38,7 +39,7 @@ class EditCases extends Component {
         this.props.history.push(`/aid-edit?id=${this.state.formRoutes.id}`)
     }
     bondForm = () => {
-        this.props.history.push(`/bond-form?id=${this.state.formRoutes.id}`)
+        this.props.history.push(`/bond-edit?id=${this.state.formRoutes.id}`)
     }
     legalStatusForm = () => {
         this.props.history.push(`/legal-edit?id=${this.state.formRoutes.id}`)

@@ -17,9 +17,9 @@ class LegalEdit extends Component {
                 ...this.state.legalForm,
                 case_id: searchObject.id,
                  // set state properties to become legalReducer[0] properties 
-                last_court_date: this.props.reduxState.legalReducer[0].last_court_date, 
+                last_court_date: this.formatDate(this.props.reduxState.legalReducer[0].last_court_date), 
                 last_court_date_outcome: this.props.reduxState.legalReducer[0].last_court_date_outcome, 
-                next_court_date: this.props.reduxState.legalReducer[0].next_court_date, 
+                next_court_date: this.formatDate(this.props.reduxState.legalReducer[0].next_court_date), 
                 /* this is the topic input field */
                 next_court_date_outcome: this.props.reduxState.legalReducer[0].next_court_date_outcome, 
                 asylum_application: this.props.reduxState.legalReducer[0].asylum_application, 
