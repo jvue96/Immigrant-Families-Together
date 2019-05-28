@@ -27,6 +27,11 @@ class CaseList extends Component {
 
     selectCase = (id) => {
         console.log(`in selectCase, heres id:`, id);
+        //this.props.history.push(`/case/?id=${id}&admin=true`);
+        //this is from volunteer landing:
+        this.props.dispatch({type: 'GET_CURRENT_ID', payload: id})
+        this.props.history.push(`/case?id=${id}`)
+
 
     }
 
