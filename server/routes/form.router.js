@@ -248,7 +248,10 @@ router.get('/medical/:id', (req, res) => {
 
   router.get('/events/search/', (req, res) => {
     console.log(`this is query in all events search`, req.query);
-    let queryText = `SELECT * FROM events WHERE (date ILIKE $1 OR description ILIKE $1);`;
+    let queryText = `SELECT events.date, events.description, cases.case_last_name, cases.case_number FROM events 
+LEFT JOIN cases ON cases.id = events.case_id
+WHERE (events.date ILIKE $1 OR events.description ILIKE $1 OR cases.case_number ILIKE $1 OR  cases.case_last_name ILIKE $1)
+GROUP BY cases.case_last_name, events.date, events.description, cases.case_number;`;
       pool.query(queryText, ['%'+req.query.q+'%'])
       .then(results=>{
         console.log(`this is result from event search query,`, results.rows)
