@@ -147,8 +147,8 @@ class BioEdit extends Component {
                         onChange={this.handleChange('referred_by')}/>
 
                         <label>REFERENCE DATE</label> 
-                        <input type="text"
-                        defaultValue={bio.reference_date}
+                        <input type="date"
+                        defaultValue={this.formatDate(bio.reference_date)}
                         onChange={this.handleChange('reference_date')}/> 
 
                         <label>PASSPORT</label> 
