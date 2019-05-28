@@ -4,6 +4,13 @@ import qs from 'query-string';
 import Nav from '../../Nav/Nav'
 class VolunteerBio extends Component {
 
+    state = {
+        assignCase: {
+            case_id: '',
+            user_id: '',
+        }
+    }
+
     componentDidMount = () => {
        
         const searchObject = qs.parse(this.props.location.search)
@@ -18,12 +25,7 @@ class VolunteerBio extends Component {
         }) 
     }
 
-    state = {
-        assignCase: {
-            case_id: '',
-            user_id: '',
-        }
-    }
+  
 
     handleChange = propertyName => event => {
         this.setState({
