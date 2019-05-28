@@ -9,6 +9,8 @@ class EditCases extends Component {
     componentDidMount = () => {
         this.props.dispatch({type: 'ADD_CASE'})
         const searchObject = qs.parse(this.props.location.search)
+        this.props.dispatch({ type: 'GET_AID', payload: searchObject.id });
+        this.props.dispatch({ type: 'GET_BIO_INFO', payload: searchObject.id });
         console.log('formRoutes searchObject', searchObject);
         this.setState({
             formRoutes:{
@@ -21,7 +23,7 @@ class EditCases extends Component {
     bioForm = (event) => {
         console.log('PAYLOAD FOR GET FAMILY INFO', event.currentTarget.value);
         // this.props.dispatch({type: 'GET_CURRENT_ID', payload: event.currentTarget.value})
-        this.props.history.push(`/bio-form?id=${this.state.formRoutes.id}`)
+        this.props.history.push(`/bio-edit?id=${this.state.formRoutes.id}`)
     }
     medicalForm = () => {
         this.props.history.push(`/medical-form?id=${this.state.formRoutes.id}`)

@@ -92,6 +92,20 @@ router.get('/medical/:id', (req, res) => {
     })
   })
 
+  router.put('/edit-bio/:id', (req, res) => {
+    let bio = req.body;
+    console.log('PUT in aid edit:', bio);
+    let sqlText = `UPDATE "primary_individual" SET "last_name" = $2, "first_name" = $3, "dob" = $4, "spouse_first_name" = $5, "spouse_dob" = $6, "phone" = $7, "email" = $8, "address" = $9, "referred_by" = $10, "reference_date" = $11, "passport" = $12, "us_id" = $13, "encrypted" = $14 WHERE "case_id" = $1`;
+    pool.query(sqlText, [bio.case_id, bio.last_name, bio.first_name, bio.dob, bio.spouse_first_name, bio.spouse_dob, bio.phone, bio.email, bio.address, bio.referred_by, bio.reference_date, bio.passport, bio.us_id, bio.encrypted])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to PUT for aid form edits', error);
+        res.sendStatus(500);
+      })
+  })
+
   router.post('/children', async(req, res) => {
 
     const connection = await pool.connect()
