@@ -412,6 +412,23 @@ router.get('/all-cases/:id', (req, res) => {
   })
 })
 
+router.get('/volunteer/search/', (req,res) => {
+  console.log(`in volunteer get, here is req.query`, req.query);
+  
+  let queryText = `SELECT * FROM "user" WHERE (username ILIKE $1 OR email ILIKE $1 OR address ILIKE $1);`;
+  pool.query(queryText, ['%'+req.query.q+'%'])
+  .then(results=>{
+    console.log(`this is result from search query for volunteers,`, results.rows)
+    res.send(results.rows)
+  })
+  .catch(error => {
+    res.sendStatus(500);
+    console.log(`this was error when trying to search all volunteers:`, error);
+    
+  })
+
+})
+
 
 router.get('/all-cases/search/:query', (req,res) => {
 

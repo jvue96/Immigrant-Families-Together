@@ -48,7 +48,8 @@ function* getVolunteerSearch(action) {
   console.log(`action.payload is: `, action.payload);
   const volunteer = action.payload.search;
   
-  const response = yield axios.get(`/api/forms/volunteer`, action.payload);
+  const searchResponse = yield axios.get(`/api/forms/volunteer/search/?q=${action.payload.search}`);
+console.log(`this is searchResponse in volunteer search:`, searchResponse);
 
   
   // yield put({ type: 'SET_ENTRIES', payload: response.data})
