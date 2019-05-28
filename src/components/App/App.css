@@ -281,6 +281,7 @@ input {
     font-size: 25px;
     margin-top: auto;
     margin-bottom: auto;
+    color:white;
   }
 
   .nav-link {
@@ -384,7 +385,7 @@ tr:nth-child(even) {
   margin:5px;
   padding:10px;
   border-radius: 8px;
-  border: .5px solid rgb(153, 153, 153);;
+  border: .5px solid rgb(153, 153, 153);
 }
 
 .PNote {
@@ -394,4 +395,28 @@ tr:nth-child(even) {
   letter-spacing: .5px;
   color: rgb(118, 118, 118);
   font-size: 15px; 
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 3em auto;
+  font-family: 'Heebo', sans-serif;
+  color: rgb(118, 118, 118);
+}
+
+.grid-item {
+  text-align: center;
+  padding: 7px;
+  background-color: #D22F25;
+}
+.grid-item2{
+  text-align: left;
+  margin-left: 7px;
+  padding: 7px;
+}
+
+.volCard {
+  width:80%;
+  margin:5px;
+  border: .5px solid rgb(153, 153, 153);
 }
