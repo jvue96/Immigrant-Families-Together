@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Nav from '../../Nav/Nav';
 import { connect } from 'react-redux';
 
-class CaseList extends Component {
+class EditCasesLanding extends Component {
 
     state = {
         search: '',
@@ -27,18 +27,13 @@ class CaseList extends Component {
 
     selectCase = (id) => {
         console.log(`in selectCase, heres id:`, id);
-        //this.props.history.push(`/case/?id=${id}&admin=true`);
-        //this is from volunteer landing:
-        this.props.dispatch({type: 'GET_CURRENT_ID', payload: id})
-        this.props.history.push(`/case?id=${id}`)
-
-
+        this.props.history.push(`/edit-case?id=${id}`)
     }
 
     componentDidMount() {
         //checks to see if there is a query selector
        
-            this.props.dispatch({ type: 'GET_CASES' });
+        this.props.dispatch({ type: 'GET_CASES' });
        }
 
 
@@ -79,4 +74,4 @@ const mapReduxStateToProps = (reduxState) => ({
 });
 
 
-export default connect(mapReduxStateToProps)(CaseList);
+export default connect(mapReduxStateToProps)(EditCasesLanding);

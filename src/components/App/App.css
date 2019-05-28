@@ -4,6 +4,7 @@ body{
 
 button,
 h1,
+h2,
 label,
 .alert,
 .eventh1,
@@ -23,8 +24,16 @@ button{
   letter-spacing: 1px;
 }
 
-h1{
+h1,h2{
     color: rgb(118, 118, 118);
+}
+
+/*for case.js*/
+.caseHeader h1 {
+  margin-bottom:0;
+}
+.caseHeader h2 {
+  margin-top:5px;
 }
 
 label{
@@ -264,6 +273,9 @@ input {
     display:block;
   }
 
+  a > i {
+    color:white;
+  }
 
   i{
     font-size: 25px;
