@@ -18,19 +18,11 @@ class VolunteerLanding extends Component {
     render() {
         return (
             <div>
-                <Nav volunteer pageName='VOLUNTEER LANDING' />
+                <Nav pageName='VOLUNTEER LANDING' />
 
                 <center> 
-                    <label>SEARCH: </label>
-                    <input style={{width: 150, height: 20}} type="text" placeholder="CASE NUMBER / NAME" /> <br/>
-                    <button onClick={this.searchBy}> SEARCH </button> 
-
                     {/* {JSON.stringify(this.props.reduxState.allCasesReducer)} */}
                   
-
-                    <div>
-                        <h1> VOLUNTEER LANDING </h1>
-                    </div>
 
                     {/* show all cases assigned to volunteer */}
                     <table>
