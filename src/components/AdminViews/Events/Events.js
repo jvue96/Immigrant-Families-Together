@@ -36,7 +36,7 @@ class Events extends Component {
                 <center>
                     <h1>Upcoming Events</h1>
                     <h2>Search Cases</h2>
-                    <input onChange={this.setSearch} placeholder="Search by" type="text" />
+                    <input onChange={this.setSearch} placeholder="Search by name or description" type="text" />
                     <button className='searchButton' onClick={this.searchBy}>SEARCH</button>
             {this.props.allEvents.map((event, i) =>
                     <div key={i} className="eventDivs" >
@@ -49,7 +49,7 @@ class Events extends Component {
                                 <p className="eventP">Date: {moment(event.date).format('L')}</p> 
                             </div>
                         </div>
-                        <h1 className="eventh1">EVENT:</h1>
+                        <h1 className="eventh1">EVENT DESCRIPTION:</h1>
                         <p className="eventBody">{event.description}</p>
                     </div>
             )}

@@ -265,7 +265,7 @@ pool.query(sqlText)
     console.log(`this is query in all events search`, req.query);
     let queryText = `SELECT events.date, events.description, cases.case_last_name, cases.case_number FROM events 
 LEFT JOIN cases ON cases.id = events.case_id
-WHERE (events.description ILIKE $1 OR cases.case_last_name ILIKE $1)
+WHERE (events.description ILIKE $1 OR cases.case_number ILIKE $1 OR  cases.case_last_name ILIKE $1)
 GROUP BY cases.case_last_name, events.date, events.description, cases.case_number;`;
       pool.query(queryText, ['%'+req.query.q+'%'])
       .then(results=>{
