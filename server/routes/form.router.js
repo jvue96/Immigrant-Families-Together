@@ -51,6 +51,31 @@ router.post('/medical', (req, res) => {
     })
   });
 
+  router.put('/edit-legal/:id', (req, res) => {
+    let legal = req.body;
+    let sqlText = `UPDATE "legal_status" SET "last_court_date" = $1, 
+                  "last_court_date_outcome" = $2, 
+                  "next_court_date" = $3, 
+                  "next_court_date_outcome" = $4, 
+                  "asylum_application" = $5, 
+                  "work_authorization" = $6 
+                  WHERE "case_id" = $7`;
+    pool.query(sqlText, [legal.last_court_date, 
+                        legal.last_court_date_outcome, 
+                        legal.next_court_date, 
+                        legal.next_court_date_outcome, 
+                        legal.asylum_application, 
+                        legal.work_authorization, 
+                        legal.case_id])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to PUT for legal form edits', error);
+        res.sendStatus(500);
+      })
+  })
+
 router.get('/medical/:id', (req, res) => {
     console.log('Getting all medical info');
     console.log('Getting current id FOR BIO MEDICAL INFO', req.params.id);
