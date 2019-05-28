@@ -56,12 +56,27 @@ function* getVolunteer(action) {
   }
 }
 
+function* getTeam(parse) {
+  // console.log('VOLUNTEER BIO payload', parse.payload);
+  // const user_id = parse.payload;
+  try{
+    console.log('GET TEAM in volunteer view');
+    const getResponse = yield axios.get(`/api/forms/assign`);
+    const action = {type: 'SET_TEAM', payload: getResponse.data};
+    yield put(action);
+  }
+  catch{
+
+  }
+}
+
 
 function* registrationSaga() {
   yield takeLatest('ADD_NEW_VOLUNTEER', registerUser);
   yield takeLatest('GET_ALL_VOLUNTEER', getUser);
   yield takeLatest('GET_VOLUNTEER_BIO', getVolBio);
   yield takeLatest('SEARCH_VOLUNTEER', getVolunteer);
+  yield takeLatest('GET_TEAM', getTeam);
 }
 
 export default registrationSaga;

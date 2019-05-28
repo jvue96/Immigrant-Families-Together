@@ -10,12 +10,35 @@ class VolunteerBio extends Component {
         console.log('Individual volunteer bio searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_VOLUNTEER_BIO', payload: searchObject.id });
         this.props.dispatch({ type: 'GET_CASES'});
-        // console.log('GET_VOLUNTEER_BIO', this.props.reduxState.bioReducer);
+        this.setState({
+            assignCase:{
+                ...this.state.assignCase,
+                user_id: searchObject.id,
+            }
+        }) 
+    }
+
+    state = {
+        assignCase: {
+            case_id: '',
+            user_id: '',
+        }
+    }
+
+    handleChange = propertyName => event => {
+        this.setState({
+            assignCase: {
+                ...this.state.assignCase,
+                [propertyName]: event.target.value,
+            }
+        })
+        console.log(`this is state after handleChange:`, this.state);
+        
     }
 
     assignCase = () => {
         console.log(`hit assign case button!`);
-        // do something to assign a case to volunteer 
+        this.props.dispatch({ type: 'ASSIGN_CASE', payload: this.state.assignCase })
         this.props.history.push('/case-list')
     }
 
@@ -82,7 +105,7 @@ class VolunteerBio extends Component {
                     )})}
 <label>ASSIGN CASE</label> 
 <select
-// onChange={this.handleChange('assign')}
+onChange={this.handleChange('case_id')}
 >
     <option>-</option>
     {this.props.reduxState.allCasesReducer.map(cases => (
