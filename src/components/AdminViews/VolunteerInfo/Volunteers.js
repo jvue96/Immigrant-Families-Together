@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import Nav from '../../Nav/Nav'
 class Volunteers extends Component {
 
     state = {
@@ -36,29 +36,16 @@ class Volunteers extends Component {
         return (
             <div>
                 
-                <div className="nav">
-                    <div className="navLeft2" onClick={this.backButton}>
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div className="navTitle">
-                        <h2 className="navH2">ALL VOLUNTEER</h2>
-                    </div>
-                    <div className="navRight">
-                    </div>
-                </div>
+                <Nav pageName='VOLUNTEERS' home='/home'/>
                 <center>
                     <input 
                         onChange={this.handleChange}
-                        style={{width: 150, height: 20}} 
-                        type="text" placeholder="CASE NUMBER / NAME" /> <br/>
+                        type="text" placeholder="VOLUNTEER INFO" /> <br/>
                     <button 
                     className="formButton"
                     onClick={this.searchBy}> SEARCH </button> 
-
-                {this.props.reduxState.volunteerReducer.map( (users, index) => {
-                        return (
         
-                        <table key={index} style={{width:300}}>
+                        <table>
                             <thead>
                                 <tr>
                                     <td>USERNAME</td>
@@ -68,27 +55,30 @@ class Volunteers extends Component {
                             </thead>
                         {/* map over cases assigned to volunteer */}
                             <tbody>
-                                <tr>
+                            {this.props.reduxState.volunteerReducer.map( (users, index) => {
+                        return (
+                                <tr key={index}>
                                     <td 
                                     data-value={users.id}
                                     onClick={this.viewVolunteer}>
                                         {users.username}
                                     </td>
-                                    <td
+                                    <td style={{wordBreak:"break-all"}}
                                     data-value={users.id}
                                     onClick={this.viewVolunteer}>
                                         {users.email}
                                     </td>
-                                    <td
+                                    <td 
                                     data-value={users.id}
                                     onClick={this.viewVolunteer}>
                                         {users.address}
                                     </td>
                                 </tr>
+                            )
+                        })}  
                             </tbody>
                         </table>
-                        )
-                        })}  
+                        
                 </center>
             </div>
         );
