@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 router.post('/medical', (req, res) => {
     let medical = req.body;
@@ -412,7 +413,7 @@ router.get('/all-cases/:id', (req, res) => {
   })
 })
 
-router.get('/volunteer/search/', (req,res) => {
+router.get('/volunteer/search/', rejectUnauthenticated, (req,res) => {
   console.log(`in volunteer get, here is req.query`, req.query);
   
   let queryText = `SELECT * FROM "user" WHERE (username ILIKE $1 OR email ILIKE $1 OR address ILIKE $1);`;
