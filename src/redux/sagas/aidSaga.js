@@ -26,9 +26,21 @@ function* getAid(parse) {
     }
 }
 
+function* editAid(action) {
+    console.log('PUT for editing aid form', action.payload);
+    try {
+        const getResponse = yield axios.put(`/api/forms/edit-aid/${action.payload.case_id}`, action.payload);
+        yield put({ type: 'SET_AID', payload: getResponse.data });
+    } catch (error) {
+        console.log(`Couldn't PUT the current user`);
+        alert(`Sorry couldn't edit the current entry. Try again later.`)
+    }
+  }
+
 function* aidSaga() {
     yield takeLatest(`ADD_AID`, addAidSaga)
     yield takeLatest(`GET_AID`, getAid)
+    yield takeLatest(`PUT_AID`, editAid)
 }
 
 
