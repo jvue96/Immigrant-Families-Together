@@ -19,6 +19,8 @@ class MedicalEdit extends Component {
                 medical_conditions: this.props.reduxState.medicalReducer[0].medical_conditions, 
                 counselor: this.props.reduxState.medicalReducer[0].counselor, 
                 counselor_phone: this.props.reduxState.medicalReducer[0].counselor_phone, 
+                pediatrician: this.props.reduxState.medicalReducer[0].pediatrician, 
+                pediatrician_phone: this.props.reduxState.medicalReducer[0].pediatrician_phone, 
                 optometrist: this.props.reduxState.medicalReducer[0].optometrist,
                 optometrist_phone: this.props.reduxState.medicalReducer[0].optometrist_phone, 
                 dentist: this.props.reduxState.medicalReducer[0].dentist, 
@@ -72,8 +74,9 @@ class MedicalEdit extends Component {
                 <Nav pageName='MEDICAL FORM' home='/home'/>
 
                 <center>
-                {this.props.reduxState.medicalReducer.map(medical =>
-                    <div className="formDivs">
+                {this.props.reduxState.medicalReducer.map((medical, index) =>
+
+                    <div className="formDivs" key={index}>
                         
                         <label>PRIMARY DOCTOR NAME</label> 
                         <input type="text"
@@ -144,10 +147,7 @@ class MedicalEdit extends Component {
                         <select
                         defaultValue={medical.fee_coverage}
                         onChange={this.handleChange('fee_coverage')}>
-                        <option>-</option>
-                        <option
-                        selected="selected"
-                        value={true}>True</option>
+                        <option value={true}>True</option>
                         <option value={false}>False</option>
                         </select> 
                         

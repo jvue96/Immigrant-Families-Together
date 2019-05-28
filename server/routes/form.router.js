@@ -326,6 +326,7 @@ router.get('/medical/:id', (req, res) => {
   })
 
   router.put('/edit-bond/:id', (req, res) => {
+    console.log('edit bond');
     let bond = req.body;
     let sqlText = `UPDATE "legal" 
                     SET "ice_facility" = $1, 
@@ -472,7 +473,7 @@ router.put('/edit-housing/:id', (req, res) => {
 
 router.post('/case', (req, res) => {
   let cases = req.body;
-  console.log('Adding a new case:', cases);
+  console.log('POST /case Adding a new case:', cases);
   let sqlText = `INSERT INTO cases (case_last_name, case_number, status) VALUES 
   ($1, $2, $3) RETURNING id`;
   pool.query(sqlText, [cases.case_last_name, cases.case_number, cases.status])
