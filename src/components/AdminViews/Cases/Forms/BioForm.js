@@ -91,7 +91,6 @@ class BioForm extends Component {
     this.props.dispatch({ type: 'ADD_BIO', payload: this.state.bioForm })
 
     this.props.history.push(`/children-form?id=${this.state.bioForm.case_id}`);
-console.log(this.state.bioForm);
 
    }
 
