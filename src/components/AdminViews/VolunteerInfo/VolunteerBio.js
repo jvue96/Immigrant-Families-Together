@@ -40,7 +40,7 @@ class VolunteerBio extends Component {
     assignCase = () => {
         console.log(`hit assign case button!`);
         this.props.dispatch({ type: 'ASSIGN_CASE', payload: this.state.assignCase })
-        this.props.history.push('/case-list')
+        this.props.history.push('/volunteers')
     }
 
     render() {
