@@ -595,4 +595,19 @@ router.get('/assign', (req, res) => {
   })
 })
 
+router.get('/volunteer-caseload/:id', (req, res) => {
+  console.log(`GET VOLUNTEER CASELOAD `, req.params.id);
+  console.log(`Getting all cases assigned to a volunteer`);
+  const sqlText = `SELECT "users_cases"."case_id", "users_cases"."user_id", "primary_individual"."last_name", "primary_individual"."last_name" FROM users_cases
+  JOIN "primary_individual" ON "users_cases"."case_id" = "primary_individual"."case_id"
+  WHERE user_id = $1`;
+  pool.query(sqlText, [req.params.id])
+  .then((results) => {
+    res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting the information from the cases table', error);
+      res.sendStatus(500);
+  })
+})
+
 module.exports = router;

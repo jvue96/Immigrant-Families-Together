@@ -70,6 +70,20 @@ function* getTeam(parse) {
   }
 }
 
+function* getVolunteerCases(parse) {
+  console.log('VOLUNTEER CASELOAD payload', parse.payload);
+  const user_id = parse.payload;
+  try{
+    console.log('GET info for VOLUNTEER CASELOAD', user_id);
+    const getResponse = yield axios.get(`/api/forms/volunteer-caseload/${user_id}`);
+    const action = {type: 'SET_VOLUNTEER_CASES', payload: getResponse.data};
+    yield put(action);
+  }
+  catch{
+
+  }
+}
+
 
 function* registrationSaga() {
   yield takeLatest('ADD_NEW_VOLUNTEER', registerUser);
@@ -77,6 +91,7 @@ function* registrationSaga() {
   yield takeLatest('GET_VOLUNTEER_BIO', getVolBio);
   yield takeLatest('SEARCH_VOLUNTEER', getVolunteer);
   yield takeLatest('GET_TEAM', getTeam);
+  yield takeLatest('GET_VOLUNTEER_CASES', getVolunteerCases);
 }
 
 export default registrationSaga;
