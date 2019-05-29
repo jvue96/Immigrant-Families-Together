@@ -25,6 +25,7 @@ class VolunteerLanding extends Component {
                   
 
                     {/* show all cases assigned to volunteer */}
+                    <h1> CASES </h1>
                     <table>
                         <thead>
                             <tr>

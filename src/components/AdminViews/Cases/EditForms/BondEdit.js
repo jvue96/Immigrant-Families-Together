@@ -73,7 +73,7 @@ class BondEdit extends Component {
             <div>
                 <Nav pageName='BOND FORM' home='/home'/>
                     <center>
-                        {JSON.stringify(this.props.reduxState.bondReducer)}
+                        {/* {JSON.stringify(this.props.reduxState.bondReducer)} */}
                     {this.props.reduxState.bondReducer.map((bond, index) =>
                         <div className="formDivs" key={index}>
                             <label>ICE FACILITY</label> 

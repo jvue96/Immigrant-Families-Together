@@ -21,9 +21,14 @@ class LegalIce extends Component {
                 <center>
 
                     <div>{this.props.reduxState.bondReducer.map(bond =>
-                    <div>
-                        <p className="bioDivs">ICE FACILITY: {bond.ice_facility}</p>
-                        <p className="bioDivs">NOTES: {bond.legal_notes}</p>
+                    <div className="bioCard">
+                        <hr/>
+                        <label>ICE FACILITY:</label> 
+                        <p className="PCard"> {bond.ice_facility}</p>
+                        <hr/>
+                        <label>NOTES:</label> 
+                        <p className="PCard"> {bond.legal_notes}</p>
+                        <hr/>
                     </div>
                     )}
                     </div>

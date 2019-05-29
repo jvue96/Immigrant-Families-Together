@@ -18,8 +18,11 @@ class AidFund extends Component {
                 <Nav pageName='GOFUNDME' volunteer home='/home' /> 
                  <center>  
                     <div>{this.props.reduxState.aidReducer.map(aid =>
-                <div>
-<p className="bioDivs">GOFUNDME LINK: {aid.go_fund_me}</p>
+                <div className="bioCard">
+                    <hr/>
+                    <label>GOFUNDME LINK:</label>
+                    <p className="PCard"> {aid.go_fund_me}</p>
+                    <hr/>
                 </div>
 )}
 </div>

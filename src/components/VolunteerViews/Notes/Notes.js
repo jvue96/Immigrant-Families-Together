@@ -48,7 +48,7 @@ class Notes extends Component {
                 [propertyName]: event.target.value,
                 }
             });
-        }    
+        } 
     }
 
     addNote = () => {
@@ -67,23 +67,25 @@ class Notes extends Component {
                     <input type="text" 
                         value={this.state.addNote.family_notes}
                         onChange={this.handleNameChange('family_notes')}/>
-                        <label>NOTE DATE:</label>
-                    <input type="text" 
+                    <label>NOTE DATE:</label>
+                    <input type="date"
                         value={this.state.addNote.date}
                         onChange={this.handleNameChange('date')}/>
                     <button className="formButton" onClick={this.addNote}>ADD</button> 
                     <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
         
-                <div>
+                <h1>
                     PREVIOUS NOTES
-                </div>
+                </h1>
                 <div>{this.props.reduxState.noteReducer.map(notes =>
-                <div>
-<p className="bioDivs">DATE: {notes.date}</p>
-<p className="bioDivs">NOTES: {notes.family_notes}</p>
+                <div className="noteCard">
+                        <p className="PNote" >{notes.date}</p>
+                        <hr/>
+                        <p className="PNote" >NOTE:</p>
+                    <p className="PNote" >{notes.family_notes}</p>
                 </div>
-)}
-</div>
+            )}
+    </div>
 
                     {/* <div className="bioDivs"> </div>
                     <hr style={{width: 200}}/>

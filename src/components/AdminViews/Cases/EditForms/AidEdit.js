@@ -26,7 +26,7 @@ class AidEdit extends Component {
 
     state = {
         aidForm: {
-            case_id: this.props.reduxState.caseReducer.rows[0].id,
+            case_id: '',
             grocery_program: '',
             grocery_program_volunteer: '',
             go_fund_me: '',
@@ -60,13 +60,18 @@ class AidEdit extends Component {
                 <center>
                     {JSON.stringify(this.props.reduxState.aidReducer)}
                 <div>
-                {this.props.reduxState.aidReducer.map(aid =>
-                    <div className="formDivs">
+                {this.props.reduxState.aidReducer.map((aid, index) =>
+
+                    <div className="formDivs" key={index}>
                         
                         <label>GROCERY PROGRAM</label>
-                        <input type="text"
+                        <select 
                         defaultValue={aid.grocery_program}
-                        onChange={this.handleChange('grocery_program')}/>
+                        onChange={this.handleChange(`grocery_program`)}
+                        >
+                            <option value={true}>True</option>
+                            <option value={false}>False</option>
+                        </select>
                         
                         <label>GROCERY PROGRAM VOLUNTEER</label>
                         <input type="text"
