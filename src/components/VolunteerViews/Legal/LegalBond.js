@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../Nav/Nav'
 import qs from 'query-string';
+import moment from 'moment'; 
 
 
 class LegalBond extends Component {
@@ -10,6 +11,11 @@ class LegalBond extends Component {
         const searchObject = qs.parse(this.props.location.search)
         console.log('BOND searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_BOND', payload: searchObject.id });
+    }
+
+    formatDate = (date) => {
+        let entryDate =  moment(date).subtract(10, 'days').calendar();
+        return entryDate; 
     }
     
     render() {
@@ -43,7 +49,7 @@ class LegalBond extends Component {
                                     <p className="PCard"> {bond.bond_amount}</p>
                                     <hr/>
                                     <label>BOND PAID DATE:</label>
-                                    <p className="PCard"> {bond.bond_paid_date}</p>
+                                    <p className="PCard"> {this.formatDate(bond.bond_paid_date)}</p>
                                     <hr/>
                                     <label>BOND PAID BY:</label>
                                     <p className="PCard"> {bond.bond_paid_by}</p>
