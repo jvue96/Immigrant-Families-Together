@@ -17,9 +17,9 @@ class LegalEdit extends Component {
                 ...this.state.legalForm,
                 case_id: searchObject.id,
                  // set state properties to become legalReducer[0] properties 
-                last_court_date: this.formatDate(this.props.reduxState.legalReducer[0].last_court_date), 
+                last_court_date: this.props.reduxState.legalReducer[0].last_court_date, 
                 last_court_date_outcome: this.props.reduxState.legalReducer[0].last_court_date_outcome, 
-                next_court_date: this.formatDate(this.props.reduxState.legalReducer[0].next_court_date), 
+                next_court_date: this.props.reduxState.legalReducer[0].next_court_date, 
                 /* this is the topic input field */
                 next_court_date_outcome: this.props.reduxState.legalReducer[0].next_court_date_outcome, 
                 asylum_application: this.props.reduxState.legalReducer[0].asylum_application, 
@@ -100,16 +100,18 @@ class LegalEdit extends Component {
                             <select
                             onChange={this.handleChange('asylum_application')}
                             defaultValue={legal.asylum_application}>
-                            <option value={true}>true</option>
-                            <option value={false}>false</option>
+                            <option >True or False </option>
+                            <option value={true}>True</option>
+                            <option value={false}>False</option>
                             </select>
 
                             <label>WORK AUTH</label> 
                             <select
                             onChange={this.handleChange('work_authorization')}
                             defaultValue={legal.work_authorization}>
-                            <option value={true}>true</option>
-                            <option value={false}>false</option>
+                            <option >True or False </option>
+                            <option value={true}>True</option>
+                            <option value={false}>False</option>
                             </select>
                         
                             <button
