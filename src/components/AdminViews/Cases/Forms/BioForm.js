@@ -154,7 +154,6 @@ class BioForm extends Component {
 
                         <label>USA I.D</label> 
                         <select 
-                        
                         onChange={this.handleChange(`us_id`)}
                         >
                             <option defaultValue>-</option>
