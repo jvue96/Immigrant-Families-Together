@@ -544,13 +544,12 @@ router.get('/all-cases', (req, res) => {
 })
 
 
-router.get('/all-cases/:id', rejectUnauthenticated, (req, res) => {
-  console.log(`Getting all cases for a specific user`, req.params.id);
+router.get('/volunteer-cases/:id', (req, res) => {
+  console.log(`!!!!!!!Getting all cases for a specific user`, req.params.id);
   const sqlText = `SELECT "users_cases"."case_id", "users_cases"."case_id", "users_cases"."user_id", "primary_individual"."last_name", "primary_individual"."last_name" FROM users_cases
   JOIN "primary_individual" ON "users_cases"."case_id" = "primary_individual"."case_id"
   WHERE user_id = $1 `;
   pool.query(sqlText, [req.params.id])
-
   .then((results) => {
       res.send(results.rows)
   }).catch((error) => {
@@ -575,18 +574,18 @@ router.get('/all-cases/search/', rejectUnauthenticated, (req, res) => {
 })
 
 // /*  */
-// router.get('/all-cases/:id', rejectUnauthenticated, (req, res) => {
-//   console.log(`234p98234 REQ PARAMS ID `, req.params.id);
-//   console.log(`Getting all cases`);
-//   const sqlText = `SELECT * FROM cases WHERE id = $1 `;
-//   pool.query(sqlText, [req.params.id])
-//   .then((results) => {
-//       res.send(results.rows)
-//   }).catch((error) => {
-//       console.log('Something went wrong getting the information from the cases table', error);
-//       res.sendStatus(500);
-//   })
-// })
+router.get('/all-cases/:id', rejectUnauthenticated, (req, res) => {
+  console.log(`234p98234 REQ PARAMS ID `, req.params.id);
+  console.log(`Getting all cases`);
+  const sqlText = `SELECT * FROM cases WHERE id = $1 `;
+  pool.query(sqlText, [req.params.id])
+  .then((results) => {
+      res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting the information from the cases table', error);
+      res.sendStatus(500);
+  })
+})
 
 router.get('/volunteer/search/', rejectUnauthenticated, (req,res) => {
   console.log(`in volunteer get, here is req.query`, req.query);
@@ -658,11 +657,12 @@ router.post('/assign', (req, res) => {
 })
 
 //WRITE A WHERE TO LIST ONLY THE TEAM MEMBERS ASSIGN TO THE CASE
-router.get('/assign', (req, res) => {
+router.get('/assign/:id', (req, res) => {
   console.log(`Getting team from volunteer view`);
   const sqlText = `SELECT "user"."username", "user"."phone", "user"."email", "user"."encrypted", "user"."address", "user"."skills", "user"."second_language" FROM users_cases
-  JOIN "user" ON "users_cases"."user_id" = "user"."id"`;
-  pool.query(sqlText)
+  JOIN "user" ON "users_cases"."user_id" = "user"."id"
+  WHERE "users_cases"."case_id" = $1`;
+  pool.query(sqlText, [req.params.id])
   .then((results) => {
       res.send(results.rows)
   }).catch((error) => {

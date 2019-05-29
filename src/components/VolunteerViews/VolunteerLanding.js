@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../Nav/Nav';
+import qs from 'query-string';
+
 class VolunteerLanding extends Component {
 
     componentDidMount = () => {
-        // this.props.dispatch({ type: 'GET_MEDICAL' });
+        // this.props.dispatch({ type: 'GET_MEDICAL' });'
         this.props.dispatch({ type: 'GET_USER_CASES', payload: this.props.reduxState.user.id });
         console.log('user id', this.props.reduxState.user.id);
-        
     }
 
     viewCase = (event) => {

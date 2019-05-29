@@ -59,11 +59,11 @@ yield put(setVolunteers);
 }
 
 function* getTeam(parse) {
-  // console.log('VOLUNTEER BIO payload', parse.payload);
-  // const user_id = parse.payload;
+  console.log('VOLUNTEER TEAM payload', parse.payload);
+  const id = parse.payload;
   try{
     console.log('GET TEAM in volunteer view');
-    const getResponse = yield axios.get(`/api/forms/assign`);
+    const getResponse = yield axios.get(`/api/forms/assign/${id}`);
     const action = {type: 'SET_TEAM', payload: getResponse.data};
     yield put(action);
   }

@@ -1,43 +1,59 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {withRouter, Link} from 'react-router-dom';
+import qs from 'query-string';
 import '../App/App.css'
-const SubNav = () => {
+
+class SubNav extends Component {
+
+// }= () => {
+
+
+
+    
+    render() {
+        const searchObject = qs.parse(this.props.location.search)
+    console.log('SUB NAV searchObject', searchObject.id);
         return (
+
             <div className="subnavbar">
             <div className="subNavSection">
-            <Link to='/volunteer-events'>     
+            <Link to={`/volunteer-events?id=${searchObject.id}`}>     
                 <h3>EVENTS</h3>
                     </Link>
             </div>
             <div className="subNavSection">
-            <Link to='/bio'>  
+            <Link to={`/bio?id=${searchObject.id}`}>  
                 <h3>BIO</h3>
                 </Link>
             </div>
             <div className="subNavSection">
-            <Link to='/volunteer-legal'>  
+            <Link to={`/volunteer-legal?id=${searchObject.id}`}>  
                 <h3>LEGAL</h3>
                 </Link>
             </div>
             <div className="subNavSection">
-            <Link to='/volunteer-aid'>  
+            <Link to={`/volunteer-aid?id=${searchObject.id}`}>  
                 <h3>AID</h3>
                 </Link>
             </div>
             <div className="subNavSection">
-            <Link to='/volunteer-team'>  
+            <Link to={`/volunteer-team?id=${searchObject.id}`}>  
                 <h3>TEAM</h3>
                 </Link>
             </div>
             <div className="subNavSection">
-            <Link to='/volunteer-notes'>  
+            <Link to={`/volunteer-notes?id=${searchObject.id}`}>  
                 <h3>NOTES</h3>
                 </Link>
             </div>
             </div>
-        )
+        );
+    }
     }
 
-export default withRouter(SubNav);
-  
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+});
+
+export default withRouter(connect(mapReduxStateToProps)(SubNav));
