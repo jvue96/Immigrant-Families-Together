@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../Nav/Nav'
+import qs from 'query-string';
 
 class Notes extends Component {
 
     componentDidMount = () => {
-        this.props.dispatch({ type: 'GET_NOTE' });
+        const searchObject = qs.parse(this.props.location.search)
+        console.log('EVENT searchObject', searchObject.id);
+        this.props.dispatch({ type: 'GET_NOTE', payload: searchObject.id });
         console.log('GET_NOTE', this.props.reduxState.noteReducer);
+        this.setState({
+            addNote:{
+                ...this.state.addNote,
+                case_id: this.props.reduxState.caseIdReducer[0].id,
+            }
+        })
     }
+
+  
 
     state = {
         addNote: {
+            case_id: this.props.reduxState.caseIdReducer[0].id,
             family_notes: '',
             date: '',
         }
@@ -20,6 +32,7 @@ class Notes extends Component {
         console.log('in autoPopulate')
         this.setState({
             addNote: {
+                case_id: this.props.reduxState.caseIdReducer[0].id,
                 family_notes: 'Visited in morning to discuss the lawyer agreeing to work probono',
                 date: '2019-12-12',
             }
@@ -39,9 +52,9 @@ class Notes extends Component {
     }
 
     addNote = () => {
-        console.log(`clicked add note! `);
+        console.log(`clicked add note! `, this.state.addNote);
         this.props.dispatch({ type: 'ADD_NOTE', payload: this.state.addNote })
-        this.props.dispatch({ type: 'GET_NOTE' });
+        this.props.dispatch({ type: 'GET_NOTE', payload: this.state.addNote.case_id });
     }
 
     render() {

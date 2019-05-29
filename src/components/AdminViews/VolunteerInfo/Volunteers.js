@@ -13,8 +13,9 @@ class Volunteers extends Component {
     }
 
     viewVolunteer = (event) => {
-        console.log(`hit view volunteer!`);
-        console.log(`!!!!0o9i8765`, event.target.dataset.value);
+        // console.log(`hit view volunteer!`);
+        // console.log(`!!!!0o9i8765`,event.target.dataset.value);
+
         // this.props.history.push('/volunteer-landing')
         this.props.history.push(`/volunteer-bio?id=${event.target.dataset.value}`)
     }
@@ -22,15 +23,13 @@ class Volunteers extends Component {
     handleChange = (event) => { 
         this.setState({
             search: event.target.value,
-        }) 
+        })
+        console.log(`this is state inside of handleChange:`, this.state);         
     }
 
     searchBy = (event) => {
-        this.setState({ 
-            search: event.target.value, 
-        });
-        console.log(this.state);
-        this.props.dispatch({type: 'SEARCH_VOLUNTEER', payload: this.state });
+        console.log(`inside searchBy, here is state:`, this.state);
+      this.props.dispatch({type: 'SEARCH_VOLUNTEER', payload: this.state });
     }
 
     render() {
@@ -49,14 +48,15 @@ class Volunteers extends Component {
                     <div className="navRight">
                     </div>
                 </div> */}
+
                 <center>
                     <input 
                         onChange={this.handleChange}
-                        style={{width: 150, height: 20}} 
-                        type="text" placeholder="CASE NUMBER / NAME" /> <br/>
+                        type="text" placeholder="VOLUNTEER INFO" /> <br/>
                     <button 
                     className="formButton"
                     onClick={this.searchBy}> SEARCH </button> 
+
 
                 {this.props.reduxState.volunteerReducer.map( (users, index) => {
                         return (
@@ -101,8 +101,7 @@ class Volunteers extends Component {
                         //     </tbody>
                         // </table>
                         )
-                        })}  
-                </center>
+                        })}                  </center>
             </div>
         );
     }
