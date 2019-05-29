@@ -114,7 +114,7 @@ onChange={this.handleChange('case_id')}
     {this.props.reduxState.allCasesReducer.map(cases => (
 
     <option value={cases.id}>
-        {cases.case_last_name}
+        {cases.case_last_name}{cases.address}
     </option>
     ))}
 </select>
