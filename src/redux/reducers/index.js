@@ -13,6 +13,7 @@ import childrenReducer from "./childrenReducer";
 import bioReducer from './bioReducers/bioReducer';
 import noteReducer from './noteReducer';
 import eventReducer from './eventReducer';
+import allEventsReducer from './allEventsReducer';
 import bondReducer from './bondReducer';
 import caseReducer from './caseReducer';
 import allCasesReducer from "../reducers/allCasesReducer"; 
@@ -20,6 +21,8 @@ import caseIdReducer from "../reducers/caseIdReducer";
 import volunteerReducer from '../reducers/volunteerReducer'
 import volunteerBioReducer from '../reducers/volunteerBioReducer'
 import teamReducer from '../reducers/teamReducer'
+import volunteerCases from '../reducers/volunteerCases'
+import userCasesReducer from '../reducers/userCasesReducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -49,6 +52,9 @@ const rootReducer = combineReducers({
   volunteerReducer,
   volunteerBioReducer,
   teamReducer,
+  allEventsReducer,
+  volunteerCases,
+  userCasesReducer,
 });
 
 export default rootReducer;

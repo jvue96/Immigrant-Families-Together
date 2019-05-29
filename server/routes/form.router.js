@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 router.post('/medical', (req, res) => {
     let medical = req.body;
@@ -244,9 +245,9 @@ router.get('/medical/:id', (req, res) => {
   router.post('/note', (req, res) => {
     let note = req.body;
     console.log('Adding in note:', note);
-    let sqlText = `INSERT INTO notes (family_notes, date) VALUES 
-    ($1, $2)`;
-    pool.query(sqlText, [note.family_notes, note.date])
+    let sqlText = `INSERT INTO notes (family_notes, date, case_id) VALUES 
+    ($1, $2, $3)`;
+    pool.query(sqlText, [note.family_notes, note.date, note.case_id])
       .then( (response) => {
         res.sendStatus(201);
       })
@@ -256,9 +257,10 @@ router.get('/medical/:id', (req, res) => {
       })
   })
 
-  router.get('/note', (req, res) => {
+  router.get('/note/:id', (req, res) => {
     console.log('Getting all note info');
-    pool.query(`SELECT * FROM "notes"`)
+    const sqlText = `SELECT * FROM "notes" WHERE "case_id" = $1 ORDER BY date;`
+    pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {
@@ -286,7 +288,7 @@ router.get('/medical/:id', (req, res) => {
 
   router.get('/event/:id', (req, res) => {
     console.log('Getting all event info');
-    const sqlText = `SELECT * FROM "events" WHERE "case_id" = $1;`
+    const sqlText = `SELECT * FROM "events" WHERE "case_id" = $1 ORDER BY date;`
     pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
@@ -295,6 +297,47 @@ router.get('/medical/:id', (req, res) => {
         res.sendStatus(500);
     })
   })
+
+
+  router.get('/events', (req,res) => {
+    let sqlText = `SELECT events.date, events.description, cases.case_last_name, cases.case_number FROM events
+    JOIN cases ON cases.id = events.case_id
+    GROUP BY cases.case_last_name, events.date, events.description, cases.case_number 
+    ORDER BY events.date ASC
+    `
+pool.query(sqlText)
+.then(results => {
+  res.send(results.rows)
+})
+  .catch(error=>{
+    res.sendStatus(500);
+  })
+  });
+
+  //new router for search events 
+
+  router.get('/events/search/', (req, res) => {
+    console.log(`this is query in all events search`, req.query);
+    let queryText = `SELECT events.date, events.description, cases.case_last_name, cases.case_number FROM events 
+LEFT JOIN cases ON cases.id = events.case_id
+WHERE (events.description ILIKE $1 OR cases.case_number ILIKE $1 OR  cases.case_last_name ILIKE $1)
+GROUP BY cases.case_last_name, events.date, events.description, cases.case_number;`;
+      pool.query(queryText, ['%'+req.query.q+'%'])
+      .then(results=>{
+        console.log(`this is result from event search query,`, results.rows)
+        res.send(results.rows)
+      })
+      .catch(error => {
+        res.sendStatus(500);
+        console.log(`this was error when trying to search events:`, error);
+        
+      })
+  })
+
+
+
+  //end search events 
+
 
 
   router.post('/bond', (req, res) => {
@@ -500,7 +543,23 @@ router.get('/all-cases', (req, res) => {
 
 })
 
-router.get('/all-cases/search/', (req, res) => {
+
+router.get('/all-cases/:id', rejectUnauthenticated, (req, res) => {
+  console.log(`Getting all cases for a specific user`, req.params.id);
+  const sqlText = `SELECT "users_cases"."case_id", "users_cases"."case_id", "users_cases"."user_id", "primary_individual"."last_name", "primary_individual"."last_name" FROM users_cases
+  JOIN "primary_individual" ON "users_cases"."case_id" = "primary_individual"."case_id"
+  WHERE user_id = $1 `;
+  pool.query(sqlText, [req.params.id])
+
+  .then((results) => {
+      res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting the information from the cases table', error);
+      res.sendStatus(500);
+  })
+})
+
+router.get('/all-cases/search/', rejectUnauthenticated, (req, res) => {
   console.log(`this is query in all cases search`, req.query);
   let queryText = `SELECT * FROM cases WHERE (case_last_name ILIKE $1 OR case_number ILIKE $1);`;
     pool.query(queryText, ['%'+req.query.q+'%'])
@@ -515,18 +574,35 @@ router.get('/all-cases/search/', (req, res) => {
     })
 })
 
-/*  */
-router.get('/all-cases/:id', (req, res) => {
-  console.log(`234p98234 REQ PARAMS ID `, req.params.id);
-  console.log(`Getting all cases`);
-  const sqlText = `SELECT * FROM cases WHERE id = $1 `;
-  pool.query(sqlText, [req.params.id])
-  .then((results) => {
-      res.send(results.rows)
-  }).catch((error) => {
-      console.log('Something went wrong getting the information from the cases table', error);
-      res.sendStatus(500);
+// /*  */
+// router.get('/all-cases/:id', rejectUnauthenticated, (req, res) => {
+//   console.log(`234p98234 REQ PARAMS ID `, req.params.id);
+//   console.log(`Getting all cases`);
+//   const sqlText = `SELECT * FROM cases WHERE id = $1 `;
+//   pool.query(sqlText, [req.params.id])
+//   .then((results) => {
+//       res.send(results.rows)
+//   }).catch((error) => {
+//       console.log('Something went wrong getting the information from the cases table', error);
+//       res.sendStatus(500);
+//   })
+// })
+
+router.get('/volunteer/search/', rejectUnauthenticated, (req,res) => {
+  console.log(`in volunteer get, here is req.query`, req.query);
+  
+  let queryText = `SELECT * FROM "user" WHERE (username ILIKE $1 OR email ILIKE $1 OR address ILIKE $1);`;
+  pool.query(queryText, ['%'+req.query.q+'%'])
+  .then(results=>{
+    console.log(`this is result from search query for volunteers,`, results.rows)
+    res.send(results.rows)
   })
+  .catch(error => {
+    res.sendStatus(500);
+    console.log(`this was error when trying to search all volunteers:`, error);
+    
+  })
+
 })
 
 
@@ -591,6 +667,21 @@ router.get('/assign', (req, res) => {
       res.send(results.rows)
   }).catch((error) => {
       console.log('Something went wrong getting the team information', error);
+      res.sendStatus(500);
+  })
+})
+
+router.get('/volunteer-caseload/:id', (req, res) => {
+  console.log(`GET VOLUNTEER CASELOAD `, req.params.id);
+  console.log(`Getting all cases assigned to a volunteer`);
+  const sqlText = `SELECT "users_cases"."case_id", "users_cases"."user_id", "primary_individual"."last_name", "primary_individual"."last_name" FROM users_cases
+  JOIN "primary_individual" ON "users_cases"."case_id" = "primary_individual"."case_id"
+  WHERE user_id = $1`;
+  pool.query(sqlText, [req.params.id])
+  .then((results) => {
+    res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting the information from the cases table', error);
       res.sendStatus(500);
   })
 })

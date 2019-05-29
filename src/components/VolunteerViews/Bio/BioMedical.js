@@ -128,7 +128,7 @@ class BioMedical extends Component {
                         </div>
                 </center>
             </div>
-        );
+                );
     }
 }
 

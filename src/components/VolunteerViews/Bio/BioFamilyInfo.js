@@ -63,6 +63,7 @@ class BioFamilyInfo extends Component {
         return (
             <div>
                 <Nav pageName='FAMILY INFO' volunteer home='/home' />
+
                     <center>
                         <div>
                             {emptyFamily}
@@ -104,6 +105,7 @@ class BioFamilyInfo extends Component {
                                     <hr/>
                                 </div>
                             )}
+
                     </div>
                 </center>
             </div>

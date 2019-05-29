@@ -44,6 +44,7 @@ class Team extends Component {
 
         return (
             <div>
+
                 <Nav pageName='TEAM' volunteer home='/home' /> 
                     <center> 
                         <h1> VOLUNTEERS </h1>
@@ -75,6 +76,7 @@ class Team extends Component {
                             </div>
                         ))}
                     </center>
+
                 </div>
 
         );

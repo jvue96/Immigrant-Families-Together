@@ -74,6 +74,7 @@ class LegalStatus extends Component {
                         </div>
                     )}
                     </div>
+
                 </center>
             </div>
         );

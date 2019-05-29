@@ -159,7 +159,6 @@ input {
 
 .cardHead{
     width: 100%;
-    height:30px;
     display:inline-flex;
 }
 
@@ -168,13 +167,11 @@ input {
 
 .cardHeadLeft{
     width:50%;
-    height:30px;
     justify-content: left;
 }
 
 .cardHeadRight{
     width:50%;
-    height:30px;
     justify-content: right;
 }
 
@@ -356,6 +353,7 @@ td{
   padding: 10px;
   align-content: center;
   color: rgb(97, 97, 97);
+  font-size:.7em;
   
 }
 
@@ -419,4 +417,17 @@ tr:nth-child(even) {
   width:80%;
   margin:5px;
   border: .5px solid rgb(153, 153, 153);
+}
+
+.teamCard {
+    width:75%;
+    border-radius: 8px;
+    padding:10px;
+    /* background-color: #d6d6d6; */
+    border: .5px solid rgb(118, 118, 118);
+    margin-bottom: 20px;
+}
+
+img{
+  width:100%;
 }

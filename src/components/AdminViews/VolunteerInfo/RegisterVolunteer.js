@@ -52,7 +52,6 @@ class RegisterVolunteer extends Component {
                 onChange={this.handleInputChangeFor('username')}
                 />
             
-
             <label htmlFor="password">
               Password:
               </label>
@@ -63,7 +62,6 @@ class RegisterVolunteer extends Component {
                 onChange={this.handleInputChangeFor('password')}
               />
             
-
             <label htmlFor="phone">
               Phone:
               </label>
@@ -74,7 +72,6 @@ class RegisterVolunteer extends Component {
                 onChange={this.handleInputChangeFor('phone')}
               />
             
-
             <label htmlFor="email">
               Email:
               </label>
@@ -84,7 +81,6 @@ class RegisterVolunteer extends Component {
                 value={this.state.email}
                 onChange={this.handleInputChangeFor('email')}
               />
-            
             
             <label htmlFor="encrypted">
               WhatsApp:
@@ -96,11 +92,9 @@ class RegisterVolunteer extends Component {
                 onChange={this.handleInputChangeFor('encrypted')}
               />
             
-            
             <label htmlFor="address">
               Address:
               </label>
-
               <input
                 type="address"
                 name="address"
@@ -117,7 +111,6 @@ class RegisterVolunteer extends Component {
                 value={this.state.skills}
                 onChange={this.handleInputChangeFor('skills')}
               />
-  
             
             <label htmlFor="second_language">
               Second Language:
@@ -139,7 +132,6 @@ class RegisterVolunteer extends Component {
                 onChange={this.handleInputChangeFor('admin')}
               />
             
-          
                     <button className="formButton" onClick={this.register}>REGISTER</button>
                     </div>
                 </center>
