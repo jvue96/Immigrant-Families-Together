@@ -10,7 +10,8 @@ class AidForm extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('aidForm searchObject', searchObject);
+        // setting properties to null allow users to post null values into the database
+        // which can then be edited later 
         this.setState({
             aidForm:{
                 ...this.state.aidForm,
