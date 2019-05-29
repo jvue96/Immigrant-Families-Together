@@ -56,9 +56,8 @@ class VolunteerBio extends Component {
 
                     {this.props.reduxState.volunteerBioReducer.map( (users, index) => {
                     return (
+                    <section key={index}>
 
-                        
-                    <section key={users.id}>
                     <div className="bioCard">
                         <hr/>
                         <div>
@@ -113,9 +112,9 @@ onChange={this.handleChange('case_id')}
 >
     <option>-</option>
     {this.props.reduxState.allCasesReducer.map(cases => (
+
     <option value={cases.id}>
         {cases.case_last_name}
-
     </option>
     ))}
 </select>

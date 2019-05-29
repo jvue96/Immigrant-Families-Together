@@ -299,6 +299,47 @@ router.get('/medical/:id', (req, res) => {
   })
 
 
+  router.get('/events', (req,res) => {
+    let sqlText = `SELECT events.date, events.description, cases.case_last_name, cases.case_number FROM events
+    JOIN cases ON cases.id = events.case_id
+    GROUP BY cases.case_last_name, events.date, events.description, cases.case_number 
+    ORDER BY events.date ASC
+    `
+pool.query(sqlText)
+.then(results => {
+  res.send(results.rows)
+})
+  .catch(error=>{
+    res.sendStatus(500);
+  })
+  });
+
+  //new router for search events 
+
+  router.get('/events/search/', (req, res) => {
+    console.log(`this is query in all events search`, req.query);
+    let queryText = `SELECT events.date, events.description, cases.case_last_name, cases.case_number FROM events 
+LEFT JOIN cases ON cases.id = events.case_id
+WHERE (events.description ILIKE $1 OR cases.case_number ILIKE $1 OR  cases.case_last_name ILIKE $1)
+GROUP BY cases.case_last_name, events.date, events.description, cases.case_number;`;
+      pool.query(queryText, ['%'+req.query.q+'%'])
+      .then(results=>{
+        console.log(`this is result from event search query,`, results.rows)
+        res.send(results.rows)
+      })
+      .catch(error => {
+        res.sendStatus(500);
+        console.log(`this was error when trying to search events:`, error);
+        
+      })
+  })
+
+
+
+  //end search events 
+
+
+
   router.post('/bond', (req, res) => {
     let bond = req.body;
     console.log('Adding in bond and legal info:', bond);

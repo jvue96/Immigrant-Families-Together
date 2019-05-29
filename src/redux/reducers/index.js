@@ -13,6 +13,7 @@ import childrenReducer from "./childrenReducer";
 import bioReducer from './bioReducers/bioReducer';
 import noteReducer from './noteReducer';
 import eventReducer from './eventReducer';
+import allEventsReducer from './allEventsReducer';
 import bondReducer from './bondReducer';
 import caseReducer from './caseReducer';
 import allCasesReducer from "../reducers/allCasesReducer"; 
@@ -50,6 +51,7 @@ const rootReducer = combineReducers({
   volunteerReducer,
   volunteerBioReducer,
   teamReducer,
+  allEventsReducer,
   volunteerCases,
 });
 
