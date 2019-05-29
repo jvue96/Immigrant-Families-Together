@@ -31,8 +31,8 @@ class BioFamilyInfo extends Component {
 <p className="bioDivs">ADDRESS: {bio.address}</p>
 <p className="bioDivs">REFERRED BY: {bio.referred_by}</p>
 <p className="bioDivs">REFERRAL DATE: {bio.reference_date}</p>
-{/* <p className="bioDivs">PASSPORT: FALSE (HARD CODED)</p>
-<p className="bioDivs">U.S. IDENTIFICATION: FALSE (HARD CODED)</p> */}
+<p className="bioDivs">PASSPORT: {String(bio.passport)}</p>
+<p className="bioDivs">U.S. IDENTIFICATION: {String(bio.us_id)}</p>
                 </div>
 )}
 </div>
