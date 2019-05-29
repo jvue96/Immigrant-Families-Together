@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 router.post('/medical', (req, res) => {
     let medical = req.body;
@@ -13,6 +14,20 @@ router.post('/medical', (req, res) => {
       })
       .catch( (error) => {
         console.log('Failed to POST medical form');
+        res.sendStatus(500);
+      })
+  })
+
+  router.put('/edit-medical/:id', (req, res) => {
+    let medical = req.body;
+    console.log('PUT in aid edit:', medical);
+    let sqlText = `UPDATE "medical" SET "doctor_name" = $2, "doctor_phone" = $3, "medical_conditions" = $4, "counselor" = $5, "counselor_phone" = $6, "pediatrician" = $7, "pediatrician_phone" = $8, "optometrist" = $9, "optometrist_phone" = $10, "dentist" = $11, "dentist_phone" = $12, "vaccinations" = $13, "insurance_card_info" = $14, "fee_coverage" = $15, "medical_notes" = $16 WHERE "case_id" = $1`;
+    pool.query(sqlText, [medical.case_id, medical.doctor_name, medical.doctor_phone, medical.medical_conditions, medical.counselor, medical.counselor_phone, medical.pediatrician, medical.pediatrician_phone, medical.optometrist, medical.optometrist_phone, medical.dentist, medical.dentist_phone, medical.vaccinations, medical.insurance_card_info, medical.fee_coverage, medical.medical_notes])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to PUT for medical form edits', error);
         res.sendStatus(500);
       })
   })
@@ -50,6 +65,31 @@ router.post('/medical', (req, res) => {
         res.sendStatus(500);
     })
   });
+
+  router.put('/edit-legal/:id', (req, res) => {
+    let legal = req.body;
+    let sqlText = `UPDATE "legal_status" SET "last_court_date" = $1, 
+                  "last_court_date_outcome" = $2, 
+                  "next_court_date" = $3, 
+                  "next_court_date_outcome" = $4, 
+                  "asylum_application" = $5, 
+                  "work_authorization" = $6 
+                  WHERE "case_id" = $7`;
+    pool.query(sqlText, [legal.last_court_date, 
+                        legal.last_court_date_outcome, 
+                        legal.next_court_date, 
+                        legal.next_court_date_outcome, 
+                        legal.asylum_application, 
+                        legal.work_authorization, 
+                        legal.case_id])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to PUT for legal form edits', error);
+        res.sendStatus(500);
+      })
+  })
 
 router.get('/medical/:id', (req, res) => {
     console.log('Getting all medical info');
@@ -90,6 +130,20 @@ router.get('/medical/:id', (req, res) => {
         console.log('Something went wrong getting the information from the bio forms', error);
         res.sendStatus(500);
     })
+  })
+
+  router.put('/edit-bio/:id', (req, res) => {
+    let bio = req.body;
+    console.log('PUT in aid edit:', bio);
+    let sqlText = `UPDATE "primary_individual" SET "last_name" = $2, "first_name" = $3, "dob" = $4, "spouse_first_name" = $5, "spouse_dob" = $6, "phone" = $7, "email" = $8, "address" = $9, "referred_by" = $10, "reference_date" = $11, "passport" = $12, "us_id" = $13, "encrypted" = $14 WHERE "case_id" = $1`;
+    pool.query(sqlText, [bio.case_id, bio.last_name, bio.first_name, bio.dob, bio.spouse_first_name, bio.spouse_dob, bio.phone, bio.email, bio.address, bio.referred_by, bio.reference_date, bio.passport, bio.us_id, bio.encrypted])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to PUT for aid form edits', error);
+        res.sendStatus(500);
+      })
   })
 
   router.post('/children', async(req, res) => {
@@ -191,9 +245,9 @@ router.get('/medical/:id', (req, res) => {
   router.post('/note', (req, res) => {
     let note = req.body;
     console.log('Adding in note:', note);
-    let sqlText = `INSERT INTO notes (family_notes, date) VALUES 
-    ($1, $2)`;
-    pool.query(sqlText, [note.family_notes, note.date])
+    let sqlText = `INSERT INTO notes (family_notes, date, case_id) VALUES 
+    ($1, $2, $3)`;
+    pool.query(sqlText, [note.family_notes, note.date, note.case_id])
       .then( (response) => {
         res.sendStatus(201);
       })
@@ -203,9 +257,10 @@ router.get('/medical/:id', (req, res) => {
       })
   })
 
-  router.get('/note', (req, res) => {
+  router.get('/note/:id', (req, res) => {
     console.log('Getting all note info');
-    pool.query(`SELECT * FROM "notes"`)
+    const sqlText = `SELECT * FROM "notes" WHERE "case_id" = $1 ORDER BY date;`
+    pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {
@@ -233,7 +288,7 @@ router.get('/medical/:id', (req, res) => {
 
   router.get('/event/:id', (req, res) => {
     console.log('Getting all event info');
-    const sqlText = `SELECT * FROM "events" WHERE "case_id" = $1;`
+    const sqlText = `SELECT * FROM "events" WHERE "case_id" = $1 ORDER BY date;`
     pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
@@ -313,6 +368,42 @@ GROUP BY cases.case_last_name, events.date, events.description, cases.case_numbe
     })
   })
 
+  router.put('/edit-bond/:id', (req, res) => {
+    console.log('edit bond');
+    let bond = req.body;
+    let sqlText = `UPDATE "legal" 
+                    SET "ice_facility" = $1, 
+                    "bond_amount" = $2, 
+                    "bond_paid_date" = $3, 
+                    "bond_paid_by" = $4,
+                    "foster_facility" = $5, 
+                    "foster_facility_address" = $6, 
+                    "attorney" = $7,
+                    "attorney_phone" = $8,
+                    "attorney_fee" = $9,
+                    "legal_notes" = $10
+                    WHERE "case_id" = $11`;
+    pool.query(sqlText, [bond.ice_facility, 
+                          bond.bond_amount, 
+                          bond.bond_paid_date, 
+                          bond.bond_paid_by,
+                          bond.foster_facility, 
+                          bond.foster_facility_address, 
+                          bond.attorney, 
+                          bond.attorney_phone, 
+                          bond.attorney_fee, 
+                          bond.legal_notes, 
+                          bond.case_id,
+                        ])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to PUT for bond form edits', error);
+        res.sendStatus(500);
+      })
+  })
+
   // router.get('/bond', (req, res) => {
   //   console.log('Getting all bond and legal info');
   //   console.log('Getting ONE current id');
@@ -354,6 +445,20 @@ router.get('/school/:id', (req, res) => {
     })
 })
 
+router.put('/edit-school/:id', (req, res) => {
+  let school = req.body;
+  console.log('PUT in school edit:', school);
+  let sqlText = `UPDATE "school" SET "name" = $1, "phone" = $2, "email" = $3 WHERE "case_id" = $4`;
+  pool.query(sqlText, [school.name, school.phone, school.email, school.case_id])
+    .then( (response) => {
+      res.sendStatus(201);
+    })
+    .catch( (error) => {
+      console.log('Failed to PUT for school form edits', error);
+      res.sendStatus(500);
+    })
+})
+
 router.post('/housing', (req, res) => {
   let housing = req.body;
   console.log('Adding in housing:', housing);
@@ -382,6 +487,20 @@ router.get('/housing/:id', (req, res) => {
     })
 })
 
+router.put('/edit-housing/:id', (req, res) => {
+  let housing = req.body;
+  console.log('PUT in housing edit:', housing);
+  let sqlText = `UPDATE "housing" SET "address" = $1, "rent" = $2, "paid_by" = $3, "utilities" = $4, "living_with_fam" = $5 WHERE "case_id" = $6`;
+  pool.query(sqlText, [housing.address, housing.rent, housing.paid_by, housing.utilities, housing.living_with_fam, housing.case_id])
+    .then( (response) => {
+      res.sendStatus(201);
+    })
+    .catch( (error) => {
+      console.log('Failed to PUT for housing form edits', error);
+      res.sendStatus(500);
+    })
+})
+
 // router.get('/bio-identification/:id', (req, res) => {
 //   console.log('Getting all ID info');
 //   console.log('Getting current id for ID info', req.params.id);
@@ -397,7 +516,7 @@ router.get('/housing/:id', (req, res) => {
 
 router.post('/case', (req, res) => {
   let cases = req.body;
-  console.log('Adding a new case:', cases);
+  console.log('POST /case Adding a new case:', cases);
   let sqlText = `INSERT INTO cases (case_last_name, case_number, status) VALUES 
   ($1, $2, $3) RETURNING id`;
   pool.query(sqlText, [cases.case_last_name, cases.case_number, cases.status])
@@ -424,7 +543,7 @@ router.get('/all-cases', (req, res) => {
 
 })
 
-router.get('/all-cases/search/', (req, res) => {
+router.get('/all-cases/search/', rejectUnauthenticated, (req, res) => {
   console.log(`this is query in all cases search`, req.query);
   let queryText = `SELECT * FROM cases WHERE (case_last_name ILIKE $1 OR case_number ILIKE $1);`;
     pool.query(queryText, ['%'+req.query.q+'%'])
@@ -440,7 +559,7 @@ router.get('/all-cases/search/', (req, res) => {
 })
 
 /*  */
-router.get('/all-cases/:id', (req, res) => {
+router.get('/all-cases/:id', rejectUnauthenticated, (req, res) => {
   console.log(`234p98234 REQ PARAMS ID `, req.params.id);
   console.log(`Getting all cases`);
   const sqlText = `SELECT * FROM cases WHERE id = $1 `;
@@ -451,6 +570,23 @@ router.get('/all-cases/:id', (req, res) => {
       console.log('Something went wrong getting the information from the cases table', error);
       res.sendStatus(500);
   })
+})
+
+router.get('/volunteer/search/', rejectUnauthenticated, (req,res) => {
+  console.log(`in volunteer get, here is req.query`, req.query);
+  
+  let queryText = `SELECT * FROM "user" WHERE (username ILIKE $1 OR email ILIKE $1 OR address ILIKE $1);`;
+  pool.query(queryText, ['%'+req.query.q+'%'])
+  .then(results=>{
+    console.log(`this is result from search query for volunteers,`, results.rows)
+    res.send(results.rows)
+  })
+  .catch(error => {
+    res.sendStatus(500);
+    console.log(`this was error when trying to search all volunteers:`, error);
+    
+  })
+
 })
 
 
@@ -515,6 +651,21 @@ router.get('/assign', (req, res) => {
       res.send(results.rows)
   }).catch((error) => {
       console.log('Something went wrong getting the team information', error);
+      res.sendStatus(500);
+  })
+})
+
+router.get('/volunteer-caseload/:id', (req, res) => {
+  console.log(`GET VOLUNTEER CASELOAD `, req.params.id);
+  console.log(`Getting all cases assigned to a volunteer`);
+  const sqlText = `SELECT "users_cases"."case_id", "users_cases"."user_id", "primary_individual"."last_name", "primary_individual"."last_name" FROM users_cases
+  JOIN "primary_individual" ON "users_cases"."case_id" = "primary_individual"."case_id"
+  WHERE user_id = $1`;
+  pool.query(sqlText, [req.params.id])
+  .then((results) => {
+    res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting the information from the cases table', error);
       res.sendStatus(500);
   })
 })

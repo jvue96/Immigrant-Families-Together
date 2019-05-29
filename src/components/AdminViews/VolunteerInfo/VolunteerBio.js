@@ -4,12 +4,20 @@ import qs from 'query-string';
 import Nav from '../../Nav/Nav'
 class VolunteerBio extends Component {
 
+    state = {
+        assignCase: {
+            case_id: '',
+            user_id: '',
+        }
+    }
+
     componentDidMount = () => {
        
         const searchObject = qs.parse(this.props.location.search)
         console.log('Individual volunteer bio searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_VOLUNTEER_BIO', payload: searchObject.id });
         this.props.dispatch({ type: 'GET_CASES'});
+        this.props.dispatch({ type: 'GET_VOLUNTEER_CASES', payload: searchObject.id });
         this.setState({
             assignCase:{
                 ...this.state.assignCase,
@@ -18,12 +26,7 @@ class VolunteerBio extends Component {
         }) 
     }
 
-    state = {
-        assignCase: {
-            case_id: '',
-            user_id: '',
-        }
-    }
+  
 
     handleChange = propertyName => event => {
         this.setState({
@@ -39,7 +42,7 @@ class VolunteerBio extends Component {
     assignCase = () => {
         console.log(`hit assign case button!`);
         this.props.dispatch({ type: 'ASSIGN_CASE', payload: this.state.assignCase })
-        this.props.history.push('/case-list')
+        this.props.history.push('/volunteers')
     }
 
     render() {
@@ -54,6 +57,7 @@ class VolunteerBio extends Component {
                     {this.props.reduxState.volunteerBioReducer.map( (users, index) => {
                     return (
                     <section key={index}>
+
                     <div className="bioCard">
                         <hr/>
                         <div>
@@ -78,9 +82,7 @@ class VolunteerBio extends Component {
                         <hr/>
                         <div>
                             <label>ENCRYPTED</label>  
-                            <p className="PCard">{users.encrypted}
-                            what's supposed to be here? 
-                            </p>
+                            <p className="PCard">{users.encrypted}</p>
                         </div>
                         <hr/>
                         <div>
@@ -110,45 +112,34 @@ onChange={this.handleChange('case_id')}
 >
     <option>-</option>
     {this.props.reduxState.allCasesReducer.map(cases => (
-    <option key={cases.id}>
-        {cases.case_number}
+
+    <option value={cases.id}>
+        {cases.case_last_name}
     </option>
     ))}
 </select>
                     <button className="formButton" onClick={this.assignCase}> ASSIGN CASE </button>  
 
 
-                    {/* MAP OVER CASES ASSIGNED TO VOLUNTEER */}
                     <h1> CASE LOAD </h1>
-
+                    {this.props.reduxState.volunteerCases.map( cases => (
                     <table>
                         <thead>
                             <tr>
                                 <td>LAST NAME</td>
-                                <td>FIRST NAME</td>
+                                <td>CASE ID</td>
                             </tr>
                         </thead>
                         
                     {/* map over cases assigned to volunteer */}
                     <tbody>
                             <tr>
-                                <td onClick={this.viewCase}>VUE</td>
-                                <td>JUNO</td>
-                            </tr>
-                            <tr>
-                                <td>RAGSDALE</td>
-                                <td>BEN</td>
-                            </tr>
-                            <tr>
-                                <td>DOUGLAS</td>
-                                <td>KINGMAN</td>
-                            </tr>
-                            <tr>
-                                <td>SCHLACHTENHAUFEN</td>
-                                <td>JOE</td>
+                                <td onClick={this.viewCase}>{cases.last_name}</td>
+                                <td>{cases.case_id}</td>
                             </tr>
                         </tbody>
                     </table> 
+                    ))}
                 </center>
             </div>
         );

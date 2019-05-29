@@ -17,10 +17,17 @@ class LegalAttorney extends Component {
                  <Nav pageName='ATTORNEY' volunteer home='/home' /> 
                 <center>
                     <div>{this.props.reduxState.bondReducer.map(bond =>
-                    <div>
-                        <p className="bioDivs">ATTORNEY: {bond.attorney}</p>
-                        <p className="bioDivs">ATTORNEY PHONE: {bond.attorney_phone}</p>
-                        <p className="bioDivs">ATTORNEY FEE: {bond.attorney_fee}</p>
+                    <div className="bioCard">
+                        <hr/>
+                        <label>ATTORNEY:</label>  
+                        <p className="PCard"> {bond.attorney}</p>
+                        <hr/>
+                        <label>ATTORNEY PHONE:</label>  
+                        <p className="PCard"> {bond.attorney_phone}</p>
+                        <hr/>
+                        <label>ATTORNEY FEE:</label>  
+                        <p className="PCard"> {bond.attorney_fee}</p>
+                        <hr/>
                     </div>
                     )}
                     </div>

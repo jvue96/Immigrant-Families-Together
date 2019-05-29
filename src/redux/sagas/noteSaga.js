@@ -11,10 +11,12 @@ function* addNote(action) {
     }
   }
 
-function* getNote(action) {
+function* getNote(parse) {
+    console.log('GET newly added note', parse.payload);
+    const note_id = parse.payload;
     try{
-        console.log('GET newly added note', action);
-        const getResponse = yield axios.get('/api/forms/note');
+        console.log('GET info for EVENT INFO', note_id);
+        const getResponse = yield axios.get(`/api/forms/note/${note_id}`);
         const action = {type: 'SET_NOTE', payload: getResponse.data};
         yield put(action);
     }catch (error) {
@@ -22,6 +24,7 @@ function* getNote(action) {
         alert(`Sorry couldn't get the newly created note. Try again later.`)
     }
 }
+
 
 
 

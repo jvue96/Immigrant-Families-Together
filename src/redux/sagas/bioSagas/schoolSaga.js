@@ -25,9 +25,21 @@ function* postSchool(action) {
     }
 }
 
+function* editSchool(action) {
+    console.log('PUT for editing school form', action.payload);
+    try {
+        const getResponse = yield axios.put(`/api/forms/edit-school/${action.payload.case_id}`, action.payload);
+        yield put({ type: 'SET_SCHOOL', payload: getResponse.data });
+    } catch (error) {
+        console.log(`Couldn't PUT the current user`);
+        alert(`Sorry couldn't edit the current entry. Try again later.`)
+    }
+  }
+
 function* schoolSaga() {
     yield takeLatest('ADD_SCHOOL', postSchool);
     yield takeLatest('GET_SCHOOL', getSchool);
+    yield takeLatest('PUT_SCHOOL', editSchool);
 }
 
 export default schoolSaga;

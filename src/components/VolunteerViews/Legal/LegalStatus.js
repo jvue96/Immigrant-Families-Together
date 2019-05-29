@@ -21,8 +21,9 @@ class LegalStatus extends Component {
 <p className="bioDivs">LAST COURT DATE OUTCOME: {legal.last_court_date_outcome}</p>
 <p className="bioDivs">NEXT COURT DATE: {legal.next_court_date}</p>
 <p className="bioDivs">NEXT COURT DATE TOPIC: {legal.next_court_date_outcome}</p>
-<p className="bioDivs">ASYLUM APPLICATION: {legal.asylum_application}</p>
-<p className="bioDivs">WORK AUTH APPLICATION: {legal.work_authorization}</p>
+<p className="bioDivs">ASYLUM APPLICATION: {String(legal.asylum_application)}</p>
+<p className="bioDivs">WORK AUTH APPLICATION: {String(legal.work_authorization)}</p>
+
                 </div>
 )}
 </div>

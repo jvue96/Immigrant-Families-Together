@@ -31,7 +31,7 @@ class Events extends Component {
         return (
             <div>
   <Nav pageName='EVENTS' home='/home'/>
-               
+
 
                 <center>
                     <h1>Upcoming Events</h1>
