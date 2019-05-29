@@ -32,7 +32,7 @@ function* getCaseId(action) {
  
         console.log('GET current id for clicked case', payload);
         const getResponse = yield axios.get(`/api/forms/all-cases/${payload}`);
-        console.log('getResponse:', getResponse);
+        console.log('getResponse BEFORE SET CURRENT ID:', getResponse);
  
         const action = {type: 'SET_CURRENT_ID', payload: getResponse.data};
         yield put(action);
@@ -69,7 +69,7 @@ function* getCaseId(action) {
     console.log('GET cases for specific volunteer', parse.payload);
     const id = parse.payload;
     try {
-        let get = yield axios.get(`api/forms/all-cases/${id}`);
+        let get = yield axios.get(`api/forms/volunteer-cases/${id}`);
         const response = {type: 'SET_USER_CASES', payload: get.data };
         yield put(response); 
     } catch (error) {
