@@ -594,6 +594,12 @@ router.get('/volunteer/search/', rejectUnauthenticated, (req,res) => {
   let queryText = `SELECT * FROM "user" WHERE (username ILIKE $1 OR email ILIKE $1 OR address ILIKE $1);`;
   pool.query(queryText, ['%'+req.query.q+'%'])
   .then(results=>{
+    for (let i=0; i<results.rows.length; i++) {
+    const user = results && results.rows && results.rows[i];
+if (user) {
+  delete user.password; 
+};
+};
     console.log(`this is result from search query for volunteers,`, results.rows)
     res.send(results.rows)
   })
