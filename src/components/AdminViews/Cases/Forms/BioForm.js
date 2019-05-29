@@ -148,21 +148,18 @@ console.log(this.state.bioForm);
                         <select
                         onChange={this.handleChange('passport')}
                         >
-                            <option>-</option>
-                            <option 
-                            selected="selected"
-                            value={true}>True</option>
+                            <option defaultValue>-</option>
+                            <option value={true}>True</option>
                             <option value={false}>False</option>
                         </select>
 
                         <label>USA I.D</label> 
                         <select 
+                        
                         onChange={this.handleChange(`us_id`)}
                         >
-                            <option>-</option>
-                            <option 
-                            selected="selected"
-                            value={true}>True</option>
+                            <option defaultValue>-</option>
+                            <option value={true}>True</option>
                             <option value={false}>False</option>
                         </select>
                         <button className="formButton" onClick={this.next}>NEXT</button>
