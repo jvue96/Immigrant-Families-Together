@@ -13,7 +13,7 @@ class BioFamilyInfo extends Component {
         console.log('GET_BIO_INFO', this.props.reduxState.bioReducer);
     }
 
-    // if date is now, will display empty <p> instead of "Invalid Date" on DOM 
+    // if date is null, will display empty <p> instead of "Invalid Date" on DOM 
     checkDate = (property) => {
         if(property === null) {
         property = ''
