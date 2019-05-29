@@ -12,38 +12,39 @@ class AidGrocery extends Component {
     }
     
     render() {
+
+        let emptyGrocery;
+        if(this.props.reduxState.aidReducer.length === 0) {
+            emptyGrocery =  <div className="bioCard">
+                            <hr/>
+                            <label>GROCERY PROGRAM:</label>
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>GROCERY PROGRAM VOLUNTEER:</label>
+                            <p className="PCard"></p>
+                            <hr/>
+                        </div>
+                    }
+
         return (
             <div>
                 <Nav pageName='GROCERY PROGRAM' volunteer home='/home' /> 
-                <center>                    
-                    <div>{this.props.reduxState.aidReducer.map(aid =>
-                <div className="bioCard">
-                    <hr/>
-                    {/* <p className="PCard">GROCERY PROGRAM: {aid.grocery_program}</p> */}
-                    <label>GROCERY PROGRAM:</label>
-                    <p className="PCard"> NEED TO GET BOOLEANS WORKING</p>
-                    <hr/>
-                    <label>GROCERY PROGRAM VOLUNTEER:</label>
-                    <p className="PCard"> {aid.grocery_program_volunteer}</p>
-                    <hr/>
-                </div>
-)}
-</div>
-                    
-                    
-                    {/* <label>GROCERY PROGRAM: Y/N </label> <br/>
-                    <div className="bioDivs"> 
-                    </div> <br/>
-                    <label>VOLUNTEER: </label> <br/>
-                    <div className="bioDivs" >
-                    </div> <br/>
-                    <label> VOLUNTEER PHONE: </label> <br/>
-                    <div className="bioDivs" >
-                    </div> <br/>
-                    <label> NOTES: </label> <br/>
-                    <div className="bioDivs" >
-                    </div> <br/> */}
-                </center> 
+                    <center>                    
+                        <div>
+                        {emptyGrocery}
+                        {this.props.reduxState.aidReducer.map((aid,index) =>
+                            <div className="bioCard" key={index}>
+                                <hr/>
+                                <label>GROCERY PROGRAM:</label>
+                                <p className="PCard">{String(aid.grocery_program)}</p>
+                                <hr/>
+                                <label>GROCERY PROGRAM VOLUNTEER:</label>
+                                <p className="PCard"> {aid.grocery_program_volunteer}</p>
+                                <hr/>
+                            </div>
+                            )}
+                            </div>
+                    </center> 
             </div>
         );
     }

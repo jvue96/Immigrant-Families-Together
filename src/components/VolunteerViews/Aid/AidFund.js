@@ -13,27 +13,33 @@ class AidFund extends Component {
     }
 
     render() {
+
+        let emptyFund;
+        if(this.props.reduxState.aidReducer.length === 0) {
+            emptyFund = <div className="bioCard">
+                            <hr/>
+                            <label>GOFUNDME LINK:</label>
+                            <p className="PCard"></p>
+                            <hr/>
+                        </div>
+                    }
+
         return (
             <div>
                 <Nav pageName='GOFUNDME' volunteer home='/home' /> 
-                 <center>  
-                    <div>{this.props.reduxState.aidReducer.map(aid =>
-                <div className="bioCard">
-                    <hr/>
-                    <label>GOFUNDME LINK:</label>
-                    <p className="PCard"> {aid.go_fund_me}</p>
-                    <hr/>
-                </div>
-)}
-</div>
-
-
-
-
-                    {/* <label>LINK </label> <br/>
-                    <div className="bioDivs"> 
-                    </div> <br/> */}
-                </center>
+                    <center>  
+                        <div>
+                        {emptyFund}
+                        {this.props.reduxState.aidReducer.map((aid,index) =>
+                            <div className="bioCard" key={index}>
+                                <hr/>
+                                <label>GOFUNDME LINK:</label>
+                                <p className="PCard"> {aid.go_fund_me}</p>
+                                <hr/>
+                            </div>
+                            )}
+                            </div>
+                    </center>
             </div>
         );
     }

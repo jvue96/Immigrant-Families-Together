@@ -13,40 +13,38 @@ class AidSocial extends Component {
     }
     
     render() {
+
+        let emptySocial;
+        if(this.props.reduxState.aidReducer.length === 0) {
+            emptySocial = <div className="bioCard">
+                            <hr/>
+                            <label>SOCIAL WORKER:</label>
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>SOCIAL WORKER PHONE:</label>
+                            <p className="PCard"></p>
+                            <hr/>
+                        </div>
+                    }
+
         return (
             <div>
                  <Nav pageName='SOCIAL WORKER' volunteer home='/home' /> 
-
-                <center>
-                   
-
-                    <div>{this.props.reduxState.aidReducer.map(aid =>
-                      <div className="bioCard">
-                        <hr/>
-                        <label>SOCIAL WORKER:</label>
-                        <p className="PCard"> {aid.social_worker}</p>
-                        <hr/>
-                        <label>SOCIAL WORKER PHONE:</label>
-                        <p className="PCard"> {aid.social_worker_phone}</p>
-                        <hr/>
-                    </div>
-                 )}
-            </div>
-
-
-
-                    {/* <label>SOCIAL WORKER: </label> <br/>
-                    <div className="bioDivs"> 
-                    </div> <br/>
-                    <label>PHONE: </label> <br/>
-                    <div className="bioDivs" >
-                    </div> <br/>
-                    <label> EMAIL: </label> <br/>
-                    <div className="bioDivs" >
-                    </div> <br/>
-                    <label> NOTES: </label> <br/>
-                    <div className="bioDivs" >
-                    </div> <br/> */}
+                    <center>
+                        <div>
+                        {emptySocial}
+                        {this.props.reduxState.aidReducer.map((aid,index) =>
+                            <div className="bioCard" key={index}>
+                                <hr/>
+                                <label>SOCIAL WORKER:</label>
+                                <p className="PCard"> {aid.social_worker}</p>
+                                <hr/>
+                                <label>SOCIAL WORKER PHONE:</label>
+                                <p className="PCard"> {aid.social_worker_phone}</p>
+                                <hr/>
+                            </div>
+                        )}
+                        </div>
                 </center>
             </div>
         );
