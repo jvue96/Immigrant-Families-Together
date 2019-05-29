@@ -68,7 +68,7 @@ class AddEvent extends Component {
                 <Nav pageName='VOLUNTEER EVENT' volunteer home='/home' /> 
                 <center> 
                     <label>EVENT DATE:</label>
-                    <input type="text" 
+                    <input type="date" 
                         value={this.state.addEvent.date}
                         onChange={this.handleNameChange('date')}/>
                     <label>EVENT:</label>
