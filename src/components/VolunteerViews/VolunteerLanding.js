@@ -5,8 +5,9 @@ class VolunteerLanding extends Component {
 
     componentDidMount = () => {
         // this.props.dispatch({ type: 'GET_MEDICAL' });
-        this.props.dispatch({ type: 'GET_CASES' });
-        console.log('GET_MEDICAL', this.props.reduxState.medicalReducer);
+        this.props.dispatch({ type: 'GET_USER_CASES', payload: this.props.reduxState.user.id });
+        console.log('user id', this.props.reduxState.user.id);
+        
     }
 
     viewCase = (event) => {
@@ -34,16 +35,16 @@ class VolunteerLanding extends Component {
                         </thead>
                         <tbody>
 
-                        {this.props.reduxState.allCasesReducer.map( (cases, index) => {
+                        {this.props.reduxState.userCasesReducer.map( (cases, index) => {
                         return (
                             <tr key={index}>
                                 <td 
-                                data-value={cases.id}
+                                data-value={cases.case_id}
                                 onClick={this.viewCase}>
-                                    {cases.case_last_name}
+                                    {cases.last_name}
                                 </td>
                                 <td>
-                                    {cases.case_number}
+                                    {cases.case_id}
                                 </td>
                             </tr>
                                 )

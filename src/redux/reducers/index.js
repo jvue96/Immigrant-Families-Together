@@ -22,6 +22,7 @@ import volunteerReducer from '../reducers/volunteerReducer'
 import volunteerBioReducer from '../reducers/volunteerBioReducer'
 import teamReducer from '../reducers/teamReducer'
 import volunteerCases from '../reducers/volunteerCases'
+import userCasesReducer from '../reducers/userCasesReducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -53,6 +54,7 @@ const rootReducer = combineReducers({
   teamReducer,
   allEventsReducer,
   volunteerCases,
+  userCasesReducer,
 });
 
 export default rootReducer;
