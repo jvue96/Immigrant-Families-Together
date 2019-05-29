@@ -53,13 +53,13 @@ class BioHousing extends Component {
                                     <p className="PCard">{housing.rent}</p>
                                     <hr/>
                                     <label>RENT PAID BY:</label>  
-                                    <p className="PCard">{housing.rent_paid_by}</p>
+                                    <p className="PCard">{housing.paid_by}</p>
                                     <hr/>
                                     <label>UTILITIES:</label>  
                                     <p className="PCard">{housing.utilities}</p>
                                     <hr/>
                                     <label>LIVING WITH FAMILY:</label>  
-                                    <p className="PCard">{housing.living_with_family}</p>
+                                    <p className="PCard">{housing.living_with_fam}</p>
                                     <hr/>
                                 </div>
                             )}
