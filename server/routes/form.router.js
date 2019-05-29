@@ -245,9 +245,9 @@ router.get('/medical/:id', (req, res) => {
   router.post('/note', (req, res) => {
     let note = req.body;
     console.log('Adding in note:', note);
-    let sqlText = `INSERT INTO notes (family_notes, date) VALUES 
-    ($1, $2)`;
-    pool.query(sqlText, [note.family_notes, note.date])
+    let sqlText = `INSERT INTO notes (family_notes, date, case_id) VALUES 
+    ($1, $2, $3)`;
+    pool.query(sqlText, [note.family_notes, note.date, note.case_id])
       .then( (response) => {
         res.sendStatus(201);
       })
@@ -257,9 +257,10 @@ router.get('/medical/:id', (req, res) => {
       })
   })
 
-  router.get('/note', (req, res) => {
+  router.get('/note/:id', (req, res) => {
     console.log('Getting all note info');
-    pool.query(`SELECT * FROM "notes"`)
+    const sqlText = `SELECT * FROM "notes" WHERE "case_id" = $1 ORDER BY date;`
+    pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {
@@ -287,7 +288,7 @@ router.get('/medical/:id', (req, res) => {
 
   router.get('/event/:id', (req, res) => {
     console.log('Getting all event info');
-    const sqlText = `SELECT * FROM "events" WHERE "case_id" = $1;`
+    const sqlText = `SELECT * FROM "events" WHERE "case_id" = $1 ORDER BY date;`
     pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
@@ -609,6 +610,21 @@ router.get('/assign', (req, res) => {
       res.send(results.rows)
   }).catch((error) => {
       console.log('Something went wrong getting the team information', error);
+      res.sendStatus(500);
+  })
+})
+
+router.get('/volunteer-caseload/:id', (req, res) => {
+  console.log(`GET VOLUNTEER CASELOAD `, req.params.id);
+  console.log(`Getting all cases assigned to a volunteer`);
+  const sqlText = `SELECT "users_cases"."case_id", "users_cases"."user_id", "primary_individual"."last_name", "primary_individual"."last_name" FROM users_cases
+  JOIN "primary_individual" ON "users_cases"."case_id" = "primary_individual"."case_id"
+  WHERE user_id = $1`;
+  pool.query(sqlText, [req.params.id])
+  .then((results) => {
+    res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting the information from the cases table', error);
       res.sendStatus(500);
   })
 })

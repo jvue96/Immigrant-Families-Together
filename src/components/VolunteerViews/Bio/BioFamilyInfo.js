@@ -19,43 +19,20 @@ class BioFamilyInfo extends Component {
                 <center>
                    
                     <div>{this.props.reduxState.bioReducer.map(bio =>
-                <div className="bioCard">
-                    <hr/>
-                    <label>FIRST NAME:</label>  
-                    <p className="PCard">{bio.first_name}</p>
-                    <hr/>
-                    <label>FIRST NAME:</label>  
-                    <p className="PCard">{bio.last_name}</p>
-                    <hr/>
-                    <label>DOB:</label>  
-                    <p className="PCard">{bio.dob}</p>
-                    <hr/>
-                    <label>SPOUSE NAME:</label>  
-                    <p className="PCard">{bio.spouse_first_name}</p>
-                    <hr/>
-                    <label>SPOUSE DOB:</label>  
-                    <p className="PCard">{bio.spouse_dob}</p>
-                    <hr/>
-                    <label>PHONE:</label>  
-                    <p className="PCard">{bio.phone}</p>
-                    <hr/>
-                    <label>WHATSAPP USERNAME:</label>  
-                    <p className="PCard">{bio.encrypted}</p>
-                    <hr/>
-                    <label>EMAIL:</label>  
-                    <p className="PCard">{bio.email}</p>
-                    <hr/>
-                    <label>ADDRESS:</label>  
-                    <p className="PCard">{bio.address}</p>
-                    <hr/>
-                    <label>REFERRED BY:</label>  
-                    <p className="PCard">{bio.referred_by}</p>
-                    <hr/>
-                    <label>REFERRAL DATE:</label>  
-                    <p className="PCard">{bio.reference_date}</p>
-                    <hr/>
-{/* <p className="bioDivs">PASSPORT: FALSE (HARD CODED)</p>
-<p className="bioDivs">U.S. IDENTIFICATION: FALSE (HARD CODED)</p> */}
+                <div>
+<p className="bioDivs">FIRST NAME: {bio.first_name}</p>
+<p className="bioDivs">LAST NAME: {bio.last_name}</p>
+<p className="bioDivs">DOB: {bio.dob}</p>
+<p className="bioDivs">SPOUSE NAME: {bio.spouse_first_name}</p>
+<p className="bioDivs">SPOUSE DOB: {bio.spouse_dob}</p>
+<p className="bioDivs">PHONE: {bio.phone}</p>
+<p className="bioDivs">WHATSAPP USERNAME: {bio.encrypted}</p>
+<p className="bioDivs">EMAIL: {bio.email}</p>
+<p className="bioDivs">ADDRESS: {bio.address}</p>
+<p className="bioDivs">REFERRED BY: {bio.referred_by}</p>
+<p className="bioDivs">REFERRAL DATE: {bio.reference_date}</p>
+<p className="bioDivs">PASSPORT: {String(bio.passport)}</p>
+<p className="bioDivs">U.S. IDENTIFICATION: {String(bio.us_id)}</p>
                 </div>
 )}
 </div>

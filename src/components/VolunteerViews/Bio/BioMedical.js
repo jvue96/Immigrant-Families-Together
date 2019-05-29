@@ -21,53 +21,23 @@ class BioMedical extends Component {
                  <Nav pageName='MEDICAL' volunteer home='/home' /> 
             <center>
             <div>{this.props.reduxState.medicalReducer.map(medical =>
-                <div className="bioCard">
-                    <hr/>
-                    <label>DOCTOR NAME:</label>  
-                    <p className="PCard"> {medical.doctor_name}</p>
-                    <hr/>
-                    <label>DOCTOR PHONE:</label> 
-                    <p className="PCard"> {medical.doctor_phone}</p>
-                    <hr/>
-                    <label>MEDICAL CONDITIONS:</label> 
-                    <p className="PCard"> {medical.medical_conditions}</p>
-                    <hr/>
-                    <label>COUNSELOR:</label> 
-                    <p className="PCard"> {medical.counselor}</p>
-                    <hr/>
-                    <label>COUNSELOR PHONE:</label> 
-                    <p className="PCard"> {medical.counselor_phone}</p>
-                    <hr/>
-                    <label>PEDIATRICIAN:</label> 
-                    <p className="PCard"> {medical.pediatrician}</p>
-                    <hr/>
-                    <label>PEDIATRICIAN PHONE:</label> 
-                    <p className="PCard"> {medical.pediatrician_phone}</p>
-                    <hr/>
-                    <label>OPTOMETRIST:</label> 
-                    <p className="PCard"> {medical.optometrist}</p>
-                    <hr/>
-                    <label>OPTOMETRIST PHONE:</label> 
-                    <p className="PCard"> {medical.optometrist_phone}</p>
-                    <hr/>
-                    <label>DENTIST:</label> 
-                    <p className="PCard"> {medical.dentist}</p>
-                    <hr/>
-                    <label>DENTIST PHONE:</label> 
-                    <p className="PCard"> {medical.dentist_phone}</p>
-                    <hr/>
-                    <label>VACCINATIONS:</label> 
-                    <p className="PCard"> {medical.vaccinations}</p>
-                    <hr/>
-                    <label>INSURANCE CARD INFO:</label> 
-                    <p className="PCard"> {medical.insurance_card_info}</p>
-                    <hr/>
-                    <label>FEE COVERAGE:</label> 
-                    <p className="PCard"> {medical.fee_coverage}</p>
-                    <hr/>
-                    <label>MEDICAL NOTES:</label> 
-                    <p className="PCard"> {medical.medical_notes}</p>
-                    <hr/>
+                <div>
+<p className="bioDivs">DOCTOR NAME: {medical.doctor_name}</p>
+<p className="bioDivs">DOCTOR PHONE: {medical.doctor_phone}</p>
+<p className="bioDivs">MEDICAL CONDITIONS: {medical.medical_conditions}</p>
+<p className="bioDivs">COUNSELOR: {medical.counselor}</p>
+<p className="bioDivs">COUNSELOR PHONE: {medical.counselor_phone}</p>
+<p className="bioDivs">PEDIATRICIAN: {medical.pediatrician}</p>
+<p className="bioDivs">PEDIATRICIAN PHONE: {medical.pediatrician_phone}</p>
+<p className="bioDivs">OPTOMETRIST: {medical.optometrist}</p>
+<p className="bioDivs">OPTOMETRIST PHONE: {medical.optometrist_phone}</p>
+<p className="bioDivs">DENTIST: {medical.dentist}</p>
+<p className="bioDivs">DENTIST PHONE: {medical.dentist_phone}</p>
+<p className="bioDivs">VACCINATIONS: {medical.vaccinations}</p>
+<p className="bioDivs">INSURANCE CARD INFO: {medical.insurance_card_info}</p>
+<p className="bioDivs">FEE COVERAGE: {String(medical.fee_coverage)}</p>
+<p className="bioDivs">MEDICAL NOTES: {medical.medical_notes}</p>
+
                 </div>
 )}
 </div>
