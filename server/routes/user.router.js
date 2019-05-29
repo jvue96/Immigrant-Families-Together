@@ -73,6 +73,13 @@ router.get('/register/:id', (req, res) => {
   const sqlText = `SELECT * FROM "user" WHERE "id" = $1;`
   pool.query(sqlText, [req.params.id])
   .then((results) => {
+
+    for (let i=0; i<results.rows.length; i++) {
+      const user = results && results.rows && results.rows[i];
+  if (user) {
+    delete user.password; 
+  }
+}
       res.send(results.rows)
   }).catch((error) => {
       console.log('Something went wrong getting the volunteer bio info', error);
