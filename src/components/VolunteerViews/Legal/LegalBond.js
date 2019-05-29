@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../Nav/Nav'
 import qs from 'query-string';
+import moment from 'moment'; 
 
 
 class LegalBond extends Component {
@@ -11,36 +12,52 @@ class LegalBond extends Component {
         console.log('BOND searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_BOND', payload: searchObject.id });
     }
+
+    formatDate = (date) => {
+        let entryDate =  moment(date).subtract(10, 'days').calendar();
+        return entryDate; 
+    }
     
     render() {
+
+        let emptyBond;
+        if(this.props.reduxState.bondReducer.length === 0) {
+            emptyBond =  <div className="bioCard">
+                            <hr/>
+                            <label>BOND AMOUNT:</label>
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>BOND PAID DATE:</label>
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>BOND PAID BY:</label>
+                            <p className="PCard"></p>
+                            <hr/>
+                        </div>
+                    }
+
         return (
             <div>
                  <Nav pageName='BOND INFO' volunteer home='/home' /> 
-               <center>
-                    <div>{this.props.reduxState.bondReducer.map(bond =>
-                     <div className="bioCard">
-                        <hr/>
-                        <label>BOND AMOUNT:</label>
-                        <p className="PCard"> {bond.bond_amount}</p>
-                        <hr/>
-                        <label>BOND PAID DATE:</label>
-                        <p className="PCard"> {bond.bond_paid_date}</p>
-                        <hr/>
-                        <label>BOND PAID BY:</label>
-                        <p className="PCard"> {bond.bond_paid_by}</p>
-                        <hr/>
-                    </div>
-                    )}
-                    </div>
-
-
-                    {/* <label>BOND AMOUNT: </label> <br/> 
-                    <div className="bioDivs"> </div> <br/> 
-                    <label>DATE PAID: </label> <br/> 
-                    <div className="bioDivs"> </div> <br/> 
-                    <label>PAID BY: </label> <br/> 
-                    <div className="bioDivs"> </div> <br/>  */}
-                </center> 
+                    <center>
+                            <div>
+                            {emptyBond}
+                            {this.props.reduxState.bondReducer.map((bond, index) =>
+                                <div className="bioCard" key={index}>
+                                    <hr/>
+                                    <label>BOND AMOUNT:</label>
+                                    <p className="PCard"> {bond.bond_amount}</p>
+                                    <hr/>
+                                    <label>BOND PAID DATE:</label>
+                                    <p className="PCard"> {this.formatDate(bond.bond_paid_date)}</p>
+                                    <hr/>
+                                    <label>BOND PAID BY:</label>
+                                    <p className="PCard"> {bond.bond_paid_by}</p>
+                                    <hr/>
+                                </div>
+                            )}
+                            </div>
+                    </center> 
             </div>
         );
     }

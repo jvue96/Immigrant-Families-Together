@@ -20,17 +20,25 @@ class Events extends Component {
     }
 
     formatDate = (date) => {
-        let entryDate =  moment(date).format("MMM Do YY"); 
+        let entryDate =  moment(date).subtract(10, 'days').calendar();
         return entryDate; 
     }
 
     render() {
+
+        let emptyBio;
+        if(this.props.reduxState.eventReducer.length === 0) {
+            emptyBio = <h1> There are no events for this case! </h1>
+            
+        } 
+
         return (
             <div>
                 <Nav pageName='EVENTS' volunteer home='/home' /> 
                     <center>
                         <button className="midButton" onClick={this.newEvent}>NEW EVENT</button> 
-        
+                        <br/> 
+                        {emptyBio}
                         <table>
                         <thead>
                             <tr>

@@ -12,37 +12,45 @@ class LegalAttorney extends Component {
     }
 
     render() {
+
+        let emptyAttorney; 
+        if(this.props.reduxState.bondReducer.length === 0) {
+            emptyAttorney = <div className="bioCard">
+                                <hr/>
+                                <label>ATTORNEY:</label>  
+                                <p className="PCard"></p>
+                                <hr/>
+                                <label>ATTORNEY PHONE:</label>  
+                                <p className="PCard"></p>
+                                <hr/>
+                                <label>ATTORNEY FEE:</label>  
+                                <p className="PCard"></p>
+                                <hr/>
+                            </div>
+                        }
+
         return (
             <div>
                  <Nav pageName='ATTORNEY' volunteer home='/home' /> 
-                <center>
-                    <div>{this.props.reduxState.bondReducer.map(bond =>
-                    <div className="bioCard">
-                        <hr/>
-                        <label>ATTORNEY:</label>  
-                        <p className="PCard"> {bond.attorney}</p>
-                        <hr/>
-                        <label>ATTORNEY PHONE:</label>  
-                        <p className="PCard"> {bond.attorney_phone}</p>
-                        <hr/>
-                        <label>ATTORNEY FEE:</label>  
-                        <p className="PCard"> {bond.attorney_fee}</p>
-                        <hr/>
-                    </div>
-                    )}
-                    </div>
-
-
-{/* 
-                    <label> ATTORNEY: </label> <br/> 
-                    <div className="bioDivs"> </div> <br/> 
-                    <label>PHONE: </label> <br/> 
-                    <div className="bioDivs"> </div> <br/> 
-                    <label>EMAIL: </label> <br/> 
-                    <div className="bioDivs"> </div> <br/> 
-                    <label>FEE: </label> <br/> 
-                    <div className="bioDivs"> </div> <br/>  */}
-                </center>
+                    <center>
+                        <div>
+                            {emptyAttorney}
+                            {this.props.reduxState.bondReducer.map((bond, index) =>
+                                <div className="bioCard" key={index}>
+                                    <hr/>
+                                    <label>ATTORNEY:</label>  
+                                    <p className="PCard"> {bond.attorney}</p>
+                                    <hr/>
+                                    <label>ATTORNEY PHONE:</label>  
+                                    <p className="PCard"> {bond.attorney_phone}</p>
+                                    <hr/>
+                                    <label>ATTORNEY FEE:</label>  
+                                    <p className="PCard"> {bond.attorney_fee}</p>
+                                    <hr/>
+                                </div>
+                            )}
+                        </div>
+                    </center>
             </div>
         );
     }

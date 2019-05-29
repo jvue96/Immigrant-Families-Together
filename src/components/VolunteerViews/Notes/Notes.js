@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../Nav/Nav'
+import moment from 'moment'; 
 import qs from 'query-string';
+
 
 class Notes extends Component {
 
@@ -57,47 +59,49 @@ class Notes extends Component {
         this.props.dispatch({ type: 'GET_NOTE', payload: this.state.addNote.case_id });
     }
 
+    formatDate = (date) => {
+        let entryDate =  moment(date).subtract(10, 'days').calendar();
+        return entryDate; 
+    }
+
     render() {
+
+        let emptyNotes; 
+        if(this.props.reduxState.noteReducer.length === 0) {
+            emptyNotes = <h1> NO NOTES FOR THIS CASE </h1>
+                    }
+
         return (
             <div>
-            <Nav pageName='NOTES' volunteer home='/home' /> 
+                <Nav pageName='NOTES' volunteer home='/home' /> 
+                    <center> 
+                    {emptyNotes}
+                        <label>ADD NOTE:</label>
+                        <input type="text" 
+                            value={this.state.addNote.family_notes}
+                            onChange={this.handleNameChange('family_notes')}/>
+                        <label>NOTE DATE:</label>
+                        <input type="date"
+                            value={this.state.addNote.date}
+                            onChange={this.handleNameChange('date')}/>
+                        <button className="formButton" onClick={this.addNote}>ADD</button> 
+                        <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
+            
+                        <h1>
+                            PREVIOUS NOTES
+                        </h1>
 
-            <center> 
-                    <label>ADD NOTE:</label>
-                    <input type="text" 
-                        value={this.state.addNote.family_notes}
-                        onChange={this.handleNameChange('family_notes')}/>
-                    <label>NOTE DATE:</label>
-                    <input type="date"
-                        value={this.state.addNote.date}
-                        onChange={this.handleNameChange('date')}/>
-                    <button className="formButton" onClick={this.addNote}>ADD</button> 
-                    <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
-        
-                <h1>
-                    PREVIOUS NOTES
-                </h1>
-                <div>{this.props.reduxState.noteReducer.map(notes =>
-                <div className="noteCard">
-                        <p className="PNote" >{notes.date}</p>
-                        <hr/>
-                        <p className="PNote" >NOTE:</p>
-                    <p className="PNote" >{notes.family_notes}</p>
-                </div>
-            )}
-    </div>
-
-                    {/* <div className="bioDivs"> </div>
-                    <hr style={{width: 200}}/>
-                    <div className="bioDivs">
-                    <label>CASE/CLIENT</label>
-                    <label>DATE</label> <br/>
-                    <label> NOTES:</label>
-                    <p> insert text in here blah blah blah </p>
-                    </div> */}
-
-                    
-            </center>
+                        <div>
+                            {this.props.reduxState.noteReducer.map((notes, index) =>
+                                <div className="noteCard" key={index}>
+                                        <p className="PNote" >{this.formatDate(notes.date)}</p>
+                                        <hr/>
+                                        <p className="PNote" >NOTE:</p>
+                                    <p className="PNote" >{notes.family_notes}</p>
+                                </div>
+                            )}
+                        </div>
+                    </center>
             </div>
         );
     }

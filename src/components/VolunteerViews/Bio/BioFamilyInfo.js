@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../Nav/Nav'
 import qs from 'query-string';
+import moment from 'moment'; 
 
 class BioFamilyInfo extends Component {
 
@@ -11,61 +12,101 @@ class BioFamilyInfo extends Component {
         this.props.dispatch({ type: 'GET_BIO_INFO', payload: searchObject.id });
         console.log('GET_BIO_INFO', this.props.reduxState.bioReducer);
     }
+
+    formatDate = (date) => {
+        let entryDate =  moment(date).subtract(10, 'days').calendar();
+        return entryDate; 
+    }
     
     render() {
+
+        let emptyFamily;
+        if(this.props.reduxState.bioReducer.length === 0) {
+            emptyFamily = <div className="bioCard">
+                            <hr/>
+                            <label>FIRST NAME:</label>  
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>LAST NAME:</label>  
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>DOB:</label>  
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>SPOUSE NAME:</label>  
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>SPOUSE DOB:</label>  
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>PHONE:</label>  
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>WHATSAPP USERNAME:</label>  
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>EMAIL:</label>  
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>ADDRESS:</label>  
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>REFERRED BY:</label>  
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>REFERRAL DATE:</label>  
+                            <p className="PCard"></p>
+                            <hr/>
+                        </div>   
+                    } 
+
         return (
             <div>
                 <Nav pageName='FAMILY INFO' volunteer home='/home' />
-                <center>
-                   
-                    <div>{this.props.reduxState.bioReducer.map(bio =>
-                <div>
-<p className="bioDivs">FIRST NAME: {bio.first_name}</p>
-<p className="bioDivs">LAST NAME: {bio.last_name}</p>
-<p className="bioDivs">DOB: {bio.dob}</p>
-<p className="bioDivs">SPOUSE NAME: {bio.spouse_first_name}</p>
-<p className="bioDivs">SPOUSE DOB: {bio.spouse_dob}</p>
-<p className="bioDivs">PHONE: {bio.phone}</p>
-<p className="bioDivs">WHATSAPP USERNAME: {bio.encrypted}</p>
-<p className="bioDivs">EMAIL: {bio.email}</p>
-<p className="bioDivs">ADDRESS: {bio.address}</p>
-<p className="bioDivs">REFERRED BY: {bio.referred_by}</p>
-<p className="bioDivs">REFERRAL DATE: {bio.reference_date}</p>
-<p className="bioDivs">PASSPORT: {String(bio.passport)}</p>
-<p className="bioDivs">U.S. IDENTIFICATION: {String(bio.us_id)}</p>
-                </div>
-)}
-</div>
 
+                    <center>
+                        <div>
+                            {emptyFamily}
+                            {this.props.reduxState.bioReducer.map((bio,index) =>
+                                <div className="bioCard" key={index}>
+                                    <hr/>
+                                    <label>FIRST NAME:</label>  
+                                    <p className="PCard">{bio.first_name}</p>
+                                    <hr/>
+                                    <label>LAST NAME:</label>  
+                                    <p className="PCard">{bio.last_name}</p>
+                                    <hr/>
+                                    <label>DOB:</label>  
+                                    <p className="PCard">{this.formatDate(bio.dob)}</p>
+                                    <hr/>
+                                    <label>SPOUSE NAME:</label>  
+                                    <p className="PCard">{bio.spouse_first_name}</p>
+                                    <hr/>
+                                    <label>SPOUSE DOB:</label>  
+                                    <p className="PCard">{this.formatDate(bio.spouse_dob)}</p>
+                                    <hr/>
+                                    <label>PHONE:</label>  
+                                    <p className="PCard">{bio.phone}</p>
+                                    <hr/>
+                                    <label>WHATSAPP USERNAME:</label>  
+                                    <p className="PCard">{bio.encrypted}</p>
+                                    <hr/>
+                                    <label>EMAIL:</label>  
+                                    <p className="PCard">{bio.email}</p>
+                                    <hr/>
+                                    <label>ADDRESS:</label>  
+                                    <p className="PCard">{bio.address}</p>
+                                    <hr/>
+                                    <label>REFERRED BY:</label>  
+                                    <p className="PCard">{bio.referred_by}</p>
+                                    <hr/>
+                                    <label>REFERRAL DATE:</label>  
+                                    <p className="PCard">{this.formatDate(bio.reference_date)}</p>
+                                    <hr/>
+                                </div>
+                            )}
 
-
-
-                    {/* <div className="bioDivs">
-                        <label> NAME: </label>
-                        <label> DOB: </label>
-                        <label> RELATION: </label>
                     </div>
-                    <div className="bioDivs">
-                        <label> NAME: </label>
-                        <label> DOB: </label>
-                        <label> RELATION: </label>
-                    </div>
-
-                    <label>CASE REFERRED BY:</label>
-                    <div className="bioDivs">
-
-                    </div>
-
-                    <label>DATE:</label>
-                    <div className="bioDivs">
-
-                    </div>
-
-                    <label>BACKSTORY:</label>
-                    <div className="bioDivs">
-
-                    </div> */}
-
                 </center>
             </div>
         );
