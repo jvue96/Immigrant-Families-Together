@@ -19,24 +19,28 @@ class Team extends Component {
             <center> 
                 <h1> VOLUNTEERS </h1>
                 {this.props.reduxState.teamReducer.map(team => (
-                <div className="bioDivs"
-                style={{height: 200}}>
-                <label>NAME</label> 
-                <p>{team.username}</p>
-                <label>PHONE</label> 
-                <p>{team.phone}</p>
-                <label>ENCRYPTED</label> 
-                <p>{team.encrypted}</p>
-                <label>EMAIL</label> 
-                <p>{team.email}</p>
-                {/* <label>ROLE</label> <span> </span> <br/> */}
-                <label>SKILLS</label> 
-                <p>{team.skills}</p>
-                <label>SECOND LANGUAGE</label> 
-                <p>{team.second_language}</p>
-                <label>ADDRESS</label> 
-                <p>{team.address}</p>
-
+                <div className="teamCard">
+                    <label>NAME</label>
+                    <p className="PCard">{team.username}</p> 
+                    <hr/>
+                    <label>PHONE</label> 
+                    <p className="PCard">{team.phone}</p>
+                    <hr/>
+                    <label>ENCRYPTED</label> 
+                    <p className="PCard">{team.encrypted}</p>
+                    <hr/>
+                    <label>EMAIL</label> 
+                    <p className="PCard">{team.email}</p>
+                    <hr/>
+                    {/* <label>ROLE</label> <span> </span> <br/> */}
+                    <label>SKILLS</label> 
+                    <p className="PCard">{team.skills}</p>
+                    <hr/>
+                    <label>SECOND LANGUAGE</label> 
+                    <p className="PCard">{team.second_language}</p>
+                    <hr/>
+                    <label>ADDRESS</label> 
+                    <p className="PCard">{team.address}</p>
                 </div>
                   ))}
             </center>

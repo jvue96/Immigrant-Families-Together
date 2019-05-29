@@ -7,7 +7,7 @@ import Nav from '../../Nav/Nav'
 class EditCases extends Component {
 
     componentDidMount = () => {
-        this.props.dispatch({type: 'ADD_CASE'})
+        // this.props.dispatch({type: 'ADD_CASE'})
         const searchObject = qs.parse(this.props.location.search)
         this.props.dispatch({ type: 'GET_AID', payload: searchObject.id });
         this.props.dispatch({ type: 'GET_BIO_INFO', payload: searchObject.id });

@@ -17,10 +17,15 @@ class AidGrocery extends Component {
                 <Nav pageName='GROCERY PROGRAM' volunteer home='/home' /> 
                 <center>                    
                     <div>{this.props.reduxState.aidReducer.map(aid =>
-                <div>
-{/* <p className="bioDivs">GROCERY PROGRAM: {aid.grocery_program}</p> */}
-<p className="bioDivs">GROCERY PROGRAM: NEED TO GET BOOLEANS WORKING</p>
-<p className="bioDivs">GROCERY PROGRAM VOLUNTEER: {aid.grocery_program_volunteer}</p>
+                <div className="bioCard">
+                    <hr/>
+                    {/* <p className="PCard">GROCERY PROGRAM: {aid.grocery_program}</p> */}
+                    <label>GROCERY PROGRAM:</label>
+                    <p className="PCard"> NEED TO GET BOOLEANS WORKING</p>
+                    <hr/>
+                    <label>GROCERY PROGRAM VOLUNTEER:</label>
+                    <p className="PCard"> {aid.grocery_program_volunteer}</p>
+                    <hr/>
                 </div>
 )}
 </div>

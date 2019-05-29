@@ -20,9 +20,14 @@ class LegalFoster extends Component {
                 <center>
 
                     <div>{this.props.reduxState.bondReducer.map(bond =>
-                    <div>
-                        <p className="bioDivs">FOSTER FACILITY: {bond.foster_facility}</p>
-                        <p className="bioDivs">FOSTER FACILITY ADDRESS: {bond.foster_facility_address}</p>
+                    <div className="bioCard">
+                        <hr/>
+                        <label>FOSTER FACILITY:</label>
+                        <p className="PCard"> {bond.foster_facility}</p>
+                        <hr/>
+                        <label>FOSTER FACILITY ADDRESS:</label>
+                        <p className="PCard"> {bond.foster_facility_address}</p>
+                        <hr/>
                     </div>
                     )}
                     </div>

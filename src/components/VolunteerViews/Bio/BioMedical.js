@@ -37,6 +37,7 @@ class BioMedical extends Component {
 <p className="bioDivs">INSURANCE CARD INFO: {medical.insurance_card_info}</p>
 <p className="bioDivs">FEE COVERAGE: {String(medical.fee_coverage)}</p>
 <p className="bioDivs">MEDICAL NOTES: {medical.medical_notes}</p>
+
                 </div>
 )}
 </div>

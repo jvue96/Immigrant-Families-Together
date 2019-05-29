@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import qs from 'query-string';
-
+import Nav from '../../Nav/Nav'
 class VolunteerBio extends Component {
+
+    state = {
+        assignCase: {
+            case_id: '',
+            user_id: '',
+        }
+    }
 
     componentDidMount = () => {
        
@@ -19,12 +26,7 @@ class VolunteerBio extends Component {
         }) 
     }
 
-    state = {
-        assignCase: {
-            case_id: '',
-            user_id: '',
-        }
-    }
+  
 
     handleChange = propertyName => event => {
         this.setState({
@@ -46,20 +48,16 @@ class VolunteerBio extends Component {
     render() {
         return (
             <div>
+                <Nav pageName='VOLUNTEER BIO' home='/home'/>
                 <center>
-                    <div>
-                        <h1>
-                            VOLUNTEER BIO
-                        </h1>
-                    </div>
+                    
 
                     {/* {JSON.stringify(this.props.reduxState.volunteerBioReducer)} */}
 
                     {this.props.reduxState.volunteerBioReducer.map( (users, index) => {
                     return (
+                    <section key={index}>
 
-                        
-                    <section>
                     <div className="bioCard">
                         <hr/>
                         <div>
@@ -114,6 +112,7 @@ onChange={this.handleChange('case_id')}
 >
     <option>-</option>
     {this.props.reduxState.allCasesReducer.map(cases => (
+
     <option value={cases.id}>
         {cases.case_last_name}
     </option>
