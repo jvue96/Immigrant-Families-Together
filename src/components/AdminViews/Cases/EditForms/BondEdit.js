@@ -16,8 +16,8 @@ class BondEdit extends Component {
                 case_id: searchObject.id,
                 ice_facility: this.props.reduxState.bondReducer[0].ice_facility,
                 bond_amount: this.props.reduxState.bondReducer[0].bond_amount,
-                bond_paid_date: this.formatDate(this.props.reduxState.bondReducer[0].bond_paid_date),
-                bond_paid_by: this.formatDate(this.props.reduxState.bondReducer[0].bond_paid_by),
+                bond_paid_date: this.props.reduxState.bondReducer[0].bond_paid_date,
+                bond_paid_by: this.props.reduxState.bondReducer[0].bond_paid_by,
                 foster_facility: this.props.reduxState.bondReducer[0].foster_facility,
                 foster_facility_address: this.props.reduxState.bondReducer[0].foster_facility_address,
                 attorney: this.props.reduxState.bondReducer[0].attorney,
@@ -47,7 +47,7 @@ class BondEdit extends Component {
      next = () => {
         this.props.dispatch({type:'PUT_BOND', payload: this.state.bondForm});
         this.props.history.push(`/edit-case?id=${this.state.bondForm.case_id}`) 
-        console.log(this.state.bondForm);
+        // console.log(this.state.bondForm);
     }
 
     // format date from database to display correctly for inputs' defaultValues 
