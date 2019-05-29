@@ -13,9 +13,15 @@ class LegalBond extends Component {
         this.props.dispatch({ type: 'GET_BOND', payload: searchObject.id });
     }
 
-    formatDate = (date) => {
-        let entryDate =  moment(date).subtract(10, 'days').calendar();
-        return entryDate; 
+      // if date is null, will display empty <p> instead of "Invalid Date" on DOM 
+      checkDate = (property) => {
+        if(property === null) {
+        property = ''
+        return property; 
+        } else {
+            property =  moment(property).subtract(10, 'days').calendar();
+            return property; 
+        }
     }
     
     render() {
@@ -49,7 +55,7 @@ class LegalBond extends Component {
                                     <p className="PCard"> {bond.bond_amount}</p>
                                     <hr/>
                                     <label>BOND PAID DATE:</label>
-                                    <p className="PCard"> {this.formatDate(bond.bond_paid_date)}</p>
+                                    <p className="PCard"> {this.checkDate(bond.bond_paid_date)}</p>
                                     <hr/>
                                     <label>BOND PAID BY:</label>
                                     <p className="PCard"> {bond.bond_paid_by}</p>
