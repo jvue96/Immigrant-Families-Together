@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../Nav/Nav'
+import moment from 'moment'; 
 
 class Notes extends Component {
 
@@ -44,6 +45,11 @@ class Notes extends Component {
         this.props.dispatch({ type: 'GET_NOTE' });
     }
 
+    formatDate = (date) => {
+        let entryDate =  moment(date).subtract(10, 'days').calendar();
+        return entryDate; 
+    }
+
     render() {
 
         let emptyNotes; 
@@ -74,7 +80,7 @@ class Notes extends Component {
                         <div>
                             {this.props.reduxState.noteReducer.map((notes, index) =>
                                 <div className="noteCard" key={index}>
-                                        <p className="PNote" >{notes.date}</p>
+                                        <p className="PNote" >{this.formatDate(notes.date)}</p>
                                         <hr/>
                                         <p className="PNote" >NOTE:</p>
                                     <p className="PNote" >{notes.family_notes}</p>
