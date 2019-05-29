@@ -20,7 +20,7 @@ class Events extends Component {
     }
 
     formatDate = (date) => {
-        let entryDate =  moment(date).format("MMM Do YY"); 
+        let entryDate =  moment(date).subtract(10, 'days').calendar();
         return entryDate; 
     }
 
