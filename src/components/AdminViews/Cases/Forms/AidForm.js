@@ -15,6 +15,11 @@ class AidForm extends Component {
             aidForm:{
                 ...this.state.aidForm,
                 case_id: searchObject.id,
+                grocery_program: null, 
+                grocery_program_volunteer: null, 
+                go_fund_me: null, 
+                social_worker: null, 
+                social_worker_phone: null, 
             }
         }) 
     }
@@ -71,27 +76,27 @@ class AidForm extends Component {
                         
                         <label>GROCERY PROGRAM</label>
                         <input type="text"
-                        value={this.state.aidForm.grocery_program}
+                        value={this.state.aidForm.grocery_program || ''}
                         onChange={this.handleChange('grocery_program')}/>
                         
                         <label>GROCERY PROGRAM VOLUNTEER</label>
                         <input type="text"
-                        value={this.state.aidForm.grocery_program_volunteer}
+                        value={this.state.aidForm.grocery_program_volunteer || ''}
                         onChange={this.handleChange('grocery_program_volunteer')}/> 
                     
                         <label>GOFUNDME</label> 
                         <input type="text"
-                        value={this.state.aidForm.go_fund_me}
+                        value={this.state.aidForm.go_fund_me || ''}
                         onChange={this.handleChange('go_fund_me')}/> 
 
                         <label>SOCIAL WORKER</label> 
                         <input type="text"
-                        value={this.state.aidForm.social_worker}
+                        value={this.state.aidForm.social_worker || ''}
                         onChange={this.handleChange('social_worker')}/> 
                         
                         <label>SOCIAL WORKER PHONE</label> 
                         <input type="text" 
-                        value={this.state.aidForm.social_worker_phone}
+                        value={this.state.aidForm.social_worker_phone || ''}
                         onChange={this.handleChange('social_worker_phone')}/> 
                         
                         
