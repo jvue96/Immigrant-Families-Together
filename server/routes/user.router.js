@@ -48,13 +48,13 @@ router.get('/register', (req, res) => {
   console.log('Getting all volunteers');
   pool.query(`SELECT * FROM "user"`)
   .then((results) => {
-
-
-
-
-
-    
-      res.send(results.rows)
+    for (let i=0; i<results.rows.length; i++) {
+      const user = results && results.rows && results.rows[i];
+  if (user) {
+    delete user.password; 
+  }
+}
+    res.send(results.rows)
   }).catch((error) => {
       console.log('Something went wrong getting the volunteers', error);
   })
