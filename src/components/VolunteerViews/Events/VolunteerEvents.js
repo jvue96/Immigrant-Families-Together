@@ -26,7 +26,7 @@ class Events extends Component {
 
     render() {
 
-        let emptyBio = <div> </div> 
+        let emptyBio;
         if(this.props.reduxState.eventReducer.length === 0) {
             emptyBio = <h1> There are no events for this case! </h1>
             
