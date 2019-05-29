@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 router.post('/medical', (req, res) => {
     let medical = req.body;
@@ -500,7 +501,7 @@ router.get('/all-cases', (req, res) => {
 
 })
 
-router.get('/all-cases/search/', (req, res) => {
+router.get('/all-cases/search/', rejectUnauthenticated, (req, res) => {
   console.log(`this is query in all cases search`, req.query);
   let queryText = `SELECT * FROM cases WHERE (case_last_name ILIKE $1 OR case_number ILIKE $1);`;
     pool.query(queryText, ['%'+req.query.q+'%'])
@@ -516,7 +517,7 @@ router.get('/all-cases/search/', (req, res) => {
 })
 
 /*  */
-router.get('/all-cases/:id', (req, res) => {
+router.get('/all-cases/:id', rejectUnauthenticated, (req, res) => {
   console.log(`234p98234 REQ PARAMS ID `, req.params.id);
   console.log(`Getting all cases`);
   const sqlText = `SELECT * FROM cases WHERE id = $1 `;
@@ -527,6 +528,23 @@ router.get('/all-cases/:id', (req, res) => {
       console.log('Something went wrong getting the information from the cases table', error);
       res.sendStatus(500);
   })
+})
+
+router.get('/volunteer/search/', rejectUnauthenticated, (req,res) => {
+  console.log(`in volunteer get, here is req.query`, req.query);
+  
+  let queryText = `SELECT * FROM "user" WHERE (username ILIKE $1 OR email ILIKE $1 OR address ILIKE $1);`;
+  pool.query(queryText, ['%'+req.query.q+'%'])
+  .then(results=>{
+    console.log(`this is result from search query for volunteers,`, results.rows)
+    res.send(results.rows)
+  })
+  .catch(error => {
+    res.sendStatus(500);
+    console.log(`this was error when trying to search all volunteers:`, error);
+    
+  })
+
 })
 
 
