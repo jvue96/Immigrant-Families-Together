@@ -10,35 +10,42 @@ class LegalIce extends Component {
         const searchObject = qs.parse(this.props.location.search)
         console.log('LEGAL ICE FACILITY searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_BOND', payload: searchObject.id });
-        // console.log('GET_BOND', this.props.reduxState.bondReducer);
     }
 
     render() {
+        
+        let emptyFacility;
+        if(this.props.reduxState.bondReducer.length === 0) {
+            emptyFacility = <div className="bioCard">
+                                <hr/>
+                                <label>ICE FACILITY:</label> 
+                                <p className="PCard"></p>
+                                <hr/>
+                                <label>NOTES:</label> 
+                                <p className="PCard"></p>
+                                <hr/>
+                            </div>
+                        }
+
         return (
             <div>
                  <Nav pageName='ICE FACILITY' volunteer home='/home' /> 
-
-                <center>
-
-                    <div>{this.props.reduxState.bondReducer.map(bond =>
-                    <div className="bioCard">
-                        <hr/>
-                        <label>ICE FACILITY:</label> 
-                        <p className="PCard"> {bond.ice_facility}</p>
-                        <hr/>
-                        <label>NOTES:</label> 
-                        <p className="PCard"> {bond.legal_notes}</p>
-                        <hr/>
-                    </div>
-                    )}
-                    </div>
-
-
-                    {/* <label>ICE FACILITY: </label> <br/> 
-                    <div className="bioDivs"> </div> <br/> 
-                    <label>NOTES: </label> <br/> 
-                    <div className="bioDivs"> </div> <br/>  */}
-                </center>
+                    <center>
+                        <div>
+                        {emptyFacility}
+                        {this.props.reduxState.bondReducer.map((bond, index) =>
+                            <div className="bioCard" key={index}>
+                                <hr/>
+                                <label>ICE FACILITY:</label> 
+                                <p className="PCard"> {bond.ice_facility}</p>
+                                <hr/>
+                                <label>NOTES:</label> 
+                                <p className="PCard"> {bond.legal_notes}</p>
+                                <hr/>
+                            </div>
+                        )}
+                        </div>
+                    </center>
             </div>
         );
     }

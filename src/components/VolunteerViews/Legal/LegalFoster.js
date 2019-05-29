@@ -13,33 +13,39 @@ class LegalFoster extends Component {
     }
 
     render() {
+
+        let emptyFoster; 
+        if(this.props.reduxState.bondReducer.length === 0) {
+            emptyFoster = <div className="bioCard">
+                            <hr/>
+                            <label>FOSTER FACILITY:</label>
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>FOSTER FACILITY ADDRESS:</label>
+                            <p className="PCard"></p>
+                            <hr/>
+                        </div>
+                    }
+
         return (
             <div>
- <Nav pageName='FOSTER FACILITY' volunteer home='/home' /> 
-
-                <center>
-
-                    <div>{this.props.reduxState.bondReducer.map(bond =>
-                    <div className="bioCard">
-                        <hr/>
-                        <label>FOSTER FACILITY:</label>
-                        <p className="PCard"> {bond.foster_facility}</p>
-                        <hr/>
-                        <label>FOSTER FACILITY ADDRESS:</label>
-                        <p className="PCard"> {bond.foster_facility_address}</p>
-                        <hr/>
-                    </div>
-                    )}
-                    </div>
-
-
-                    {/* <label> FOSTER FACILITY </label> <br/> 
-                    <div className="bioDivs"> </div> <br/> 
-                    <label>ADDRESS </label> <br/> 
-                    <div className="bioDivs"> </div> <br/> 
-                    <label>PHONE: </label> <br/> 
-                    <div className="bioDivs"> </div> <br/>  */}
-                </center>
+                <Nav pageName='FOSTER FACILITY' volunteer home='/home' /> 
+                    <center>
+                        <div>
+                        {emptyFoster}
+                        {this.props.reduxState.bondReducer.map((bond,index) =>
+                            <div className="bioCard" key={index}>
+                                <hr/>
+                                <label>FOSTER FACILITY:</label>
+                                <p className="PCard"> {bond.foster_facility}</p>
+                                <hr/>
+                                <label>FOSTER FACILITY ADDRESS:</label>
+                                <p className="PCard"> {bond.foster_facility_address}</p>
+                                <hr/>
+                            </div>
+                        )}
+                        </div>
+                    </center>
             </div>
         );
     }

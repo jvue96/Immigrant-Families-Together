@@ -18,18 +18,18 @@ class BioSchool extends Component {
         let emptySchool;
         if(this.props.reduxState.schoolReducer.length === 0) {
             emptySchool = <div className="bioCard">
-            <hr/>
-            <label>SCHOOL NAME:</label>
-            <p className="PCard"></p>
-            <hr/>
-            <label>PHONE:</label>
-            <p className="PCard"></p>
-            <hr/>
-            <label>EMAIL:</label>
-            <p className="PCard"></p>
-            <hr/>
-        </div>
-        }
+                            <hr/>
+                            <label>SCHOOL NAME:</label>
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>PHONE:</label>
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>EMAIL:</label>
+                            <p className="PCard"></p>
+                            <hr/>
+                        </div>
+                    }
 
         return (
             <div>
