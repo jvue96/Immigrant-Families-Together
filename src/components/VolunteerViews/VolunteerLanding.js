@@ -22,9 +22,8 @@ class VolunteerLanding extends Component {
 
                 <center> 
                     {/* {JSON.stringify(this.props.reduxState.allCasesReducer)} */}
-                  
-
                     {/* show all cases assigned to volunteer */}
+                    <img src="/IFT.png"/>
                     <h1> CASES </h1>
                     <table>
                         <thead>

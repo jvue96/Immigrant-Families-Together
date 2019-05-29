@@ -19,10 +19,9 @@ class Team extends Component {
             <center> 
                 <h1> VOLUNTEERS </h1>
                 {this.props.reduxState.teamReducer.map(team => (
-                <div className="bioCard">
-                    <hr/>
-                    <label>NAME</label> 
-                    <p className="PCard">{team.username}</p>
+                <div className="teamCard">
+                    <label>NAME</label>
+                    <p className="PCard">{team.username}</p> 
                     <hr/>
                     <label>PHONE</label> 
                     <p className="PCard">{team.phone}</p>
@@ -42,7 +41,6 @@ class Team extends Component {
                     <hr/>
                     <label>ADDRESS</label> 
                     <p className="PCard">{team.address}</p>
-                    <hr/>
                 </div>
                   ))}
             </center>

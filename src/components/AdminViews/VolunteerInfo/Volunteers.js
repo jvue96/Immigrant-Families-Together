@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../Nav/Nav'
+
 class Volunteers extends Component {
 
     state = {
@@ -35,7 +36,19 @@ class Volunteers extends Component {
         return (
             <div>
                 
-                <Nav pageName='VOLUNTEERS' home='/home'/>
+                <Nav pageName='ALL VOLUNTEERS' home='/home'/>
+
+                {/* <div className="nav">
+                    <div className="navLeft2" onClick={this.backButton}>
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div className="navTitle">
+                        <h2 className="navH2">ALL VOLUNTEER</h2>
+                    </div>
+                    <div className="navRight">
+                    </div>
+                </div> */}
+
                 <center>
                     <input 
                         onChange={this.handleChange}
