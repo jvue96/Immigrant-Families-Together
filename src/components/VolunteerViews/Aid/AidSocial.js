@@ -21,12 +21,17 @@ class AidSocial extends Component {
                    
 
                     <div>{this.props.reduxState.aidReducer.map(aid =>
-                <div>
-<p className="bioDivs">SOCIAL WORKER: {aid.social_worker}</p>
-<p className="bioDivs">SOCIAL WORKER PHONE: {aid.social_worker_phone}</p>
-                </div>
-)}
-</div>
+                      <div className="bioCard">
+                        <hr/>
+                        <label>SOCIAL WORKER:</label>
+                        <p className="PCard"> {aid.social_worker}</p>
+                        <hr/>
+                        <label>SOCIAL WORKER PHONE:</label>
+                        <p className="PCard"> {aid.social_worker_phone}</p>
+                        <hr/>
+                    </div>
+                 )}
+            </div>
 
 
 

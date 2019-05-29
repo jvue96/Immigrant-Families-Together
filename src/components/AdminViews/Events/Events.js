@@ -9,7 +9,7 @@ class Events extends Component {
         return (
             <div>
   <Nav pageName='EVENTS' home='/home'/>
-               
+
 
                 <center>
                     <button className="midButton">NEW EVENT</button> 

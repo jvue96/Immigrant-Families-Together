@@ -73,53 +73,53 @@ class LegalStatusForm extends Component {
         return (
             <div>
                 <Nav pageName='LEGAL STATUS FORM' home='/home'/>
-                <center>
-                    <div className="formDivs">
-                        <label>LAST COURT DATE</label> 
-                        <input type="date" value={this.state.legalForm.last_court_date} onChange={this.handleNameChange('last_court_date')} />
+                    <center>
+                        <div className="formDivs">
+                            <label>LAST COURT DATE</label> 
+                            <input type="date" value={this.state.legalForm.last_court_date} onChange={this.handleNameChange('last_court_date')} />
 
-                        <label>OUTCOME</label> 
-                        <input type="text" 
-                         value={this.state.legalForm.last_court_date_outcome}
-                         onChange={this.handleNameChange('last_court_date_outcome')}
-                        /> 
+                            <label>OUTCOME</label> 
+                            <input type="text" 
+                            value={this.state.legalForm.last_court_date_outcome}
+                            onChange={this.handleNameChange('last_court_date_outcome')}
+                            /> 
 
-                        <label>NEXT COURT DATE</label> 
-                        <input type="date" value={this.state.legalForm.next_court_date} onChange={this.handleNameChange('next_court_date')} />
+                            <label>NEXT COURT DATE</label> 
+                            <input type="date" value={this.state.legalForm.next_court_date} onChange={this.handleNameChange('next_court_date')} />
 
-                        <label>TOPIC</label> 
-                        <input type="text"
-                         value={this.state.legalForm.next_court_date_outcome}
-                         onChange={this.handleNameChange('next_court_date_outcome')}
-                        /> 
+                            <label>TOPIC</label> 
+                            <input type="text"
+                            value={this.state.legalForm.next_court_date_outcome}
+                            onChange={this.handleNameChange('next_court_date_outcome')}
+                            /> 
 
-                        <label>ASYLUM APPLIED FOR</label> 
-                        <input type="text" 
-                          placeholder="type true or false"
-                          value={this.state.legalForm.asylum_application}
-                          onChange={this.handleNameChange('asylum_application')}
-                        /> 
+                            <label>ASYLUM APPLIED FOR</label> 
+                            <input type="text" 
+                            placeholder="type true or false"
+                            value={this.state.legalForm.asylum_application}
+                            onChange={this.handleNameChange('asylum_application')}
+                            /> 
 
-                        <label>WORK AUTH</label> 
-                        <input type="text" 
-                        placeholder="type true or false"
-                        value={this.state.legalForm.work_authorization}
-                        onChange={this.handleNameChange('work_authorization')}
-                        /> 
-                    
-                        {/* <button
-                        className="formButton"
-                        onClick={this.next}
-                        >NEXT</button> */}
- 
-                        <button
-                        className="formButton"
-                        onClick={this.next}
-                        >COMPLETE CASE</button>
+                            <label>WORK AUTH</label> 
+                            <input type="text" 
+                            placeholder="type true or false"
+                            value={this.state.legalForm.work_authorization}
+                            onChange={this.handleNameChange('work_authorization')}
+                            /> 
+                        
+                            {/* <button
+                            className="formButton"
+                            onClick={this.next}
+                            >NEXT</button> */}
+    
+                            <button
+                            className="formButton"
+                            onClick={this.next}
+                            >COMPLETE CASE</button>
 
-                    <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
-                    </div>
-                </center>
+                        <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
+                        </div>
+                    </center>
             </div>
         );
     }

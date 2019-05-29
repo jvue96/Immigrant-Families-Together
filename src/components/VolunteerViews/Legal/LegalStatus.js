@@ -16,13 +16,26 @@ class LegalStatus extends Component {
              <Nav pageName='LEGAL STATUS' volunteer home='/home' /> 
                 <center>
                     <div>{this.props.reduxState.legalReducer.map(legal =>
-                <div>
-<p className="bioDivs">LAST COURT DATE: {legal.last_court_date}</p>
-<p className="bioDivs">LAST COURT DATE OUTCOME: {legal.last_court_date_outcome}</p>
-<p className="bioDivs">NEXT COURT DATE: {legal.next_court_date}</p>
-<p className="bioDivs">NEXT COURT DATE TOPIC: {legal.next_court_date_outcome}</p>
-<p className="bioDivs">ASYLUM APPLICATION: {legal.asylum_application}</p>
-<p className="bioDivs">WORK AUTH APPLICATION: {legal.work_authorization}</p>
+                <div className="bioCard">
+                    <hr/>
+                    <label>LAST COURT DATE:</label>
+                    <p className="PCard"> {legal.last_court_date}</p>
+                    <hr/>
+                    <label>LAST COURT DATE OUTCOME:</label>
+                    <p className="PCard"> {legal.last_court_date_outcome}</p>
+                    <hr/>
+                    <label>NEXT COURT DATE:</label>
+                    <p className="PCard"> {legal.next_court_date}</p>
+                    <hr/>
+                    <label>NEXT COURT DATE TOPIC:</label>
+                    <p className="PCard"> {legal.next_court_date_outcome}</p>
+                    <hr/>
+                    <label>ASYLUM APPLICATION:</label>
+                    <p className="PCard"> {legal.asylum_application}</p>
+                    <hr/>
+                    <label>WORK AUTH APPLICATION:</label>
+                    <p className="PCard"> {legal.work_authorization}</p>
+                    <hr/>
                 </div>
 )}
 </div>
