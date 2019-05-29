@@ -14,37 +14,44 @@ class BioSchool extends Component {
     }
 
     render() {
+
+        let emptySchool;
+        if(this.props.reduxState.schoolReducer.length === 0) {
+            emptySchool = <div className="bioCard">
+            <hr/>
+            <label>SCHOOL NAME:</label>
+            <p className="PCard"></p>
+            <hr/>
+            <label>PHONE:</label>
+            <p className="PCard"></p>
+            <hr/>
+            <label>EMAIL:</label>
+            <p className="PCard"></p>
+            <hr/>
+        </div>
+        }
+
         return (
             <div>
-        <Nav pageName='SCHOOL' volunteer home='/home' /> 
-                <center>
-
-<div>{this.props.reduxState.schoolReducer.map(school =>
-            <div className="bioCard">
-                <hr/>
-                <label>SCHOOL NAME:</label>
-                <p className="PCard"> {school.name}</p>
-                <hr/>
-                <label>PHONE:</label>
-                <p className="PCard"> {school.phone}</p>
-                <hr/>
-                <label>EMAIL:</label>
-                <p className="PCard"> {school.email}</p>
-                <hr/>
-            </div>
-)}
-</div>
-
-
-
-                    {/* <label>SCHOOL NAME: </label> <br/>
-                    <div className="bioDivs" />
-                    <label> SCHOOL CONTACT</label> <br/>
-                    <div className="bioDivs" />
-                    <label> PHONE </label> <br/>
-                    <div className="bioDivs" />
-                    <label> EMAIL </label> <br/>
-                    <div className="bioDivs" /> */}
+                <Nav pageName='SCHOOL' volunteer home='/home' /> 
+                    <center>
+                        <div>
+                            {emptySchool}
+                            {this.props.reduxState.schoolReducer.map((school,index) =>
+                                        <div className="bioCard" key={index}>
+                                            <hr/>
+                                            <label>SCHOOL NAME:</label>
+                                            <p className="PCard"> {school.name}</p>
+                                            <hr/>
+                                            <label>PHONE:</label>
+                                            <p className="PCard"> {school.phone}</p>
+                                            <hr/>
+                                            <label>EMAIL:</label>
+                                            <p className="PCard"> {school.email}</p>
+                                            <hr/>
+                                        </div>
+                            )}
+                        </div>
                 </center>
             </div>
         );
