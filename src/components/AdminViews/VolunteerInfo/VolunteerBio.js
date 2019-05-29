@@ -83,9 +83,7 @@ class VolunteerBio extends Component {
                         <hr/>
                         <div>
                             <label>ENCRYPTED</label>  
-                            <p className="PCard">{users.encrypted}
-                            what's supposed to be here? 
-                            </p>
+                            <p className="PCard">{users.encrypted}</p>
                         </div>
                         <hr/>
                         <div>
