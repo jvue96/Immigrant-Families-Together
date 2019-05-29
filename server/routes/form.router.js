@@ -500,6 +500,21 @@ router.get('/all-cases', (req, res) => {
 
 })
 
+router.get('/all-cases/:id', (req, res) => {
+  console.log(`Getting all cases for a specific user`, req.params.id);
+  const sqlText = `SELECT "users_cases"."case_id", "users_cases"."case_id", "users_cases"."user_id", "primary_individual"."last_name", "primary_individual"."last_name" FROM users_cases
+  JOIN "primary_individual" ON "users_cases"."case_id" = "primary_individual"."case_id"
+  WHERE user_id = $1 `;
+  pool.query(sqlText, [req.params.id])
+
+  .then((results) => {
+      res.send(results.rows)
+  }).catch((error) => {
+      console.log('Something went wrong getting the information from the cases table', error);
+      res.sendStatus(500);
+  })
+})
+
 router.get('/all-cases/search/', (req, res) => {
   console.log(`this is query in all cases search`, req.query);
   let queryText = `SELECT * FROM cases WHERE (case_last_name ILIKE $1 OR case_number ILIKE $1);`;

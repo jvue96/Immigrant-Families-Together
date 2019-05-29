@@ -65,11 +65,24 @@ function* getCaseId(action) {
     }
   }
 
+  function* getUserCases(parse) {
+    console.log('GET cases for specific volunteer', parse.payload);
+    const id = parse.payload;
+    try {
+        let get = yield axios.get(`api/forms/all-cases/${id}`);
+        const response = {type: 'SET_USER_CASES', payload: get.data };
+        yield put(response); 
+    } catch (error) {
+        console.log(`Couldn't get all cases`, error);
+        alert(`Sorry couldn't get all cases. Try again later.`)
+    }
+}
 
 function* caseSaga() {
     yield takeLatest('ADD_CASE', postCase);
     /* volunteer landing page  */
     yield takeLatest('GET_CASES', getCases);
+    yield takeLatest('GET_USER_CASES', getUserCases);
     yield takeLatest('GET_CURRENT_ID', getCaseId);
     yield takeLatest('GET_CASES_SEARCH', getCaseSearch)
     yield takeLatest('ASSIGN_CASE', assignCase)
