@@ -118,7 +118,7 @@ class BioMedical extends Component {
                                     <p className="PCard"> {medical.insurance_card_info}</p>
                                     <hr/>
                                     <label>FEE COVERAGE:</label> 
-                                    <p className="PCard"> {medical.fee_coverage}</p>
+                                    <p className="PCard"> {String(medical.fee_coverage)}</p>
                                     <hr/>
                                     <label>MEDICAL NOTES:</label> 
                                     <p className="PCard"> {medical.medical_notes}</p>
