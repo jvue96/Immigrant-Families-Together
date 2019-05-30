@@ -17,6 +17,8 @@ router.get('/', (req, res) => {
 // is that the password gets encrypted before being inserted
 router.post('/register', rejectUnauthenticated, (req, res, next) => {  
   const username = req.body.username;
+  const first_name = req.body.first_name;
+  const last_name = req.body.last_name;
   const password = encryptLib.encryptPassword(req.body.password);
   const phone = req.body.phone;
   const email = req.body.email;
@@ -30,8 +32,8 @@ router.post('/register', rejectUnauthenticated, (req, res, next) => {
   // register.email, register.encrpyted, register.address, register.skills, register.second_language
   // email, encrpyted, address, skills, second_language
   // $4, $5, $6, $7, $8
-  const queryText = 'INSERT INTO "user" (username, password, phone, email, encrypted, address, skills, second_language, admin) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id';
-  pool.query(queryText, [username, password, phone, email, encrypted, address, skills, second_language, admin])
+  const queryText = 'INSERT INTO "user" (username, first_name, last_name, password, phone, email, encrypted, address, skills, second_language, admin) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id';
+  pool.query(queryText, [username, first_name, last_name, password, phone, email, encrypted, address, skills, second_language, admin])
     .then(() => res.sendStatus(201))
     .catch(() => res.sendStatus(500));
 });
