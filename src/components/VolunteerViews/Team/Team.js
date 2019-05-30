@@ -16,8 +16,7 @@ class Team extends Component {
 
         let emptyTeam; 
         if(this.props.reduxState.teamReducer.length === 0) {
-            emptyTeam = <div className="bioCard">
-                            <hr/>
+            emptyTeam = <div className="teamCard">
                             <label>NAME</label> 
                             <p className="PCard"></p>
                             <hr/>
@@ -38,7 +37,6 @@ class Team extends Component {
                             <hr/>
                             <label>ADDRESS</label> 
                             <p className="PCard"></p>
-                            <hr/>
                         </div>
                     }
 
@@ -50,8 +48,7 @@ class Team extends Component {
                         <h1> VOLUNTEERS </h1>
                         {emptyTeam}
                         {this.props.reduxState.teamReducer.map((team,index) => (
-                            <div className="bioCard" key={index}>
-                                <hr/>
+                            <div className="teamCard" key={index}>
                                 <label>NAME</label> 
                                 <p className="PCard">{team.username}</p>
                                 <hr/>
@@ -72,7 +69,6 @@ class Team extends Component {
                                 <hr/>
                                 <label>ADDRESS</label> 
                                 <p className="PCard">{team.address}</p>
-                                <hr/>
                             </div>
                         ))}
                     </center>
