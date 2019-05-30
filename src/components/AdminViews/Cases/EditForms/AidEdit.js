@@ -9,8 +9,23 @@ class AidEdit extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('aidForm searchObject', searchObject);
         this.props.dispatch({ type: 'GET_AID', payload: searchObject.id });
+        // setState to null if the reducer is empty
+        // enables posting null values that are left unchanged to edit later 
+        if(this.props.reduxState.aidReducer.length === 0) {
+            this.setState({
+                aidForm:{
+                    ...this.state.aidForm,
+                    case_id: searchObject.id,
+                    grocery_program: null, 
+                    grocery_program_volunteer: null, 
+                    go_fund_me: null, 
+                    social_worker: null, 
+                    social_worker_phone: null, 
+                    data: false, 
+                }
+            }) 
+        } else {
         this.setState({
             aidForm:{
                 ...this.state.aidForm,
@@ -20,8 +35,10 @@ class AidEdit extends Component {
                 go_fund_me: this.props.reduxState.aidReducer[0].go_fund_me, 
                 social_worker: this.props.reduxState.aidReducer[0].social_worker, 
                 social_worker_phone: this.props.reduxState.aidReducer[0].social_worker_phone, 
-            }
-        }) 
+                data: true, 
+                }
+            }) 
+        }
     }
 
     state = {
@@ -31,14 +48,19 @@ class AidEdit extends Component {
             grocery_program_volunteer: '',
             go_fund_me: '',
             social_worker: '',
-            social_worker_phone: ''
+            social_worker_phone: '',
+            data: '', 
         }
     }
 
+    // conditional to determine a POST or a PUT 
     next = () => {
-        this.props.dispatch({type:'PUT_AID', payload: this.state.aidForm});
-        this.props.history.push(`/edit-case?id=${this.state.aidForm.case_id}`)
-        // console.log(this.state);   
+        if (this.state.aidForm.data === false) {
+            this.props.dispatch({ type: 'ADD_AID', payload: this.state.aidForm })
+        } else (
+            this.props.dispatch({ type: 'PUT_AID', payload: this.state.aidForm })
+        )
+        this.props.history.push(`/edit-case?id=${this.state.aidForm.case_id}`) 
     }
 
     handleChange = propertyName => event => {
@@ -51,6 +73,49 @@ class AidEdit extends Component {
     }
     
     render() {
+
+        // if the reducer is empty, display input with null values to edit 
+        let checkAid; 
+        let state = this.state.aidForm; 
+        if(this.props.reduxState.aidReducer.length === 0) {
+            checkAid = <div className="formDivs">            
+                            <label>GROCERY PROGRAM</label>
+                            <select 
+                            defaultValue={state.grocery_program}
+                            onChange={this.handleChange(`grocery_program`)}
+                            >
+                                <option>True or False </option>
+                                <option value={true}>True</option>
+                                <option value={false}>False</option>
+                            </select>
+                            
+                            <label>GROCERY PROGRAM VOLUNTEER</label>
+                            <input type="text"
+                            defaultValue={state.grocery_program_volunteer}
+                            onChange={this.handleChange('grocery_program_volunteer')}/> 
+                        
+                            <label>GOFUNDME</label> 
+                            <input type="text"
+                            defaultValue={state.go_fund_me}
+                            onChange={this.handleChange('go_fund_me')}/> 
+
+                            <label>SOCIAL WORKER</label> 
+                            <input type="text"
+                            defaultValue={state.social_worker}
+                            onChange={this.handleChange('social_worker')}/> 
+                            
+                            <label>SOCIAL WORKER PHONE</label> 
+                            <input type="text" 
+                            defaultValue={state.social_worker_phone}
+                            onChange={this.handleChange('social_worker_phone')}/> 
+                            
+                            <button
+                            className="formButton"
+                            onClick={this.next}
+                            >UPDATE FORM</button>
+                        </div>
+        }
+
         return (
             <div>
             <Nav pageName='AID FORM' backArrow='/cases' home='/cases' />
@@ -58,6 +123,7 @@ class AidEdit extends Component {
                 <center>
                     {/* {JSON.stringify(this.props.reduxState.aidReducer)} */}
                 <div>
+                {checkAid}
                 {this.props.reduxState.aidReducer.map((aid, index) =>
 
                     <div className="formDivs" key={index}>
@@ -92,8 +158,6 @@ class AidEdit extends Component {
                         defaultValue={aid.social_worker_phone}
                         onChange={this.handleChange('social_worker_phone')}/> 
                         
-                        
-                        
                         <button
                         className="formButton"
                         onClick={this.next}
@@ -102,7 +166,6 @@ class AidEdit extends Component {
                     )}
                     </div>
                 </center>
-            
             </div>
         );
     }
