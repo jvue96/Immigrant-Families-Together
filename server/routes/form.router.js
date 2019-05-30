@@ -533,8 +533,7 @@ router.post('/case', (req, res) => {
 router.get('/all-cases', (req, res) => {
   console.log(`Getting all cases`);
 
-  pool.query(`SELECT "cases"."id", "cases"."case_last_name", "cases"."case_number", "cases"."status", "primary_individual"."address" FROM cases
-  JOIN "primary_individual" ON "cases"."id" = "primary_individual"."case_id"`)
+  pool.query(`SELECT * from "cases"`)
   .then((results) => {
       res.send(results.rows)
   }).catch((error) => {
