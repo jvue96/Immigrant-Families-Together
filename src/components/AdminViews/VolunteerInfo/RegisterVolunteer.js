@@ -9,6 +9,8 @@ class RegisterVolunteer extends Component {
     
     state = {
         username: '',
+        first_name: '',
+        last_name: '',
         password: '',
         phone: '',
         email: '',
@@ -50,6 +52,24 @@ class RegisterVolunteer extends Component {
                 name="username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
+                />
+            <label htmlFor="firstname">
+              First Name:
+              </label>
+              <input
+                type="text"
+                name="firstname"
+                value={this.state.first_name}
+                onChange={this.handleInputChangeFor('first_name')}
+                />
+            <label htmlFor="lastname">
+              Last Name:
+              </label>
+              <input
+                type="text"
+                name="lastname"
+                value={this.state.last_name}
+                onChange={this.handleInputChangeFor('last_name')}
                 />
             
             <label htmlFor="password">
