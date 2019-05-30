@@ -1,8 +1,9 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     let bio = req.body;
     console.log('Adding in primary individual:', bio);
     let sqlText = `INSERT INTO primary_individual (last_name, first_name, dob, spouse_first_name, spouse_dob, phone, email, address, utilities, referred_by, reference_date, passport, us_id, encrypted) VALUES 

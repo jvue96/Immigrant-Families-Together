@@ -7,7 +7,7 @@ const userStrategy = require('../strategies/user.strategy');
 const router = express.Router();
 
 // Handles Ajax request for user information if user is authenticated
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/', (req, res) => {
   // Send back user object from the session (previously queried from the database)
   res.send(req.user);
 });
@@ -15,7 +15,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
-router.post('/register', (req, res, next) => {  
+router.post('/register', rejectUnauthenticated, (req, res, next) => {  
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
   const phone = req.body.phone;
@@ -44,7 +44,7 @@ router.post('/login', userStrategy.authenticate('local'), (req, res) => {
   res.sendStatus(200);
 });
 
-router.get('/register', (req, res) => {
+router.get('/register', rejectUnauthenticated, (req, res) => {
   console.log('Getting all volunteers');
   pool.query(`SELECT * FROM "user"`)
   .then((results) => {
@@ -61,13 +61,13 @@ router.get('/register', (req, res) => {
   })
 
 // clear all server session information about this user
-router.post('/logout', (req, res) => {
+router.post('/logout', rejectUnauthenticated, (req, res) => {
   // Use passport's built-in method to log out the user
   req.logout();
   res.sendStatus(200);
 });
 
-router.get('/register/:id', (req, res) => {
+router.get('/register/:id', rejectUnauthenticated, (req, res) => {
   console.log('Getting all volunteer bio info');
   console.log(`Getting volunteer bio info, req.params.id`, req.params.id);
   const sqlText = `SELECT * FROM "user" WHERE "id" = $1;`
