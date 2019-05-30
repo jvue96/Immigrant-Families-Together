@@ -13,9 +13,15 @@ class BioFamilyInfo extends Component {
         console.log('GET_BIO_INFO', this.props.reduxState.bioReducer);
     }
 
-    formatDate = (date) => {
-        let entryDate =  moment(date).subtract(10, 'days').calendar();
-        return entryDate; 
+    // if date is null, will display empty <p> instead of "Invalid Date" on DOM 
+    checkDate = (property) => {
+        if(property === null) {
+        property = ''
+        return property; 
+        } else {
+            property =  moment(property).subtract(10, 'days').calendar();
+            return property; 
+        }
     }
     
     render() {
@@ -77,13 +83,13 @@ class BioFamilyInfo extends Component {
                                     <p className="PCard">{bio.last_name}</p>
                                     <hr/>
                                     <label>DOB:</label>  
-                                    <p className="PCard">{this.formatDate(bio.dob)}</p>
+                                    <p className="PCard">{this.checkDate(bio.dob)}</p>
                                     <hr/>
                                     <label>SPOUSE NAME:</label>  
                                     <p className="PCard">{bio.spouse_first_name}</p>
                                     <hr/>
                                     <label>SPOUSE DOB:</label>  
-                                    <p className="PCard">{this.formatDate(bio.spouse_dob)}</p>
+                                    <p className="PCard">{this.checkDate(bio.spouse_dob)}</p>
                                     <hr/>
                                     <label>PHONE:</label>  
                                     <p className="PCard">{bio.phone}</p>
@@ -101,7 +107,7 @@ class BioFamilyInfo extends Component {
                                     <p className="PCard">{bio.referred_by}</p>
                                     <hr/>
                                     <label>REFERRAL DATE:</label>  
-                                    <p className="PCard">{this.formatDate(bio.reference_date)}</p>
+                                    <p className="PCard">{this.checkDate(bio.reference_date)}</p>
                                     <hr/>
                                 </div>
                             )}

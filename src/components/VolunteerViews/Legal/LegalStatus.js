@@ -12,9 +12,15 @@ class LegalStatus extends Component {
         this.props.dispatch({ type: 'GET_LEGAL', payload: searchObject.id });
     }
 
-    formatDate = (date) => {
-        let entryDate =  moment(date).subtract(10, 'days').calendar();
-        return entryDate; 
+      // if date is now, will display empty <p> instead of "Invalid Date" on DOM 
+      checkDate = (property) => {
+        if(property === null) {
+        property = ''
+        return property; 
+        } else {
+            property =  moment(property).subtract(10, 'days').calendar();
+            return property; 
+        }
     }
 
     render() {
@@ -54,13 +60,13 @@ class LegalStatus extends Component {
                         <div className="bioCard" key={index}>
                             <hr/>
                             <label>LAST COURT DATE:</label>
-                            <p className="PCard"> {this.formatDate(legal.last_court_date)}</p>
+                            <p className="PCard"> {this.checkDate(legal.last_court_date)}</p>
                             <hr/>
                             <label>LAST COURT DATE OUTCOME:</label>
                             <p className="PCard"> {legal.last_court_date_outcome}</p>
                             <hr/>
                             <label>NEXT COURT DATE:</label>
-                            <p className="PCard"> {this.formatDate(legal.next_court_date)}</p>
+                            <p className="PCard"> {this.checkDate(legal.next_court_date)}</p>
                             <hr/>
                             <label>NEXT COURT DATE TOPIC:</label>
                             <p className="PCard"> {legal.next_court_date_outcome}</p>

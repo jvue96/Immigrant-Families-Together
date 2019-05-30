@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-router.post('/medical', (req, res) => {
+router.post('/medical', rejectUnauthenticated, (req, res) => {
     let medical = req.body;
     console.log('Adding in medical:', medical);
     let sqlText = `INSERT INTO medical (case_id, doctor_name, doctor_phone, medical_conditions, counselor, counselor_phone, pediatrician, pediatrician_phone, optometrist, optometrist_phone, dentist, dentist_phone, vaccinations, insurance_card_info, fee_coverage, medical_notes) VALUES 
@@ -18,7 +18,7 @@ router.post('/medical', (req, res) => {
       })
   })
 
-  router.put('/edit-medical/:id', (req, res) => {
+  router.put('/edit-medical/:id', rejectUnauthenticated, (req, res) => {
     let medical = req.body;
     console.log('PUT in aid edit:', medical);
     let sqlText = `UPDATE "medical" SET "doctor_name" = $2, "doctor_phone" = $3, "medical_conditions" = $4, "counselor" = $5, "counselor_phone" = $6, "pediatrician" = $7, "pediatrician_phone" = $8, "optometrist" = $9, "optometrist_phone" = $10, "dentist" = $11, "dentist_phone" = $12, "vaccinations" = $13, "insurance_card_info" = $14, "fee_coverage" = $15, "medical_notes" = $16 WHERE "case_id" = $1`;
@@ -32,7 +32,7 @@ router.post('/medical', (req, res) => {
       })
   })
 
-  router.post('/legal', (req, res) => {
+  router.post('/legal', rejectUnauthenticated, (req, res) => {
     let legal = req.body;
     console.log('Adding in legal form:', legal);
     let sqlText = `INSERT INTO legal_status 
@@ -53,7 +53,7 @@ router.post('/medical', (req, res) => {
     
   });
 
-  router.get('/legal/:id', (req, res) => {
+  router.get('/legal/:id', rejectUnauthenticated, (req, res) => {
     console.log('Getting all legal status info');
     console.log('Getting LEGAL STATUS INFORMATION ID', req.params.id);
     const sqlText = `SELECT * FROM "legal_status" WHERE "case_id" = $1;`
@@ -66,7 +66,7 @@ router.post('/medical', (req, res) => {
     })
   });
 
-  router.put('/edit-legal/:id', (req, res) => {
+  router.put('/edit-legal/:id', rejectUnauthenticated, (req, res) => {
     let legal = req.body;
     let sqlText = `UPDATE "legal_status" SET "last_court_date" = $1, 
                   "last_court_date_outcome" = $2, 
@@ -91,7 +91,7 @@ router.post('/medical', (req, res) => {
       })
   })
 
-router.get('/medical/:id', (req, res) => {
+router.get('/medical/:id', rejectUnauthenticated, (req, res) => {
     console.log('Getting all medical info');
     console.log('Getting current id FOR BIO MEDICAL INFO', req.params.id);
     const sqlText = `SELECT * FROM "medical" WHERE "case_id" = $1`
@@ -104,7 +104,7 @@ router.get('/medical/:id', (req, res) => {
     })
   });
 
-  router.post('/bio', (req, res) => {
+  router.post('/bio', rejectUnauthenticated, (req, res) => {
     let bio = req.body;
     console.log('Adding in primary individual:', bio);
     let sqlText = `INSERT INTO primary_individual (case_id, last_name, first_name, dob, spouse_first_name, spouse_dob, phone, email, address, referred_by, reference_date, passport, us_id, encrypted) VALUES 
@@ -119,7 +119,7 @@ router.get('/medical/:id', (req, res) => {
       })
   })
 
-  router.get('/bio/:id', (req, res) => {
+  router.get('/bio/:id', rejectUnauthenticated, (req, res) => {
     console.log('Getting all bio info');
     console.log('Getting current id FOR BIO FAMILY INFO', req.params.id);
     const sqlText = `SELECT * FROM "primary_individual" WHERE "case_id" = $1`
@@ -132,7 +132,7 @@ router.get('/medical/:id', (req, res) => {
     })
   })
 
-  router.put('/edit-bio/:id', (req, res) => {
+  router.put('/edit-bio/:id', rejectUnauthenticated, (req, res) => {
     let bio = req.body;
     console.log('PUT in aid edit:', bio);
     let sqlText = `UPDATE "primary_individual" SET "last_name" = $2, "first_name" = $3, "dob" = $4, "spouse_first_name" = $5, "spouse_dob" = $6, "phone" = $7, "email" = $8, "address" = $9, "referred_by" = $10, "reference_date" = $11, "passport" = $12, "us_id" = $13, "encrypted" = $14 WHERE "case_id" = $1`;
@@ -146,7 +146,7 @@ router.get('/medical/:id', (req, res) => {
       })
   })
 
-  router.post('/children', async(req, res) => {
+  router.post('/children', rejectUnauthenticated, async(req, res) => {
 
     const connection = await pool.connect()
     let children = req.body; 
@@ -197,12 +197,14 @@ router.get('/medical/:id', (req, res) => {
     console.log('Getting all children info', req.params.id);
     const sqlText = `SELECT * FROM primary_children WHERE case_id = $1`
     pool.query(sqlText, [req.params.id])
+
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {
         console.log('Something went wrong getting the information from the children forms', error);
     })
     })
+
 
   router.put('/edit-children/:id', async(req, res) => {
 
@@ -262,7 +264,7 @@ router.get('/medical/:id', (req, res) => {
   //     })
   // })
 
-  router.post('/aid', (req, res) => {
+  router.post('/aid', rejectUnauthenticated, (req, res) => {
     let aid = req.body;
     console.log('Adding in aid:', aid);
     let sqlText = `INSERT INTO aid (case_id, grocery_program, grocery_program_volunteer, go_fund_me, social_worker, social_worker_phone) VALUES 
@@ -277,7 +279,7 @@ router.get('/medical/:id', (req, res) => {
       })
   })
 
-  router.get('/aid/:id', (req, res) => {
+  router.get('/aid/:id', rejectUnauthenticated, (req, res) => {
     console.log('Getting all aid info');
     console.log('Getting AID INFORMATION ID', req.params.id);
     const sqlText = `SELECT * FROM "aid" WHERE "case_id" = $1`
@@ -292,7 +294,7 @@ router.get('/medical/:id', (req, res) => {
     })
   })
 
-  router.put('/edit-aid/:id', (req, res) => {
+  router.put('/edit-aid/:id', rejectUnauthenticated, (req, res) => {
     let aid = req.body;
     console.log('PUT in aid edit:', aid);
     let sqlText = `UPDATE "aid" SET "grocery_program" = $1, "grocery_program_volunteer" = $2, "go_fund_me" = $3, "social_worker" = $4, "social_worker_phone" = $5 WHERE "case_id" = $6`;
@@ -307,7 +309,7 @@ router.get('/medical/:id', (req, res) => {
   })
 
 
-  router.post('/note', (req, res) => {
+  router.post('/note', rejectUnauthenticated, (req, res) => {
     let note = req.body;
     console.log('Adding in note:', note);
     let sqlText = `INSERT INTO notes (family_notes, date, case_id) VALUES 
@@ -322,7 +324,7 @@ router.get('/medical/:id', (req, res) => {
       })
   })
 
-  router.get('/note/:id', (req, res) => {
+  router.get('/note/:id', rejectUnauthenticated, (req, res) => {
     console.log('Getting all note info');
     const sqlText = `SELECT * FROM "notes" WHERE "case_id" = $1 ORDER BY date;`
     pool.query(sqlText, [req.params.id])
@@ -336,7 +338,7 @@ router.get('/medical/:id', (req, res) => {
   })
 
 
-  router.post('/event', (req, res) => {
+  router.post('/event', rejectUnauthenticated, (req, res) => {
     let event = req.body;
     console.log('Adding in event:', event);
     let sqlText = `INSERT INTO events (date, description, case_id) VALUES 
@@ -351,7 +353,7 @@ router.get('/medical/:id', (req, res) => {
       })
   })
 
-  router.get('/event/:id', (req, res) => {
+  router.get('/event/:id', rejectUnauthenticated, (req, res) => {
     console.log('Getting all event info');
     const sqlText = `SELECT * FROM "events" WHERE "case_id" = $1 ORDER BY date;`
     pool.query(sqlText, [req.params.id])
@@ -364,7 +366,7 @@ router.get('/medical/:id', (req, res) => {
   })
 
 
-  router.get('/events', (req,res) => {
+  router.get('/events', rejectUnauthenticated, (req,res) => {
     let sqlText = `SELECT events.date, events.description, cases.case_last_name, cases.case_number FROM events
     JOIN cases ON cases.id = events.case_id
     GROUP BY cases.case_last_name, events.date, events.description, cases.case_number 
@@ -381,7 +383,7 @@ pool.query(sqlText)
 
   //new router for search events 
 
-  router.get('/events/search/', (req, res) => {
+  router.get('/events/search/', rejectUnauthenticated, (req, res) => {
     console.log(`this is query in all events search`, req.query);
     let queryText = `SELECT events.date, events.description, cases.case_last_name, cases.case_number FROM events 
 LEFT JOIN cases ON cases.id = events.case_id
@@ -405,7 +407,7 @@ GROUP BY cases.case_last_name, events.date, events.description, cases.case_numbe
 
 
 
-  router.post('/bond', (req, res) => {
+  router.post('/bond', rejectUnauthenticated, (req, res) => {
     let bond = req.body;
     console.log('Adding in bond and legal info:', bond);
     let sqlText = `INSERT INTO legal (case_id, ice_facility, bond_amount, bond_paid_date, bond_paid_by, foster_facility, foster_facility_address, attorney, attorney_phone, attorney_fee, legal_notes) VALUES 
@@ -420,7 +422,7 @@ GROUP BY cases.case_last_name, events.date, events.description, cases.case_numbe
       })
   })
 
-  router.get('/bond/:id', (req, res) => {
+  router.get('/bond/:id', rejectUnauthenticated, (req, res) => {
     console.log('Getting all bond and legal info');
     console.log('Getting LEGAL INFORMATION ID', req.params.id);
     const sqlText = `SELECT * FROM "legal" WHERE "case_id" = $1;`
@@ -433,7 +435,7 @@ GROUP BY cases.case_last_name, events.date, events.description, cases.case_numbe
     })
   })
 
-  router.put('/edit-bond/:id', (req, res) => {
+  router.put('/edit-bond/:id', rejectUnauthenticated, (req, res) => {
     console.log('edit bond');
     let bond = req.body;
     let sqlText = `UPDATE "legal" 
@@ -482,7 +484,7 @@ GROUP BY cases.case_last_name, events.date, events.description, cases.case_numbe
   //   })
   // })
 
-router.post('/school', (req, res) => {
+router.post('/school', rejectUnauthenticated, (req, res) => {
   let school = req.body;
   console.log('Adding in school:', school);
   let sqlText = `INSERT INTO school (name, phone, email, case_id) VALUES 
@@ -497,7 +499,7 @@ router.post('/school', (req, res) => {
     })
 })
 
-router.get('/school/:id', (req, res) => {
+router.get('/school/:id', rejectUnauthenticated, (req, res) => {
     console.log('Getting all school info');
     console.log('Getting current id for school info', req.params.id);
     const sqlText = `SELECT * FROM "school" WHERE "case_id" = $1`
@@ -510,7 +512,7 @@ router.get('/school/:id', (req, res) => {
     })
 })
 
-router.put('/edit-school/:id', (req, res) => {
+router.put('/edit-school/:id', rejectUnauthenticated, (req, res) => {
   let school = req.body;
   console.log('PUT in school edit:', school);
   let sqlText = `UPDATE "school" SET "name" = $1, "phone" = $2, "email" = $3 WHERE "case_id" = $4`;
@@ -524,7 +526,7 @@ router.put('/edit-school/:id', (req, res) => {
     })
 })
 
-router.post('/housing', (req, res) => {
+router.post('/housing', rejectUnauthenticated, (req, res) => {
   let housing = req.body;
   console.log('Adding in housing:', housing);
   let sqlText = `INSERT INTO housing (address, rent, paid_by, utilities, living_with_fam, case_id) VALUES 
@@ -539,7 +541,7 @@ router.post('/housing', (req, res) => {
     })
 })
 
-router.get('/housing/:id', (req, res) => {
+router.get('/housing/:id', rejectUnauthenticated, (req, res) => {
     console.log('Getting all housing info');
     console.log('Getting HOUSING INFORMATION ID', req.params.id);
     const sqlText = `SELECT * FROM "housing" WHERE "case_id" = $1`
@@ -552,7 +554,7 @@ router.get('/housing/:id', (req, res) => {
     })
 })
 
-router.put('/edit-housing/:id', (req, res) => {
+router.put('/edit-housing/:id', rejectUnauthenticated, (req, res) => {
   let housing = req.body;
   console.log('PUT in housing edit:', housing);
   let sqlText = `UPDATE "housing" SET "address" = $1, "rent" = $2, "paid_by" = $3, "utilities" = $4, "living_with_fam" = $5 WHERE "case_id" = $6`;
@@ -579,7 +581,7 @@ router.put('/edit-housing/:id', (req, res) => {
 //   })
 // })
 
-router.post('/case', (req, res) => {
+router.post('/case', rejectUnauthenticated, (req, res) => {
   let cases = req.body;
   console.log('POST /case Adding a new case:', cases);
   let sqlText = `INSERT INTO cases (case_last_name, case_number, status) VALUES 
@@ -595,11 +597,10 @@ router.post('/case', (req, res) => {
     })
 })
 
-router.get('/all-cases', (req, res) => {
+router.get('/all-cases', rejectUnauthenticated, (req, res) => {
   console.log(`Getting all cases`);
 
-  pool.query(`SELECT "cases"."id", "cases"."case_last_name", "cases"."case_number", "cases"."status", "primary_individual"."address" FROM cases
-  JOIN "primary_individual" ON "cases"."id" = "primary_individual"."case_id"`)
+  pool.query(`SELECT * from "cases"`)
   .then((results) => {
       res.send(results.rows)
   }).catch((error) => {
@@ -610,7 +611,7 @@ router.get('/all-cases', (req, res) => {
 })
 
 
-router.get('/volunteer-cases/:id', (req, res) => {
+router.get('/volunteer-cases/:id', rejectUnauthenticated, (req, res) => {
   console.log(`!!!!!!!Getting all cases for a specific user`, req.params.id);
   const sqlText = `SELECT "users_cases"."case_id", "users_cases"."case_id", "users_cases"."user_id", "primary_individual"."last_name", "primary_individual"."last_name" FROM users_cases
   JOIN "primary_individual" ON "users_cases"."case_id" = "primary_individual"."case_id"
@@ -659,6 +660,12 @@ router.get('/volunteer/search/', rejectUnauthenticated, (req,res) => {
   let queryText = `SELECT * FROM "user" WHERE (username ILIKE $1 OR email ILIKE $1 OR address ILIKE $1);`;
   pool.query(queryText, ['%'+req.query.q+'%'])
   .then(results=>{
+    for (let i=0; i<results.rows.length; i++) {
+    const user = results && results.rows && results.rows[i];
+if (user) {
+  delete user.password; 
+};
+};
     console.log(`this is result from search query for volunteers,`, results.rows)
     res.send(results.rows)
   })
@@ -671,13 +678,13 @@ router.get('/volunteer/search/', rejectUnauthenticated, (req,res) => {
 })
 
 
-router.get('/all-cases/search/:query', (req,res) => {
+router.get('/all-cases/search/:query', rejectUnauthenticated, (req,res) => {
 
   console.log('in get case search');
   console.log(req.query);
 })
 
-router.get('/volunteer', (req, res) => {
+router.get('/volunteer', rejectUnauthenticated, (req, res) => {
   console.log(`HIT SERACH BY VOLUNTEER`);
   
   // console.log(req.params);
@@ -707,7 +714,7 @@ router.get('/volunteer', (req, res) => {
   //   });
 })
 
-router.post('/assign', (req, res) => {
+router.post('/assign', rejectUnauthenticated, (req, res) => {
   let cases = req.body;
   console.log('Assigning a volunteer to a new case:', cases);
   let sqlText = `INSERT INTO users_cases (user_id, case_id) VALUES 
@@ -723,7 +730,7 @@ router.post('/assign', (req, res) => {
 })
 
 //WRITE A WHERE TO LIST ONLY THE TEAM MEMBERS ASSIGN TO THE CASE
-router.get('/assign/:id', (req, res) => {
+router.get('/assign/:id', rejectUnauthenticated, (req, res) => {
   console.log(`Getting team from volunteer view`);
   const sqlText = `SELECT "user"."username", "user"."phone", "user"."email", "user"."encrypted", "user"."address", "user"."skills", "user"."second_language" FROM users_cases
   JOIN "user" ON "users_cases"."user_id" = "user"."id"
@@ -737,7 +744,7 @@ router.get('/assign/:id', (req, res) => {
   })
 })
 
-router.get('/volunteer-caseload/:id', (req, res) => {
+router.get('/volunteer-caseload/:id', rejectUnauthenticated, (req, res) => {
   console.log(`GET VOLUNTEER CASELOAD `, req.params.id);
   console.log(`Getting all cases assigned to a volunteer`);
   const sqlText = `SELECT "users_cases"."case_id", "users_cases"."user_id", "primary_individual"."last_name", "primary_individual"."last_name" FROM users_cases

@@ -8,18 +8,26 @@ class ChildForm extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('ChildrenForm searchObject', searchObject);
+        // setting properties to null allow users to post null values into the database
+        // which can then be edited later 
         this.setState({
-            childForm:{
-                ...this.state.childForm,
-                case_id: searchObject.id,
-            }
+            addChild: [
+                this.state.childForm = {
+                    case_id: this.props.reduxState.caseReducer.rows[0].id,
+                    child_name: null, 
+                    child_dob: null, 
+                    child_info: null, 
+                }
+            ]
         })  
     }
 
     state = {
+        // create an array to push all children into 
+        // posting an array of children 
         addChild: [],
 
+        // create new children with handleChange function 
         childForm: {
             case_id: this.props.reduxState.caseReducer.rows[0].id,
             child_name: '',
@@ -66,18 +74,13 @@ class ChildForm extends Component {
     next = () => {
         this.props.dispatch({ type: 'ADD_CHILDREN', payload: this.state.addChild })
         this.props.history.push(`/medical-form?id=${this.state.childForm.case_id}`);
+        console.log(this.state);
+        
     }
 
     // pushes new state to children array to create multiple children
     save = () => {
         this.state.addChild.push(this.state.childForm)
-        // un comment if you want to test state after filling in input fields 
-        console.log(this.state);
-    }
-
-    componentDidMount = () => {
-        // uncomment to test if reducer holds GET request data  
-        // this.props.dispatch({type: 'GET_CHILDREN'})
     }
 
       render() {
@@ -96,15 +99,15 @@ class ChildForm extends Component {
 
                     <label>NAME</label> 
                     <input type="text"
-                    value={this.state.childForm.child_name}
+                    value={this.state.childForm.child_name || ''}
                     onChange={this.handleChange('child_name')}/> 
     
                     <label>DOB</label> 
-                    <input type="date" value={this.state.childForm.child_dob} onChange={this.handleChange('child_dob')} /> 
+                    <input type="date" value={this.state.childForm.child_dob || ''} onChange={this.handleChange('child_dob')} /> 
                 
                     <label>INFO</label> 
                     <input type="text"
-                    value={this.state.childForm.child_info }
+                    value={this.state.childForm.child_info || ''}
                     onChange={this.handleChange('child_info')}/> 
                 
                 {/* pushes new state to children array to create multiple children */}
