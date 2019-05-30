@@ -9,11 +9,19 @@ class LegalStatusForm extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('legalForm searchObject', searchObject);
+        // setting properties to null allow users to post null values into the database
+        // which can then be edited later 
         this.setState({
             legalForm:{
                 ...this.state.legalForm,
                 case_id: searchObject.id,
+                last_court_date: null, 
+                last_court_date_outcome: null, 
+                next_court_date: null, 
+                /* this is the topic input field */
+                next_court_date_outcome: null, 
+                asylum_application: null, 
+                work_authorization: null, 
             }
         })  
     }
@@ -76,41 +84,38 @@ class LegalStatusForm extends Component {
                     <center>
                         <div className="formDivs">
                             <label>LAST COURT DATE</label> 
-                            <input type="date" value={this.state.legalForm.last_court_date} onChange={this.handleNameChange('last_court_date')} />
+                            <input type="date" value={this.state.legalForm.last_court_date || ''} 
+                            onChange={this.handleNameChange('last_court_date')} />
 
                             <label>OUTCOME</label> 
                             <input type="text" 
-                            value={this.state.legalForm.last_court_date_outcome}
+                            value={this.state.legalForm.last_court_date_outcome || ''}
                             onChange={this.handleNameChange('last_court_date_outcome')}
                             /> 
 
                             <label>NEXT COURT DATE</label> 
-                            <input type="date" value={this.state.legalForm.next_court_date} onChange={this.handleNameChange('next_court_date')} />
+                            <input type="date" value={this.state.legalForm.next_court_date || ''} 
+                            onChange={this.handleNameChange('next_court_date')} />
 
                             <label>TOPIC</label> 
                             <input type="text"
-                            value={this.state.legalForm.next_court_date_outcome}
+                            value={this.state.legalForm.next_court_date_outcome || ''}
                             onChange={this.handleNameChange('next_court_date_outcome')}
                             /> 
 
                             <label>ASYLUM APPLIED FOR</label> 
                             <input type="text" 
                             placeholder="type true or false"
-                            value={this.state.legalForm.asylum_application}
+                            value={this.state.legalForm.asylum_application || ''}
                             onChange={this.handleNameChange('asylum_application')}
                             /> 
 
                             <label>WORK AUTH</label> 
                             <input type="text" 
                             placeholder="type true or false"
-                            value={this.state.legalForm.work_authorization}
+                            value={this.state.legalForm.work_authorization || ''}
                             onChange={this.handleNameChange('work_authorization')}
                             /> 
-                        
-                            {/* <button
-                            className="formButton"
-                            onClick={this.next}
-                            >NEXT</button> */}
     
                             <button
                             className="formButton"

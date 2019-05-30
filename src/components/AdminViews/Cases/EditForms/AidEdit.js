@@ -38,12 +38,10 @@ class AidEdit extends Component {
     next = () => {
         this.props.dispatch({type:'PUT_AID', payload: this.state.aidForm});
         this.props.history.push(`/edit-case?id=${this.state.aidForm.case_id}`)
-        console.log(this.state);   
+        // console.log(this.state);   
     }
 
     handleChange = propertyName => event => {
-        console.log(`handleChange has been fired with this propertyName:`, [propertyName]);
-
         this.setState({
             aidForm: { 
                 ...this.state.aidForm,
@@ -58,7 +56,7 @@ class AidEdit extends Component {
             <Nav pageName='AID FORM' backArrow='/cases' home='/cases' />
             
                 <center>
-                    {JSON.stringify(this.props.reduxState.aidReducer)}
+                    {/* {JSON.stringify(this.props.reduxState.aidReducer)} */}
                 <div>
                 {this.props.reduxState.aidReducer.map((aid, index) =>
 
@@ -69,6 +67,7 @@ class AidEdit extends Component {
                         defaultValue={aid.grocery_program}
                         onChange={this.handleChange(`grocery_program`)}
                         >
+                            <option>True or False </option>
                             <option value={true}>True</option>
                             <option value={false}>False</option>
                         </select>

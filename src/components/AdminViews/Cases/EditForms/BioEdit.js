@@ -71,7 +71,7 @@ class BioEdit extends Component {
    next = () => {
     this.props.dispatch({type:'PUT_BIO', payload: this.state.bioForm});
     this.props.history.push(`/edit-case?id=${this.state.bioForm.case_id}`)
-    console.log(this.state);
+    // console.log(this.state);
    }
 
     backButton = () => {

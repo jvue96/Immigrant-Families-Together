@@ -9,11 +9,15 @@ class SchoolForm extends Component {
 
 componentDidMount = () => {
     const searchObject = qs.parse(this.props.location.search)
-    console.log('schoolForm searchObject', searchObject);
+    // setting properties to null allow users to post null values into the database
+    // which can then be edited later 
     this.setState({
         schoolForm:{
             ...this.state.schoolForm,
             case_id: searchObject.id,
+            name: null, 
+            phone: null, 
+            email: null, 
         }
     })  
 }
@@ -68,11 +72,11 @@ next = () => {
                   
                     <div className="formDivs">
                         <label>SCHOOL NAME</label> 
-                        <input type="text" value={this.state.schoolForm.name} onChange={this.handleChange('name')}/>
+                        <input type="text" value={this.state.schoolForm.name || ''} onChange={this.handleChange('name')}/>
                         <label>PHONE NUMBER</label> 
-                        <input type="text" value={this.state.schoolForm.phone} onChange={this.handleChange('phone')}/>
+                        <input type="text" value={this.state.schoolForm.phone || ''} onChange={this.handleChange('phone')}/>
                         <label>EMAIL</label> 
-                        <input type="text" value={this.state.schoolForm.email} onChange={this.handleChange('email')}/> 
+                        <input type="text" value={this.state.schoolForm.email || ''} onChange={this.handleChange('email')}/> 
                         <button
                             className="formButton"
                             onClick={this.next}>
