@@ -51,9 +51,10 @@ class ChildForm extends Component {
       test = () => {
         this.setState({
             childForm: {
-                child_name: 'juno',
-                child_dob: '2019-12-12',
-                child_info: 'rock star',
+                child_name: 'George',
+                /* check if group has decided if database table dob is varchar or date, delete this line when done */
+                child_dob: '2014-12-12',
+                child_info: null,
                 case_id: this.props.reduxState.caseReducer.rows[0].id,
             }
         });
@@ -131,7 +132,7 @@ class ChildForm extends Component {
                 onClick={this.next}> Next
                 </button>
 <br/>
-                 <button className="formButton" 
+                 <button className="hiddenButton" 
                  onClick={this.test}> 
                  TEST DATA
                  </button>

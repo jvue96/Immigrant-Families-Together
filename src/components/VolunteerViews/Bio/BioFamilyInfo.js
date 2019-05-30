@@ -54,7 +54,7 @@ class BioFamilyInfo extends Component {
                             <label>EMAIL:</label>  
                             <p className="PCard"></p>
                             <hr/>
-                            <label>ADDRESS:</label>  
+                            <label>REGION/STATE:</label>  
                             <p className="PCard"></p>
                             <hr/>
                             <label>REFERRED BY:</label>  
@@ -100,7 +100,7 @@ class BioFamilyInfo extends Component {
                                     <label>EMAIL:</label>  
                                     <p className="PCard">{bio.email}</p>
                                     <hr/>
-                                    <label>ADDRESS:</label>  
+                                    <label>REGION/STATE:</label>  
                                     <p className="PCard">{bio.address}</p>
                                     <hr/>
                                     <label>REFERRED BY:</label>  

@@ -49,15 +49,15 @@ class BondForm extends Component {
         this.setState({
             legalInfoForm: {
                 case_id: this.props.reduxState.caseReducer.rows[0].id,
-                ice_facility: 'North of the Border',
-                bond_amount: 50000,
-                bond_paid_date: '2019-04-09',
-                bond_paid_by: 'GoFundMe',
-                foster_facility: 'Twin Peaks Housing',
-                foster_facility_address: '666 Erie Pine Rd, Phoenix, AZ',
+                ice_facility: 'Rio Grande Detention Center',
+                bond_amount: 20000,
+                bond_paid_date: null,
+                bond_paid_by: 'GoFundMe in Progress',
+                foster_facility: null,
+                foster_facility_address: null,
                 attorney: 'Fabian Hoffner',
                 attorney_phone: '612-555-7532',
-                attorney_fee: 'Probono',
+                attorney_fee: 'Pro Bono',
                 legal_notes: 'Fabian has a distant relation with the family and offered to provide services at no charge',
             }
         })
@@ -147,7 +147,7 @@ class BondForm extends Component {
                         onClick={this.next}
                         >NEXT</button>
 
-                        <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
+                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     </div>
                 </center>
             </div>

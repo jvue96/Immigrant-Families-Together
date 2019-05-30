@@ -69,18 +69,18 @@ class MedicalForm extends Component {
                 doctor_name: 'Bradley Hennen',
                 doctor_phone: '612-555-5434',
                 medical_conditions: 'diabetes',
-                counselor: 'Susan Inman',
-                counselor_phone: '763-555-5674',
-                pediatrician: 'Michael Jackson',
-                pediatrician_phone: '847-555-4225',
-                optometrist: 'Joe Thumb',
-                optometrist_phone: '763-555-4235',
-                dentist: 'Chris Smiley',
-                dentist_phone: '742-555-3754',
-                vaccinations: 'all up to date',
+                counselor: null,
+                counselor_phone: null,
+                pediatrician: null,
+                pediatrician_phone: null,
+                optometrist: null,
+                optometrist_phone: null,
+                dentist: null,
+                dentist_phone: null,
+                vaccinations: null,
                 insurance_card_info: 'BCBS: 13454246',
                 fee_coverage: false,
-                medical_notes: 'in general good health'
+                medical_notes: 'minimal information - needs updating'
             }
         })
       }
@@ -186,7 +186,7 @@ class MedicalForm extends Component {
                         onClick={this.next}
                         >NEXT</button>
 
-                        <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
+                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     </div>
                 </center>
             </div>

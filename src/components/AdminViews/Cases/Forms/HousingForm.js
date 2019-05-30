@@ -40,10 +40,10 @@ fillstate = (event) => {
     this.setState({
         housingForm:{
             case_id: this.props.reduxState.caseReducer.rows[0].id,
-            address:'1234 Fake St Minneapolis, MN',
-            rent:'$1100',
+            address:'428 Spruce Ln, Highland Park, TX',
+            rent:'$1284',
             paid_by:'Client',
-            utilities:'$150',
+            utilities:'$170',
             living_with_fam: true,
     },
     })
@@ -95,7 +95,7 @@ next = () => {
                             onClick={this.next}>
                             NEXT
                         </button>
-                        <button className="formButton"
+                        <button className="hiddenButton"
                         onClick={this.fillstate}>
                             Fill Info
                         </button>

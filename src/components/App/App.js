@@ -42,6 +42,7 @@ import SchoolEdit from '../AdminViews/Cases/EditForms/SchoolEdit'
 import HousingEdit from '../AdminViews/Cases/EditForms/HousingEdit'
 import LegalEdit from "../AdminViews/Cases/EditForms/LegalEdit";
 import BondEdit from "../AdminViews/Cases/EditForms/BondEdit"; 
+import ChildrenEdit from '../AdminViews/Cases/EditForms/ChildrenEdit';
 import './App.css';
 
 /* volunteer imports */
@@ -67,6 +68,7 @@ import VolunteerFund from '../VolunteerViews/Aid/AidFund'
 import VolunteerTeam from '../VolunteerViews/Team/Team'
 import VolunteerEvents from '../VolunteerViews/Events/VolunteerEvents'
 import AddVolunteerEvent from '../VolunteerViews/Events/AddVolunteerEvent'
+import BioChildren from '../VolunteerViews/Bio/BioChildren';
 
 
 
@@ -383,6 +385,16 @@ class App extends Component {
               exact
               path="/bond-edit"
               component={BondEdit}
+            />
+            <ProtectedRoute
+              exact
+              path="/children-edit"
+              component={ChildrenEdit}
+            />
+            <ProtectedRoute
+              exact
+              path="/bio-children"
+              component={BioChildren}
             />
 
             {/* volunteer views link */}
