@@ -73,21 +73,22 @@ class SchoolEdit extends Component {
 
         // if the reducer is empty, display input with null values to edit 
         let checkSchool; 
+        let state = this.state.schoolForm;
         if(this.props.reduxState.schoolReducer.length === 0) {
             checkSchool = <div className="formDivs">
                             <label>SCHOOL NAME</label> 
                             <input type="text"
-                            defaultValue={this.state.schoolForm.name}
+                            defaultValue={state.name}
                             onChange={this.handleChange('name')}/>
 
                             <label>PHONE NUMBER</label> 
                             <input type="text"
-                            defaultValue={this.state.schoolForm.phone}
+                            defaultValue={state.phone}
                             onChange={this.handleChange('phone')}/>
 
                             <label>EMAIL</label> 
                             <input type="text"
-                            defaultValue={this.state.schoolForm.email}
+                            defaultValue={state.email}
                             onChange={this.handleChange('email')}/>
 
                             <button
