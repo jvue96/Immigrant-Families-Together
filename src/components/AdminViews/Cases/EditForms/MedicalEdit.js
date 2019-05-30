@@ -8,8 +8,33 @@ class MedicalEdit extends Component {
    
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('medicalForm searchObject', searchObject);
         this.props.dispatch({ type: 'GET_MEDICAL', payload: searchObject.id });
+        // setState to null if the reducer is empty
+        // enables posting null values that are left unchanged to edit later 
+        if(this.props.reduxState.medicalReducer.length === 0) {
+        this.setState({
+            medicalForm: {
+                case_id: searchObject.id,
+                doctor_name: null, 
+                doctor_phone: null, 
+                medical_conditions: null, 
+                counselor: null, 
+                counselor_phone: null,  
+                pediatrician: null, 
+                pediatrician_phone: null, 
+                optometrist: null, 
+                optometrist_phone: null,  
+                dentist: null, 
+                dentist_phone: null, 
+                vaccinations: null, 
+                insurance_card_info: null,  
+                fee_coverage: null,  
+                medical_notes: null, 
+                data:false
+            }
+        })
+            
+        } else {
         this.setState({
             medicalForm:{
                 ...this.state.medicalForm,
@@ -29,12 +54,19 @@ class MedicalEdit extends Component {
                 insurance_card_info: this.props.reduxState.medicalReducer[0].insurance_card_info, 
                 fee_coverage: this.props.reduxState.medicalReducer[0].fee_coverage, 
                 medical_notes: this.props.reduxState.medicalReducer[0].medical_notes, 
-            }
-        })  
+                data: true, 
+                }
+            })  
+        }
     }
 
+    // conditional to determine a POST or a PUT 
     next = () => {
-        this.props.dispatch({ type: 'PUT_MEDICAL', payload: this.state.medicalForm })
+        if (this.state.medicalForm.data === false) {
+            this.props.dispatch({ type: 'ADD_MEDICAL', payload: this.state.medicalForm })
+        } else (
+            this.props.dispatch({ type: 'PUT_MEDICAL', payload: this.state.medicalForm })
+        )
         this.props.history.push(`/edit-case?id=${this.state.medicalForm.case_id}`)
     }
 
@@ -55,7 +87,8 @@ class MedicalEdit extends Component {
             vaccinations: '',
             insurance_card_info: '',
             fee_coverage: '',
-            medical_notes: ''
+            medical_notes: '',
+            data: '', 
         }
     }
 
@@ -69,11 +102,105 @@ class MedicalEdit extends Component {
 }
     
     render() {
+
+        // if the reducer is empty, display input with null values to edit 
+        let checkMedical; 
+        let state = this.state.medicalForm; 
+        if(this.props.reduxState.medicalReducer.length === 0) {
+            checkMedical = <div className="formDivs">
+                                <label>PRIMARY DOCTOR NAME</label> 
+                                        <input type="text"
+                                        defaultValue={state.doctor_name}
+                                        onChange={this.handleChange('doctor_name')}/> 
+                                        
+                                        <label>PRIMARY DOCTOR PHONE</label> 
+                                        <input type="text"
+                                        defaultValue={state.doctor_phone}
+                                        onChange={this.handleChange('doctor_phone')}/> 
+                                    
+                                        <label>MEDICAL CONDITIONS</label> 
+                                        <input type="text"
+                                        defaultValue={state.medical_conditions}
+                                        onChange={this.handleChange('medical_conditions')}/> 
+
+                                        <label>COUNSELOR NAME</label> 
+                                        <input type="text"
+                                        defaultValue={state.counselor}
+                                        onChange={this.handleChange('counselor')}/> 
+                                        
+                                        <label>COUNSELOR PHONE</label> 
+                                        <input type="text" 
+                                        defaultValue={state.counselor_phone}
+                                        onChange={this.handleChange('counselor_phone')}/> 
+                                        
+                                        <label>PEDIATRICIAN NAME</label> 
+                                        <input type="text"
+                                        defaultValue={state.pediatrician}
+                                        onChange={this.handleChange('pediatrician')}/> 
+                                        
+                                        <label>PEDIATRICIAN PHONE</label> 
+                                        <input type="text"
+                                        defaultValue={state.pediatrician_phone}
+                                        onChange={this.handleChange('pediatrician_phone')}/> 
+                                    
+                                        <label>OPTOMETRIST NAME</label> 
+                                        <input type="text"
+                                        defaultValue={state.optometrist}
+                                        onChange={this.handleChange('optometrist')}/> 
+                                        
+                                        <label>OPTOMETRIST PHONE</label> 
+                                        <input type="text"
+                                        defaultValue={state.optometrist_phone}
+                                        onChange={this.handleChange('optometrist_phone')}/> 
+                                        
+                                        <label>DENTIST NAME</label> 
+                                        <input type="text"
+                                        defaultValue={state.dentist}
+                                        onChange={this.handleChange('dentist')}/> 
+                                        
+                                        <label>DENTIST PHONE</label> 
+                                        <input type="text"
+                                        defaultValue={state.dentist_phone}
+                                        onChange={this.handleChange('dentist_phone')}/> 
+                                        
+                                        <label>VACCINATIONS</label> 
+                                        <input type="text"
+                                        defaultValue={state.vaccinations}
+                                        onChange={this.handleChange('vaccinations')}/> 
+                                        
+                                        <label>INSRUANCE CARD INFO</label> 
+                                        <input type="text"
+                                        defaultValue={state.insurance_card_info}
+                                        onChange={this.handleChange('insurance_card_info')}/> 
+                                        
+                                        <label>FEE COVERAGE</label> 
+                                        <select
+                                        defaultValue={state.fee_coverage}
+                                        onChange={this.handleChange('fee_coverage')}>
+                                        <option> - </option> 
+                                        <option value={true}>True</option>
+                                        <option value={false}>False</option>
+                                        </select> 
+                                        
+                                        <label>MEDICAL NOTES</label> 
+                                        <input type="text"
+                                        defaultValue={state.medical_notes}
+                                        onChange={this.handleChange('medical_notes')}/> 
+
+                                        <button
+                                        className="formButton"
+                                        onClick={this.next}
+                                        >UPDATE FORM
+                                        </button>
+                            </div>
+        } 
+
         return (
             <div>
                 <Nav pageName='MEDICAL FORM' home='/home'/>
 
                 <center>
+                {checkMedical}
                 {this.props.reduxState.medicalReducer.map((medical, index) =>
 
                     <div className="formDivs" key={index}>
@@ -172,6 +299,6 @@ class MedicalEdit extends Component {
 const mapStateToProps = reduxState => ({
     reduxState,
 });
-  
-  // this allows us to use <App /> in index.js
-  export default withRouter(connect(mapStateToProps)(MedicalEdit));
+
+// this allows us to use <App /> in index.js
+export default withRouter(connect(mapStateToProps)(MedicalEdit));
