@@ -60,7 +60,7 @@ class LegalEdit extends Component {
         }
     }
 
-    // dispatch PUT and go back to previous page 
+    // conditional to determine a POST or a PUT 
     next = () => {
         if (this.state.legalForm.data === false) {
             this.props.dispatch({ type: 'ADD_LEGAL', payload: this.state.legalForm })
