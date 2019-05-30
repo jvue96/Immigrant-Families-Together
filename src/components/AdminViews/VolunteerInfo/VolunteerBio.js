@@ -64,7 +64,7 @@ class VolunteerBio extends Component {
                             <label>NAME</label>  
                             <p className="PCard">{users.first_name} {users.last_name}</p>
                         </div>
-                        
+                            <hr />            
                         <div>
                             <label>USERNAME</label>  
                             <p className="PCard">{users.username}</p>
