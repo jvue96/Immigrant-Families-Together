@@ -105,76 +105,77 @@ class MedicalEdit extends Component {
 
         // if the reducer is empty, display input with null values to edit 
         let checkMedical; 
+        let state = this.state.medicalForm; 
         if(this.props.reduxState.medicalReducer.length === 0) {
             checkMedical = <div className="formDivs">
                                 <label>PRIMARY DOCTOR NAME</label> 
                                         <input type="text"
-                                        defaultValue={this.state.medicalForm.doctor_name}
+                                        defaultValue={state.doctor_name}
                                         onChange={this.handleChange('doctor_name')}/> 
                                         
                                         <label>PRIMARY DOCTOR PHONE</label> 
                                         <input type="text"
-                                        defaultValue={this.state.medicalForm.doctor_phone}
+                                        defaultValue={state.doctor_phone}
                                         onChange={this.handleChange('doctor_phone')}/> 
                                     
                                         <label>MEDICAL CONDITIONS</label> 
                                         <input type="text"
-                                        defaultValue={this.state.medicalForm.medical_conditions}
+                                        defaultValue={state.medical_conditions}
                                         onChange={this.handleChange('medical_conditions')}/> 
 
                                         <label>COUNSELOR NAME</label> 
                                         <input type="text"
-                                        defaultValue={this.state.medicalForm.counselor}
+                                        defaultValue={state.counselor}
                                         onChange={this.handleChange('counselor')}/> 
                                         
                                         <label>COUNSELOR PHONE</label> 
                                         <input type="text" 
-                                        defaultValue={this.state.medicalForm.counselor_phone}
+                                        defaultValue={state.counselor_phone}
                                         onChange={this.handleChange('counselor_phone')}/> 
                                         
                                         <label>PEDIATRICIAN NAME</label> 
                                         <input type="text"
-                                        defaultValue={this.state.medicalForm.pediatrician}
+                                        defaultValue={state.pediatrician}
                                         onChange={this.handleChange('pediatrician')}/> 
                                         
                                         <label>PEDIATRICIAN PHONE</label> 
                                         <input type="text"
-                                        defaultValue={this.state.medicalForm.pediatrician_phone}
+                                        defaultValue={state.pediatrician_phone}
                                         onChange={this.handleChange('pediatrician_phone')}/> 
                                     
                                         <label>OPTOMETRIST NAME</label> 
                                         <input type="text"
-                                        defaultValue={this.state.medicalForm.optometrist}
+                                        defaultValue={state.optometrist}
                                         onChange={this.handleChange('optometrist')}/> 
                                         
                                         <label>OPTOMETRIST PHONE</label> 
                                         <input type="text"
-                                        defaultValue={this.state.medicalForm.optometrist_phone}
+                                        defaultValue={state.optometrist_phone}
                                         onChange={this.handleChange('optometrist_phone')}/> 
                                         
                                         <label>DENTIST NAME</label> 
                                         <input type="text"
-                                        defaultValue={this.state.medicalForm.dentist}
+                                        defaultValue={state.dentist}
                                         onChange={this.handleChange('dentist')}/> 
                                         
                                         <label>DENTIST PHONE</label> 
                                         <input type="text"
-                                        defaultValue={this.state.medicalForm.dentist_phone}
+                                        defaultValue={state.dentist_phone}
                                         onChange={this.handleChange('dentist_phone')}/> 
                                         
                                         <label>VACCINATIONS</label> 
                                         <input type="text"
-                                        defaultValue={this.state.medicalForm.vaccinations}
+                                        defaultValue={state.vaccinations}
                                         onChange={this.handleChange('vaccinations')}/> 
                                         
                                         <label>INSRUANCE CARD INFO</label> 
                                         <input type="text"
-                                        defaultValue={this.state.medicalForm.insurance_card_info}
+                                        defaultValue={state.insurance_card_info}
                                         onChange={this.handleChange('insurance_card_info')}/> 
                                         
                                         <label>FEE COVERAGE</label> 
                                         <select
-                                        defaultValue={this.state.medicalForm.fee_coverage}
+                                        defaultValue={state.fee_coverage}
                                         onChange={this.handleChange('fee_coverage')}>
                                         <option> - </option> 
                                         <option value={true}>True</option>
@@ -183,8 +184,14 @@ class MedicalEdit extends Component {
                                         
                                         <label>MEDICAL NOTES</label> 
                                         <input type="text"
-                                        defaultValue={this.state.medicalForm.medical_notes}
+                                        defaultValue={state.medical_notes}
                                         onChange={this.handleChange('medical_notes')}/> 
+
+                                        <button
+                                        className="formButton"
+                                        onClick={this.next}
+                                        >UPDATE FORM
+                                        </button>
                             </div>
         } 
 
