@@ -8,9 +8,9 @@ class MedicalEdit extends Component {
    
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
+        this.props.dispatch({ type: 'GET_MEDICAL', payload: searchObject.id });
         // setState to null if the reducer is empty
         // enables posting null values that are left unchanged to edit later 
-        this.props.dispatch({ type: 'GET_MEDICAL', payload: searchObject.id });
         if(this.props.reduxState.medicalReducer.length === 0) {
         this.setState({
             medicalForm: {
@@ -30,7 +30,7 @@ class MedicalEdit extends Component {
                 insurance_card_info: null,  
                 fee_coverage: null,  
                 medical_notes: null, 
-                data:true
+                data:false
             }
         })
             
@@ -54,7 +54,7 @@ class MedicalEdit extends Component {
                 insurance_card_info: this.props.reduxState.medicalReducer[0].insurance_card_info, 
                 fee_coverage: this.props.reduxState.medicalReducer[0].fee_coverage, 
                 medical_notes: this.props.reduxState.medicalReducer[0].medical_notes, 
-                data: false, 
+                data: true, 
                 }
             })  
         }
@@ -62,7 +62,7 @@ class MedicalEdit extends Component {
 
     // conditional to determine a POST or a PUT 
     next = () => {
-        if (this.state.medicalForm.data === true) {
+        if (this.state.medicalForm.data === false) {
             this.props.dispatch({ type: 'ADD_MEDICAL', payload: this.state.medicalForm })
         } else (
             this.props.dispatch({ type: 'PUT_MEDICAL', payload: this.state.medicalForm })
@@ -106,7 +106,7 @@ class MedicalEdit extends Component {
         // if the reducer is empty, display input with null values to edit 
         let checkMedical; 
         if(this.props.reduxState.medicalReducer.length === 0) {
-            checkMedical = <div>
+            checkMedical = <div className="formDivs">
                                 <label>PRIMARY DOCTOR NAME</label> 
                                         <input type="text"
                                         defaultValue={this.state.medicalForm.doctor_name}
