@@ -44,17 +44,17 @@ class BioForm extends Component {
         this.setState({
             bioForm: {
                 case_id: searchObject.id,
-                first_name:'Mary',
-                last_name:'Mosman',
+                first_name:'Jose',
+                last_name:'Rodriquez',
                 dob:'1982-04-07',
-                spouse_first_name:'Rick',
+                spouse_first_name:'Marie',
                 spouse_dob:'1976-10-31',
                 phone:'555-555-5555',
-                encrypted: 'MosStar',
-                email:'MMosman@gmail.com',
-                address:'333 Spruce St Burnsville MN',
+                encrypted: null,
+                email:'JSR67@gmail.com',
+                address:'Highland Park, Texas',
                 referred_by:'John Doe',
-                reference_date:'2019-01-05',
+                reference_date:'2019-06-02',
                 passport: !this.state.bioForm.passport,
                 us_id: !this.state.bioForm.us_id,
             }
@@ -107,7 +107,7 @@ class BioForm extends Component {
                         <input type="date" value={this.state.bioForm.dob} onChange={this.handleChange('dob')} /> 
                         <label>SPOUSE NAME</label> 
                         <input type="text" value={this.state.bioForm.spouse_first_name} onChange={this.handleChange('spouse_first_name')}/> 
-                        <label>SPOUNSE D.O.B</label> 
+                        <label>SPOUSE D.O.B</label> 
                         <input type="date" value={this.state.bioForm.spouse_dob} onChange={this.handleChange('spouse_dob')}/> 
                         <label>PHONE</label> 
                         <input type="text" value={this.state.bioForm.phone} onChange={this.handleChange('phone')} /> 
@@ -118,7 +118,7 @@ class BioForm extends Component {
                         <input type="text" 
                          value={this.state.bioForm.email} onChange={this.handleChange('email')} 
                         /> 
-                        <label>ADDRESS</label> 
+                        <label>REGION/STATE</label> 
                         <input type="text"
                          value={this.state.bioForm.address} onChange={this.handleChange('address')} /> 
                         <label>REFERRED BY</label> 
@@ -151,7 +151,7 @@ class BioForm extends Component {
                             <option value={false}>False</option>
                         </select>
                         <button className="formButton" onClick={this.next}>NEXT</button>
-                        <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
+                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                         
                     </div>
                 </center>

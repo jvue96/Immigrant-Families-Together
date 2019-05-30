@@ -8,7 +8,7 @@ router.post('/medical', (req, res) => {
     console.log('Adding in medical:', medical);
     let sqlText = `INSERT INTO medical (case_id, doctor_name, doctor_phone, medical_conditions, counselor, counselor_phone, pediatrician, pediatrician_phone, optometrist, optometrist_phone, dentist, dentist_phone, vaccinations, insurance_card_info, fee_coverage, medical_notes) VALUES 
     ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)`;
-    pool.query(sqlText, [medical.case_id, medical.doctor_name, medical.doctor_phone, medical.medical_conditions, medical.counselor, medical.counselor_phone, medical.pediatrician, medical.pediatrician_phone, medical.optometrist, medical.optometrist_phone, medical.dentist, medical.dentist_phone, medical.vaccinations, medical.insurance_card_info, medical.fee_coverage, medical.medical_notes])
+    pool.query(sqlText, [medical.case_id, medical.doctor_name, medical.doctor_phone, medical.medical_conditions, medical.counselor,medical.counselor_phone, medical.pediatrician,medical.pediatrician_phone, medical.optometrist, medical.optometrist_phone, medical.dentist, medical.dentist_phone, medical.vaccinations, medical.insurance_card_info, medical.fee_coverage, medical.medical_notes])
       .then( (response) => {
         res.sendStatus(201);
       })
@@ -152,7 +152,8 @@ router.get('/medical/:id', (req, res) => {
     let children = req.body; 
     
     try {
-
+      //MOVING LOOP
+      await connection.query('BEGIN');
       for(let i = 0; i< children.length; i++) {
 
         let id = children[i].case_id;
@@ -162,7 +163,7 @@ router.get('/medical/:id', (req, res) => {
 
       console.log(name, dob, info, id);
   
-      await connection.query('BEGIN');
+      // await connection.query('BEGIN');
       const sqlText = `INSERT INTO primary_children
                       (child_name, child_dob, child_info, case_id)
                       VALUES ($1, $2, $3, $4);`;
@@ -172,8 +173,13 @@ router.get('/medical/:id', (req, res) => {
        info,
        id
       ]);       
-      await connection.query('COMMIT');
-    }}
+      // await connection.query('COMMIT');
+    }
+    //MOVING COMMIT AT END OF LOOP
+    await connection.query('COMMIT');
+  }
+ 
+    
     catch ( error ) {
       await connection.query('ROLLBACK');
       console.log(`Error posting chilren form`, error);
@@ -187,15 +193,74 @@ router.get('/medical/:id', (req, res) => {
     }
   });
 
-  router.get('/children', (req, res) => {
-    console.log('Getting all medical info');
-    pool.query(`SELECT * FROM "primary_children"`)
+  router.get('/children/:id', (req, res) => {
+    console.log('Getting all children info', req.params.id);
+    const sqlText = `SELECT * FROM primary_children WHERE case_id = $1`
+    pool.query(sqlText, [req.params.id])
     .then((results) => {
         res.send(results.rows)
     }).catch((error) => {
         console.log('Something went wrong getting the information from the children forms', error);
     })
     })
+
+  router.put('/edit-children/:id', async(req, res) => {
+
+    const connection = await pool.connect()
+    let children = req.body; 
+    
+    try {
+      //MOVING LOOP
+      await connection.query('BEGIN');
+      for(let i = 0; i< children.length; i++) {
+
+        let id = children[i].case_id;
+        let name = children[i].child_name;
+        let dob = children[i].child_dob;
+        let info = children[i].child_info;
+
+      console.log(name, dob, info, id);
+  
+      // await connection.query('BEGIN');
+      const sqlText = `UPDATE "primary_children" SET "child_name" = $1, "child_dob" = $2, "child_info" = $3 WHERE "case_id" = $4;`;
+      await connection.query( sqlText, [
+       name, 
+       dob,
+       info,
+       id
+      ]);       
+      // await connection.query('COMMIT');
+    }
+    //MOVING COMMIT AT END OF LOOP
+    await connection.query('COMMIT');
+  }
+    catch ( error ) {
+      await connection.query('ROLLBACK');
+      console.log(`Error posting chilren form`, error);
+      res.sendStatus(500); 
+    } finally {
+      // Always runs - both after successful try & after catch
+      // Put the client connection back in the pool
+      // This is super important! 
+      res.sendStatus(200); 
+      connection.release()
+    }
+  });
+
+
+
+  //   let children = req.body;
+  //   console.log('PUT in children edit:', children);
+  //   let sqlText = `UPDATE "primary_children" SET "child_name" = $1, "child_dob" = $2, "child_info" = $3 WHERE "case_id" = $4`;
+  //   pool.query(sqlText, [children.child_name, children.child_dob, children.child_info, children.case_id])
+  //     .then( (response) => {
+  //       res.sendStatus(201);
+  //     })
+  //     .catch( (error) => {
+  //       console.log('Failed to PUT for aid form edits', error);
+  //       res.sendStatus(500);
+  //     })
+  // })
 
   router.post('/aid', (req, res) => {
     let aid = req.body;

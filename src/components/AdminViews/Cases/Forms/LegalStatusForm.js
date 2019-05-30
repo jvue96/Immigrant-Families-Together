@@ -36,10 +36,10 @@ class LegalStatusForm extends Component {
         this.setState({
             legalForm: {
                 case_id: this.props.reduxState.caseReducer.rows[0].id,
-                last_court_date: '2019-12-12',
-                last_court_date_outcome: 'deferment',
-                next_court_date: '2019-12-12', 
-                next_court_date_outcome: 'sentancing', 
+                last_court_date: null,
+                last_court_date_outcome: null,
+                next_court_date: '2019-06-12', 
+                next_court_date_outcome: 'first court appearance', 
                 asylum_application: false,
                 work_authorization: false,
             }
@@ -117,7 +117,7 @@ class LegalStatusForm extends Component {
                             onClick={this.next}
                             >COMPLETE CASE</button>
 
-                        <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
+                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                         </div>
                     </center>
             </div>

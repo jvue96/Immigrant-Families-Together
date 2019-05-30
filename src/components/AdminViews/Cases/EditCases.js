@@ -13,6 +13,7 @@ class EditCases extends Component {
         this.props.dispatch({ type: 'GET_BIO_INFO', payload: searchObject.id });
         this.props.dispatch({ type: 'GET_MEDICAL', payload: searchObject.id });
         this.props.dispatch({ type: 'GET_SCHOOL', payload: searchObject.id });
+        this.props.dispatch({ type: 'GET_CHILDREN', payload: searchObject.id });
         this.props.dispatch({ type: 'GET_HOUSING', payload: searchObject.id });
         this.props.dispatch({ type: 'GET_LEGAL', payload: searchObject.id });
         this.props.dispatch({ type: 'GET_BOND', payload: searchObject.id });
@@ -47,6 +48,9 @@ class EditCases extends Component {
     }
     legalStatusForm = () => {
         this.props.history.push(`/legal-edit?id=${this.state.formRoutes.id}`)
+    }
+    childrenForm = () => {
+        this.props.history.push(`/children-edit?id=${this.state.formRoutes.id}`)
     }
     
     state = {
@@ -114,6 +118,7 @@ class EditCases extends Component {
                     {div} */}
                     <div>
                         <button className="adminMenuButtons" onClick={this.bioForm}>EDIT GENERAL BIO</button>
+                        <button className="adminMenuButtons" onClick={this.childrenForm}>EDIT CHILDREN INFO</button>
                         <button className="adminMenuButtons" onClick={this.medicalForm}>EDIT MEDICAL</button>
                         <button className="adminMenuButtons" onClick={this.schoolForm}>EDIT SCHOOL</button>
                         <button className="adminMenuButtons" onClick={this.housingForm}>EDIT HOUSING</button>

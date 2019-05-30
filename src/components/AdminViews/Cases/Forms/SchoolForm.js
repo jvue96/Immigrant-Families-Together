@@ -79,7 +79,7 @@ next = () => {
                             NEXT
                         </button>
 
-                        <button className="formButton"
+                        <button className="hiddenButton"
                         onClick={this.fillstate}>
                             Fill Info
                         </button>

@@ -16,6 +16,9 @@ class Bio extends Component {
         // this.props.dispatch({type: 'GET_CURRENT_ID', payload: event.currentTarget.value})
         this.props.history.push(`/bio-family-info?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
+    childrenPages = (event) => {
+        this.props.history.push(`/bio-children?id=${this.props.reduxState.caseIdReducer[0].id}`)
+    }
     housingPages = () => {
         this.props.history.push(`/bio-housing?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
@@ -92,6 +95,7 @@ class Bio extends Component {
                     <div>
                         {/* <button className="adminMenuButtons" onClick={this.infoPages} value={this.props.reduxState.caseIdReducer[0].id}>GENERAL BIO</button> */}
                         <button className="adminMenuButtons" onClick={this.infoPages}>GENERAL BIO</button>
+                        <button className="adminMenuButtons" onClick={this.childrenPages}>CHILDREN</button>
                         <button className="adminMenuButtons" onClick={this.housingPages}>HOUSING</button>
                         <button className="adminMenuButtons" onClick={this.medicalPages}>MEDICAL</button>
                         <button className="adminMenuButtons" onClick={this.schoolPages}>SCHOOL</button>

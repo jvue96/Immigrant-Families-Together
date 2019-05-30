@@ -40,9 +40,9 @@ class AidForm extends Component {
             aidForm: {
                 case_id: this.props.reduxState.caseReducer.rows[0].id,
                 grocery_program: true,
-                grocery_program_volunteer: 'Juno Vue',
-                go_fund_me: 'www.gofundme.com/CHF4567644',
-                social_worker: 'Joe Schdedyghtesz',
+                grocery_program_volunteer: 'Fred Souza',
+                go_fund_me: 'www.gofundme.com/jose-and-marie-bramblett--fund',
+                social_worker: 'Joe McCardle',
                 social_worker_phone: '763-555-7542'
             }
         })
@@ -100,7 +100,7 @@ class AidForm extends Component {
                         className="formButton"
                         onClick={this.next}
                         >NEXT</button>
-                        <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
+                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     </div>
                 </center>
             </div>

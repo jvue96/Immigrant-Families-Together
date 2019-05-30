@@ -30,8 +30,8 @@ class CreateCase extends Component {
         console.log('in autoPopulate')
         this.setState({
             caseForm: {
-                case_last_name: 'Vue',
-                case_number: '12345',
+                case_last_name: 'Rodriguez(Jose)',
+                case_number: 'TX17542',
                 status: 'ACTIVE',
             }
         })
@@ -72,7 +72,7 @@ class CreateCase extends Component {
                         className="formButton"
                         onClick={this.next}
                         >NEXT</button>
-                        <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
+                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     </div>
                 </center>
             </div>
