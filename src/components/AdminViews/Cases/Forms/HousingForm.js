@@ -95,6 +95,7 @@ next = () => {
                             onClick={this.next}>
                             NEXT
                         </button>
+                        <br/>
                         <button className="hiddenButton"
                         onClick={this.fillstate}>
                             Fill Info

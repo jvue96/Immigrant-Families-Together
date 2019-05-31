@@ -162,6 +162,7 @@ class BioForm extends Component {
                             <option value={false}>False</option>
                         </select>
                         <button className="formButton" onClick={this.next}>NEXT</button>
+                        <br/>
                         <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                         
                     </div>

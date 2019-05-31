@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Nav from '../../../Nav/Nav';
 import qs from 'query-string';
+import { throws } from 'assert';
 
 class ChildForm extends Component {
 
@@ -11,14 +12,13 @@ class ChildForm extends Component {
         // setting properties to null allow users to post null values into the database
         // which can then be edited later 
         this.setState({
-            addChild: [
-                this.state.childForm = {
+                childForm: {
+                    ...this.state.childForm,
                     case_id: this.props.reduxState.caseReducer.rows[0].id,
-                    child_name: null, 
-                    child_dob: null, 
-                    child_info: null, 
+                    // child_name: null, 
+                    // child_dob: null, 
+                    // child_info: null, 
                 }
-            ]
         })  
     }
 
@@ -40,6 +40,7 @@ class ChildForm extends Component {
     addInput = event => {
     this.setState({
         childForm: {
+            case_id: this.props.reduxState.caseReducer.rows[0].id,
             child_name: '',
             child_dob: '',
             child_info: '',
@@ -113,23 +114,23 @@ class ChildForm extends Component {
                 {/* pushes new state to children array to create multiple children */}
                 <button 
                 className="formButton"
-                onClick={this.save}> Save
+                onClick={this.save}> SUBMIT CHILD
                 </button> 
-
+                <br/>
                 {/* clears input fields to enable adding another child  */}
                 <button 
                 className="formButton"
                 style={{width: 200}}
-                onClick={this.addInput}> Add Another Child
+                onClick={this.addInput}> ADD ANOTHER CHILD
                 </button>
-
+                <br/>
                  
 
 
                 {/* dispatch to childrenSaga to post data  */}
                 <button 
                 className="formButton"
-                onClick={this.next}> Next
+                onClick={this.next}> NEXT
                 </button>
 <br/>
                  <button className="hiddenButton" 

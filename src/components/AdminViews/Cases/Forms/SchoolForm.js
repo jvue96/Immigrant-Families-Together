@@ -9,20 +9,19 @@ class SchoolForm extends Component {
 
 componentDidMount = () => {
     const searchObject = qs.parse(this.props.location.search)
-    // setting properties to null allow users to post null values into the database
-    // which can then be edited later 
     this.setState({
         schoolForm:{
             ...this.state.schoolForm,
-            case_id: searchObject.id,
-            name: null, 
-            phone: null, 
-            email: null, 
-        }
+                case_id: this.props.reduxState.caseReducer.rows[0].id,
+                name: null, 
+                phone: null, 
+                email: null, 
+            }
     })  
 }
 
 state= {
+    addSchool: [],
     schoolForm: {
         case_id: this.props.reduxState.caseReducer.rows[0].id,
         name:'',
@@ -31,6 +30,22 @@ state= {
     }
 }
 
+save = () => {
+    this.state.addSchool.push(this.state.schoolForm)
+}
+
+addInput = event => {
+    this.setState({
+        schoolForm: {
+            case_id: this.props.reduxState.caseReducer.rows[0].id,
+            name:'',
+            phone:'',
+            email:'',
+            }
+        });
+    };
+
+    
 fillstate = (event) => {
     event.preventDefault();
     this.setState({
@@ -56,9 +71,9 @@ handleChange = propertyName => event => {
 }
 
 next = () => {
-    this.props.dispatch({ type: 'ADD_SCHOOL', payload: this.state.schoolForm })
-
+    this.props.dispatch({ type: 'ADD_SCHOOL', payload: this.state.addSchool })
     this.props.history.push(`/housing-form?id=${this.state.schoolForm.case_id}`)
+    console.log(this.state);
 }
 
 
@@ -77,12 +92,25 @@ next = () => {
                         <input type="text" value={this.state.schoolForm.phone || ''} onChange={this.handleChange('phone')}/>
                         <label>EMAIL</label> 
                         <input type="text" value={this.state.schoolForm.email || ''} onChange={this.handleChange('email')}/> 
+                       
+                        <button 
+                        className="formButton"
+                        onClick={this.save}> SUBMIT SCHOOL
+                        </button> 
+
+                        <button 
+                        className="formButton"
+                        onClick={this.addInput}> ADD ANOTHER SCHOOL
+                        </button>
+                        
+                        <br/>
+
                         <button
                             className="formButton"
                             onClick={this.next}>
                             NEXT
                         </button>
-
+                        <br/>
                         <button className="hiddenButton"
                         onClick={this.fillstate}>
                             Fill Info
