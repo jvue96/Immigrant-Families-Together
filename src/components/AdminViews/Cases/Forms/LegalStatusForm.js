@@ -121,7 +121,7 @@ class LegalStatusForm extends Component {
                             className="formButton"
                             onClick={this.next}
                             >COMPLETE CASE</button>
-
+                        <br/>
                         <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                         </div>
                     </center>

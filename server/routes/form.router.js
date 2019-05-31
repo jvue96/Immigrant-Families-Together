@@ -484,20 +484,63 @@ GROUP BY cases.case_last_name, events.date, events.description, cases.case_numbe
   //   })
   // })
 
-router.post('/school', rejectUnauthenticated, (req, res) => {
-  let school = req.body;
-  console.log('Adding in school:', school);
-  let sqlText = `INSERT INTO school (name, phone, email, case_id) VALUES 
-  ($1, $2, $3, $4)`;
-  pool.query(sqlText, [school.name, school.phone, school.email, school.case_id])
-    .then( (response) => {
-      res.sendStatus(201);
-    })
-    .catch( (error) => {
-      console.log('Failed to POST school form');
-      res.sendStatus(500);
-    })
-})
+router.post('/school', rejectUnauthenticated, async(req, res) => {
+
+  const connection = await pool.connect()
+  let school = req.body; 
+  
+  try {
+    //MOVING LOOP
+    await connection.query('BEGIN');
+    for(let i = 0; i< school.length; i++) {
+
+      let case_id = school[i].case_id;
+      let name = school[i].name;
+      let phone = school[i].phone;
+      let email = school[i].email;
+      
+    console.log(case_id, name, phone, email);
+
+    // await connection.query('BEGIN');
+    const sqlText = `INSERT INTO school (name, phone, email, case_id) VALUES ($1, $2, $3, $4)`;
+    await connection.query( sqlText, [
+      name, 
+      phone,
+      email,
+      case_id
+    ]);       
+    // await connection.query('COMMIT');
+  }
+  //MOVING COMMIT AT END OF LOOP
+  await connection.query('COMMIT');
+}
+  catch ( error ) {
+    await connection.query('ROLLBACK');
+    console.log(`Error posting school form`, error);
+    res.sendStatus(500); 
+  } finally {
+    // Always runs - both after successful try & after catch
+    // Put the client connection back in the pool
+    // This is super important! 
+    res.sendStatus(200); 
+    connection.release()
+  }
+});
+
+// router.post('/school', rejectUnauthenticated, (req, res) => {
+//   let school = req.body;
+//   console.log('Adding in school:', school);
+//   let sqlText = `INSERT INTO school (name, phone, email, case_id) VALUES 
+//   ($1, $2, $3, $4)`;
+//   pool.query(sqlText, [school.name, school.phone, school.email, school.case_id])
+//     .then( (response) => {
+//       res.sendStatus(201);
+//     })
+//     .catch( (error) => {
+//       console.log('Failed to POST school form');
+//       res.sendStatus(500);
+//     })
+// })
 
 router.get('/school/:id', rejectUnauthenticated, (req, res) => {
     console.log('Getting all school info');

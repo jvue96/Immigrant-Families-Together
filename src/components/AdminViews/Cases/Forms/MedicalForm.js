@@ -185,7 +185,7 @@ class MedicalForm extends Component {
                         className="formButton"
                         onClick={this.next}
                         >NEXT</button>
-
+                        <br/>
                         <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     </div>
                 </center>
