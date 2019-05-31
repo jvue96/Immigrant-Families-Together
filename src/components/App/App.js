@@ -43,6 +43,8 @@ import HousingEdit from '../AdminViews/Cases/EditForms/HousingEdit'
 import LegalEdit from "../AdminViews/Cases/EditForms/LegalEdit";
 import BondEdit from "../AdminViews/Cases/EditForms/BondEdit"; 
 import ChildrenEdit from '../AdminViews/Cases/EditForms/ChildrenEdit';
+import CloseCase from '../AdminViews/Cases/CloseCase';
+import ConfirmClose from '../AdminViews/Cases/ConfirmClose'
 import './App.css';
 
 /* volunteer imports */
@@ -395,6 +397,16 @@ class App extends Component {
               exact
               path="/bio-children"
               component={BioChildren}
+            />
+            <ProtectedRoute
+              exact
+              path="/close-list"
+              component={CloseCase}
+            />
+            <ProtectedRoute
+              exact
+              path="/confirm-close"
+              component={ConfirmClose}
             />
 
             {/* volunteer views link */}

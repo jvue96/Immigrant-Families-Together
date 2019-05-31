@@ -640,6 +640,22 @@ router.post('/case', rejectUnauthenticated, (req, res) => {
     })
 })
 
+
+router.put('/case/:id', rejectUnauthenticated, (req, res) => {
+  let cases = req.body;
+  console.log('PUT in case closure:', cases);
+  let sqlText = `UPDATE "cases" SET "status" = $1 WHERE "id" = $2`;
+  pool.query(sqlText, [cases.status, cases.id])
+    .then( (response) => {
+      res.sendStatus(201);
+    })
+    .catch( (error) => {
+      console.log('Failed to PUT for housing form edits', error);
+      res.sendStatus(500);
+    })
+})
+
+
 router.get('/all-cases', rejectUnauthenticated, (req, res) => {
   console.log(`Getting all cases`);
 

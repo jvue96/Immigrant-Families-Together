@@ -78,6 +78,17 @@ function* getCaseId(action) {
     }
 }
 
+function* closeCase(action) {
+    console.log('PUT closing case', action.payload);
+    try {
+        const getResponse = yield axios.put(`/api/forms/case/${action.payload.id}`, action.payload);
+        yield put({ type: 'SET_CASE', payload: getResponse.data });
+    } catch (error) {
+        console.log(`Couldn't PUT the current user`);
+        alert(`Sorry couldn't edit the current entry. Try again later.`)
+    }
+  }
+
 function* caseSaga() {
     yield takeLatest('ADD_CASE', postCase);
     /* volunteer landing page  */
@@ -86,6 +97,7 @@ function* caseSaga() {
     yield takeLatest('GET_CURRENT_ID', getCaseId);
     yield takeLatest('GET_CASES_SEARCH', getCaseSearch)
     yield takeLatest('ASSIGN_CASE', assignCase)
+    yield takeLatest('CLOSE_CASE', closeCase)
 }
 
 export default caseSaga;
