@@ -95,7 +95,7 @@ next = () => {
                        
                         <button 
                         className="formButton"
-                        onClick={this.save}> Save
+                        onClick={this.save}> SUBMIT SCHOOL
                         </button> 
 
                         <button 

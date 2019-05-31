@@ -114,23 +114,23 @@ class ChildForm extends Component {
                 {/* pushes new state to children array to create multiple children */}
                 <button 
                 className="formButton"
-                onClick={this.save}> Save
+                onClick={this.save}> SUBMIT CHILD
                 </button> 
-
+                <br/>
                 {/* clears input fields to enable adding another child  */}
                 <button 
                 className="formButton"
                 style={{width: 200}}
-                onClick={this.addInput}> Add Another Child
+                onClick={this.addInput}> ADD ANOTHER CHILD
                 </button>
-
+                <br/>
                  
 
 
                 {/* dispatch to childrenSaga to post data  */}
                 <button 
                 className="formButton"
-                onClick={this.next}> Next
+                onClick={this.next}> NEXT
                 </button>
 <br/>
                  <button className="hiddenButton" 
