@@ -21,6 +21,23 @@ class RegisterVolunteer extends Component {
         admin: '',
     };
 
+    fillstate = (event) => {
+      event.preventDefault();
+      this.setState({
+        username: 'Joseph S',
+        first_name: 'Joseph',
+        last_name: 'Schledtrencherenshcfger',
+        password: 'joseph',
+        phone: '555-555-5555',
+        email: 'bigred@gmail.com',
+        encrypted: 'drapesMatch666',
+        address: '5472 River Terrace Ct, El Paso, Tx',
+        skills: 'Class A CDL',
+        second_language: 'none',
+        admin: 'no',
+      })
+      }
+
     handleInputChangeFor = propertyName => (event) => {
         this.setState({
           [propertyName]: event.target.value,
@@ -153,6 +170,11 @@ class RegisterVolunteer extends Component {
               />
             
                     <button className="formButton" onClick={this.register}>REGISTER</button>
+                    <br/>
+                    <button className="hiddenButton"
+                        onClick={this.fillstate}>
+                            Fill Info
+                        </button>
                     </div>
                 </center>
             </div>
