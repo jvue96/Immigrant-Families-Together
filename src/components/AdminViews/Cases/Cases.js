@@ -16,6 +16,10 @@ class Cases extends Component {
         this.props.history.push('/edit-list')
     }
 
+    closeCase = () => {
+        this.props.history.push('/close-list')
+    }
+
     render() {
         return (
             <div>
@@ -36,6 +40,10 @@ class Cases extends Component {
                    <button className="adminMenuButtons"
                    onClick={this.editCase}
                    >EDIT EXISTING CASE</button> 
+
+                    <button className="adminMenuButtons"
+                   onClick={this.closeCase}
+                   >CLOSE CASE</button> 
                </center>
                 
             </div>
