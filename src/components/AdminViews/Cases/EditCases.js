@@ -85,7 +85,7 @@ class EditCases extends Component {
 
         return (
             <div>
-                <Nav pageName='BIO' volunteer home='/home' /> 
+                <Nav pageName='BIO' home='/home' /> 
                 <center> 
                  
                     {/* <button 
