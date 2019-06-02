@@ -100,8 +100,9 @@ class MedicalForm extends Component {
                 <Nav pageName='MEDICAL FORM' home='/home'/>
 
                 <center>
+                <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
+                
                     <div className="formDivs">
-                        
                         <label>PRIMARY DOCTOR NAME</label> 
                         <input type="text"
                         value={this.state.medicalForm.doctor_name || ''}
@@ -185,8 +186,6 @@ class MedicalForm extends Component {
                         className="formButton"
                         onClick={this.next}
                         >NEXT</button>
-                        <br/>
-                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     </div>
                 </center>
             </div>

@@ -82,6 +82,7 @@ class LegalStatusForm extends Component {
             <div>
                 <Nav pageName='LEGAL STATUS FORM' home='/home'/>
                     <center>
+                    <button className="hiddenButton" onClick={this.autoPopulate}></button> 
                         <div className="formDivs">
                             <label>LAST COURT DATE</label> 
                             <input type="date" value={this.state.legalForm.last_court_date || ''} 
@@ -121,8 +122,6 @@ class LegalStatusForm extends Component {
                             className="formButton"
                             onClick={this.next}
                             >COMPLETE CASE</button>
-                        <br/>
-                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                         </div>
                     </center>
             </div>

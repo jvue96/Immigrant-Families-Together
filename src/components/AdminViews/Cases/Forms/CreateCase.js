@@ -55,9 +55,9 @@ class CreateCase extends Component {
             <div>
                 <Nav pageName='CREATE CASE' home='/home' /> 
                 <center>
-                 
+                  <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     <div className="formDivs">
-                        
+        
                         <label>LAST NAME</label> <br/>
                         <input type="text"
                         value={this.state.caseForm.case_last_name}
@@ -72,8 +72,6 @@ class CreateCase extends Component {
                         className="formButton"
                         onClick={this.next}
                         >NEXT</button>
-                        <br/>
-                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     </div>
                 </center>
             </div>
