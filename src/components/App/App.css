@@ -291,9 +291,9 @@ input {
     border-style:none;
   }
 
-  .hiddenButton{
-    height: 50px;
-    width: 150px;
+.hiddenButton{
+    height: 25px;
+    width: 100%;
     background: transparent;
     border: none !important;
 }

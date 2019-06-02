@@ -107,11 +107,12 @@ class BioForm extends Component {
                 {/* {JSON.stringify(this.state)} */}
                   
                 <center>
-                    <div>
+                    {/* <div>
                         <h1>
                             BIO FORM
                         </h1>
-                    </div>
+                    </div> */}
+                    <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     <div className="formDivs" >
                         <label>FIRST NAME</label> 
                         <input type="text" value={this.state.bioForm.first_name || ''} onChange={this.handleChange('first_name')}/> 
@@ -161,10 +162,7 @@ class BioForm extends Component {
                             <option value={true}>True</option>
                             <option value={false}>False</option>
                         </select>
-                        <button className="formButton" onClick={this.next}>NEXT</button>
-                        <br/>
-                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
-                        
+                        <button className="formButton" onClick={this.next}>NEXT</button>    
                     </div>
                 </center>
             </div>

@@ -83,6 +83,7 @@ class BondForm extends Component {
                 <Nav pageName='BOND FORM' home='/home'/>
 
                  <center>
+                 <button className="hiddenButton" onClick={this.autoPopulate}></button> 
                     <div className="formDivs">
                         <label>ICE FACILITY</label> 
                         <input type="text"
@@ -146,8 +147,6 @@ class BondForm extends Component {
                         className="formButton"
                         onClick={this.next}
                         >NEXT</button>
-                        <br/>
-                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     </div>
                 </center>
             </div>

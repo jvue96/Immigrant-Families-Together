@@ -72,6 +72,7 @@ next = () => {
             <div>
                 <Nav pageName='HOUSING' home='/home'/>
                 <center>
+                <button className="hiddenButton" onClick={this.fillstate}></button>
                     <div className="formDivs">
                         <label>ADDRESS</label> 
                         <input type="text" value={this.state.housingForm.address || ''} onChange={this.handleChange('address')}/> 
@@ -94,11 +95,6 @@ next = () => {
                             className="formButton"
                             onClick={this.next}>
                             NEXT
-                        </button>
-                        <br/>
-                        <button className="hiddenButton"
-                        onClick={this.fillstate}>
-                            Fill Info
                         </button>
                     </div>
                 </center>

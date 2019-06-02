@@ -73,6 +73,7 @@ class AidForm extends Component {
             <Nav pageName='AID FORM' backArrow='/cases' home='/cases' />
 
                 <center>
+                  <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     <div className="formDivs">
                         
                         <label>GROCERY PROGRAM</label>
@@ -106,8 +107,6 @@ class AidForm extends Component {
                         className="formButton"
                         onClick={this.next}
                         >NEXT</button>
-                        <br/>
-                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     </div>
                 </center>
             </div>
