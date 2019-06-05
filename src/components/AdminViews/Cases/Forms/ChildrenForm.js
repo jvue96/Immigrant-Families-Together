@@ -75,8 +75,6 @@ class ChildForm extends Component {
     next = () => {
         this.props.dispatch({ type: 'ADD_CHILDREN', payload: this.state.addChild })
         this.props.history.push(`/medical-form?id=${this.state.childForm.case_id}`);
-        console.log(this.state);
-        
     }
 
     // pushes new state to children array to create multiple children

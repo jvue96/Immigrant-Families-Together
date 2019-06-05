@@ -40,7 +40,6 @@ class LegalStatusForm extends Component {
     }
 
     autoPopulate=()=>{
-        console.log('in autoPopulate')
         this.setState({
             legalForm: {
                 case_id: this.props.reduxState.caseReducer.rows[0].id,
@@ -57,7 +56,6 @@ class LegalStatusForm extends Component {
     next = () => {
         //this.props.history.push('/social-form')
         this.props.history.push(`/admin-landing?id=${this.state.legalForm.case_id}`);
-        console.log(this.state);   
         this.props.dispatch({ type: 'ADD_LEGAL', payload: this.state.legalForm })
 
     }

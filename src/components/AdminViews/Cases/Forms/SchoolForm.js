@@ -59,21 +59,17 @@ fillstate = (event) => {
 }
 
 handleChange = propertyName => event => {
-    console.log(`this is the propertyName:`, propertyName);
-    console.log(`this is target value:`, event.target.value)
     this.setState({
         schoolForm: {
             ...this.state.schoolForm,
             [propertyName]: event.target.value,
         }
     })
-    console.log(`this is state after handleChange:`, this.state)
 }
 
 next = () => {
     this.props.dispatch({ type: 'ADD_SCHOOL', payload: this.state.addSchool })
     this.props.history.push(`/housing-form?id=${this.state.schoolForm.case_id}`)
-    console.log(this.state);
 }
 
 

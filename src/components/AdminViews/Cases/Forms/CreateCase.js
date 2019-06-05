@@ -6,8 +6,6 @@ class CreateCase extends Component {
     
     next = (event) => {
         this.props.dispatch({ type: 'ADD_CASE', payload: this.state.caseForm })
-        console.log('event.currentTarget.value', this.state.caseForm.case_number);
-        
         //move into new will update method
         // this.props.history.push(`/bio-form?id=${this.state.caseForm.case_number}`)
     }
@@ -27,7 +25,6 @@ class CreateCase extends Component {
 }
 
     autoPopulate=()=>{
-        console.log('in autoPopulate')
         this.setState({
             caseForm: {
                 case_last_name: 'Rodriguez(Jose)',
@@ -38,16 +35,12 @@ class CreateCase extends Component {
       }
 
     handleChange = propertyName => event => {
-        console.log(`handleChange has been fired with this propertyName:`, propertyName);
-    
         this.setState({
             caseForm: {
                 ...this.state.caseForm,
                 [propertyName]: event.target.value,
             }
         })
-        console.log(`this is state after handleChange:`, this.state.caseForm);
-        
     }
     
     render() {
