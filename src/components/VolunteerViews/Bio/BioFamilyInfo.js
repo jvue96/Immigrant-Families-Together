@@ -63,6 +63,12 @@ class BioFamilyInfo extends Component {
                             <label>REFERRAL DATE:</label>  
                             <p className="PCard"></p>
                             <hr/>
+                            <label>PASSPORT:</label>  
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>USA I.D.:</label>  
+                            <p className="PCard"></p>
+                            <hr/>
                         </div>   
                     } 
 
@@ -108,6 +114,12 @@ class BioFamilyInfo extends Component {
                                     <hr/>
                                     <label>REFERRAL DATE:</label>  
                                     <p className="PCard">{this.checkDate(bio.reference_date)}</p>
+                                    <hr/>
+                                    <label>PASSPORT:</label>  
+                                    <p className="PCard">{String(bio.passport)}</p>
+                                    <hr/>
+                                    <label>USA I.D.:</label>  
+                                    <p className="PCard">{String(bio.us_id)}</p>
                                     <hr/>
                                 </div>
                             )}
