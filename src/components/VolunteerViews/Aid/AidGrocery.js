@@ -7,7 +7,6 @@ class AidGrocery extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('GENERAL BioMedical searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_AID', payload: searchObject.id });
     }
     

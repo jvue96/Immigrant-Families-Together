@@ -8,7 +8,6 @@ class LegalStatus extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('LEGAL STATUS searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_LEGAL', payload: searchObject.id });
     }
 

@@ -45,7 +45,6 @@ class RegisterVolunteer extends Component {
       }
 
     register = () => {
-        console.log(`hit register button!`);
         alert(`You've registered a new volunteer!`)
         this.props.dispatch({ type: 'ADD_NEW_VOLUNTEER', payload: this.state })
         this.props.history.push('/home')

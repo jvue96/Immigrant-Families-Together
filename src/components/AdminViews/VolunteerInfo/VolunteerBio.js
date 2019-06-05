@@ -14,7 +14,6 @@ class VolunteerBio extends Component {
     componentDidMount = () => {
        
         const searchObject = qs.parse(this.props.location.search)
-        console.log('Individual volunteer bio searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_VOLUNTEER_BIO', payload: searchObject.id });
         this.props.dispatch({ type: 'GET_CASES'});
         this.props.dispatch({ type: 'GET_VOLUNTEER_CASES', payload: searchObject.id });
@@ -35,12 +34,9 @@ class VolunteerBio extends Component {
                 [propertyName]: event.target.value,
             }
         })
-        console.log(`this is state after handleChange:`, this.state);
-        
     }
 
     assignCase = () => {
-        console.log(`hit assign case button!`);
         this.props.dispatch({ type: 'ASSIGN_CASE', payload: this.state.assignCase })
         this.props.history.push('/volunteers')
     }

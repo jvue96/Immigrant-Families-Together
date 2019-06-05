@@ -14,7 +14,6 @@ class ChildForm extends Component {
     //also if empty change from the button being a POST instead of a PUT
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('ChildrenForm searchObject', searchObject);
         this.props.dispatch({ type: 'GET_CHILDREN', payload: searchObject.id });
         this.setState({
             childForm:{
@@ -69,8 +68,6 @@ class ChildForm extends Component {
     // pushes new state to children array to create multiple children
     save = () => {
         this.state.addChild.push(this.state.childForm)
-        // un comment if you want to test state after filling in input fields 
-        console.log(this.state);
     }
 
       render() {

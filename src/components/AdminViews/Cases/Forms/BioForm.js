@@ -53,8 +53,6 @@ class BioForm extends Component {
 
     autoPopulate=()=>{
         const searchObject = qs.parse(this.props.location.search)
-        console.log('searchObject', searchObject);
-        console.log('in autoPopulate')
         this.setState({
             bioForm: {
                 case_id: searchObject.id,
@@ -76,22 +74,17 @@ class BioForm extends Component {
       }
 
     handleChange = propertyName => event => {
-        console.log(`this is the propertyName:`, propertyName);
-        console.log(`this is target value:`, event.target.value)
         this.setState({
             bioForm: {
                 ...this.state.bioForm,
                 [propertyName]: event.target.value,
             }
         })
-        console.log(`this is state after handleChange:`, this.state)
     }
 
    next = () => {
     this.props.dispatch({ type: 'ADD_BIO', payload: this.state.bioForm })
-
     this.props.history.push(`/children-form?id=${this.state.bioForm.case_id}`);
-
    }
 
     backButton = () => {

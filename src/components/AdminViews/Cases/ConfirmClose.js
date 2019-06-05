@@ -8,7 +8,6 @@ class ConfirmClose extends Component {
 
     componentDidMount() {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('GENERAL BIO searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_BIO_INFO', payload: searchObject.id });
        }
 
@@ -31,7 +30,6 @@ class ConfirmClose extends Component {
     }
 
     closeCase = () => {
-        console.log('state', this.state.closeCase);
         this.props.history.push(`/home`);
        }
 

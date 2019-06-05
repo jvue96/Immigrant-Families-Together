@@ -9,7 +9,6 @@ class Events extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('EVENT searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_CURRENT_ID', payload: searchObject.id });
         this.props.dispatch({ type: 'GET_EVENT', payload: searchObject.id });
     }
@@ -17,7 +16,6 @@ class Events extends Component {
 
     // add new event 
     newEvent = () => {
-        console.log(`clicked add event! `);
         this.props.history.push(`/add-event?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
 

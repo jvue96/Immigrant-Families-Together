@@ -45,7 +45,6 @@ class BondForm extends Component {
     }
 
     autoPopulate=()=>{
-        console.log('in autoPopulate')
         this.setState({
             legalInfoForm: {
                 case_id: this.props.reduxState.caseReducer.rows[0].id,

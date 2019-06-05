@@ -41,7 +41,6 @@ class AidForm extends Component {
     }
 
     autoPopulate=()=>{
-        console.log('in autoPopulate')
         this.setState({
             aidForm: {
                 case_id: this.props.reduxState.caseReducer.rows[0].id,
@@ -55,16 +54,12 @@ class AidForm extends Component {
       }
 
     handleChange = propertyName => event => {
-        console.log(`handleChange has been fired with this propertyName:`, propertyName);
-        
         this.setState({
             aidForm: {
                 ...this.state.aidForm,
                 [propertyName]: event.target.value,
             }
         })
-        console.log(`this is state after handleChange:`, this.state);
-        
     }
     
     render() {

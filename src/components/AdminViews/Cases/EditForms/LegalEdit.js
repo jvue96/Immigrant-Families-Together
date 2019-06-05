@@ -73,9 +73,7 @@ class LegalEdit extends Component {
         else (
             this.props.dispatch({ type: 'PUT_LEGAL', payload: this.state.legalForm })
         )
-        this.props.history.push(`/edit-case?id=${this.state.legalForm.case_id}`) 
-        console.log(this.state.legalForm);
-        
+        this.props.history.push(`/edit-case?id=${this.state.legalForm.case_id}`)         
     }
 
     // format date from database to display correctly for inputs' defaultValues 

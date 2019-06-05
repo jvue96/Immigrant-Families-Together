@@ -21,8 +21,8 @@ function* loginUser(action) {
     // get the user information from the server
     yield put({type: 'FETCH_USER'});
   } catch (error) {
-    console.log('Error with user login:', error);
     if (error.response.status === 401) {
+      alert(`401 Error`)
       // The 401 is the error status sent from passport
       // if user isn't in the database or
       // if the username and password don't match in the database
@@ -55,7 +55,7 @@ function* logoutUser(action) {
     yield put({ type: 'UNSET_USER' });
 
   } catch (error) {
-    console.log('Error with user logout:', error);
+    alert(`Error with user logout`)
   }
 }
 

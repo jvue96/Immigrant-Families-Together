@@ -14,7 +14,6 @@ class CaseList extends Component {
         this.setState({
             search: event.target.value
         })
-        console.log(this.state);
     }
 
     assignCase = () => {
@@ -25,11 +24,9 @@ class CaseList extends Component {
     //dispatch call to search based off what was typed in state
     searchBy = () => {
         this.props.dispatch({ type: 'GET_CASES_SEARCH', payload: this.state });
-        console.log(`Do something for a search by!`);
     }
 
     selectCase = (id) => {
-        console.log(`in selectCase, heres id:`, id);
         //this.props.history.push(`/case/?id=${id}&admin=true`);
         //this is from volunteer landing:
         this.props.dispatch({type: 'GET_CURRENT_ID', payload: id})

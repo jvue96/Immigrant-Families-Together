@@ -8,9 +8,7 @@ class BioFamilyInfo extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('GENERAL BIO searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_BIO_INFO', payload: searchObject.id });
-        console.log('GET_BIO_INFO', this.props.reduxState.bioReducer);
     }
 
     // if date is null, will display empty <p> instead of "Invalid Date" on DOM 
