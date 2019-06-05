@@ -6,6 +6,12 @@ import qs from 'query-string';
 
 class ChildForm extends Component {
 
+    //on the load of the page check the query string in the url and pull the id
+    //use the id to dispatch all the children information for that specific file
+    //set the state to put that id in as case_id
+    //conditional statement to check if the reducer has any values
+    //if the reducer is empty then render a blank form
+    //also if empty change from the button being a POST instead of a PUT
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
         this.props.dispatch({ type: 'GET_CHILDREN', payload: searchObject.id });
@@ -81,8 +87,6 @@ class ChildForm extends Component {
     // pushes new state to children array to create multiple children
     save = () => {
         this.state.addChild.push(this.state.childForm)
-        // un comment if you want to test state after filling in input fields 
-        console.log(this.state);
     }
 
       render() {
@@ -143,14 +147,18 @@ class ChildForm extends Component {
                     defaultValue={children.child_info }
                     onChange={this.handleChange('child_info')}/> 
                 
-            
+
+                {/* pushes new state to children array to create multiple children */}
+
                 {/* <button 
                 className="formButton"
                 onClick={this.save}> Save
-                </button> 
+                </button>  */}
 
-            
-                <button 
+
+                {/* clears input fields to enable adding another child  */}
+                {/* <button 
+
                 className="formButton"
                 style={{width: 200}}
                 onClick={this.addInput}> Add Another Child

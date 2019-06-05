@@ -6,6 +6,7 @@ import Nav from '../../Nav/Nav'
 
 class EditCases extends Component {
 
+    //on landing page this just gets all reducers ready to there are no timing issues
     componentDidMount = () => {
         // this.props.dispatch({type: 'ADD_CASE'})
         const searchObject = qs.parse(this.props.location.search)
@@ -27,7 +28,6 @@ class EditCases extends Component {
     }
 
     bioForm = (event) => {
-        console.log('PAYLOAD FOR GET FAMILY INFO', event.currentTarget.value);
         // this.props.dispatch({type: 'GET_CURRENT_ID', payload: event.currentTarget.value})
         this.props.history.push(`/bio-edit?id=${this.state.formRoutes.id}`)
     }
@@ -70,52 +70,10 @@ class EditCases extends Component {
 
     render() {
 
-        // let div = <div>  </div>
-        // if(this.state.button === "bio") {
-        //     div = <div> <BioFamilyInfo/> </div>
-        // } else if (this.state.button === "id") {
-        //     div = <div> <BioIdentify/> </div>
-        // } else if (this.state.button === "school") {
-        //     div = <div> <BioSchool/> </div>
-        // } else if (this.state.button === "housing") {
-        //     div = <div> <BioHousing/> </div>
-        // } else if (this.state.button === "medical") {
-        //     div = <div> <BioMedical/> </div>
-        // } 
-
         return (
             <div>
-                <Nav pageName='BIO' volunteer home='/home' /> 
+                <Nav pageName='EDIT CASE' home='/home' /> 
                 <center> 
-                 
-                    {/* <button 
-                    onClick={this.viewSelectedButton('button')}
-                    value={"bio"}
-                    >FAMILY INFO</button> 
-
-                    <button
-                    value={"id"}
-                    onClick={this.viewSelectedButton('button')}
-                    >IDENTIFICATION</button> 
-
-                    <button
-                    onClick={this.viewSelectedButton('button')}
-                    value={"school"}
-                    >SCHOOL</button> 
-
-                    <button
-                    onClick={this.viewSelectedButton('button')}
-                    value={"housing"}
-                    >HOUSING</button> 
-                    // fjfjf
-
-                    <button
-                    onClick={this.viewSelectedButton('button')}
-                    value={"medical"}
-                    >MEDICAL</button> 
-                    <br/>
-
-                    {div} */}
                     <div>
                         <button className="adminMenuButtons" onClick={this.bioForm}>EDIT GENERAL BIO</button>
                         <button className="adminMenuButtons" onClick={this.childrenForm}>EDIT CHILDREN INFO</button>

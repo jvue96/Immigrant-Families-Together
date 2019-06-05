@@ -8,9 +8,7 @@ class BioFamilyInfo extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('GENERAL BIO searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_BIO_INFO', payload: searchObject.id });
-        console.log('GET_BIO_INFO', this.props.reduxState.bioReducer);
     }
 
     // if date is null, will display empty <p> instead of "Invalid Date" on DOM 
@@ -26,6 +24,7 @@ class BioFamilyInfo extends Component {
     
     render() {
 
+        // if aidReducer is empty, render labels with empty information 
         let emptyFamily;
         if(this.props.reduxState.bioReducer.length === 0) {
             emptyFamily = <div className="bioCard">
@@ -61,6 +60,12 @@ class BioFamilyInfo extends Component {
                             <p className="PCard"></p>
                             <hr/>
                             <label>REFERRAL DATE:</label>  
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>PASSPORT:</label>  
+                            <p className="PCard"></p>
+                            <hr/>
+                            <label>USA I.D.:</label>  
                             <p className="PCard"></p>
                             <hr/>
                         </div>   
@@ -108,6 +113,12 @@ class BioFamilyInfo extends Component {
                                     <hr/>
                                     <label>REFERRAL DATE:</label>  
                                     <p className="PCard">{this.checkDate(bio.reference_date)}</p>
+                                    <hr/>
+                                    <label>PASSPORT:</label>  
+                                    <p className="PCard">{String(bio.passport)}</p>
+                                    <hr/>
+                                    <label>USA I.D.:</label>  
+                                    <p className="PCard">{String(bio.us_id)}</p>
                                     <hr/>
                                 </div>
                             )}

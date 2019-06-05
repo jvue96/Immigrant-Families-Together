@@ -50,20 +50,16 @@ fillstate = (event) => {
     }
 
 handleChange = propertyName => event => {
-    console.log(`this is the propertyName:`, propertyName);
-    console.log(`this is target value:`, event.target.value)
     this.setState({
         housingForm: {
             ...this.state.housingForm,
             [propertyName]: event.target.value,
         }
     })
-    console.log(`this is state after handleChange:`, this.state)
 }
 
 next = () => {
     this.props.dispatch({ type: 'ADD_HOUSING', payload: this.state.housingForm })
-
         this.props.history.push(`/aid-form?id=${this.state.housingForm.case_id}`)
 }
 
@@ -72,6 +68,7 @@ next = () => {
             <div>
                 <Nav pageName='HOUSING' home='/home'/>
                 <center>
+                <button className="hiddenButton" onClick={this.fillstate}></button>
                     <div className="formDivs">
                         <label>ADDRESS</label> 
                         <input type="text" value={this.state.housingForm.address || ''} onChange={this.handleChange('address')}/> 
@@ -94,11 +91,6 @@ next = () => {
                             className="formButton"
                             onClick={this.next}>
                             NEXT
-                        </button>
-                        <br/>
-                        <button className="hiddenButton"
-                        onClick={this.fillstate}>
-                            Fill Info
                         </button>
                     </div>
                 </center>

@@ -34,7 +34,6 @@ class Case extends Component {
     }
 
     updateState = (caseName, caseNumber) => {
-        console.log(`hello caseName and caseNumber`, caseName, caseNumber);
     this.setState({
         name: caseName,
         number: caseNumber
@@ -45,7 +44,6 @@ class Case extends Component {
 
     componentDidMount() {
         let qsId = qs.parse(this.props.location.search)
-        console.log(`this is  qsid`,qsId)
         this.props.dispatch({ type: 'GET_CURRENT_ID', payload: qsId.id });
         //console.log(`this is last name in case id reducer:`, this.props.reduxState.caseIdReducer[0]);
     }
@@ -53,7 +51,6 @@ class Case extends Component {
     //this was done to get the props when state was changed. it was necessary to eventually getting the redux state case stuff onto 
     componentDidUpdate(prevProps) {
         if(this.props.reduxState.caseIdReducer !== prevProps.reduxState.caseIdReducer) {
-            console.log(`inside prevprops update, this matches ok`, this.props.reduxState.caseIdReducer[0].case_last_name)
             let caseName = this.props.reduxState.caseIdReducer[0].case_last_name;
             let caseNumber = this.props.reduxState.caseIdReducer[0].case_number;
             this.updateState(caseName, caseNumber);

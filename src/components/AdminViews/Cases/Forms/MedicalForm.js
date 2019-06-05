@@ -36,8 +36,6 @@ class MedicalForm extends Component {
     next = () => {
         this.props.dispatch({ type: 'ADD_MEDICAL', payload: this.state.medicalForm })
         this.props.history.push(`/school-form?id=${this.state.medicalForm.case_id}`)
-        console.log(this.state.medicalForm);
-        
     }
 
     state = {
@@ -62,7 +60,6 @@ class MedicalForm extends Component {
     }
 
     autoPopulate=()=>{
-        console.log('in autoPopulate')
         this.setState({
             medicalForm: {
                 case_id: this.props.reduxState.caseReducer.rows[0].id,
@@ -100,8 +97,9 @@ class MedicalForm extends Component {
                 <Nav pageName='MEDICAL FORM' home='/home'/>
 
                 <center>
+                <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
+                
                     <div className="formDivs">
-                        
                         <label>PRIMARY DOCTOR NAME</label> 
                         <input type="text"
                         value={this.state.medicalForm.doctor_name || ''}
@@ -185,8 +183,6 @@ class MedicalForm extends Component {
                         className="formButton"
                         onClick={this.next}
                         >NEXT</button>
-                        <br/>
-                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     </div>
                 </center>
             </div>

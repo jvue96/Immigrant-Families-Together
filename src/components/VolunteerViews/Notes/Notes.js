@@ -9,9 +9,7 @@ class Notes extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('EVENT searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_NOTE', payload: searchObject.id });
-        console.log('GET_NOTE', this.props.reduxState.noteReducer);
         this.setState({
             addNote:{
                 ...this.state.addNote,
@@ -31,7 +29,6 @@ class Notes extends Component {
     }
 
     autoPopulate=()=>{
-        console.log('in autoPopulate')
         this.setState({
             addNote: {
                 case_id: this.props.reduxState.caseIdReducer[0].id,
@@ -53,12 +50,13 @@ class Notes extends Component {
         } 
     }
 
+    // dispatch POST and GET request for notes table 
     addNote = () => {
-        console.log(`clicked add note! `, this.state.addNote);
         this.props.dispatch({ type: 'ADD_NOTE', payload: this.state.addNote })
         this.props.dispatch({ type: 'GET_NOTE', payload: this.state.addNote.case_id });
     }
 
+    // formatting date 
     formatDate = (date) => {
         let entryDate =  moment(date).subtract(10, 'days').calendar();
         return entryDate; 
@@ -66,6 +64,7 @@ class Notes extends Component {
 
     render() {
 
+        // render labels with empty information if reducer is empty
         let emptyNotes; 
         if(this.props.reduxState.noteReducer.length === 0) {
             emptyNotes = <h1> NO NOTES FOR THIS CASE </h1>

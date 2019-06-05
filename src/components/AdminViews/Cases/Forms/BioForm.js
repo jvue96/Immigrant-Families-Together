@@ -53,8 +53,6 @@ class BioForm extends Component {
 
     autoPopulate=()=>{
         const searchObject = qs.parse(this.props.location.search)
-        console.log('searchObject', searchObject);
-        console.log('in autoPopulate')
         this.setState({
             bioForm: {
                 case_id: searchObject.id,
@@ -76,22 +74,17 @@ class BioForm extends Component {
       }
 
     handleChange = propertyName => event => {
-        console.log(`this is the propertyName:`, propertyName);
-        console.log(`this is target value:`, event.target.value)
         this.setState({
             bioForm: {
                 ...this.state.bioForm,
                 [propertyName]: event.target.value,
             }
         })
-        console.log(`this is state after handleChange:`, this.state)
     }
 
    next = () => {
     this.props.dispatch({ type: 'ADD_BIO', payload: this.state.bioForm })
-
     this.props.history.push(`/children-form?id=${this.state.bioForm.case_id}`);
-
    }
 
     backButton = () => {
@@ -107,11 +100,7 @@ class BioForm extends Component {
                 {/* {JSON.stringify(this.state)} */}
                   
                 <center>
-                    <div>
-                        <h1>
-                            BIO FORM
-                        </h1>
-                    </div>
+                    <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     <div className="formDivs" >
                         <label>FIRST NAME</label> 
                         <input type="text" value={this.state.bioForm.first_name || ''} onChange={this.handleChange('first_name')}/> 
@@ -121,7 +110,7 @@ class BioForm extends Component {
                         <input type="date" value={this.state.bioForm.dob || ''} onChange={this.handleChange('dob')} /> 
                         <label>SPOUSE NAME</label> 
                         <input type="text" value={this.state.bioForm.spouse_first_name} onChange={this.handleChange('spouse_first_name')}/> 
-                        <label>SPOUSE D.O.B</label> 
+                            <label>SPOUSE D.O.B</label> 
                         <input type="date" value={this.state.bioForm.spouse_dob} onChange={this.handleChange('spouse_dob')}/> 
 
                         <label>PHONE</label> 
@@ -161,10 +150,7 @@ class BioForm extends Component {
                             <option value={true}>True</option>
                             <option value={false}>False</option>
                         </select>
-                        <button className="formButton" onClick={this.next}>NEXT</button>
-                        <br/>
-                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
-                        
+                        <button className="formButton" onClick={this.next}>NEXT</button>    
                     </div>
                 </center>
             </div>

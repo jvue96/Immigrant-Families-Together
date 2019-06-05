@@ -7,13 +7,12 @@ class BioHousing extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('GENERAL HOUSING searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_HOUSING', payload: searchObject.id });
-        console.log('GET_HOUSING', this.props.reduxState.bioReducer);
     }
 
     render() {
 
+        // if aidReducer is empty, render labels with empty information 
         let emptyHousing; 
         if(this.props.reduxState.housingReducer.length === 0) {
             emptyHousing = <div className="bioCard">

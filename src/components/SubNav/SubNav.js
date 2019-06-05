@@ -6,14 +6,9 @@ import '../App/App.css'
 
 class SubNav extends Component {
 
-// }= () => {
-
-
-
-    
+    //check the url for the query string and use that when linking pages
     render() {
         const searchObject = qs.parse(this.props.location.search)
-    console.log('SUB NAV searchObject', searchObject.id);
         return (
 
             <div className="subnavbar">

@@ -75,8 +75,6 @@ class ChildForm extends Component {
     next = () => {
         this.props.dispatch({ type: 'ADD_CHILDREN', payload: this.state.addChild })
         this.props.history.push(`/medical-form?id=${this.state.childForm.case_id}`);
-        console.log(this.state);
-        
     }
 
     // pushes new state to children array to create multiple children
@@ -94,6 +92,7 @@ class ChildForm extends Component {
               {/* {JSON.stringify(this.state)} */}
 
               <center>
+              <button className="hiddenButton" onClick={this.test}></button>
                         {/* UN COMMENT TO TEST IF DATA IS IN childrenReducer */}
                         {/* {JSON.stringify(this.props.reduxState.childrenReducer)} */}
                     <div className="formDivs">
@@ -132,12 +131,6 @@ class ChildForm extends Component {
                 className="formButton"
                 onClick={this.next}> NEXT
                 </button>
-<br/>
-                 <button className="hiddenButton" 
-                 onClick={this.test}> 
-                 TEST DATA
-                 </button>
-                 
                 </div>
             </center> 
           </div>

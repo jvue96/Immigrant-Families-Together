@@ -9,7 +9,6 @@ class LegalBond extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('BOND searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_BOND', payload: searchObject.id });
     }
 
@@ -26,6 +25,7 @@ class LegalBond extends Component {
     
     render() {
 
+        // render labels with empty information if reducer is empty
         let emptyBond;
         if(this.props.reduxState.bondReducer.length === 0) {
             emptyBond =  <div className="bioCard">

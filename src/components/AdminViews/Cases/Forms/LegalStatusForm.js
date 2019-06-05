@@ -40,7 +40,6 @@ class LegalStatusForm extends Component {
     }
 
     autoPopulate=()=>{
-        console.log('in autoPopulate')
         this.setState({
             legalForm: {
                 case_id: this.props.reduxState.caseReducer.rows[0].id,
@@ -57,7 +56,6 @@ class LegalStatusForm extends Component {
     next = () => {
         //this.props.history.push('/social-form')
         this.props.history.push(`/admin-landing?id=${this.state.legalForm.case_id}`);
-        console.log(this.state);   
         this.props.dispatch({ type: 'ADD_LEGAL', payload: this.state.legalForm })
 
     }
@@ -82,6 +80,7 @@ class LegalStatusForm extends Component {
             <div>
                 <Nav pageName='LEGAL STATUS FORM' home='/home'/>
                     <center>
+                    <button className="hiddenButton" onClick={this.autoPopulate}></button> 
                         <div className="formDivs">
                             <label>LAST COURT DATE</label> 
                             <input type="date" value={this.state.legalForm.last_court_date || ''} 
@@ -121,8 +120,6 @@ class LegalStatusForm extends Component {
                             className="formButton"
                             onClick={this.next}
                             >COMPLETE CASE</button>
-                        <br/>
-                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                         </div>
                     </center>
             </div>

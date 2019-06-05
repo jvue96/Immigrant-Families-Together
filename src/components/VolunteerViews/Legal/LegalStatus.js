@@ -8,7 +8,6 @@ class LegalStatus extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('LEGAL STATUS searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_LEGAL', payload: searchObject.id });
     }
 
@@ -25,6 +24,7 @@ class LegalStatus extends Component {
 
     render() {
 
+        // render labels with empty information if reducer is empty
         let emptyStatus; 
         if(this.props.reduxState.legalReducer.length === 0) {
             emptyStatus = <div className="bioCard">
