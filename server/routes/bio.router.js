@@ -3,6 +3,8 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
+//Adds info from bio form at bio-form, returns OK status if it sucessfully posts
+
 router.post('/', rejectUnauthenticated, (req, res) => {
     let bio = req.body;
     console.log('Adding in primary individual:', bio);
