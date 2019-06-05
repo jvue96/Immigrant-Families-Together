@@ -24,3 +24,35 @@ https://docs.google.com/document/d/1DdTJATH_dNJJRps2-rZoI6Ec7Q8M6MIMtWioqUYLE4A/
 ![alt text](./images/volunteer_landing.jpg "Volunteer Landing Page")
 ![alt text](./images/volunteer_bio.jpg "Volunteer Bio Page")
 ![alt text](./images/volunteer_events.jpg "Volunteer Events Page")
+
+# Completed Features 
+* seperate features enabled for admins and volunteers 
+
+* ADMINS can:
+- create a case 
+- edit a case 
+- search for a case by name or case ID
+- view a case and it's information 
+- assign volunteer(s) to case(s)
+- create volunteers or admins 
+- view volunteers 
+- search volunteers 
+- view volunteer information 
+
+* VOLUNTEERS can: 
+- view case information they've been assigned to 
+- create notes within a case for admin and other volunteers to see. 
+ex) change of address, new doctor(s), new school etc. 
+- create events within a case for admin and other volunteers to see
+ex) doctors appointments, court dates, etc. 
+
+# Next steps 
+- create a feature to gather statistical data. 
+ex) how many families are on the grocery program etc. 
+
+# Developers 
+Juno Vue 
+Kingmann Douglas 
+Ben Ragsdale 
+Joe Schlachtenhaufen
+
