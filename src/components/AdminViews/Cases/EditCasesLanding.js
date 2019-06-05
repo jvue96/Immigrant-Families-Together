@@ -12,7 +12,6 @@ class EditCasesLanding extends Component {
         this.setState({
             search: event.target.value
         })
-        console.log(this.state);
     }
 
     assignCase = () => {
@@ -22,17 +21,14 @@ class EditCasesLanding extends Component {
 
     searchBy = () => {
         this.props.dispatch({ type: 'GET_CASES_SEARCH', payload: this.state });
-        console.log(`Do something for a search by!`);
     }
 
     selectCase = (id) => {
-        console.log(`in selectCase, heres id:`, id);
         this.props.history.push(`/edit-case?id=${id}`)
     }
 
     componentDidMount() {
         //checks to see if there is a query selector
-       
         this.props.dispatch({ type: 'GET_CASES' });
        }
 

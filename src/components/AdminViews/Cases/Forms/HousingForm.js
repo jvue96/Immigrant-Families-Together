@@ -7,22 +7,22 @@ import qs from 'query-string';
 
 class HousingForm extends Component {
 
-    componentDidMount = () => {
-        const searchObject = qs.parse(this.props.location.search)
-         // setting properties to null allow users to post null values into the database
-        // which can then be edited later 
-        this.setState({
-            housingForm:{
-                ...this.state.housingForm,
-                case_id: searchObject.id,
-                address: null,
-                rent: null,
-                paid_by: null,
-                utilities: null,
-                living_with_fam: null,
-            }
-        })  
-    }
+componentDidMount = () => {
+    const searchObject = qs.parse(this.props.location.search)
+        // setting properties to null allow users to post null values into the database
+    // which can then be edited later 
+    this.setState({
+        housingForm:{
+            ...this.state.housingForm,
+            case_id: searchObject.id,
+            address: null,
+            rent: null,
+            paid_by: null,
+            utilities: null,
+            living_with_fam: null,
+        }
+    })  
+}
 
 state= {
     housingForm: {
@@ -35,42 +35,24 @@ state= {
     }
 }
 
-fillstate = (event) => {
-    event.preventDefault();
-    this.setState({
-        housingForm:{
-            case_id: this.props.reduxState.caseReducer.rows[0].id,
-            address:'428 Spruce Ln, Highland Park, TX',
-            rent:'$1284',
-            paid_by:'Client',
-            utilities:'$170',
-            living_with_fam: true,
-    },
-    })
-    }
-
 handleChange = propertyName => event => {
-    console.log(`this is the propertyName:`, propertyName);
-    console.log(`this is target value:`, event.target.value)
     this.setState({
         housingForm: {
             ...this.state.housingForm,
             [propertyName]: event.target.value,
         }
     })
-    console.log(`this is state after handleChange:`, this.state)
 }
 
 next = () => {
     this.props.dispatch({ type: 'ADD_HOUSING', payload: this.state.housingForm })
-
         this.props.history.push(`/aid-form?id=${this.state.housingForm.case_id}`)
 }
 
     render() {
         return (
             <div>
-                <Nav pageName='HOUSING' home='/home'/>
+             <Nav pageName='HOUSING' home='/home'/>
                 <center>
                     <div className="formDivs">
                         <label>ADDRESS</label> 
@@ -94,11 +76,6 @@ next = () => {
                             className="formButton"
                             onClick={this.next}>
                             NEXT
-                        </button>
-                        <br/>
-                        <button className="hiddenButton"
-                        onClick={this.fillstate}>
-                            Fill Info
                         </button>
                     </div>
                 </center>

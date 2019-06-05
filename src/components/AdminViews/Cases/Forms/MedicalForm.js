@@ -36,8 +36,6 @@ class MedicalForm extends Component {
     next = () => {
         this.props.dispatch({ type: 'ADD_MEDICAL', payload: this.state.medicalForm })
         this.props.history.push(`/school-form?id=${this.state.medicalForm.case_id}`)
-        console.log(this.state.medicalForm);
-        
     }
 
     state = {
@@ -61,29 +59,6 @@ class MedicalForm extends Component {
         }
     }
 
-    autoPopulate=()=>{
-        console.log('in autoPopulate')
-        this.setState({
-            medicalForm: {
-                case_id: this.props.reduxState.caseReducer.rows[0].id,
-                doctor_name: 'Bradley Hennen',
-                doctor_phone: '612-555-5434',
-                medical_conditions: 'diabetes',
-                counselor: null,
-                counselor_phone: null,
-                pediatrician: null,
-                pediatrician_phone: null,
-                optometrist: null,
-                optometrist_phone: null,
-                dentist: null,
-                dentist_phone: null,
-                vaccinations: null,
-                insurance_card_info: 'BCBS: 13454246',
-                fee_coverage: false,
-                medical_notes: 'minimal information - needs updating'
-            }
-        })
-      }
 
     handleChange = propertyName => event => {
         this.setState({
@@ -98,10 +73,8 @@ class MedicalForm extends Component {
         return (
             <div>
                 <Nav pageName='MEDICAL FORM' home='/home'/>
-
                 <center>
                     <div className="formDivs">
-                        
                         <label>PRIMARY DOCTOR NAME</label> 
                         <input type="text"
                         value={this.state.medicalForm.doctor_name || ''}
@@ -185,8 +158,6 @@ class MedicalForm extends Component {
                         className="formButton"
                         onClick={this.next}
                         >NEXT</button>
-                        <br/>
-                        <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
                     </div>
                 </center>
             </div>

@@ -11,25 +11,24 @@ class AttorneyForm extends Component {
     render() {
         return (
             <div>
-<Nav pageName='ATTORNEY FORM' home='/home'/>
-
-                 <center>
-                    <div className="formDivs">
-                        <label>NAME</label> 
-                        <input type="text" /> 
-                        <label>PHONE</label> 
-                        <input type="text" /> 
-                        <label>EMAIL</label> 
-                        <input type="text" /> 
-                        <label>FEE</label> 
-                        <input type="text" /> 
-                    
-                        <button
-                        className="formButton"
-                        onClick={this.next}
-                        >NEXT</button>
-                    </div>
-                </center>
+                <Nav pageName='ATTORNEY FORM' home='/home'/>
+                    <center>
+                        <div className="formDivs">
+                            <label>NAME</label> 
+                            <input type="text" /> 
+                            <label>PHONE</label> 
+                            <input type="text" /> 
+                            <label>EMAIL</label> 
+                            <input type="text" /> 
+                            <label>FEE</label> 
+                            <input type="text" /> 
+                        
+                            <button
+                            className="formButton"
+                            onClick={this.next}
+                            >NEXT</button>
+                        </div>
+                    </center>
             </div>
         );
     }

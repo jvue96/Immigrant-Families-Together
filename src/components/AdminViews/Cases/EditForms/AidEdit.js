@@ -7,6 +7,12 @@ import qs from 'query-string';
 
 class AidEdit extends Component {
 
+    //on the load of the page check the query string in the url and pull the id
+    //use the id to dispatch all the aid information for that specific file
+    //set the state to put that id in as case_id
+    //conditional statement to check if the reducer has any values
+    //if the reducer is empty then render a blank form
+    //also if empty change from the button being a POST instead of a PUT
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
         this.props.dispatch({ type: 'GET_AID', payload: searchObject.id });
@@ -124,6 +130,7 @@ class AidEdit extends Component {
                     {/* {JSON.stringify(this.props.reduxState.aidReducer)} */}
                 <div>
                 {checkAid}
+                {/* mapo over the aid reducer to display all values */}
                 {this.props.reduxState.aidReducer.map((aid, index) =>
 
                     <div className="formDivs" key={index}>

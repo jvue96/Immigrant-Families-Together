@@ -6,7 +6,6 @@ import moment from 'moment';
 
 class Events extends Component {
     
-
     state = {
         search: '',
     }
@@ -15,7 +14,6 @@ class Events extends Component {
         this.setState({
             search: event.target.value
         })
-        console.log(this.state);
     }
 
   searchBy = () => {

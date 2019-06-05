@@ -84,13 +84,13 @@ class LoginPage extends Component {
             />
       
         </form>
-          <button
+          {/* <button
             type="button"
             className="formButton"
             onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
           >
             REGISTER
-          </button>
+          </button> */}
         </center>
       </div>
     );

@@ -9,14 +9,13 @@ class BioMedical extends Component {
         // this.props.dispatch({ type: 'GET_MEDICAL' });
         // console.log('GET_MEDICAL', this.props.reduxState.medicalReducer);
         const searchObject = qs.parse(this.props.location.search)
-        console.log('GENERAL BioMedical searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_MEDICAL', payload: searchObject.id });
-        console.log('GET_MEDICAL', this.props.reduxState.bioReducer);
     }
 
 
     render() {
 
+        // if aidReducer is empty, render labels with empty information 
         let emptyMedical; 
         if(this.props.reduxState.medicalReducer.length === 0) {
             emptyMedical = <div className="bioCard">

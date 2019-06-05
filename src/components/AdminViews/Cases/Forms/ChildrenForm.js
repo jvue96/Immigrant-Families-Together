@@ -48,19 +48,6 @@ class ChildForm extends Component {
         });
     };
 
-      // autofill test data 
-      test = () => {
-        this.setState({
-            childForm: {
-                child_name: 'George',
-                /* check if group has decided if database table dob is varchar or date, delete this line when done */
-                child_dob: '2014-12-12',
-                child_info: null,
-                case_id: this.props.reduxState.caseReducer.rows[0].id,
-            }
-        });
-      }
-
     // change state to become input field values 
       handleChange = propertyName => event => {
         this.setState({
@@ -94,6 +81,7 @@ class ChildForm extends Component {
               {/* {JSON.stringify(this.state)} */}
 
               <center>
+              <button className="hiddenButton" onClick={this.test}></button>
                         {/* UN COMMENT TO TEST IF DATA IS IN childrenReducer */}
                         {/* {JSON.stringify(this.props.reduxState.childrenReducer)} */}
                     <div className="formDivs">
@@ -132,12 +120,6 @@ class ChildForm extends Component {
                 className="formButton"
                 onClick={this.next}> NEXT
                 </button>
-<br/>
-                 <button className="hiddenButton" 
-                 onClick={this.test}> 
-                 TEST DATA
-                 </button>
-                 
                 </div>
             </center> 
           </div>
