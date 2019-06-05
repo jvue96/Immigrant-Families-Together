@@ -14,6 +14,7 @@ class Team extends Component {
 
     render() {
 
+        // render label with empty information if teamReducer is empty
         let emptyTeam; 
         if(this.props.reduxState.teamReducer.length === 0) {
             emptyTeam = <div className="teamCard">
