@@ -15,6 +15,7 @@ class BioSchool extends Component {
 
     render() {
 
+        // if aidReducer is empty, render labels with empty information 
         let emptySchool;
         if(this.props.reduxState.schoolReducer.length === 0) {
             emptySchool = <div className="bioCard">

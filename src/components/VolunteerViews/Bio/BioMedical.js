@@ -17,6 +17,7 @@ class BioMedical extends Component {
 
     render() {
 
+        // if aidReducer is empty, render labels with empty information 
         let emptyMedical; 
         if(this.props.reduxState.medicalReducer.length === 0) {
             emptyMedical = <div className="bioCard">

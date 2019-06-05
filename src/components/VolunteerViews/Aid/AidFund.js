@@ -14,6 +14,7 @@ class AidFund extends Component {
 
     render() {
 
+        // if aidReducer is empty, render labels with empty information 
         let emptyFund;
         if(this.props.reduxState.aidReducer.length === 0) {
             emptyFund = <div className="bioCard">
