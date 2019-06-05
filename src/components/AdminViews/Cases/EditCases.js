@@ -27,7 +27,6 @@ class EditCases extends Component {
     }
 
     bioForm = (event) => {
-        console.log('PAYLOAD FOR GET FAMILY INFO', event.currentTarget.value);
         // this.props.dispatch({type: 'GET_CURRENT_ID', payload: event.currentTarget.value})
         this.props.history.push(`/bio-edit?id=${this.state.formRoutes.id}`)
     }
