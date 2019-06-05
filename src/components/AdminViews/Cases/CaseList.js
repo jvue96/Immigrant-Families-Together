@@ -4,10 +4,12 @@ import { connect } from 'react-redux';
 
 class CaseList extends Component {
 
+    //set up state to allow for a search
     state = {
         search: '',
     }
 
+    //target based off of event and cicked value
     setSearch = (event) => {
         this.setState({
             search: event.target.value
@@ -20,6 +22,7 @@ class CaseList extends Component {
         // do something here to assigned case and add into relevant databases 
     }
 
+    //dispatch call to search based off what was typed in state
     searchBy = () => {
         this.props.dispatch({ type: 'GET_CASES_SEARCH', payload: this.state });
         console.log(`Do something for a search by!`);
@@ -37,7 +40,6 @@ class CaseList extends Component {
 
     componentDidMount() {
         //checks to see if there is a query selector
-       
             this.props.dispatch({ type: 'GET_CASES' });
        }
 

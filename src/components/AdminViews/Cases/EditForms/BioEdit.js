@@ -8,6 +8,12 @@ import moment from 'moment';
 
 class BioEdit extends Component {
 
+    //on the load of the page check the query string in the url and pull the id
+    //use the id to dispatch all the bio information for that specific file
+    //set the state to put that id in as case_id
+    //conditional statement to check if the reducer has any values
+    //if the reducer is empty then render a blank form
+    //also if empty change from the button being a POST instead of a PUT
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
         this.props.dispatch({ type: 'GET_BIO_INFO', payload: searchObject.id });
@@ -106,6 +112,7 @@ class BioEdit extends Component {
 
     }
 
+    //on the click of the back button we will be sent back to the cases landing
     backButton = () => {
     this.props.history.push(`/cases`)
   }
@@ -211,6 +218,7 @@ class BioEdit extends Component {
                         </h1>
                     </div>
                     {checkBio}
+                    {/* map over the bio reducer to input all values from the reducer */}
                     {this.props.reduxState.bioReducer.map((bio, index) =>
 
                     <div className="formDivs" key={index}>
