@@ -61,30 +61,6 @@ class MedicalForm extends Component {
         }
     }
 
-    autoPopulate=()=>{
-        console.log('in autoPopulate')
-        this.setState({
-            medicalForm: {
-                case_id: this.props.reduxState.caseReducer.rows[0].id,
-                doctor_name: 'Bradley Hennen',
-                doctor_phone: '612-555-5434',
-                medical_conditions: 'diabetes',
-                counselor: null,
-                counselor_phone: null,
-                pediatrician: null,
-                pediatrician_phone: null,
-                optometrist: null,
-                optometrist_phone: null,
-                dentist: null,
-                dentist_phone: null,
-                vaccinations: null,
-                insurance_card_info: 'BCBS: 13454246',
-                fee_coverage: false,
-                medical_notes: 'minimal information - needs updating'
-            }
-        })
-      }
-
     handleChange = propertyName => event => {
         this.setState({
             medicalForm: {
@@ -98,10 +74,7 @@ class MedicalForm extends Component {
         return (
             <div>
                 <Nav pageName='MEDICAL FORM' home='/home'/>
-
                 <center>
-                <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
-                
                     <div className="formDivs">
                         <label>PRIMARY DOCTOR NAME</label> 
                         <input type="text"

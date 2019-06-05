@@ -30,17 +30,6 @@ class Notes extends Component {
         }
     }
 
-    autoPopulate=()=>{
-        console.log('in autoPopulate')
-        this.setState({
-            addNote: {
-                case_id: this.props.reduxState.caseIdReducer[0].id,
-                family_notes: 'Visited in morning to discuss the lawyer agreeing to work probono',
-                date: '2019-12-12',
-            }
-        })
-      }
-
      // set state for onChange of textfields 
      handleNameChange = (propertyName) => {  
         return(event) =>{
@@ -84,8 +73,7 @@ class Notes extends Component {
                         <input type="date"
                             value={this.state.addNote.date}
                             onChange={this.handleNameChange('date')}/>
-                        <button className="formButton" onClick={this.addNote}>ADD</button> 
-                        <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
+                        <button className="formButton" onClick={this.addNote}>ADD</button>  
             
                         <h1>
                             PREVIOUS NOTES

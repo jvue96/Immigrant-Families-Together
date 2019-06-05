@@ -26,18 +26,6 @@ class AddEvent extends Component {
         }
     }
 
-    autoPopulate=()=>{
-        const searchObject = qs.parse(this.props.location.search)
-        console.log('in autoPopulate')
-        this.setState({
-            addEvent: {
-                description: 'Upcoming Court Date at PTV City Center',
-                date: '2019-12-12',
-                case_id: searchObject.id,
-            }
-        })
-      }
-
      // set state for onChange of textfields 
      handleNameChange = (propertyName) => {  
         return(event) =>{
@@ -76,7 +64,6 @@ class AddEvent extends Component {
                         value={this.state.addEvent.description}
                         onChange={this.handleNameChange('description')}/>
                     <button className="formButton" onClick={this.newEvent}>ADD EVENT</button> 
-                    <button className="formButton" onClick={this.autoPopulate}>FILL INFO</button> 
                 </center>
             </div>
     )}
