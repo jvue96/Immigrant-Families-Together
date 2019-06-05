@@ -144,7 +144,7 @@ class ChildForm extends Component {
                     onChange={this.handleChange('child_info')}/> 
                 
             
-                <button 
+                {/* <button 
                 className="formButton"
                 onClick={this.save}> Save
                 </button> 
@@ -154,7 +154,7 @@ class ChildForm extends Component {
                 className="formButton"
                 style={{width: 200}}
                 onClick={this.addInput}> Add Another Child
-                </button>
+                </button> */}
 
                  
 
