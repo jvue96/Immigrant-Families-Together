@@ -47,7 +47,6 @@ router.post('/login', userStrategy.authenticate('local'), (req, res) => {
 });
 
 router.get('/register', rejectUnauthenticated, (req, res) => {
-  console.log('Getting all volunteers');
   pool.query(`SELECT * FROM "user"`)
   .then((results) => {
     for (let i=0; i<results.rows.length; i++) {
@@ -70,8 +69,6 @@ router.post('/logout', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/register/:id', rejectUnauthenticated, (req, res) => {
-  console.log('Getting all volunteer bio info');
-  console.log(`Getting volunteer bio info, req.params.id`, req.params.id);
   const sqlText = `SELECT * FROM "user" WHERE "id" = $1;`
   pool.query(sqlText, [req.params.id])
   .then((results) => {
