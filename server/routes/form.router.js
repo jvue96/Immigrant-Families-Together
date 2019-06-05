@@ -188,45 +188,64 @@ router.get('/medical/:id', rejectUnauthenticated, (req, res) => {
   })
 
 
-  router.put('/edit-children/:id', async(req, res) => {
+  // router.put('/edit-children/:id', async(req, res) => {
 
-    const connection = await pool.connect()
-    let children = req.body; 
+  //   const connection = await pool.connect()
+  //   let children = req.body; 
     
-    try {
-      //MOVING LOOP
-      await connection.query('BEGIN');
-      for(let i = 0; i< children.length; i++) {
+  //   try {
+  //     //MOVING LOOP
+  //     await connection.query('BEGIN');
+  //     for(let i = 0; i< children.length; i++) {
 
-        let id = children[i].case_id;
-        let name = children[i].child_name;
-        let dob = children[i].child_dob;
-        let info = children[i].child_info;
+  //       let id = children[i].case_id;
+  //       let name = children[i].child_name;
+  //       let dob = children[i].child_dob;
+  //       let info = children[i].child_info;
 
-      // await connection.query('BEGIN');
-      const sqlText = `UPDATE "primary_children" SET "child_name" = $1, "child_dob" = $2, "child_info" = $3 WHERE "case_id" = $4;`;
-      await connection.query( sqlText, [
-       name, 
-       dob,
-       info,
-       id
-      ]);       
-      // await connection.query('COMMIT');
-    }
-    //MOVING COMMIT AT END OF LOOP
-    await connection.query('COMMIT');
-  }
-    catch ( error ) {
-      await connection.query('ROLLBACK');
-      res.sendStatus(500); 
-    } finally {
-      // Always runs - both after successful try & after catch
-      // Put the client connection back in the pool
-      // This is super important! 
-      res.sendStatus(200); 
-      connection.release()
-    }
-  });
+
+  //     console.log(name, dob, info, id);
+  
+  //     // await connection.query('BEGIN');
+  //     const sqlText = `UPDATE "primary_children" SET "child_name" = $1, "child_dob" = $2, "child_info" = $3 WHERE "case_id" = $4;`;
+  //     await connection.query( sqlText, [
+  //      name, 
+  //      dob,
+  //      info,
+  //      id
+  //     ]);       
+  //     // await connection.query('COMMIT');
+  //   }
+  //   //MOVING COMMIT AT END OF LOOP
+  //   await connection.query('COMMIT');
+  // }
+  //   catch ( error ) {
+  //     await connection.query('ROLLBACK');
+  //     console.log(`Error posting chilren form`, error);
+  //     res.sendStatus(500); 
+  //   } finally {
+  //     // Always runs - both after successful try & after catch
+  //     // Put the client connection back in the pool
+  //     // This is super important! 
+  //     res.sendStatus(200); 
+  //     connection.release()
+  //   }
+  // });
+
+  router.put('/edit-children/:id', rejectUnauthenticated, (req, res) => {
+    let children = req.body;
+    console.log('PUT in children edit:', children);
+    let sqlText = `UPDATE "primary_children" SET "child_name" = $1, "child_dob" = $2, "child_info" = $3 WHERE "case_id" = $4 AND "id" = $5;`;
+    pool.query(sqlText, [children.child_name, children.child_dob, children.child_info, children.case_id, children.id])
+      .then( (response) => {
+        res.sendStatus(201);
+      })
+      .catch( (error) => {
+        console.log('Failed to PUT for children form edits', error);
+        res.sendStatus(500);
+      })
+  })
+
 
 
 
@@ -512,8 +531,9 @@ router.get('/school/:id', rejectUnauthenticated, (req, res) => {
 
 router.put('/edit-school/:id', rejectUnauthenticated, (req, res) => {
   let school = req.body;
-  let sqlText = `UPDATE "school" SET "name" = $1, "phone" = $2, "email" = $3 WHERE "case_id" = $4`;
-  pool.query(sqlText, [school.name, school.phone, school.email, school.case_id])
+  console.log('PUT in school edit:', school);
+  let sqlText = `UPDATE "school" SET "name" = $1, "phone" = $2, "email" = $3 WHERE "case_id" = $4 AND "id" = $5`;
+  pool.query(sqlText, [school.name, school.phone, school.email, school.case_id, school.id])
     .then( (response) => {
       res.sendStatus(201);
     })
@@ -522,6 +542,52 @@ router.put('/edit-school/:id', rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     })
 })
+
+// router.put('/edit-school/:id', async(req, res) => {
+
+//   const connection = await pool.connect()
+//   let school = req.body; 
+//   console.log('SCHOOL PUT INFO INPUT', school);
+//   try {
+//     //MOVING LOOP
+//     await connection.query('BEGIN');
+//     for(let i = 0; i< school.length; i++) {
+
+//       let id = school[i].id;
+//       let case_id = school[i].case_id;
+//       let name = school[i].name;
+//       let phone = school[i].phone;
+//       let email = school[i].email;
+
+//     console.log('SCHOOL PUT INFO INPUT', name, phone, email, case_id, id);
+
+//     // await connection.query('BEGIN');
+//     const sqlText = `UPDATE "school" SET "name" = $1, "phone" = $2, "email" = $3 WHERE "case_id" = $4 AND "id" = $5`;
+//     console.log('SCHOOL PUT INFO INPUT', name, phone, email, case_id, id);
+//     await connection.query( sqlText, [
+//      name, 
+//      phone,
+//      email,
+//      case_id,
+//      id
+//     ]);       
+//     // await connection.query('COMMIT');
+//   }
+//   //MOVING COMMIT AT END OF LOOP
+//   await connection.query('COMMIT');
+// }
+//   catch ( error ) {
+//     await connection.query('ROLLBACK');
+//     console.log(`Error posting school form`, error);
+//     res.sendStatus(500); 
+//   } finally {
+//     // Always runs - both after successful try & after catch
+//     // Put the client connection back in the pool
+//     // This is super important! 
+//     res.sendStatus(200); 
+//     connection.release()
+//   }
+// });
 
 router.post('/housing', rejectUnauthenticated, (req, res) => {
   let housing = req.body;

@@ -34,6 +34,7 @@ class SchoolEdit extends Component {
             schoolForm:{
                 ...this.state.schoolForm,
                 case_id: searchObject.id,
+                id: this.props.reduxState.schoolReducer[0].id,
                 name: this.props.reduxState.schoolReducer[0].name, 
                 phone: this.props.reduxState.schoolReducer[0].phone, 
                 email: this.props.reduxState.schoolReducer[0].email, 
@@ -45,6 +46,7 @@ class SchoolEdit extends Component {
 
     state= {
         schoolForm: {
+            id: this.props.reduxState.schoolReducer[0].id,
             case_id: '',
             name:'',
             phone:'',
@@ -63,6 +65,7 @@ class SchoolEdit extends Component {
             }
         })
     }
+    
     // conditional to determine a POST or a PUT 
     next = () => {
         if (this.state.schoolForm.data === false) {
