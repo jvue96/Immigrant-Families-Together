@@ -14,6 +14,7 @@ class LegalFoster extends Component {
 
     render() {
 
+        // render labels with empty information if reducer is empty
         let emptyFoster; 
         if(this.props.reduxState.bondReducer.length === 0) {
             emptyFoster = <div className="bioCard">

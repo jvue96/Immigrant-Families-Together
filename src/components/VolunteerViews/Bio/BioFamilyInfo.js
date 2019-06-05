@@ -26,6 +26,7 @@ class BioFamilyInfo extends Component {
     
     render() {
 
+        // if aidReducer is empty, render labels with empty information 
         let emptyFamily;
         if(this.props.reduxState.bioReducer.length === 0) {
             emptyFamily = <div className="bioCard">

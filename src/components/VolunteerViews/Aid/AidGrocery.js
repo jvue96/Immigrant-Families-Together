@@ -13,6 +13,7 @@ class AidGrocery extends Component {
     
     render() {
 
+        // if aidReducer is empty, render labels with empty information 
         let emptyGrocery;
         if(this.props.reduxState.aidReducer.length === 0) {
             emptyGrocery =  <div className="bioCard">

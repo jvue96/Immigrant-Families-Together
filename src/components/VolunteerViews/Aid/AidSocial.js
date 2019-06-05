@@ -14,6 +14,7 @@ class AidSocial extends Component {
     
     render() {
 
+        // if aidReducer is empty, render labels with empty information 
         let emptySocial;
         if(this.props.reduxState.aidReducer.length === 0) {
             emptySocial = <div className="bioCard">

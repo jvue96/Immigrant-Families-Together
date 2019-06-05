@@ -25,6 +25,7 @@ class LegalStatus extends Component {
 
     render() {
 
+        // render labels with empty information if reducer is empty
         let emptyStatus; 
         if(this.props.reduxState.legalReducer.length === 0) {
             emptyStatus = <div className="bioCard">
