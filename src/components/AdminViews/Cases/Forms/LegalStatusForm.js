@@ -39,19 +39,6 @@ class LegalStatusForm extends Component {
         }
     }
 
-    autoPopulate=()=>{
-        this.setState({
-            legalForm: {
-                case_id: this.props.reduxState.caseReducer.rows[0].id,
-                last_court_date: null,
-                last_court_date_outcome: null,
-                next_court_date: '2019-06-12', 
-                next_court_date_outcome: 'first court appearance', 
-                asylum_application: false,
-                work_authorization: false,
-            }
-        })
-      }
 
     next = () => {
         //this.props.history.push('/social-form')
@@ -80,7 +67,6 @@ class LegalStatusForm extends Component {
             <div>
                 <Nav pageName='LEGAL STATUS FORM' home='/home'/>
                     <center>
-                    <button className="hiddenButton" onClick={this.autoPopulate}></button> 
                         <div className="formDivs">
                             <label>LAST COURT DATE</label> 
                             <input type="date" value={this.state.legalForm.last_court_date || ''} 

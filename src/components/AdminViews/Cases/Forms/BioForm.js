@@ -51,27 +51,6 @@ class BioForm extends Component {
         }
     };
 
-    autoPopulate=()=>{
-        const searchObject = qs.parse(this.props.location.search)
-        this.setState({
-            bioForm: {
-                case_id: searchObject.id,
-                first_name:'Jose',
-                last_name:'Rodriquez',
-                dob:'1982-04-07',
-                spouse_first_name:'Marie',
-                spouse_dob:'1976-10-31',
-                phone:'555-555-5555',
-                encrypted: null,
-                email:'JSR67@gmail.com',
-                address:'Highland Park, Texas',
-                referred_by:'John Doe',
-                reference_date:'2019-06-02',
-                passport: !this.state.bioForm.passport,
-                us_id: !this.state.bioForm.us_id,
-            }
-        })
-      }
 
     handleChange = propertyName => event => {
         this.setState({
@@ -95,12 +74,9 @@ class BioForm extends Component {
 
         return (
             <div>
-                <Nav pageName='BIO' backArrow='/cases' home='/home'/>
-
-                {/* {JSON.stringify(this.state)} */}
-                  
+              <Nav pageName='BIO' backArrow='/cases' home='/home'/>
                 <center>
-                    <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
+
                     <div className="formDivs" >
                         <label>FIRST NAME</label> 
                         <input type="text" value={this.state.bioForm.first_name || ''} onChange={this.handleChange('first_name')}/> 

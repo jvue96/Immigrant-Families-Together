@@ -7,22 +7,22 @@ import qs from 'query-string';
 
 class HousingForm extends Component {
 
-    componentDidMount = () => {
-        const searchObject = qs.parse(this.props.location.search)
-         // setting properties to null allow users to post null values into the database
-        // which can then be edited later 
-        this.setState({
-            housingForm:{
-                ...this.state.housingForm,
-                case_id: searchObject.id,
-                address: null,
-                rent: null,
-                paid_by: null,
-                utilities: null,
-                living_with_fam: null,
-            }
-        })  
-    }
+componentDidMount = () => {
+    const searchObject = qs.parse(this.props.location.search)
+        // setting properties to null allow users to post null values into the database
+    // which can then be edited later 
+    this.setState({
+        housingForm:{
+            ...this.state.housingForm,
+            case_id: searchObject.id,
+            address: null,
+            rent: null,
+            paid_by: null,
+            utilities: null,
+            living_with_fam: null,
+        }
+    })  
+}
 
 state= {
     housingForm: {
@@ -34,20 +34,6 @@ state= {
         living_with_fam:'',
     }
 }
-
-fillstate = (event) => {
-    event.preventDefault();
-    this.setState({
-        housingForm:{
-            case_id: this.props.reduxState.caseReducer.rows[0].id,
-            address:'428 Spruce Ln, Highland Park, TX',
-            rent:'$1284',
-            paid_by:'Client',
-            utilities:'$170',
-            living_with_fam: true,
-    },
-    })
-    }
 
 handleChange = propertyName => event => {
     this.setState({
@@ -66,9 +52,8 @@ next = () => {
     render() {
         return (
             <div>
-                <Nav pageName='HOUSING' home='/home'/>
+             <Nav pageName='HOUSING' home='/home'/>
                 <center>
-                <button className="hiddenButton" onClick={this.fillstate}></button>
                     <div className="formDivs">
                         <label>ADDRESS</label> 
                         <input type="text" value={this.state.housingForm.address || ''} onChange={this.handleChange('address')}/> 

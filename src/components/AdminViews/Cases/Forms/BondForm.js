@@ -44,23 +44,6 @@ class BondForm extends Component {
         }
     }
 
-    autoPopulate=()=>{
-        this.setState({
-            legalInfoForm: {
-                case_id: this.props.reduxState.caseReducer.rows[0].id,
-                ice_facility: 'Rio Grande Detention Center',
-                bond_amount: 20000,
-                bond_paid_date: null,
-                bond_paid_by: 'GoFundMe in Progress',
-                foster_facility: null,
-                foster_facility_address: null,
-                attorney: 'Fabian Hoffner',
-                attorney_phone: '612-555-7532',
-                attorney_fee: 'Pro Bono',
-                legal_notes: 'Fabian has a distant relation with the family and offered to provide services at no charge',
-            }
-        })
-      }
 
     next = () => {
         this.props.dispatch({ type: 'ADD_BOND', payload: this.state.legalInfoForm })
@@ -79,10 +62,8 @@ class BondForm extends Component {
     render() {
         return (
             <div>
-                <Nav pageName='BOND FORM' home='/home'/>
-
+              <Nav pageName='BOND FORM' home='/home'/>
                  <center>
-                 <button className="hiddenButton" onClick={this.autoPopulate}></button> 
                     <div className="formDivs">
                         <label>ICE FACILITY</label> 
                         <input type="text"

@@ -45,19 +45,6 @@ addInput = event => {
         });
     };
 
-    
-fillstate = (event) => {
-    event.preventDefault();
-    this.setState({
-        schoolForm:{
-        case_id: this.props.reduxState.caseReducer.rows[0].id,
-        name:'Dale`s Elementary',
-        phone:'222-222-2222',
-        email:'DaleSchool@dale.edu',
-    },
-  })
-}
-
 handleChange = propertyName => event => {
     this.setState({
         schoolForm: {
@@ -77,10 +64,8 @@ next = () => {
     render() {
         return (
             <div>
-                <Nav pageName='SCHOOL' home='/home'/>
+             <Nav pageName='SCHOOL' home='/home'/>
                 <center>
-                    {/* <pre>{JSON.stringify(this.state)}</pre> */}
-                    <button className="hiddenButton" onClick={this.fillstate}></button>
                     <div className="formDivs">
                         <label>SCHOOL NAME</label> 
                         <input type="text" value={this.state.schoolForm.name || ''} onChange={this.handleChange('name')}/>

@@ -40,19 +40,6 @@ class AidForm extends Component {
         }
     }
 
-    autoPopulate=()=>{
-        this.setState({
-            aidForm: {
-                case_id: this.props.reduxState.caseReducer.rows[0].id,
-                grocery_program: true,
-                grocery_program_volunteer: 'Fred Souza',
-                go_fund_me: 'www.gofundme.com/jose-and-marie-bramblett--fund',
-                social_worker: 'Joe McCardle',
-                social_worker_phone: '763-555-7542'
-            }
-        })
-      }
-
     handleChange = propertyName => event => {
         this.setState({
             aidForm: {
@@ -65,10 +52,8 @@ class AidForm extends Component {
     render() {
         return (
             <div>
-            <Nav pageName='AID FORM' backArrow='/cases' home='/cases' />
-
-                <center>
-                  <button className="hiddenButton" onClick={this.autoPopulate}>FILL INFO</button> 
+              <Nav pageName='AID FORM' backArrow='/cases' home='/cases' />
+                <center> 
                     <div className="formDivs">
                         
                         <label>GROCERY PROGRAM</label>
