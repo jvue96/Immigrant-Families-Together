@@ -42,15 +42,20 @@ const AdminProtectedRoute = (props) => {
   //   // show the RegisterPage
   //   ComponentToShow = RegisterPage;
   // }
+
+
+  //conditional to determine which landing page the user is directed to
+  //if they have admin access they will be taken to one of the adminprotected routes
+  // /home will take them to admin landing
   if(user.admin === 'yes') {
     // if the user is logged in (only logged in users have ids)
     // show the component that is protected
     ComponentToShow = ComponentToProtect;
-    
+    //if the user doesnt have admin access but has a user.id then they are
+    //assumed to be a volunteer this will direct their landing to also wack home
   } else if(user.id){
-    // the the user is not logged in and the mode is not 'login'
-    // show the RegisterPage
     ComponentToShow = VolunteerLanding;
+    //if nothing else then they are taken back to the landing page
   } else {
     ComponentToShow = LoginPage;
   }

@@ -9,17 +9,17 @@ class Events extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('EVENT searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_CURRENT_ID', payload: searchObject.id });
         this.props.dispatch({ type: 'GET_EVENT', payload: searchObject.id });
     }
 
 
+    // add new event 
     newEvent = () => {
-        console.log(`clicked add event! `);
         this.props.history.push(`/add-event?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }
 
+    // formatting date 
     formatDate = (date) => {
         let entryDate =  moment(date).subtract(10, 'days').calendar();
         return entryDate; 
@@ -27,6 +27,7 @@ class Events extends Component {
 
     render() {
 
+        // render this if eventReducer is empty
         let emptyBio;
         if(this.props.reduxState.eventReducer.length === 0) {
             emptyBio = <h1> There are no events for this case! </h1>

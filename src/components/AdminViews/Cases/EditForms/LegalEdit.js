@@ -7,7 +7,12 @@ import moment from 'moment';
 
 class LegalEdit extends Component {
 
-   
+   //on the load of the page check the query string in the url and pull the id
+    //use the id to dispatch all the legal information for that specific file
+    //set the state to put that id in as case_id
+    //conditional statement to check if the reducer has any values
+    //if the reducer is empty then render a blank form
+    //also if empty change from the button being a POST instead of a PUT
     componentDidMount () {
         const searchObject = qs.parse(this.props.location.search)
         this.props.dispatch({ type: 'GET_LEGAL', payload: searchObject.id });
@@ -68,9 +73,7 @@ class LegalEdit extends Component {
         else (
             this.props.dispatch({ type: 'PUT_LEGAL', payload: this.state.legalForm })
         )
-        this.props.history.push(`/edit-case?id=${this.state.legalForm.case_id}`) 
-        console.log(this.state.legalForm);
-        
+        this.props.history.push(`/edit-case?id=${this.state.legalForm.case_id}`)         
     }
 
     // format date from database to display correctly for inputs' defaultValues 

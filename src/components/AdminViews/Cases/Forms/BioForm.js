@@ -51,23 +51,19 @@ class BioForm extends Component {
         }
     };
 
+
     handleChange = propertyName => event => {
-        console.log(`this is the propertyName:`, propertyName);
-        console.log(`this is target value:`, event.target.value)
         this.setState({
             bioForm: {
                 ...this.state.bioForm,
                 [propertyName]: event.target.value,
             }
         })
-        console.log(`this is state after handleChange:`, this.state)
     }
 
    next = () => {
     this.props.dispatch({ type: 'ADD_BIO', payload: this.state.bioForm })
-
     this.props.history.push(`/children-form?id=${this.state.bioForm.case_id}`);
-
    }
 
     backButton = () => {
@@ -80,6 +76,7 @@ class BioForm extends Component {
             <div>
               <Nav pageName='BIO' backArrow='/cases' home='/home'/>
                 <center>
+
                     <div className="formDivs" >
                         <label>FIRST NAME</label> 
                         <input type="text" value={this.state.bioForm.first_name || ''} onChange={this.handleChange('first_name')}/> 
@@ -89,7 +86,7 @@ class BioForm extends Component {
                         <input type="date" value={this.state.bioForm.dob || ''} onChange={this.handleChange('dob')} /> 
                         <label>SPOUSE NAME</label> 
                         <input type="text" value={this.state.bioForm.spouse_first_name} onChange={this.handleChange('spouse_first_name')}/> 
-                        <label>SPOUSE D.O.B</label> 
+                            <label>SPOUSE D.O.B</label> 
                         <input type="date" value={this.state.bioForm.spouse_dob} onChange={this.handleChange('spouse_dob')}/> 
 
                         <label>PHONE</label> 

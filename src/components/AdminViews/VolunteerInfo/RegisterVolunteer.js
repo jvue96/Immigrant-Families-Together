@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Nav from '../../Nav/Nav'
@@ -28,12 +28,9 @@ class RegisterVolunteer extends Component {
       }
 
     register = () => {
-        console.log(`hit register button!`);
         alert(`You've registered a new volunteer!`)
         this.props.dispatch({ type: 'ADD_NEW_VOLUNTEER', payload: this.state })
         this.props.history.push('/home')
-      
-        // do something to put new volunteer into database(s)
     }
 
     render() {

@@ -41,16 +41,12 @@ class AidForm extends Component {
     }
 
     handleChange = propertyName => event => {
-        console.log(`handleChange has been fired with this propertyName:`, propertyName);
-        
         this.setState({
             aidForm: {
                 ...this.state.aidForm,
                 [propertyName]: event.target.value,
             }
         })
-        console.log(`this is state after handleChange:`, this.state);
-        
     }
     
     render() {

@@ -8,12 +8,12 @@ class AidSocial extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('GENERAL BioMedical searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_AID', payload: searchObject.id });
     }
     
     render() {
 
+        // if aidReducer is empty, render labels with empty information 
         let emptySocial;
         if(this.props.reduxState.aidReducer.length === 0) {
             emptySocial = <div className="bioCard">

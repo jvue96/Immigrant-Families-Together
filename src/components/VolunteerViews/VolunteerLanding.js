@@ -8,11 +8,9 @@ class VolunteerLanding extends Component {
     componentDidMount = () => {
         // this.props.dispatch({ type: 'GET_MEDICAL' });'
         this.props.dispatch({ type: 'GET_USER_CASES', payload: this.props.reduxState.user.id });
-        console.log('user id', this.props.reduxState.user.id);
     }
 
     viewCase = (event) => {
-        console.log(event.target.dataset.value);
         this.props.dispatch({type: 'GET_CURRENT_ID', payload: event.target.dataset.value})
         this.props.history.push(`/volunteer-events?id=${event.target.dataset.value}`)
     }

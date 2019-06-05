@@ -4,15 +4,16 @@ import { connect } from 'react-redux';
 
 class CaseList extends Component {
 
+    //set up state to allow for a search
     state = {
         search: '',
     }
 
+    //target based off of event and cicked value
     setSearch = (event) => {
         this.setState({
             search: event.target.value
         })
-        console.log(this.state);
     }
 
     assignCase = () => {
@@ -20,13 +21,12 @@ class CaseList extends Component {
         // do something here to assigned case and add into relevant databases 
     }
 
+    //dispatch call to search based off what was typed in state
     searchBy = () => {
         this.props.dispatch({ type: 'GET_CASES_SEARCH', payload: this.state });
-        console.log(`Do something for a search by!`);
     }
 
     selectCase = (id) => {
-        console.log(`in selectCase, heres id:`, id);
         //this.props.history.push(`/case/?id=${id}&admin=true`);
         //this is from volunteer landing:
         this.props.dispatch({type: 'GET_CURRENT_ID', payload: id})
@@ -37,7 +37,6 @@ class CaseList extends Component {
 
     componentDidMount() {
         //checks to see if there is a query selector
-       
             this.props.dispatch({ type: 'GET_CASES' });
        }
 

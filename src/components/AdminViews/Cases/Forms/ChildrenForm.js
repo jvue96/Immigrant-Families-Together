@@ -34,19 +34,34 @@ state = {
         child_dob: '',
         child_info: '',
     }
-};
 
-// clears input fields to enable adding another child 
-addInput = event => {
-this.setState({
-    childForm: {
-        case_id: this.props.reduxState.caseReducer.rows[0].id,
-        child_name: '',
-        child_dob: '',
-        child_info: '',
-        }
-    });
-};
+    
+    // dispatch to childrenSaga to post data
+    next = () => {
+        this.props.dispatch({ type: 'ADD_CHILDREN', payload: this.state.addChild })
+        this.props.history.push(`/medical-form?id=${this.state.childForm.case_id}`);
+    }
+
+    // pushes new state to children array to create multiple children
+    save = () => {
+        this.state.addChild.push(this.state.childForm)
+    }
+
+      render() {
+
+        return (
+          <div>
+
+              <Nav pageName='CHILDREN FORM' home='/home'/>
+
+              {/* {JSON.stringify(this.state)} */}
+
+              <center>
+              <button className="hiddenButton" onClick={this.test}></button>
+                        {/* UN COMMENT TO TEST IF DATA IS IN childrenReducer */}
+                        {/* {JSON.stringify(this.props.reduxState.childrenReducer)} */}
+                    <div className="formDivs">
+
 
 // change state to become input field values 
     handleChange = propertyName => event => {

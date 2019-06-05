@@ -7,13 +7,13 @@ class Team extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('Individual volunteer bio searchObject', searchObject.id);
         //we will need to ass in the search object to view WHERE ID = USER.ID
         this.props.dispatch({ type: 'GET_TEAM', payload: searchObject.id });
     }
 
     render() {
 
+        // render label with empty information if teamReducer is empty
         let emptyTeam; 
         if(this.props.reduxState.teamReducer.length === 0) {
             emptyTeam = <div className="teamCard">

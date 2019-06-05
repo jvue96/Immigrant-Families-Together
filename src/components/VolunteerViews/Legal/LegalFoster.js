@@ -8,12 +8,12 @@ class LegalFoster extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('BOND searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_BOND', payload: searchObject.id });
     }
 
     render() {
 
+        // render labels with empty information if reducer is empty
         let emptyFoster; 
         if(this.props.reduxState.bondReducer.length === 0) {
             emptyFoster = <div className="bioCard">

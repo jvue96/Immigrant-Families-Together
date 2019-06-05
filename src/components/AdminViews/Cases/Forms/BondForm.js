@@ -44,6 +44,7 @@ class BondForm extends Component {
         }
     }
 
+
     next = () => {
         this.props.dispatch({ type: 'ADD_BOND', payload: this.state.legalInfoForm })
         this.props.history.push(`/legal-form?id=${this.state.legalInfoForm.case_id}`)

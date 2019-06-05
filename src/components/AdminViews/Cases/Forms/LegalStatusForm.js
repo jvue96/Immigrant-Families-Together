@@ -39,10 +39,10 @@ class LegalStatusForm extends Component {
         }
     }
 
+
     next = () => {
         //this.props.history.push('/social-form')
         this.props.history.push(`/admin-landing?id=${this.state.legalForm.case_id}`);
-        console.log(this.state);   
         this.props.dispatch({ type: 'ADD_LEGAL', payload: this.state.legalForm })
 
     }

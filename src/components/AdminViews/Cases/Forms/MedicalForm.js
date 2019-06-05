@@ -36,8 +36,6 @@ class MedicalForm extends Component {
     next = () => {
         this.props.dispatch({ type: 'ADD_MEDICAL', payload: this.state.medicalForm })
         this.props.history.push(`/school-form?id=${this.state.medicalForm.case_id}`)
-        console.log(this.state.medicalForm);
-        
     }
 
     state = {
@@ -60,6 +58,7 @@ class MedicalForm extends Component {
             medical_notes: ''
         }
     }
+
 
     handleChange = propertyName => event => {
         this.setState({

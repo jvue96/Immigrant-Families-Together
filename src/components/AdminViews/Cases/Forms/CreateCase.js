@@ -4,12 +4,13 @@ import { withRouter } from 'react-router';
 import Nav from '../../../Nav/Nav'
 class CreateCase extends Component {
     
-next = (event) => {
-    this.props.dispatch({ type: 'ADD_CASE', payload: this.state.caseForm })
-    console.log('event.currentTarget.value', this.state.caseForm.case_number);
-    //move into new will update method
-    // this.props.history.push(`/bio-form?id=${this.state.caseForm.case_number}`)
-}
+
+    next = (event) => {
+        this.props.dispatch({ type: 'ADD_CASE', payload: this.state.caseForm })
+        //move into new will update method
+        // this.props.history.push(`/bio-form?id=${this.state.caseForm.case_number}`)
+    }
+
 
 state = {
     caseForm: {
@@ -24,6 +25,7 @@ componentDidUpdate = (prevProps) => {
     this.props.history.push(`/bio-form?id=${this.props.reduxState.caseReducer.rows[0].id}`)
  }
 }
+
 
 handleChange = propertyName => event => {
     console.log(`handleChange has been fired with this propertyName:`, propertyName);

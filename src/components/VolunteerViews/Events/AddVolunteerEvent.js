@@ -9,7 +9,6 @@ class AddEvent extends Component {
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
         this.props.dispatch({ type: 'GET_BOND', payload: searchObject.id });
-        console.log('searchObject', searchObject);
         this.setState({
             addEvent:{
                 ...this.state.addEvent,
@@ -26,6 +25,7 @@ class AddEvent extends Component {
         }
     }
 
+
      // set state for onChange of textfields 
      handleNameChange = (propertyName) => {  
         return(event) =>{
@@ -39,14 +39,12 @@ class AddEvent extends Component {
     }
 
 
+    // add a new event
+    // dispatch a POST and GET request for events 
     newEvent = () => {
-        console.log(`clicked add event! `);
         this.props.dispatch({ type: 'ADD_EVENT', payload: this.state.addEvent })
         this.props.history.push(`/volunteer-events?id=${this.state.addEvent.case_id}`)
-
-
         const searchObject = qs.parse(this.props.location.search)
-        console.log('EVENT searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_EVENT', payload: searchObject.id });
     }
 

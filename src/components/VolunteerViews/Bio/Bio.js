@@ -12,7 +12,6 @@ import Nav from '../../Nav/Nav'
 class Bio extends Component {
 
     infoPages = (event) => {
-        console.log('PAYLOAF FOR GET FAMILY INFO', event.currentTarget.value);
         // this.props.dispatch({type: 'GET_CURRENT_ID', payload: event.currentTarget.value})
         this.props.history.push(`/bio-family-info?id=${this.props.reduxState.caseIdReducer[0].id}`)
     }

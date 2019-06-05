@@ -7,6 +7,12 @@ import qs from 'query-string';
 
 class SchoolEdit extends Component {
     
+    //on the load of the page check the query string in the url and pull the id
+    //use the id to dispatch all the school information for that specific file
+    //set the state to put that id in as case_id
+    //conditional statement to check if the reducer has any values
+    //if the reducer is empty then render a blank form
+    //also if empty change from the button being a POST instead of a PUT
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
         this.props.dispatch({ type: 'GET_SCHOOL', payload: searchObject.id });
@@ -28,6 +34,7 @@ class SchoolEdit extends Component {
             schoolForm:{
                 ...this.state.schoolForm,
                 case_id: searchObject.id,
+                id: this.props.reduxState.schoolReducer[0].id,
                 name: this.props.reduxState.schoolReducer[0].name, 
                 phone: this.props.reduxState.schoolReducer[0].phone, 
                 email: this.props.reduxState.schoolReducer[0].email, 
@@ -39,6 +46,7 @@ class SchoolEdit extends Component {
 
     state= {
         schoolForm: {
+            id: this.props.reduxState.schoolReducer[0].id,
             case_id: '',
             name:'',
             phone:'',
@@ -57,6 +65,7 @@ class SchoolEdit extends Component {
             }
         })
     }
+    
     // conditional to determine a POST or a PUT 
     next = () => {
         if (this.state.schoolForm.data === false) {

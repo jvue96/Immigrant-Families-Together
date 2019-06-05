@@ -14,7 +14,6 @@ class VolunteerBio extends Component {
     componentDidMount = () => {
        
         const searchObject = qs.parse(this.props.location.search)
-        console.log('Individual volunteer bio searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_VOLUNTEER_BIO', payload: searchObject.id });
         this.props.dispatch({ type: 'GET_CASES'});
         this.props.dispatch({ type: 'GET_VOLUNTEER_CASES', payload: searchObject.id });
@@ -35,14 +34,17 @@ class VolunteerBio extends Component {
                 [propertyName]: event.target.value,
             }
         })
-        console.log(`this is state after handleChange:`, this.state);
-        
     }
 
     assignCase = () => {
-        console.log(`hit assign case button!`);
         this.props.dispatch({ type: 'ASSIGN_CASE', payload: this.state.assignCase })
         this.props.history.push('/volunteers')
+    }
+
+    viewCase = (event) => {
+        console.log('assign the case', event.target.dataset.value);
+        this.props.dispatch({type: 'GET_CURRENT_ID', payload: event.target.dataset.value})
+        this.props.history.push(`/volunteer-events?id=${event.target.dataset.value}`)
     }
 
     render() {
@@ -139,7 +141,7 @@ onChange={this.handleChange('case_id')}
                     {/* map over cases assigned to volunteer */}
                     <tbody>
                             <tr>
-                                <td onClick={this.viewCase}>{cases.last_name}</td>
+                                <td data-value={cases.case_id} onClick={this.viewCase}>{cases.last_name}</td>
                                 <td>{cases.case_id}</td>
                             </tr>
                         </tbody>
