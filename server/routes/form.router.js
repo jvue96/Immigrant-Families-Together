@@ -718,37 +718,6 @@ router.get('/volunteer/search/', rejectUnauthenticated, (req, res) => {
 })
 
 
-
-router.get('/volunteer', rejectUnauthenticated, (req, res) => {
-  console.log(`HIT SERACH BY VOLUNTEER`);
-
-  // console.log(req.params);
-
-  // const id = req.params.id; 
-  // const keyword = req.params.keyword; 
-
-  // const queryText =   `SELECT * FROM "entries"
-  //                     JOIN "images" ON "images"."entries_id" = "entries"."id"
-  //                     WHERE "user_id" = ${id}
-  //                     AND (
-  //                     "description" LIKE '%${keyword}%' OR "description" ILIKE '%${keyword}%' OR
-  //                     "title" LIKE '%${keyword}%' OR "title" ILIKE '%${keyword}%' OR
-  //                     "location" LIKE '%${keyword}%' OR "location" ILIKE '%${keyword}%' OR
-  //                     "url" LIKE '%${keyword}%' OR "url" ILIKE '%${keyword}%')`;
-
-  // pool.query(queryText)
-  //   .then ((result) => { res.send(result.rows);
-  //     console.log(result.rows);
-
-
-  //   })
-  //   .catch((err) => {
-  //     console.log(`Error getting entries containing KEYWORD`, err);
-  //     res.sendStatus(500); 
-
-  //   });
-})
-
 router.post('/assign', rejectUnauthenticated, (req, res) => {
   let cases = req.body;
   console.log('Assigning a volunteer to a new case:', cases);
