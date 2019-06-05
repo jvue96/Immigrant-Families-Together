@@ -13,6 +13,7 @@ class LegalAttorney extends Component {
 
     render() {
 
+        // render labels with empty information if reducer is empty
         let emptyAttorney; 
         if(this.props.reduxState.bondReducer.length === 0) {
             emptyAttorney = <div className="bioCard">

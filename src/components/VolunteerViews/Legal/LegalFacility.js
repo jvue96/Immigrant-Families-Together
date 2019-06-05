@@ -14,6 +14,7 @@ class LegalIce extends Component {
 
     render() {
         
+        // render labels with empty information if reducer is empty
         let emptyFacility;
         if(this.props.reduxState.bondReducer.length === 0) {
             emptyFacility = <div className="bioCard">

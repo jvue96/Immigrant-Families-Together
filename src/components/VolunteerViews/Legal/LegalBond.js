@@ -26,6 +26,7 @@ class LegalBond extends Component {
     
     render() {
 
+        // render labels with empty information if reducer is empty
         let emptyBond;
         if(this.props.reduxState.bondReducer.length === 0) {
             emptyBond =  <div className="bioCard">

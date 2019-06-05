@@ -51,6 +51,8 @@ class AddEvent extends Component {
     }
 
 
+    // add a new event
+    // dispatch a POST and GET request for events 
     newEvent = () => {
         console.log(`clicked add event! `);
         this.props.dispatch({ type: 'ADD_EVENT', payload: this.state.addEvent })
