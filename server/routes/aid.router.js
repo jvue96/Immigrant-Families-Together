@@ -3,6 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
+//Adds info from bio form at bio-form, returns OK status if it sucessfully posts
 router.post('/', rejectUnauthenticated, (req, res) => {
     let aid = req.body;
     let sqlText = `INSERT INTO aid (grocery_program, grocery_program_volunteer, go_fund_me, social_worker, social_worker_phone) VALUES 

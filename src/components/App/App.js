@@ -41,7 +41,7 @@ import MedicalEdit from '../AdminViews/Cases/EditForms/MedicalEdit'
 import SchoolEdit from '../AdminViews/Cases/EditForms/SchoolEdit'
 import HousingEdit from '../AdminViews/Cases/EditForms/HousingEdit'
 import LegalEdit from "../AdminViews/Cases/EditForms/LegalEdit";
-import BondEdit from "../AdminViews/Cases/EditForms/BondEdit"; 
+import BondEdit from "../AdminViews/Cases/EditForms/BondEdit";
 import ChildrenEdit from '../AdminViews/Cases/EditForms/ChildrenEdit';
 import CloseCase from '../AdminViews/Cases/CloseCase';
 import ConfirmClose from '../AdminViews/Cases/ConfirmClose'
@@ -71,6 +71,7 @@ import VolunteerTeam from '../VolunteerViews/Team/Team'
 import VolunteerEvents from '../VolunteerViews/Events/VolunteerEvents'
 import AddVolunteerEvent from '../VolunteerViews/Events/AddVolunteerEvent'
 import BioChildren from '../VolunteerViews/Bio/BioChildren';
+import Stats from '../AdminViews/Stats';
 
 
 
@@ -104,7 +105,7 @@ class App extends Component {
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
-            
+
             <AdminProtectedRoute
               exact
               path="/home"
@@ -124,6 +125,12 @@ class App extends Component {
               exact
               path='/aid-form'
               component={AidForm}
+            />
+
+            <AdminProtectedRoute
+              exact
+              path="/stats"
+              component={Stats}
             />
 
             <ProtectedRoute
@@ -223,7 +230,7 @@ class App extends Component {
               path="/events"
               component={Events}
             />
-             <ProtectedRoute
+            <ProtectedRoute
               exact
               path="/bio-medical"
               component={BioMedical}
@@ -425,6 +432,6 @@ class App extends Component {
 
 const mapReduxStateToProps = (reduxState) => ({
   reduxState
-  });
+});
 
 export default connect(mapReduxStateToProps)(App);
