@@ -95,17 +95,17 @@ class ChildForm extends Component {
                     onChange={this.handleChange('child_info')}/> 
                 
                 {/* pushes new state to children array to create multiple children */}
-                <button 
+                {/* <button 
                 className="formButton"
                 onClick={this.save}> Save
-                </button> 
+                </button>  */}
 
                 {/* clears input fields to enable adding another child  */}
-                <button 
+                {/* <button 
                 className="formButton"
                 style={{width: 200}}
                 onClick={this.addInput}> Add Another Child
-                </button>
+                </button> */}
 
                  
 

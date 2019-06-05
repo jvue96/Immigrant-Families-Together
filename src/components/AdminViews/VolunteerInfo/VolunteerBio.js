@@ -45,6 +45,12 @@ class VolunteerBio extends Component {
         this.props.history.push('/volunteers')
     }
 
+    viewCase = (event) => {
+        console.log('assign the case', event.target.dataset.value);
+        this.props.dispatch({type: 'GET_CURRENT_ID', payload: event.target.dataset.value})
+        this.props.history.push(`/volunteer-events?id=${event.target.dataset.value}`)
+    }
+
     render() {
         return (
             <div>
@@ -139,7 +145,7 @@ onChange={this.handleChange('case_id')}
                     {/* map over cases assigned to volunteer */}
                     <tbody>
                             <tr>
-                                <td onClick={this.viewCase}>{cases.last_name}</td>
+                                <td data-value={cases.case_id} onClick={this.viewCase}>{cases.last_name}</td>
                                 <td>{cases.case_id}</td>
                             </tr>
                         </tbody>
