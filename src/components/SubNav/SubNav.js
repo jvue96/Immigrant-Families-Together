@@ -13,7 +13,6 @@ class SubNav extends Component {
     
     render() {
         const searchObject = qs.parse(this.props.location.search)
-    console.log('SUB NAV searchObject', searchObject.id);
         return (
 
             <div className="subnavbar">
