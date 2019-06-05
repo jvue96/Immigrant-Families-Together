@@ -8,9 +8,7 @@ class BioSchool extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('School searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_SCHOOL', payload: searchObject.id });
-        console.log('GET_SCHOOL', this.props.reduxState.bioReducer);
     }
 
     render() {

@@ -8,7 +8,6 @@ class LegalIce extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('LEGAL ICE FACILITY searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_BOND', payload: searchObject.id });
     }
 

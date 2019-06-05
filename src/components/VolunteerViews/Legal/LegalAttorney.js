@@ -7,7 +7,6 @@ class LegalAttorney extends Component {
 
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
-        console.log('BOND searchObject', searchObject.id);
         this.props.dispatch({ type: 'GET_BOND', payload: searchObject.id });
     }
 
