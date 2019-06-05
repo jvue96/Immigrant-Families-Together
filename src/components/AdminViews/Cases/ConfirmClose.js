@@ -22,6 +22,7 @@ class ConfirmClose extends Component {
         }
     }
 
+    //set the new state to be passed through as inactive automatically
     state = {
         closeCase: {
             id: '',

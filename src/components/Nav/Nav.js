@@ -7,6 +7,7 @@ import '../App/App.css'
 const Nav = (props) => {
     return (
         <>
+        {/* set the ability to have the back button have different directions through the app */}
             <div className="nav">
                 {props.backArrow ?
                     <div className="navLeft2"
@@ -19,6 +20,7 @@ const Nav = (props) => {
                         <i className="fas fa-chevron-left"></i>
                     </div>
                 }
+                {/* ability to change the name being used across app */}
                 <div className="navTitle">
                     <h2 className="navH2">{props.pageName}</h2>
                 </div>

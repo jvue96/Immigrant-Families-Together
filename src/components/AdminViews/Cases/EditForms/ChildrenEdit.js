@@ -6,6 +6,12 @@ import qs from 'query-string';
 
 class ChildForm extends Component {
 
+    //on the load of the page check the query string in the url and pull the id
+    //use the id to dispatch all the children information for that specific file
+    //set the state to put that id in as case_id
+    //conditional statement to check if the reducer has any values
+    //if the reducer is empty then render a blank form
+    //also if empty change from the button being a POST instead of a PUT
     componentDidMount = () => {
         const searchObject = qs.parse(this.props.location.search)
         console.log('ChildrenForm searchObject', searchObject);
