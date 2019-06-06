@@ -46,7 +46,7 @@ class SchoolEdit extends Component {
 
     state= {
         schoolForm: {
-            id: this.props.reduxState.schoolReducer[0].id,
+            id: '',
             case_id: '',
             name:'',
             phone:'',

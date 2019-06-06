@@ -44,7 +44,7 @@ class ChildForm extends Component {
 
     state = {
         childForm: {
-            id: this.props.reduxState.childrenReducer[0].id,
+            id: '',
             case_id: '',
             child_name: '',
             child_dob: '',
