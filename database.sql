@@ -152,3 +152,6 @@ CREATE TABLE "school" (
     "phone" VARCHAR (20),
     "email" VARCHAR (100)
 );
+
+INSERT INTO "user" ("username", "first_name", "last_name", "password", "phone", "email", "encrypted", "address", "skills", "second_language", "admin" ) 
+VALUES ('Test User', 'Initial', 'User', '$2b$10$JPYYlg9aWjGVVjcDFfrIVeRlK2ZLyVth56E7b/q2PPmlzDbWpWQ1m', '', '', '', '', '', '', 'yes');

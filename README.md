@@ -64,6 +64,13 @@ git commit -m "MESSAGE"
 git push heroku master
 ```
 
+### Login
+
+1. This is a protected application where users need to be registered by an admin
+2. To log in as the initial admin use the following credentials: 
+- username: Test User
+- password: testuser
+
 # Screenshots of the application 
 ![alt text](./images/admin_landing.jpg "Administrative Landing Page")
 ![alt text](./images/volunteer_landing.jpg "Volunteer Landing Page")
@@ -96,7 +103,7 @@ ex) doctors appointments, court dates, etc.
 ex) how many families are on the grocery program etc. 
 
 # Developers 
-- Kingman Douglas 
+- Kingman Douglass 
 - Ben Ragsdale 
 - Joe Schlachtenhaufen
 - Juno Vue 
