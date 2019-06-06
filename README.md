@@ -73,7 +73,7 @@ git push heroku master
 # Completed Features 
 * seperate features enabled for admins and volunteers 
 
-## ADMINS can:
+### ADMINS can:
 - create a case 
 - edit a case 
 - search for a case by name or case ID
@@ -84,7 +84,7 @@ git push heroku master
 - search volunteers 
 - view volunteer information 
 
-## VOLUNTEERS can: 
+### VOLUNTEERS can: 
 - view case information they've been assigned to 
 - create notes within a case for admin and other volunteers to see. 
 ex) change of address, new doctor(s), new school etc. 
