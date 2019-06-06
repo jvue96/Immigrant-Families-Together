@@ -96,7 +96,7 @@ ex) doctors appointments, court dates, etc.
 ex) how many families are on the grocery program etc. 
 
 # Developers 
-- Kingmann Douglas 
+- Kingman Douglas 
 - Ben Ragsdale 
 - Joe Schlachtenhaufen
 - Juno Vue 
