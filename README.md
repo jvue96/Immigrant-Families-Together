@@ -12,12 +12,46 @@ Software that is required prior to starting the application
 Node.js
 
 # Installing - get the development environment running 
-1: Start this project
-2: type "npm install" into your terminal
-3: type "npm start" into your terminal
+- Download the project
+- type "npm install" into your terminal
+- type "npm start" into your terminal
 
-# Read only version of scope document 
-https://docs.google.com/document/d/1DdTJATH_dNJJRps2-rZoI6Ec7Q8M6MIMtWioqUYLE4A/edit?usp=sharing
+### Heroku Prerequisite (one time)
+
+1. Sign up for an account on [Heroku.com](https://www.heroku.com/)
+- You may have to give them a credit card, but you shouldnt need to pay for anything
+2. Install Heroku CLI by typing `brew install heroku/brew/heroku` in Terminal
+3. Authenticate by typing `heroku login` in Terminal
+
+  > Note: Your project also needs to have a git repository.
+
+### Heroku Setup
+
+Run the following commands from within your project folder.
+
+1. In terminal, navigate to your project folder and type `heroku create`
+2. Login in if prompted -- it might ask to open a browser
+3. Type `git remote -v` to ensure it added successfully
+
+Make sure your PORT is configured correctly as:
+
+```JavaScript
+const PORT = process.env.PORT || 5000;
+```
+
+Next, commit your changes and push them to Heroku:
+
+```
+git add .
+git commit -m "MESSAGE"
+git push heroku master
+```
+
+   > Note: You'll need to commit and push each time you make a change that you want to deploy to Heroku. **Keep in mind you CAN NOT pull from Heroku. This is not a replacement for GitHub!**
+
+Lastly, open terminal and type `heroku open` as a shortcut to open your website in a browser.
+
+   > Note: It is best to fully test your code locally before deploying to Heroku. Bugs are much harder to troubleshoot on a live website.
 
 # Screenshots of the application 
 ![alt text](./images/admin_landing.jpg "Administrative Landing Page")
