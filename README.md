@@ -23,8 +23,6 @@ Node.js
 2. Install Heroku CLI by typing `brew install heroku/brew/heroku` in Terminal
 3. Authenticate by typing `heroku login` in Terminal
 
-  > Note: Your project also needs to have a git repository.
-
 ### Heroku Setup
 
 Run the following commands from within your project folder.
@@ -32,12 +30,6 @@ Run the following commands from within your project folder.
 1. In terminal, navigate to your project folder and type `heroku create`
 2. Login in if prompted -- it might ask to open a browser
 3. Type `git remote -v` to ensure it added successfully
-
-Make sure your PORT is configured correctly as:
-
-```JavaScript
-const PORT = process.env.PORT || 5000;
-```
 
 Next, commit your changes and push them to Heroku:
 
@@ -52,6 +44,19 @@ git push heroku master
 Lastly, open terminal and type `heroku open` as a shortcut to open your website in a browser.
 
    > Note: It is best to fully test your code locally before deploying to Heroku. Bugs are much harder to troubleshoot on a live website.
+
+### Postgresql on Heroku
+
+1. In terminal, type `heroku addons:create heroku-postgresql:hobby-dev` to set up Postgresql on your Heroku project
+2. Next, type `heroku pg:push immigrant_families DATABASE_URL` to copy your database contents up to Heroku. 
+
+Next, commit your changes and push them to Heroku:
+
+```
+git add .
+git commit -m "MESSAGE"
+git push heroku master
+```
 
 # Screenshots of the application 
 ![alt text](./images/admin_landing.jpg "Administrative Landing Page")
