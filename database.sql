@@ -59,6 +59,17 @@ CREATE TABLE "housing" (
    "living_with_fam" VARCHAR(100)
 );
 
+CREATE TABLE "legal_status" (
+    "id" SERIAL PRIMARY KEY,
+    "case_id" INT REFERENCES "cases",
+    "last_court_date" DATE,
+    "last_court_date_outcome" VARCHAR(2000),
+    "next_court_date" DATE,
+    "next_court_date_outcome" VARCHAR(2000),
+    "asylum_application" BOOLEAN,
+    "work_authorization" BOOLEAN
+);
+
 CREATE TABLE "legal" (
     "id" SERIAL PRIMARY KEY,
     "case_id" INT REFERENCES "cases",
@@ -75,16 +86,7 @@ CREATE TABLE "legal" (
     "legal_notes" VARCHAR(2000)
 );
 
-CREATE TABLE "legal_status" (
-    "id" SERIAL PRIMARY KEY,
-    "case_id" INT REFERENCES "cases",
-    "last_court_date" DATE,
-    "last_court_date_outcome" VARCHAR(2000),
-    "next_court_date" DATE,
-    "next_court_date_outcome" VARCHAR(2000),
-    "asylum_application" BOOLEAN,
-    "work_authorization" BOOLEAN
-);
+
 
 CREATE TABLE "medical" (
     "id" SERIAL PRIMARY KEY,

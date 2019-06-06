@@ -14,7 +14,8 @@ Node.js
 ### Installing - Get the Development Environment Running 
 1. Download the project
 2. type "npm install" into your terminal
-3. type "npm start" into your terminal
+3. type "npm run server" into your terminal
+4. in a different terminal window, type "npm run client" into your terminal
 
 ### Create database 
 1. Download and open Postico
@@ -47,7 +48,6 @@ git push heroku master
 
    > Note: You'll need to commit and push each time you make a change that you want to deploy to Heroku. **Keep in mind you CAN NOT pull from Heroku. This is not a replacement for GitHub!**
 
-Lastly, open terminal and type `heroku open` as a shortcut to open your website in a browser.
 
    > Note: It is best to fully test your code locally before deploying to Heroku. Bugs are much harder to troubleshoot on a live website.
 
@@ -63,6 +63,9 @@ git add .
 git commit -m "MESSAGE"
 git push heroku master
 ```
+
+
+Lastly, open terminal and type `heroku open` as a shortcut to open your website in a browser.
 
 ### Login
 
