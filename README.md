@@ -11,12 +11,12 @@ Follow along the instructions below to retrieve a copy of this repo into your lo
 Software that is required prior to starting the application
 Node.js
 
-# Installing - get the development environment running 
+### Installing - Get the Development Environment Running 
 1. Download the project
 2. type "npm install" into your terminal
 3. type "npm start" into your terminal
 
-# Create database 
+### Create database 
 1. Download and open Postico
 2. Create new database named "immigrant_families"
 3. Copy and paste SQL text from file
