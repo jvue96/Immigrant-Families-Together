@@ -12,9 +12,15 @@ Software that is required prior to starting the application
 Node.js
 
 # Installing - get the development environment running 
-- Download the project
-- type "npm install" into your terminal
-- type "npm start" into your terminal
+1. Download the project
+2. type "npm install" into your terminal
+3. type "npm start" into your terminal
+
+# Create database 
+1. Download and open Postico
+2. Create new database named "immigrant_families"
+3. Copy and paste SQL text from file
+4. Insert SQL text into Postico to CREATE TABLES
 
 ### Heroku Prerequisite (one time)
 
