@@ -4,7 +4,6 @@
 -- You must use double quotes in every query that user is in:
 -- ex. SELECT * FROM "user";
 -- Otherwise you will have errors!
-
 CREATE TABLE "user" (
    "id" SERIAL PRIMARY KEY,
    "username" VARCHAR (80) UNIQUE NOT NULL,
@@ -17,7 +16,7 @@ CREATE TABLE "user" (
    "second_language" VARCHAR (100),
    "admin" VARCHAR (80),
    "first_name" VARCHAR (100),
-   "last_namne" VARCHAR (100)
+   "last_name" VARCHAR (100)
 );
 
 CREATE TABLE "cases" (
@@ -29,7 +28,7 @@ CREATE TABLE "cases" (
 
 CREATE TABLE "users_cases" (
     "id" SERIAL PRIMARY KEY,
-    "user_id" INT REFERENCES "users",
+    "user_id" INT REFERENCES "user",
     "case_id" INT REFERENCES "cases"
 );
 
@@ -152,6 +151,7 @@ CREATE TABLE "school" (
     "phone" VARCHAR (20),
     "email" VARCHAR (100)
 );
+
 
 INSERT INTO "user" ("username", "first_name", "last_name", "password", "phone", "email", "encrypted", "address", "skills", "second_language", "admin" ) 
 VALUES ('Test User', 'Initial', 'User', '$2b$10$JPYYlg9aWjGVVjcDFfrIVeRlK2ZLyVth56E7b/q2PPmlzDbWpWQ1m', '', '', '', '', '', '', 'yes');
