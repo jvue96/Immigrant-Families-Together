@@ -4,6 +4,10 @@ Immigrant Families Together is a volunteer-based organization that reunites sepa
 # Built With 
 React, Redux, HTML, CSS, Passport, Axios, Postgres, Node, Express, and more. (package.json file contains full list)
 
+# Run on Heroku
+- https://damp-thicket-84697.herokuapp.com/
+- Reference log in credentials below
+
 # Getting Started 
 Follow along the instructions below to retrieve a copy of this repo into your local machine. 
 
