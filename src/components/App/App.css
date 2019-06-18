@@ -444,3 +444,7 @@ tr.inactive {
   background: transparent;
   margin: 1em 0;
 } 
+
+.hiddenButton {
+  display:none;
+}

@@ -77,9 +77,9 @@ class ChildForm extends Component {
      // conditional to determine a POST or a PUT 
     next = () => {
         if (this.state.childForm.data === false) {
-            this.props.dispatch({ type: 'ADD_SCHOOL', payload: this.state.childForm })
+            this.props.dispatch({ type: 'ADD_CHILDREN', payload: this.state.childForm })
         } else (
-            this.props.dispatch({ type: 'PUT_SCHOOL', payload: this.state.childForm })
+            this.props.dispatch({ type: 'PUT_CHILDREN', payload: this.state.childForm })
         )
         this.props.history.push(`/edit-case?id=${this.state.childForm.case_id}`)
     }
@@ -164,7 +164,10 @@ class ChildForm extends Component {
                 onClick={this.addInput}> Add Another Child
                 </button> */}
 
-                 
+                        <input type="text"
+                        className="hiddenButton"
+                        defaultValue={children.id}
+                        onChange={this.handleChange('id')}/>
 
 
             

@@ -6,7 +6,7 @@ import qs from 'query-string';
 
 
 class SchoolEdit extends Component {
-    
+
     //on the load of the page check the query string in the url and pull the id
     //use the id to dispatch all the school information for that specific file
     //set the state to put that id in as case_id
@@ -18,40 +18,40 @@ class SchoolEdit extends Component {
         this.props.dispatch({ type: 'GET_SCHOOL', payload: searchObject.id });
         // setState to null if the reducer is empty
         // enables posting null values that are left unchanged to edit later 
-        if(this.props.reduxState.schoolReducer.length === 0) {
+        if (this.props.reduxState.schoolReducer.length === 0) {
             this.setState({
-                schoolForm:{
+                schoolForm: {
                     ...this.state.schoolForm,
                     case_id: searchObject.id,
-                    name: null, 
-                    phone: null, 
-                    email: null, 
-                    data: false, 
+                    name: null,
+                    phone: null,
+                    email: null,
+                    data: false,
                 }
-            })  
+            })
         } else {
-        this.setState({
-            schoolForm:{
-                ...this.state.schoolForm,
-                case_id: searchObject.id,
-                id: this.props.reduxState.schoolReducer[0].id,
-                name: this.props.reduxState.schoolReducer[0].name, 
-                phone: this.props.reduxState.schoolReducer[0].phone, 
-                email: this.props.reduxState.schoolReducer[0].email, 
-                data: true, 
+            this.setState({
+                schoolForm: {
+                    ...this.state.schoolForm,
+                    case_id: searchObject.id,
+                    id: this.props.reduxState.schoolReducer[0].id,
+                    name: this.props.reduxState.schoolReducer[0].name,
+                    phone: this.props.reduxState.schoolReducer[0].phone,
+                    email: this.props.reduxState.schoolReducer[0].email,
+                    data: true,
                 }
             })
         }
     }
 
-    state= {
+    state = {
         schoolForm: {
             id: '',
             case_id: '',
-            name:'',
-            phone:'',
-            email:'',
-            data: '', 
+            name: '',
+            phone: '',
+            email: '',
+            data: '',
         }
     }
 
@@ -65,7 +65,7 @@ class SchoolEdit extends Component {
             }
         })
     }
-    
+
     // conditional to determine a POST or a PUT 
     next = () => {
         if (this.state.schoolForm.data === false) {
@@ -81,63 +81,70 @@ class SchoolEdit extends Component {
     render() {
 
         // if the reducer is empty, display input with null values to edit 
-        let checkSchool; 
+        let checkSchool;
         let state = this.state.schoolForm;
-        if(this.props.reduxState.schoolReducer.length === 0) {
+        if (this.props.reduxState.schoolReducer.length === 0) {
             checkSchool = <div className="formDivs">
-                            <label>SCHOOL NAME</label> 
-                            <input type="text"
-                            defaultValue={state.name}
-                            onChange={this.handleChange('name')}/>
+                <label>SCHOOL NAME</label>
+                <input type="text"
+                    defaultValue={state.name}
+                    onChange={this.handleChange('name')} />
 
-                            <label>PHONE NUMBER</label> 
-                            <input type="text"
-                            defaultValue={state.phone}
-                            onChange={this.handleChange('phone')}/>
+                <label>PHONE NUMBER</label>
+                <input type="text"
+                    defaultValue={state.phone}
+                    onChange={this.handleChange('phone')} />
 
-                            <label>EMAIL</label> 
-                            <input type="text"
-                            defaultValue={state.email}
-                            onChange={this.handleChange('email')}/>
+                <label>EMAIL</label>
+                <input type="text"
+                    defaultValue={state.email}
+                    onChange={this.handleChange('email')} />
 
-                            <button
-                            className="formButton"
-                            onClick={this.next}>
-                            UPDATE FORM
+
+
+                <button
+                    className="formButton"
+                    onClick={this.next}>
+                    UPDATE FORM
                             </button>
-                            </div> 
+            </div>
         }
 
         return (
             <div>
-                <Nav pageName='SCHOOL' home='/home'/>
+                <Nav pageName='SCHOOL' home='/home' />
                 <center>
                     {checkSchool}
-                    {this.props.reduxState.schoolReducer.map((school,index) =>
+                    {this.props.reduxState.schoolReducer.map((school, index) =>
 
-                    <div className="formDivs" key={index}>
-                        <label>SCHOOL NAME</label> 
-                        <input type="text"
-                        defaultValue={school.name}
-                        onChange={this.handleChange('name')}/>
+                        <div className="formDivs" key={index}>
+                            <label>SCHOOL NAME</label>
+                            <input type="text"
+                                defaultValue={school.name}
+                                onChange={this.handleChange('name')} />
 
-                        <label>PHONE NUMBER</label> 
-                        <input type="text"
-                        defaultValue={school.phone}
-                        onChange={this.handleChange('phone')}/>
+                            <label>PHONE NUMBER</label>
+                            <input type="text"
+                                defaultValue={school.phone}
+                                onChange={this.handleChange('phone')} />
 
-                        <label>EMAIL</label> 
-                        <input type="text"
-                        defaultValue={school.email}
-                        onChange={this.handleChange('email')}/>
+                            <label>EMAIL</label>
+                            <input type="text"
+                                defaultValue={school.email}
+                                onChange={this.handleChange('email')} />
 
-                        <button
-                            className="formButton"
-                            onClick={this.next}>
-                            UPDATE FORM
+                            <input type="text"
+                                className="hiddenButton"
+                                defaultValue={school.id}
+                                onChange={this.handleChange('id')} />
+
+                            <button
+                                className="formButton"
+                                onClick={this.next}>
+                                UPDATE FORM
                         </button>
 
-                    </div>
+                        </div>
                     )}
                 </center>
             </div>
@@ -148,6 +155,6 @@ class SchoolEdit extends Component {
 const mapStateToProps = reduxState => ({
     reduxState,
 });
-  
+
 // this allows us to use <App /> in index.js
 export default withRouter(connect(mapStateToProps)(SchoolEdit));
