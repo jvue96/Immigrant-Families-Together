@@ -130,9 +130,9 @@ class ConfirmClose extends Component {
                                     <label>REFERRAL DATE:</label>  
                                     <p className="PCard">{this.checkDate(bio.reference_date)}</p>
                                     <hr/>
+                                   <button className="formButton" onClick={()=>this.closeCase(bio.id)}>CLOSE CASE</button>
                                 </div>
                             )}
-                    <button className="formButton" onClick={this.closeCase}>CLOSE CASE</button>
                     </div>
                 </center>
             </div>
