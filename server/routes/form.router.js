@@ -605,7 +605,7 @@ router.put('/case/:id', rejectUnauthenticated, (req, res) => {
       res.sendStatus(201);
     })
     .catch((error) => {
-      console.log('Failed to PUT for housing form edits', error);
+      console.log('Failed to CHANGE case status', error);
       res.sendStatus(500);
     })
 })
@@ -624,10 +624,11 @@ router.get('/all-cases', rejectUnauthenticated, (req, res) => {
 
 //get all cases for a volunteer, for volunteer view, return data rows when OK 
 router.get('/volunteer-cases/:id', rejectUnauthenticated, (req, res) => {
-  const sqlText = `SELECT "users_cases"."case_id", "users_cases"."case_id", "users_cases"."user_id", "primary_individual"."last_name", "primary_individual"."last_name" FROM users_cases
+  const sqlText = `SELECT "users_cases"."case_id", "primary_individual"."last_name", "cases"."status" FROM users_cases
                     JOIN "primary_individual" ON "users_cases"."case_id" = "primary_individual"."case_id"
-                    WHERE user_id = $1 `;
-  pool.query(sqlText, [req.params.id])
+                    JOIN "cases" ON "users_cases"."case_id" = "cases"."id"
+                    WHERE user_id = $1 AND "cases"."status" = $2 `;
+  pool.query(sqlText, [req.params.id], 'ACTIVE')
     .then((results) => {
       res.send(results.rows)
     }).catch((error) => {

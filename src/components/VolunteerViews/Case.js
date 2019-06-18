@@ -31,15 +31,26 @@ class Case extends Component {
     state= {
         name: '',
         number: '',
+        status: '',
     }
 
-    updateState = (caseName, caseNumber) => {
+    updateState = (caseName, caseNumber, caseStatus) => {
     this.setState({
         name: caseName,
-        number: caseNumber
+        number: caseNumber,
+        status: caseStatus
     });
     
 }
+
+activeInactive = (command) => {
+    let commandObj = { 
+        id: this.props.reduxState.caseIdReducer[0].id,
+        status: command
+    }
+    console.log(`inside activeInactive func, heres commandObj:`, commandObj);
+    this.props.dispatch({type:'CLOSE_CASE', payload:commandObj});
+ }
 
 
     componentDidMount() {
@@ -53,7 +64,8 @@ class Case extends Component {
         if(this.props.reduxState.caseIdReducer !== prevProps.reduxState.caseIdReducer) {
             let caseName = this.props.reduxState.caseIdReducer[0].case_last_name;
             let caseNumber = this.props.reduxState.caseIdReducer[0].case_number;
-            this.updateState(caseName, caseNumber);
+            let caseStatus = this.props.reduxState.caseIdReducer[0].status;
+            this.updateState(caseName, caseNumber, caseStatus);
         }
     }
 
@@ -91,6 +103,13 @@ class Case extends Component {
                 <h1>{this.state.name}</h1>
                 <label>Case Number:</label>
                 <p className="PCard">{this.state.number}</p>
+                <label>Case status:</label>
+                <p className="PCard">{this.state.status}</p>
+                {this.state.status==='ACTIVE'? 
+                <button className='activeInactive' onClick={()=>this.activeInactive('INACTIVE')}>Deactivate Case</button>
+                :
+                <button className='activeInactive' onClick={()=>this.activeInactive('ACTIVE')}>Activate Case</button> 
+            }
                 </>    
              :
         <h1>VOLUNTEER CASES</h1>   

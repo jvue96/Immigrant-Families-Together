@@ -431,3 +431,16 @@ tr:nth-child(even) {
 img{
   width:100%;
 }
+
+tr.inactive {
+  opacity:.3
+}
+
+ .activeInactive {
+  color:grey;
+  border:2px solid grey;
+  padding:5px 10px;
+  border-radius:5px;
+  background: transparent;
+  margin: 1em 0;
+} 
