@@ -27,50 +27,6 @@ Node.js
 3. Copy and paste SQL text from file
 4. Insert SQL text into Postico to CREATE TABLES
 
-### Heroku Prerequisite (one time)
-
-1. Sign up for an account on [Heroku.com](https://www.heroku.com/)
-- You may have to give them a credit card, but you shouldnt need to pay for anything
-2. Install Heroku CLI by typing `brew install heroku/brew/heroku` in Terminal
-3. Authenticate by typing `heroku login` in Terminal
-
-### Heroku Setup
-
-Run the following commands from within your project folder.
-
-1. In terminal, navigate to your project folder and type `heroku create`
-2. Login in if prompted -- it might ask to open a browser
-3. Type `git remote -v` to ensure it added successfully
-
-Next, commit your changes and push them to Heroku:
-
-```
-git add .
-git commit -m "MESSAGE"
-git push heroku master
-```
-
-   > Note: You'll need to commit and push each time you make a change that you want to deploy to Heroku. **Keep in mind you CAN NOT pull from Heroku. This is not a replacement for GitHub!**
-
-
-   > Note: It is best to fully test your code locally before deploying to Heroku. Bugs are much harder to troubleshoot on a live website.
-
-### Postgresql on Heroku
-
-1. In terminal, type `heroku addons:create heroku-postgresql:hobby-dev` to set up Postgresql on your Heroku project
-2. Next, type `heroku pg:push immigrant_families DATABASE_URL` to copy your database contents up to Heroku. 
-
-Next, commit your changes and push them to Heroku:
-
-```
-git add .
-git commit -m "MESSAGE"
-git push heroku master
-```
-
-
-Lastly, open terminal and type `heroku open` as a shortcut to open your website in a browser.
-
 ### Login
 
 1. This is a protected application where users need to be registered by an admin
@@ -105,9 +61,55 @@ ex) change of address, new doctor(s), new school etc.
 - create events within a case for admin and other volunteers to see
 ex) doctors appointments, court dates, etc. 
 
+### Heroku Deployment
+
+1. Sign up for an account on [Heroku.com](https://www.heroku.com/)
+- You may have to give them a credit card, but you shouldnt need to pay for anything
+2. Install Heroku CLI by typing `brew install heroku/brew/heroku` in Terminal
+3. Authenticate by typing `heroku login` in Terminal
+
+### Heroku Setup
+
+Run the following commands from within your project folder.
+
+1. In terminal, navigate to your project folder and type `heroku create`
+2. Login in if prompted -- it might ask to open a browser
+3. Type `git remote -v` to ensure it added successfully
+
+Next, commit your changes and push them to Heroku:
+
+```
+git add .
+git commit -m "MESSAGE"
+git push heroku master
+```
+
+   > Note: You'll need to commit and push each time you make a change that you want to deploy to Heroku.
+
+   > Note: It is best to fully test your code locally before deploying to Heroku. Bugs are much harder to troubleshoot on a live website.
+
+### Postgresql on Heroku
+
+1. In terminal, type `heroku addons:create heroku-postgresql:hobby-dev` to set up Postgresql on your Heroku project
+2. Next, type `heroku pg:push immigrant_families DATABASE_URL` to copy your database contents up to Heroku. 
+
+Next, commit your changes and push them to Heroku:
+
+```
+git add .
+git commit -m "MESSAGE"
+git push heroku master
+```
+
+
+Lastly, open terminal and type `heroku open` as a shortcut to open your website in a browser.
+
+
 # Next steps 
 - create a feature to gather statistical data. 
 ex) how many families are on the grocery program etc. 
+- create ability to reset passwords
+
 
 # Developers 
 - Kingman Douglass 
