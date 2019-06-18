@@ -2,47 +2,47 @@
 Immigrant Families Together is a volunteer-based organization that reunites separated families. The staff is composed entirely of volunteers, many of whom are balancing full-time jobs and families. They currently assist nearly seventy five families in areas ranging from posting bond, finding legal help, and supplying financial assistance.
 
 # Built With 
-React, Redux, HTML, CSS, Passport, Axios, Postgres, Node, Express, and more. (package.json file contains full list)
-
+React, Redux, HTML, CSS, Passport, Axios, Node, Express, Postgres, and more (see package.json for full list of dependencies)
 
 # Getting Started 
-Follow along the instructions below to retrieve a copy of this repo into your local machine. 
+Follow instructions below to spin up a copy of this repo on your local machine
 
 # Prerequisites
 Software that is required prior to starting the application
-Node.js
+-Node.js
+-Postgres
 
 ### Installing - Get the Development Environment Running 
-1. Download the project
-2. type "npm install" into your terminal
-3. type "npm run server" into your terminal
-4. in a different terminal window, type "npm run client" into your terminal
+1. Clone or download the project
+2. Type "npm install" into your terminal
+3. Type "npm run server" into your terminal
+4. In a different terminal window, type "npm run client" into your terminal
 
 ### Create database 
 1. Download and open Postico
 2. Create new database named "immigrant_families"
-3. Copy and paste SQL text from file
-4. Insert SQL text into Postico to CREATE TABLES
+3. Copy SQL text from database.sql
+4. Paste SQL text into Postico to create tables and intial user
 
 ### Login
-
 1. This is a protected application where users need to be registered by an admin
-2. To log in as the initial admin use the following credentials: 
+2. To log in as the initial admin, use the following credentials: 
 - username: Test User
 - password: testuser
 
-# Screenshots of the application 
-![alt text](./images/admin_landing.jpg "Administrative Landing Page")
-![alt text](./images/volunteer_landing.jpg "Volunteer Landing Page")
-![alt text](./images/volunteer_bio.jpg "Volunteer Bio Page")
-![alt text](./images/volunteer_events.jpg "Volunteer Events Page")
+### Application screenshots 
+![Admin Landing Page](./images/admin_landing.jpg "Administrative Landing Page")
+![Volunteer Landing Page](./images/volunteer_landing.jpg "Volunteer Landing Page")
+![Volunteer Bio Page](./images/volunteer_bio.jpg "Volunteer Bio Page")
+![Volunteer Events Page](./images/volunteer_events.jpg "Volunteer Events Page")
 
-# Completed Features 
+## Completed Features 
 * seperate features enabled for admins and volunteers 
 
 ### ADMINS can:
 - create a case 
 - edit a case 
+- close a case
 - search for a case by name or case ID
 - view a case and it's information 
 - assign volunteer(s) to case(s)
@@ -52,8 +52,8 @@ Node.js
 - view volunteer information 
 
 ### VOLUNTEERS can: 
-- view case information they've been assigned to 
-- create notes within a case for admin and other volunteers to see. 
+- view cases they have been assigned to 
+- create notes in a case for admin and other volunteers to see
 ex) change of address, new doctor(s), new school etc. 
 - create events within a case for admin and other volunteers to see
 ex) doctors appointments, court dates, etc. 
@@ -98,7 +98,6 @@ git commit -m "MESSAGE"
 git push heroku master
 ```
 
-
 Lastly, open terminal and type `heroku open` as a shortcut to open your website in a browser.
 
 
@@ -107,10 +106,8 @@ Lastly, open terminal and type `heroku open` as a shortcut to open your website 
 ex) how many families are on the grocery program etc. 
 - create ability to reset passwords
 
-
 # Developers 
 - Kingman Douglass 
 - Ben Ragsdale 
 - Joe Schlachtenhaufen
 - Juno Vue 
-
