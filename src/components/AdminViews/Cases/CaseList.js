@@ -55,14 +55,15 @@ class CaseList extends Component {
                             <tr>
                                 <td>LAST NAME </td>
                                 <td>CASE NUMBER </td>
-                                {/* <td>ASSIGN CASE</td> */}
+                                <td>ACTIVE / INACTIVE </td>
                             </tr>
                         </thead>
                         <tbody>
                             {this.props.reduxState.allCasesReducer.map(i =>
-                                <tr onClick={() => this.selectCase(i.id)} key={i.id}>
+                                  <tr className={i.status==='ACTIVE'? 'active':'inactive'} onClick={() => this.selectCase(i.id)} key={i.id}>
                                     <td>{i.case_last_name}</td>
                                     <td>{i.case_number}</td>
+                                    <td>{i.status}</td>
                                     {/* <td><button onClick={this.assignCase}>Assign Case</button></td> */}
                                 </tr>
                             )}
