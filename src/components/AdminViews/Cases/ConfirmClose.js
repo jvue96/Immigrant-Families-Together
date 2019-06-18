@@ -45,22 +45,6 @@ class ConfirmClose extends Component {
        }	       
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    // closeCase = () => {
-    //     this.props.history.push(`/home`);
-    //    }
-
        render() {
 
         let emptyFamily;
