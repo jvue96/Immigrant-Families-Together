@@ -66,6 +66,8 @@ function* closeCase(action) {
     try {
         const getResponse = yield axios.put(`/api/forms/case/${action.payload.id}`, action.payload);
         yield put({ type: 'SET_CASE', payload: getResponse.data });
+        yield put({ type: 'GET_CURRENT_ID', payload: action.payload.id });
+
     } catch (error) {
         alert(`Sorry couldn't edit the current entry. Try again later.`)
     }
