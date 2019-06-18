@@ -24,14 +24,42 @@ class ConfirmClose extends Component {
     //set the new state to be passed through as inactive automatically
     state = {
         closeCase: {
-            id: '',
+            id: 0,
             status: 'INACTIVE',
         }
     }
 
-    closeCase = () => {
-        this.props.history.push(`/home`);
-       }
+    closeCase = async (case_id) => {
+        await this.setState({
+            closeCase: {
+                ...this.state.closeCase,
+                id: case_id
+            }
+        })
+        console.log(`ID in closeCase:`, case_id)
+        console.log(`STATE in closeCase`, this.state)
+        //this.props.history.push(`/home`);
+        //will have to this.props.dispatch({type:'UPDATE_CASE', payload:})
+        await this.props.dispatch({type:'CLOSE_CASE', payload:this.state.closeCase})
+        await this.props.history.push('/cases')
+       }	       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // closeCase = () => {
+    //     this.props.history.push(`/home`);
+    //    }
 
        render() {
 
