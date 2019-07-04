@@ -70,38 +70,9 @@ class Volunteers extends Component {
                                  <div className="grid-item2" data-value={users.id} > {users.address} </div>
                                 </div>
                                 </div>
-
-                        // <table key={index} style={{width:300}}>
-                        //     <thead>
-                        //         <tr>
-                        //             <td>USERNAME</td>
-                        //             <td>EMAIL</td>
-                        //             <td>ADDRESS</td>
-                        //         </tr>
-                        //     </thead>
-                        // {/* map over cases assigned to volunteer */}
-                        //     <tbody>
-                        //         <tr>
-                        //             <td
-                        //             data-value={users.id}
-                        //             onClick={this.viewVolunteer}>
-                        //                 {users.username}
-                        //             </td>
-                        //             <td
-                        //             data-value={users.id}
-                        //             onClick={this.viewVolunteer}>
-                        //                 {users.email}
-                        //             </td>
-                        //             <td
-                        //             data-value={users.id}
-                        //             onClick={this.viewVolunteer}>
-                        //                 {users.address}
-                        //             </td>
-                        //         </tr>
-                        //     </tbody>
-                        // </table>
                         )
-                        })}                  </center>
+                        })}                 
+                </center>
             </div>
         );
     }

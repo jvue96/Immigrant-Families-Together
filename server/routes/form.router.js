@@ -733,9 +733,10 @@ router.get('/assign/:id', rejectUnauthenticated, (req, res) => {
 
 //get volunteer cases where case_id = :id, returns data rows when successful
 router.get('/volunteer-caseload/:id', rejectUnauthenticated, (req, res) => {
-  const sqlText = `SELECT "users_cases"."case_id", "users_cases"."user_id", "primary_individual"."last_name", "primary_individual"."last_name" FROM users_cases
-                    JOIN "primary_individual" ON "users_cases"."case_id" = "primary_individual"."case_id"
-                    WHERE user_id = $1`;
+  const sqlText = `SELECT "primary_individual"."first_name", "primary_individual"."last_name", "cases"."case_number" FROM users_cases
+                  JOIN "primary_individual" ON "users_cases"."case_id" = "primary_individual"."case_id"
+                  JOIN "cases" on "primary_individual"."case_id" = "cases"."id"
+                  WHERE user_id = $1`;
   pool.query(sqlText, [req.params.id])
     .then((results) => {
       res.send(results.rows)

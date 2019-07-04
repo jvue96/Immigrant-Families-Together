@@ -111,20 +111,21 @@ class VolunteerBio extends Component {
                     </section> 
 
                     )})}
-<h1>
-    ASSIGN CASE
-</h1> 
-<select
-onChange={this.handleChange('case_id')}
->
-    <option>-</option>
-    {this.props.reduxState.allCasesReducer.map(cases => (
 
-    <option value={cases.id}>
-        {cases.case_last_name}{cases.address}
-    </option>
-    ))}
-</select>
+                        <h1>
+                            ASSIGN CASE
+                        </h1> 
+                        <select
+                        onChange={this.handleChange('case_id')}
+                        >
+                            <option>-</option>
+                            {this.props.reduxState.allCasesReducer.map(cases => (
+
+                            <option value={cases.id}>
+                                {cases.case_last_name} {cases.case_number}
+                            </option>
+                            ))}
+                        </select>
                     <button className="formButton" onClick={this.assignCase}> ASSIGN CASE </button>  
 
 
@@ -133,19 +134,23 @@ onChange={this.handleChange('case_id')}
                     <table>
                         <thead>
                             <tr>
-                                <td>LAST NAME</td>
+                                <td>FULL NAME</td>
                                 <td>CASE ID</td>
                             </tr>
                         </thead>
                         
                     {/* map over cases assigned to volunteer */}
                     <tbody>
-                            <tr>
-                                <td data-value={cases.case_id} onClick={this.viewCase}>{cases.last_name}</td>
-                                <td>{cases.case_id}</td>
+                            <tr data-value={cases.case_id} onClick={this.viewCase}>
+                                <td>{cases.last_name} {cases.first_name}</td>
+                                <td>{cases.case_number}</td>
                             </tr>
                         </tbody>
                     </table> 
+
+
+
+
                     ))}
                 </center>
             </div>
