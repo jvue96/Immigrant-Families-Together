@@ -47,7 +47,7 @@ in your browser URL, insert http://localhost:3000/#/home to navigate to the home
 ![Volunteer Bio Page](./images/volunteer_bio.jpg "Volunteer Bio Page")
 ![Volunteer Events Page](./images/volunteer_events.jpg "Volunteer Events Page")
 
-## Completed Features 
+## Completed Features Listed Below
 * seperate features enabled for admins and volunteers 
 
 ### ADMINS can:

@@ -16,11 +16,6 @@ class CaseList extends Component {
         })
     }
 
-    assignCase = () => {
-        alert(`You've assigned a case to ___ !`);
-        // do something here to assigned case and add into relevant databases 
-    }
-
     //dispatch call to search based off what was typed in state
     searchBy = () => {
         this.props.dispatch({ type: 'GET_CASES_SEARCH', payload: this.state });
@@ -31,7 +26,6 @@ class CaseList extends Component {
         //this is from volunteer landing:
         this.props.dispatch({type: 'GET_CURRENT_ID', payload: id})
         this.props.history.push(`/case?id=${id}`)
-
 
     }
 
@@ -64,7 +58,6 @@ class CaseList extends Component {
                                     <td>{i.case_last_name}</td>
                                     <td>{i.case_number}</td>
                                     <td>{i.status}</td>
-                                    {/* <td><button onClick={this.assignCase}>Assign Case</button></td> */}
                                 </tr>
                             )}
                         </tbody>
