@@ -111,11 +111,11 @@ class App extends Component {
               path="/home"
               component={UserPage}
             />
-            <ProtectedRoute
+            {/* <ProtectedRoute
               exact
               path="/home"
               component={VolunteerLanding}
-            />
+            /> */}
             <ProtectedRoute
               exact
               path="/volunteer-landing"
