@@ -75,21 +75,6 @@ ex) change of address, new doctor(s), new school etc.
 - create events within a case for admin and other volunteers to see
 ex) doctors appointments, court dates, etc. 
 
-### Postgresql on Heroku
-
-1. In terminal, type `heroku addons:create heroku-postgresql:hobby-dev` to set up Postgresql on your Heroku project
-2. Next, type `heroku pg:push immigrant_families DATABASE_URL` to copy your database contents up to Heroku. 
-
-Next, commit your changes and push them to Heroku:
-
-```
-git add .
-git commit -m "MESSAGE"
-git push heroku master
-```
-
-Lastly, open terminal and type `heroku open` as a shortcut to open your website in a browser.
-
 
 # Next steps 
 - create a feature to gather statistical data. 
