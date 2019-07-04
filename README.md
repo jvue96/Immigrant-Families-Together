@@ -3,7 +3,7 @@ Immigrant Families Together (IFT) is a volunteer-based organization in America t
 
 # Live Demo Website
 You can demo the application here: https://lovely-big-bend-66459.herokuapp.com/#/home <br/> 
-Login: Test User <br/>
+Username: Test User <br/>
 Password: testuser <br/>
 *Allow 30 seconds for the website to load. This delay is a heroku feature that can't be changed.*
 
@@ -44,8 +44,8 @@ in your browser URL, insert <br/> http://localhost:3000/#/home <br/> to navigate
 ### Login
 1. This is a protected application where users need to be registered by an admin
 2. To log in as the initial admin, use the following credentials: 
-- username: Test User
-- password: testuser
+- Username: Test User
+- Password: testuser
 
 ### Application screenshots 
 ![Admin Landing Page](./images/admin_landing.jpg "Administrative Landing Page")
@@ -54,32 +54,32 @@ in your browser URL, insert <br/> http://localhost:3000/#/home <br/> to navigate
 ![Volunteer Events Page](./images/volunteer_events.jpg "Volunteer Events Page")
 
 ## Completed Features Listed Below
-* seperate features enabled for admins and volunteers 
+* Seperate features enabled for admins and volunteers 
 
 ### ADMINS can:
-- create a case 
-- edit a case 
-- close a case
-- search for a case by name or case ID
-- view a case and it's information 
-- assign volunteer(s) to case(s)
-- create volunteers or admins 
-- view volunteers 
-- search volunteers 
-- view volunteer information 
+- Create a case 
+- Edit a case 
+- Close a case
+- Search for a case by name or case ID
+- View a case and it's information 
+- Assign volunteer(s) to case(s)
+- Create volunteers or admins 
+- View volunteers 
+- Search volunteers 
+- View volunteer information 
 
 ### VOLUNTEERS can: 
-- view cases they have been assigned to 
-- create notes in a case for admin and other volunteers to see
-ex) change of address, new doctor(s), new school etc. 
-- create events within a case for admin and other volunteers to see
-ex) doctors appointments, court dates, etc. 
+- View cases they have been assigned to 
+- Create notes in a case for admin and other volunteers to see
+Ex) change of address, new doctor(s), new school etc. 
+- Create events within a case for admin and other volunteers to see
+Ex) doctors appointments, court dates, etc. 
 
 
 # Next steps 
-- create a feature to gather statistical data. 
-ex) how many families are on the grocery program etc. 
-- create ability to reset passwords
+- Create a feature to gather statistical data. 
+ex) How many families are on the grocery program etc. 
+- Create ability to reset passwords
 
 # Developers 
 - Juno Vue 
