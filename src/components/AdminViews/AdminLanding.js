@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
-import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import Nav from '../Nav/Nav'
 import "./Admin.css"
 

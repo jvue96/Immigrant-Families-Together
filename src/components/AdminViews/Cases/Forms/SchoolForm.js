@@ -8,7 +8,6 @@ import qs from 'query-string';
 class SchoolForm extends Component {
 
 componentDidMount = () => {
-    const searchObject = qs.parse(this.props.location.search)
     this.setState({
         schoolForm:{
             ...this.state.schoolForm,

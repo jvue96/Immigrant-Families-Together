@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Nav from '../../../Nav/Nav';
 import qs from 'query-string';
-import { throws } from 'assert';
 
 class ChildForm extends Component {
 
     componentDidMount = () => {
-        const searchObject = qs.parse(this.props.location.search)
         // setting properties to null allow users to post null values into the database
         // which can then be edited later 
         this.setState({

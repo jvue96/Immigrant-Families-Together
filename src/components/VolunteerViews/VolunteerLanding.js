@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../Nav/Nav';
-import qs from 'query-string';
+// import qs from 'query-string';
 
 class VolunteerLanding extends Component {
 
@@ -22,7 +22,7 @@ class VolunteerLanding extends Component {
                 <center> 
                     {/* {JSON.stringify(this.props.reduxState.allCasesReducer)} */}
                     {/* show all cases assigned to volunteer */}
-                    <img src="/IFT.png"/>
+                    <img src="/IFT.png" alt="Immigrant Families Togeter Logo"/>
                     <h1> CASES </h1>
                     <table>
                         <thead>
