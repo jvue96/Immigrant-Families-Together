@@ -32,7 +32,7 @@ Software that is required prior to starting the application
 3. The .env file should have a line that is SERVER_SESSION_SECRET=*paste in the password generated here*
 
 ### Create database 
-1. Download and open Postico
+1. Open the application you're using for your PostgreSQL database
 2. Create new database named "immigrant_families"
 3. Copy SQL text from database.sql
 4. Paste SQL text into Postico and execute statements to create tables and intial user
