@@ -22,9 +22,9 @@ Software that is required prior to starting the application
 
 ### Installing - Get the Development Environment Running 
 1. Clone or download the project
-2. Type "npm install" into your terminal
-3. Type "npm run server" into your terminal
-4. In a different terminal window, type "npm run client" into your terminal
+2. Open the terminal in the code folder and type "npm install" 
+3. Type "npm run server" to start up your server
+4. In a different terminal window/tab, type "npm run client" into your terminal to start up your client
 
 ### File configurations 
 1. Create a .env file outside of your folders 
