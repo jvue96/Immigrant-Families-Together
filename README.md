@@ -20,6 +20,11 @@ Software that is required prior to starting the application
 3. Type "npm run server" into your terminal
 4. In a different terminal window, type "npm run client" into your terminal
 
+### File configurations 
+1. Create a .env file outside of your folders 
+2. Visit https://passwordsgenerator.net/    to generate a password. 
+3. The .env file should have a line that is SERVER_SESSION_SECRET=*paste in the password generated here*
+
 ### Create database 
 1. Download and open Postico
 2. Create new database named "immigrant_families"
