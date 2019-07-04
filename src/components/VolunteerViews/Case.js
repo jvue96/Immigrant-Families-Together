@@ -90,7 +90,7 @@ activeInactive = (command) => {
 
     render() {
 
-        const { path } = this.props.match;
+        // const { path } = this.props.match;
         
         return (
             <div>

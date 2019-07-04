@@ -6,7 +6,8 @@ function* postLegal(action) {
     
     // const payload = action.payload
     try {
-        const response = yield axios.post(`/api/forms/legal`, action.payload);
+        // const response = 
+        yield axios.post(`/api/forms/legal`, action.payload);
         /* ******* the saga will post, but enabling this set reducer will throw a bug, not quite sure whats wrong.  */
         /* reducer doesn't function  */
         // const action = {type: 'SET_LEGAL', payload: response.data};
