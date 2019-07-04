@@ -1,5 +1,5 @@
 # Immigrant Families Together
-Immigrant Families Together is a volunteer-based organization that reunites separated families. The staff is composed entirely of volunteers, many of whom are balancing full-time jobs and families. They currently assist nearly seventy five families in areas ranging from posting bond, finding legal help, and supplying financial assistance.
+Immigrant Families Together is a volunteer-based organization in America that reunites separated families. The staff is composed entirely of volunteers, many of whom are balancing full-time jobs and families. They currently assist nearly seventy five families in areas ranging from posting bond, finding legal help, and supplying financial assistance.
 
 # Built With 
 React, Redux, HTML, CSS, Passport, Axios, Node, Express, Postgres, and more (see package.json for full list of dependencies)
@@ -9,8 +9,10 @@ Follow instructions below to spin up a copy of this repo on your local machine
 
 # Prerequisites
 Software that is required prior to starting the application
--Node.js
--Postgres
+-NPM (https://www.npmjs.com/get-npm)
+-Node.js (https://nodejs.org/en/)
+-PostgresSQL (https://www.postgresql.org/download/) - choose your system and follow those instructions. 
+   - Postico was personally used. (https://eggerapps.at/postico/) - A modern PostgreSQL client for mac systems. 
 
 ### Installing - Get the Development Environment Running 
 1. Clone or download the project
@@ -22,7 +24,7 @@ Software that is required prior to starting the application
 1. Download and open Postico
 2. Create new database named "immigrant_families"
 3. Copy SQL text from database.sql
-4. Paste SQL text into Postico to create tables and intial user
+4. Paste SQL text into Postico and execute statements to create tables and intial user
 
 ### Login
 1. This is a protected application where users need to be registered by an admin
@@ -107,7 +109,7 @@ ex) how many families are on the grocery program etc.
 - create ability to reset passwords
 
 # Developers 
+- Juno Vue 
 - Kingman Douglass 
 - Ben Ragsdale 
 - Joe Schlachtenhaufen
-- Juno Vue 
