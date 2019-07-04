@@ -6,7 +6,7 @@ import Nav from '../Nav/Nav';
 class VolunteerLanding extends Component {
 
     componentDidMount = () => {
-        this.props.dispatch({ type: 'GET_USER_CASES', payload: this.props.reduxState.user.id });
+        this.props.dispatch({ type: 'GET_USER_CASES', payload: this.props.reduxState.user.id});
     }
 
     viewCase = (event) => {
