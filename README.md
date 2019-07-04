@@ -2,9 +2,9 @@
 Immigrant Families Together (IFT) is a volunteer-based organization in America that reunites separated families. The staff is composed entirely of volunteers, many of whom are balancing full-time jobs and families. They currently assist nearly seventy five families in areas ranging from posting bond, finding legal help, and supplying financial assistance.
 
 # Live Demo Website
-You can demo the application here: https://lovely-big-bend-66459.herokuapp.com/#/home
-Login: Test User
-Password: testuser
+You can demo the application here: https://lovely-big-bend-66459.herokuapp.com/#/home <br/> 
+Login: Test User <br/>
+Password: testuser <br/>
 *Allow 30 seconds for the website to load. This delay is a heroku feature that can't be changed.*
 
 # Built With 
