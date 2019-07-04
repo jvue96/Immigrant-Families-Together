@@ -49,9 +49,6 @@ const AdminProtectedRoute = (props) => {
   if(user.admin === 'yes') {
     // if the user is logged in (only logged in users have ids)
     // show the component that is protected
-    console.log(user.admin);
-    console.log(user.id);
-    
     ComponentToShow = ComponentToProtect;
     //if the user doesnt have admin access but has a user.id then they are
     //assumed to be a volunteer this will direct their landing to also wack home
