@@ -31,6 +31,10 @@ Software that is required prior to starting the application
 3. Copy SQL text from database.sql
 4. Paste SQL text into Postico and execute statements to create tables and intial user
 
+### What URL to demo the app 
+1. If npm run client did not open a new browser/tab for you, 
+in your browser URL, insert http://localhost:3000/#/home to navigate to the home page of this application and begin demo-ing. 
+
 ### Login
 1. This is a protected application where users need to be registered by an admin
 2. To log in as the initial admin, use the following credentials: 
