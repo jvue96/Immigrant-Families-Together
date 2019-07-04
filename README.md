@@ -1,5 +1,5 @@
 # Immigrant Families Together
-Immigrant Families Together is a volunteer-based organization in America that reunites separated families. The staff is composed entirely of volunteers, many of whom are balancing full-time jobs and families. They currently assist nearly seventy five families in areas ranging from posting bond, finding legal help, and supplying financial assistance.
+Immigrant Families Together (IFT) is a volunteer-based organization in America that reunites separated families. The staff is composed entirely of volunteers, many of whom are balancing full-time jobs and families. They currently assist nearly seventy five families in areas ranging from posting bond, finding legal help, and supplying financial assistance.
 
 # Built With 
 React, Redux, HTML, CSS, Passport, Axios, Node, Express, Postgres, and more (see package.json for full list of dependencies)
@@ -9,10 +9,10 @@ Follow instructions below to spin up a copy of this repo on your local machine
 
 # Prerequisites
 Software that is required prior to starting the application
--NPM (https://www.npmjs.com/get-npm)
--Node.js (https://nodejs.org/en/)
--PostgresSQL (https://www.postgresql.org/download/) - choose your system and follow those instructions. 
-   - Postico was personally used. (https://eggerapps.at/postico/) - A modern PostgreSQL client for mac systems. 
+   - NPM (https://www.npmjs.com/get-npm)
+   - Node.js (https://nodejs.org/en/)
+   - PostgresSQL (https://www.postgresql.org/download/) - choose your system and follow those instructions. 
+      - Postico was personally used. (https://eggerapps.at/postico/) - A modern PostgreSQL client for mac systems. 
 
 ### Installing - Get the Development Environment Running 
 1. Clone or download the project
@@ -68,33 +68,6 @@ in your browser URL, insert http://localhost:3000/#/home to navigate to the home
 ex) change of address, new doctor(s), new school etc. 
 - create events within a case for admin and other volunteers to see
 ex) doctors appointments, court dates, etc. 
-
-### Heroku Deployment
-
-1. Sign up for an account on [Heroku.com](https://www.heroku.com/)
-- You may have to give them a credit card, but you shouldnt need to pay for anything
-2. Install Heroku CLI by typing `brew install heroku/brew/heroku` in Terminal
-3. Authenticate by typing `heroku login` in Terminal
-
-### Heroku Setup
-
-Run the following commands from within your project folder.
-
-1. In terminal, navigate to your project folder and type `heroku create`
-2. Login in if prompted -- it might ask to open a browser
-3. Type `git remote -v` to ensure it added successfully
-
-Next, commit your changes and push them to Heroku:
-
-```
-git add .
-git commit -m "MESSAGE"
-git push heroku master
-```
-
-   > Note: You'll need to commit and push each time you make a change that you want to deploy to Heroku.
-
-   > Note: It is best to fully test your code locally before deploying to Heroku. Bugs are much harder to troubleshoot on a live website.
 
 ### Postgresql on Heroku
 
