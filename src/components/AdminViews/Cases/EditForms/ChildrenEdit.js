@@ -33,10 +33,6 @@ class ChildForm extends Component {
             childForm:{
                 ...this.state.childForm,
                 case_id: searchObject.id,
-                id: this.props.reduxState.childrenReducer[0].id,
-                child_name: this.props.reduxState.childrenReducer[0].child_name,
-                child_dob: this.props.reduxState.childrenReducer[0].child_dob,
-                child_info: this.props.reduxState.childrenReducer[0].child_info,
                 data: true,
                 }
             })
@@ -68,23 +64,13 @@ class ChildForm extends Component {
     }
     
      // conditional to determine a POST or a PUT 
-    updateForm = async(event) => {
-        await this.setState({
-            childForm: {
-                ...this.state.childForm,
-                id: event.target.value, 
-            }
-        })
-
-        // await console.log(this.state.addChild);
-        
+    updateForm = () => {
         if (this.state.childForm.data === false) {
             this.props.dispatch({ type: 'ADD_CHILDREN', payload: this.state.addChild })
         } else (
             this.props.dispatch({ type: 'PUT_CHILDREN', payload: this.state.childForm })
         )
-        // this.props.history.push(`/edit-case?id=${this.state.childForm.case_id}`)
-        
+        this.props.history.push(`/edit-case?id=${this.state.childForm.case_id}`)
     }
 
     // pushes new state to children array to create multiple children
@@ -103,6 +89,19 @@ class ChildForm extends Component {
                 }
             });
         };
+
+    selectedEdit = (name, dob, info, id) => {
+        this.setState({
+            childForm: {
+                ...this.state.childForm,
+                child_name: `${name}`, 
+                child_dob: dob, 
+                child_info: info,
+                id: id,
+                data: true, 
+            }
+        })
+    }
     
 
       render() {
@@ -158,6 +157,12 @@ class ChildForm extends Component {
             this.props.reduxState.childrenReducer.map((children,index) =>
                 <div className="formDivs" key={index}>
 
+                <button
+                className="formButton"
+                onClick={(name, dob, info, id) => this.selectedEdit(children.child_name, children.child_dob, 
+                                                    children.child_info, children.id)}
+                > Edit this </button>
+
                 <label>NAME</label> 
                 <input type="text"
                 defaultValue={children.child_name}
@@ -173,9 +178,9 @@ class ChildForm extends Component {
                 onChange={this.handleChange('child_info')}/> 
 
                 <button 
-                value={children.id}
                 className="formButton"
-                onClick={this.updateForm}> UPDATE FORM
+                onClick={this.updateForm}
+                > UPDATE FORM
                 </button>
             </div>
             );

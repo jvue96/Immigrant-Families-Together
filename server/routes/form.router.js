@@ -266,15 +266,16 @@ router.get('/children/:id', (req, res) => {
 
 router.put('/edit-children/:id', rejectUnauthenticated, (req, res) => {
   let children = req.body;
+  console.log(children);
   console.log(`case_id`, req.params.id);
   console.log(`id`, children.id);
-  console.log(`hello world`);  
+
   
   let sqlText = `UPDATE "primary_children" SET "child_name" = $1, "child_dob" = $2, "child_info" = $3 WHERE 
   ("id" = $4 AND "case_id" = $5);`;
   pool.query(sqlText, [children.child_name, children.child_dob, children.child_info, children.id, req.params.id ])
-    .then((response) => {
-      res.sendStatus(201);
+    .then((results) => {
+      res.send(results.rows);
     })
     .catch((error) => {
       console.log('Failed to PUT for children form edits', error);
