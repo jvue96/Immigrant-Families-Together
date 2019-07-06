@@ -132,7 +132,7 @@ class ChildForm extends Component {
               
                   {checkChildren}
                   {this.props.reduxState.childrenReducer.map((children,index) =>
-                    <div className="formDivs">
+                    <div className="formDivs" key={index}>
 
                     <label>NAME</label> 
                     <input type="text"
