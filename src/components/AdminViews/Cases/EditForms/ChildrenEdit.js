@@ -51,7 +51,7 @@ class ChildForm extends Component {
         // create an array to push all children into 
         // posting an array of children 
         addChild: [],
-        disabled: true, 
+        newChild: false,
     };
 
     // change state to become input field values 
@@ -101,10 +101,14 @@ class ChildForm extends Component {
                 id: id,
                 data: true, 
             },
-            disabled: !this.state.disabled
         })
     }
     
+    addANewChild = () => {
+        this.setState({
+            newChild: !this.state.newChild
+        })
+    }
 
       render() {
 
@@ -198,6 +202,53 @@ class ChildForm extends Component {
 
             <center>
                   {checkChildren}
+                  <button
+                  className="editButton"
+                  onClick={this.addANewChild}
+                  > Add a new child </button>
+                  {this.state.newChild ? <center>
+                                    <div className="formDivs">
+
+                                    <label>NAME</label> 
+                                    <input type="text"
+                                    value={this.state.childForm.child_name || ''}
+                                    onChange={this.handleChange('child_name')}/> 
+                    
+                                    <label>DOB</label> 
+                                    <input type="date" 
+                                    value={this.state.childForm.child_dob || ''} 
+                                    onChange={this.handleChange('child_dob')} /> 
+                                
+                                    <label>INFO</label> 
+                                    <input type="text"
+                                    value={this.state.childForm.child_info || ''}
+                                    onChange={this.handleChange('child_info')}/> 
+                                    
+                                    {/* pushes new state to children array to create multiple children */}
+                                    <button 
+                                    className="formButton"
+                                    onClick={this.save}> SUBMIT CHILD
+                                    </button> 
+                                    <br/>
+                                    {/* clears input fields to enable adding another child  */}
+                                    <button 
+                                    className="formButton"
+                                    style={{width: 200}}
+                                    onClick={this.addInput}> ADD ANOTHER CHILD
+                                    </button>
+                                    <br/>
+                                    
+
+                                    {/* dispatch to childrenSaga to post data  */}
+                                    <button 
+                                    className="formButton"
+                                    onClick={this.updateForm}> NEXT
+                                    </button>
+                                    </div>
+                            </center> 
+                            :
+                            ""
+                            }
             </center> 
           </div>
         );
