@@ -159,8 +159,13 @@ router.put('/edit-bio/:id', rejectUnauthenticated, (req, res) => {
 //post info in primary_children table from children-form, return OK if successful 
 router.post('/children', rejectUnauthenticated, async (req, res) => {
 
+  console.log(`@@@@ hit me POST CHILDREN`);
+  
+
   const connection = await pool.connect()
   let children = req.body;
+  console.log(children);
+  
 
   //potentially multiple children to add, this funct loops through and adds each child
   try {
@@ -172,7 +177,6 @@ router.post('/children', rejectUnauthenticated, async (req, res) => {
       let name = children[i].child_name;
       let dob = children[i].child_dob;
       let info = children[i].child_info;
-
 
       // await connection.query('BEGIN');
       const sqlText = `INSERT INTO primary_children
@@ -262,8 +266,13 @@ router.get('/children/:id', (req, res) => {
 
 router.put('/edit-children/:id', rejectUnauthenticated, (req, res) => {
   let children = req.body;
-  let sqlText = `UPDATE "primary_children" SET "child_name" = $1, "child_dob" = $2, "child_info" = $3 WHERE "id" = $4;`;
-  pool.query(sqlText, [children.child_name, children.child_dob, children.child_info, children.id])
+  console.log(`case_id`, req.params.id);
+  console.log(`id`, children.id);
+  console.log(`hello world`);  
+  
+  let sqlText = `UPDATE "primary_children" SET "child_name" = $1, "child_dob" = $2, "child_info" = $3 WHERE 
+  ("id" = $4 AND "case_id" = $5);`;
+  pool.query(sqlText, [children.child_name, children.child_dob, children.child_info, children.id, req.params.id ])
     .then((response) => {
       res.sendStatus(201);
     })

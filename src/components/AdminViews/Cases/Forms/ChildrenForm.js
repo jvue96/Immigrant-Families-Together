@@ -78,7 +78,6 @@ class ChildForm extends Component {
               {/* {JSON.stringify(this.state)} */}
 
               <center>
-              <button className="hiddenButton" onClick={this.test}></button>
                         {/* UN COMMENT TO TEST IF DATA IS IN childrenReducer */}
                         {/* {JSON.stringify(this.props.reduxState.childrenReducer)} */}
                     <div className="formDivs">

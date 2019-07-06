@@ -12,20 +12,21 @@ class ChildForm extends Component {
     //conditional statement to check if the reducer has any values
     //if the reducer is empty then render a blank form
     //also if empty change from the button being a POST instead of a PUT
-    componentDidMount = () => {
-        const searchObject = qs.parse(this.props.location.search)
+    componentDidMount() {
+        const searchObject = qs.parse(this.props.location.search);
         this.props.dispatch({ type: 'GET_CHILDREN', payload: searchObject.id });
          // setState to null if the reducer is empty
         // enables posting null values that are left unchanged to edit later 
         if(this.props.reduxState.childrenReducer.length === 0) {
             this.setState({
+                childForm: {
                 ...this.state.childForm,
                 case_id: searchObject.id,
-                // id: this.props.reduxState.childrenReducer[0].id,
                 child_name: null,
                 child_dob: null,
                 child_info: null, 
                 data: false,
+                }
             })
         } else {
         this.setState({
@@ -37,8 +38,8 @@ class ChildForm extends Component {
                 child_dob: this.props.reduxState.childrenReducer[0].child_dob,
                 child_info: this.props.reduxState.childrenReducer[0].child_info,
                 data: true,
-            }
-        })
+                }
+            })
         } 
     }
 
@@ -50,18 +51,10 @@ class ChildForm extends Component {
             child_dob: '',
             child_info: '',
             data: '',
-        }
-    };
-
-    // clears input fields to enable adding another child 
-    addInput = event => {
-    this.setState({
-        childForm: {
-            child_name: '',
-            child_dob: '',
-            child_info: '',
-            }
-        });
+        },
+        // create an array to push all children into 
+        // posting an array of children 
+        addChild: [],
     };
 
     // change state to become input field values 
@@ -75,13 +68,23 @@ class ChildForm extends Component {
     }
     
      // conditional to determine a POST or a PUT 
-    updateForm = () => {
+    updateForm = async(event) => {
+        await this.setState({
+            childForm: {
+                ...this.state.childForm,
+                id: event.target.value, 
+            }
+        })
+
+        // await console.log(this.state.addChild);
+        
         if (this.state.childForm.data === false) {
-            this.props.dispatch({ type: 'ADD_CHILDREN', payload: this.state.childForm })
+            this.props.dispatch({ type: 'ADD_CHILDREN', payload: this.state.addChild })
         } else (
             this.props.dispatch({ type: 'PUT_CHILDREN', payload: this.state.childForm })
         )
-        this.props.history.push(`/edit-case?id=${this.state.childForm.case_id}`)
+        // this.props.history.push(`/edit-case?id=${this.state.childForm.case_id}`)
+        
     }
 
     // pushes new state to children array to create multiple children
@@ -89,94 +92,104 @@ class ChildForm extends Component {
         this.state.addChild.push(this.state.childForm)
     }
 
+     // clears input fields to enable adding another child 
+     addInput = event => {
+        this.setState({
+            childForm: {
+                ...this.state.childForm,
+                child_name: '',
+                child_dob: '',
+                child_info: '',
+                }
+            });
+        };
+    
+
       render() {
 
          // if the reducer is empty, display input with null values to edit 
          let checkChildren; 
-         let state = this.state.childForm;
          if(this.props.reduxState.childrenReducer.length === 0) {
              checkChildren = <div className="formDivs">
-             
-                             <label>NAME</label> 
-                            <input type="text"
-                            defaultValue={state.child_name}
-                            onChange={this.handleChange('child_name')}/> 
-    
-                            <label>DOB</label> 
-                            <input type="date"
-                            defaultValue={state.child_dob}
-                            onChange={this.handleChange('child_dob')} /> 
-                        
-                            <label>INFO</label> 
-                            <input type="text"
-                            defaultValue={state.child_info }
-                            onChange={this.handleChange('child_info')}/> 
- 
-                             <button
-                             className="formButton"
-                             onClick={this.next}>
-                             UPDATE FORM
-                             </button>
+                                <center>
+                                    <div className="formDivs">
+
+                                    <label>NAME</label> 
+                                    <input type="text"
+                                    // value={this.state.childForm.child_name || ''}
+                                    onChange={this.handleChange('child_name')}/> 
+                    
+                                    <label>DOB</label> 
+                                    <input type="date" 
+                                    // value={this.state.childForm.child_dob || ''} 
+                                    onChange={this.handleChange('child_dob')} /> 
+                                
+                                    <label>INFO</label> 
+                                    <input type="text"
+                                    // value={this.state.childForm.child_info || ''}
+                                    onChange={this.handleChange('child_info')}/> 
+                                    
+                                    {/* pushes new state to children array to create multiple children */}
+                                    <button 
+                                    className="formButton"
+                                    onClick={this.save}> SUBMIT CHILD
+                                    </button> 
+                                    <br/>
+                                    {/* clears input fields to enable adding another child  */}
+                                    <button 
+                                    className="formButton"
+                                    style={{width: 200}}
+                                    onClick={this.addInput}> ADD ANOTHER CHILD
+                                    </button>
+                                    <br/>
+                                    
+
+                                    {/* dispatch to childrenSaga to post data  */}
+                                    <button 
+                                    className="formButton"
+                                    onClick={this.updateForm}> NEXT
+                                    </button>
+                                    </div>
+                            </center> 
                              </div> 
          }
+         else {
+            checkChildren =
+            this.props.reduxState.childrenReducer.map((children,index) =>
+                <div className="formDivs" key={index}>
+
+                <label>NAME</label> 
+                <input type="text"
+                defaultValue={children.child_name}
+                onChange={this.handleChange('child_name')}/> 
+
+                <label>DOB</label> 
+                <input type="date"
+                defaultValue={children.child_dob} onChange={this.handleChange('child_dob')} /> 
+            
+                <label>INFO</label> 
+                <input type="text"
+                defaultValue={children.child_info }
+                onChange={this.handleChange('child_info')}/> 
+
+                <button 
+                value={children.id}
+                className="formButton"
+                onClick={this.updateForm}> UPDATE FORM
+                </button>
+            </div>
+            );
+        }
 
         return (
           <div>
 
               <Nav pageName='CHILDREN FORM' home='/home'/>
 
-              {/* {JSON.stringify(this.state)} */}
+              {/* {JSON.stringify(this.props.reduxState.childrenReducer)} */}
 
-              <center>
-              
+            <center>
                   {checkChildren}
-                  {this.props.reduxState.childrenReducer.map((children,index) =>
-                    <div className="formDivs" key={index}>
-
-                    <label>NAME</label> 
-                    <input type="text"
-                    defaultValue={children.child_name}
-                    onChange={this.handleChange('child_name')}/> 
-    
-                    <label>DOB</label> 
-                    <input type="date"
-                    defaultValue={children.child_dob} onChange={this.handleChange('child_dob')} /> 
-                
-                    <label>INFO</label> 
-                    <input type="text"
-                    defaultValue={children.child_info }
-                    onChange={this.handleChange('child_info')}/> 
-                
-
-                {/* pushes new state to children array to create multiple children */}
-
-                {/* <button 
-                className="formButton"
-                onClick={this.save}> Save
-                </button>  */}
-
-
-                {/* clears input fields to enable adding another child  */}
-                {/* <button 
-                className="formButton"
-                style={{width: 200}}
-                onClick={this.addInput}> Add Another Child
-                </button> */}
-
-                        <input type="text"
-                        className="hiddenButton"
-                        defaultValue={children.id}
-                        onChange={this.handleChange('id')}/>
-
-
-            
-                <button 
-                className="formButton"
-                onClick={this.updateForm}> UPDATE FORM
-                </button>
-                </div>
-            )}
-            
             </center> 
           </div>
         );
