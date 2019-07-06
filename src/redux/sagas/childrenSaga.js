@@ -25,6 +25,8 @@ function* editChildren (action) {
     try {
         const getResponse = yield axios.put(`/api/forms/edit-children/${action.payload.case_id}`, action.payload);
         yield put({ type: 'SET_CHILDREN', payload: getResponse.data });
+        console.log(action.payload);
+        
     } catch (error) {
         alert(`Sorry couldn't edit the current entry. Try again later.`)
     }

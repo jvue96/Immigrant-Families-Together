@@ -40,6 +40,7 @@ class ChildForm extends Component {
             }
         })
         } 
+        
     }
 
     state = {
@@ -81,7 +82,7 @@ class ChildForm extends Component {
         } else (
             this.props.dispatch({ type: 'PUT_CHILDREN', payload: this.state.childForm })
         )
-        this.props.history.push(`/edit-case?id=${this.state.childForm.case_id}`)
+        // this.props.history.push(`/edit-case?id=${this.state.childForm.case_id}`)
     }
 
     // pushes new state to children array to create multiple children
