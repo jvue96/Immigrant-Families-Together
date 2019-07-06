@@ -206,7 +206,7 @@ router.post('/children', rejectUnauthenticated, async (req, res) => {
 
 //get info to primary_children table where id= :id, return data rows when OK
 router.get('/children/:id', (req, res) => {
-  const sqlText = `SELECT * FROM primary_children WHERE case_id = 3 ORDER BY "child_dob" ASC;`
+  const sqlText = `SELECT * FROM primary_children WHERE case_id = $1 ORDER BY "child_dob" ASC;`
   pool.query(sqlText, [req.params.id])
     .then((results) => {
       res.send(results.rows)
