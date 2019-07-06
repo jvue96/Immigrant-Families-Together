@@ -34,10 +34,6 @@ class SchoolEdit extends Component {
                 schoolForm: {
                     ...this.state.schoolForm,
                     case_id: searchObject.id,
-                    id: this.props.reduxState.schoolReducer[0].id,
-                    name: this.props.reduxState.schoolReducer[0].name,
-                    phone: this.props.reduxState.schoolReducer[0].phone,
-                    email: this.props.reduxState.schoolReducer[0].email,
                     data: true,
                 }
             })
@@ -52,12 +48,14 @@ class SchoolEdit extends Component {
             phone: '',
             email: '',
             data: '',
-        }
+        },
+        // create an array to push all schools into 
+        // posting an array of school 
+        addSchool: [],
+        newSchool: false,
     }
 
     handleChange = propertyName => event => {
-        // console.log(`this is the propertyName:`, propertyName);
-        // console.log(`this is target value:`, event.target.value)
         this.setState({
             schoolForm: {
                 ...this.state.schoolForm,
@@ -67,15 +65,56 @@ class SchoolEdit extends Component {
     }
 
     // conditional to determine a POST or a PUT 
-    next = () => {
+    updateForm = () => {
         if (this.state.schoolForm.data === false) {
-            this.props.dispatch({ type: 'ADD_SCHOOL', payload: this.state.schoolForm })
+            this.props.dispatch({ type: 'ADD_SCHOOL', payload: this.state.addSchool })
         } else (
             this.props.dispatch({ type: 'PUT_SCHOOL', payload: this.state.schoolForm })
         )
         this.props.history.push(`/edit-case?id=${this.state.schoolForm.case_id}`)
     }
 
+     // pushes new state to children array to create multiple children
+     save = () => {
+        this.state.addSchool.push(this.state.schoolForm)
+        this.setState({
+            schoolForm: {
+                ...this.state.schoolForm,
+                data: false, 
+            }
+        })
+    }
+
+     // clears input fields to enable adding another child 
+     addInput = () => {
+        this.setState({
+            schoolForm: {
+                ...this.state.schoolForm,
+                name: '',
+                phone: '',
+                email: '',
+                }
+            });
+        };
+
+        selectedEdit = (schoolName, phoneNumber, email, id) => {
+            this.setState({
+                schoolForm: {
+                    ...this.state.schoolForm,
+                    name: schoolName,
+                    phone: phoneNumber,
+                    email: email,
+                    id: id,
+                    data: true, 
+                },
+            })
+        }
+
+        addNewSchool = () => {
+            this.setState({
+                newSchool: !this.state.newSchool,
+            })
+        }
 
 
     render() {
@@ -100,52 +139,106 @@ class SchoolEdit extends Component {
                     defaultValue={state.email}
                     onChange={this.handleChange('email')} />
 
-
-
                 <button
                     className="formButton"
-                    onClick={this.next}>
+                    onClick={this.updateForm}>
                     UPDATE FORM
-                            </button>
+                </button>
             </div>
-        }
+        } 
+        else {
+            checkSchool = 
+            this.props.reduxState.schoolReducer.map((school, index) =>
 
+                <div className="formDivs" key={index}>
+
+                <label>SCHOOL NAME</label>
+                <button
+                className="editButton"
+                onClick={(name, dob, info, id) => this.selectedEdit(school.name, school.phone, 
+                                                    school.email, school.id)}
+                > Click to edit me </button>
+                    <input type="text"
+                        defaultValue={school.name}
+                        onChange={this.handleChange('name')} />
+
+                    <label>PHONE NUMBER</label>
+                    <input type="text"
+                        defaultValue={school.phone}
+                        onChange={this.handleChange('phone')} />
+
+                    <label>EMAIL</label>
+                    <input type="text"
+                        defaultValue={school.email}
+                        onChange={this.handleChange('email')} />
+
+                    <input type="text"
+                        className="hiddenButton"
+                        defaultValue={school.id}
+                        onChange={this.handleChange('id')} />
+
+                    <button
+                        className="formButton"
+                        onClick={this.updateForm}>
+                        UPDATE FORM
+                    </button>
+
+                </div>
+            )
+
+        }
         return (
             <div>
                 <Nav pageName='SCHOOL' home='/home' />
                 <center>
                     {checkSchool}
-                    {this.props.reduxState.schoolReducer.map((school, index) =>
 
-                        <div className="formDivs" key={index}>
-                            <label>SCHOOL NAME</label>
-                            <input type="text"
-                                defaultValue={school.name}
-                                onChange={this.handleChange('name')} />
+                    <button
+                    className="editButton"
+                    onClick={this.addNewSchool}
+                    >
+                        Add a new school
+                    </button>
+                    {this.state.newSchool ? 
+                    <center>
+                    <div className="formDivs">
 
-                            <label>PHONE NUMBER</label>
-                            <input type="text"
-                                defaultValue={school.phone}
-                                onChange={this.handleChange('phone')} />
+                        <label>SCHOOL NAME</label> 
+                        <input type="text" 
+                        value={this.state.schoolForm.name || ''} 
+                        onChange={this.handleChange('name')}/>
 
-                            <label>EMAIL</label>
-                            <input type="text"
-                                defaultValue={school.email}
-                                onChange={this.handleChange('email')} />
+                        <label>PHONE NUMBER</label> 
+                        <input type="text" 
+                        value={this.state.schoolForm.phone || ''} 
+                        onChange={this.handleChange('phone')}/>
 
-                            <input type="text"
-                                className="hiddenButton"
-                                defaultValue={school.id}
-                                onChange={this.handleChange('id')} />
+                        <label>EMAIL</label> 
+                        <input type="text" 
+                        value={this.state.schoolForm.email || ''} 
+                        onChange={this.handleChange('email')}/> 
+                       
+                        <button 
+                        className="formButton"
+                        onClick={this.save}> SUBMIT SCHOOL
+                        </button> 
 
-                            <button
-                                className="formButton"
-                                onClick={this.next}>
-                                UPDATE FORM
+                        <button 
+                        className="formButton"
+                        onClick={this.addInput}> ADD ANOTHER SCHOOL
                         </button>
+                        
+                        <br/>
 
-                        </div>
-                    )}
+                        <button
+                            className="formButton"
+                            onClick={this.updateForm}>
+                            NEXT
+                        </button>
+                    </div>
+                </center>
+                :
+                ""}
                 </center>
             </div>
         );
@@ -156,5 +249,4 @@ const mapStateToProps = reduxState => ({
     reduxState,
 });
 
-// this allows us to use <App /> in index.js
 export default withRouter(connect(mapStateToProps)(SchoolEdit));

@@ -496,9 +496,13 @@ router.put('/edit-bond/:id', rejectUnauthenticated, (req, res) => {
 
 //post school info school table, loop for potentially multiple schools, ok sent if successful
 router.post('/school', rejectUnauthenticated, async (req, res) => {
+  console.log(`hit me @@@@@@@@@@@@@@@@`);
+  
 
   const connection = await pool.connect()
   let school = req.body;
+  console.log(school);
+  
 
   try {
     //MOVING LOOP

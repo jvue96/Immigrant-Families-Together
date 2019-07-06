@@ -101,7 +101,7 @@ class ChildForm extends Component {
         this.setState({
             childForm: {
                 ...this.state.childForm,
-                child_name: `${name}`, 
+                child_name: name, 
                 child_dob: dob, 
                 child_info: info,
                 id: id,
@@ -208,11 +208,13 @@ class ChildForm extends Component {
 
             <center>
                   {checkChildren}
+
                   <button
                   className="editButton"
                   onClick={this.addANewChild}
                   > Add a new child </button>
-                  {this.state.newChild ? <center>
+                  {this.state.newChild ? 
+                  <center>
                                     <div className="formDivs">
 
                                     <label>NAME</label> 
