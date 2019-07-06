@@ -51,6 +51,7 @@ class ChildForm extends Component {
         // create an array to push all children into 
         // posting an array of children 
         addChild: [],
+        disabled: true, 
     };
 
     // change state to become input field values 
@@ -79,7 +80,7 @@ class ChildForm extends Component {
     }
 
      // clears input fields to enable adding another child 
-     addInput = event => {
+     addInput = () => {
         this.setState({
             childForm: {
                 ...this.state.childForm,
@@ -99,7 +100,8 @@ class ChildForm extends Component {
                 child_info: info,
                 id: id,
                 data: true, 
-            }
+            },
+            disabled: !this.state.disabled
         })
     }
     
@@ -115,17 +117,17 @@ class ChildForm extends Component {
 
                                     <label>NAME</label> 
                                     <input type="text"
-                                    // value={this.state.childForm.child_name || ''}
+                                    value={this.state.childForm.child_name || ''}
                                     onChange={this.handleChange('child_name')}/> 
                     
                                     <label>DOB</label> 
                                     <input type="date" 
-                                    // value={this.state.childForm.child_dob || ''} 
+                                    value={this.state.childForm.child_dob || ''} 
                                     onChange={this.handleChange('child_dob')} /> 
                                 
                                     <label>INFO</label> 
                                     <input type="text"
-                                    // value={this.state.childForm.child_info || ''}
+                                    value={this.state.childForm.child_info || ''}
                                     onChange={this.handleChange('child_info')}/> 
                                     
                                     {/* pushes new state to children array to create multiple children */}
@@ -157,20 +159,21 @@ class ChildForm extends Component {
             this.props.reduxState.childrenReducer.map((children,index) =>
                 <div className="formDivs" key={index}>
 
+                <label>NAME</label> 
                 <button
-                className="formButton"
+                className="editButton"
                 onClick={(name, dob, info, id) => this.selectedEdit(children.child_name, children.child_dob, 
                                                     children.child_info, children.id)}
-                > Edit this </button>
+                > Click to edit me </button>
 
-                <label>NAME</label> 
                 <input type="text"
                 defaultValue={children.child_name}
                 onChange={this.handleChange('child_name')}/> 
 
                 <label>DOB</label> 
                 <input type="date"
-                defaultValue={children.child_dob} onChange={this.handleChange('child_dob')} /> 
+                defaultValue={children.child_dob} 
+                onChange={this.handleChange('child_dob')} /> 
             
                 <label>INFO</label> 
                 <input type="text"

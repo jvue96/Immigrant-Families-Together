@@ -448,3 +448,9 @@ tr.inactive {
 .hiddenButton {
   display:none;
 }
+
+.editButton {
+  background-color: #FF7C7C;
+  color: white;  
+  border-radius: 25px;
+}
