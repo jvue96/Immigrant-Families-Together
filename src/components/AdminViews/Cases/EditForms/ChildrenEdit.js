@@ -75,7 +75,7 @@ class ChildForm extends Component {
     }
     
      // conditional to determine a POST or a PUT 
-    next = () => {
+    updateForm = () => {
         if (this.state.childForm.data === false) {
             this.props.dispatch({ type: 'ADD_CHILDREN', payload: this.state.childForm })
         } else (
@@ -172,7 +172,7 @@ class ChildForm extends Component {
             
                 <button 
                 className="formButton"
-                onClick={this.next}> UPDATE FORM
+                onClick={this.updateForm}> UPDATE FORM
                 </button>
                 </div>
             )}
