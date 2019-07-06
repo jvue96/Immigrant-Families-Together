@@ -77,6 +77,12 @@ class ChildForm extends Component {
     // pushes new state to children array to create multiple children
     save = () => {
         this.state.addChild.push(this.state.childForm)
+        this.setState({
+            childForm: {
+                ...this.state.childForm,
+                data: false, 
+            }
+        })
     }
 
      // clears input fields to enable adding another child 
