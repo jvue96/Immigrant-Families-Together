@@ -206,7 +206,7 @@ router.post('/children', rejectUnauthenticated, async (req, res) => {
 
 //get info to primary_children table where id= :id, return data rows when OK
 router.get('/children/:id', (req, res) => {
-  const sqlText = `SELECT * FROM primary_children WHERE case_id = $1 ORDER BY "child_dob" ASC;`
+  const sqlText = `SELECT * FROM primary_children WHERE case_id = $1;`
   pool.query(sqlText, [req.params.id])
     .then((results) => {
       res.send(results.rows)
@@ -261,10 +261,7 @@ router.get('/children/:id', (req, res) => {
 
 router.put('/edit-children/:id', rejectUnauthenticated, (req, res) => {
   let children = req.body;
-  console.log(children);
-  
-  let sqlText = `UPDATE "primary_children" SET "child_name" = $1, 
-                "child_dob" = $2, "child_info" = $3 WHERE "id" = $4;`;
+  let sqlText = `UPDATE "primary_children" SET "child_name" = $1, "child_dob" = $2, "child_info" = $3 WHERE "id" = $4;`;
   pool.query(sqlText, [children.child_name, children.child_dob, children.child_info, children.id])
     .then((response) => {
       res.sendStatus(201);

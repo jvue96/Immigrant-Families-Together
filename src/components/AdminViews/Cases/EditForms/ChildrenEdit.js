@@ -40,7 +40,6 @@ class ChildForm extends Component {
             }
         })
         } 
-        
     }
 
     state = {
@@ -82,7 +81,7 @@ class ChildForm extends Component {
         } else (
             this.props.dispatch({ type: 'PUT_CHILDREN', payload: this.state.childForm })
         )
-        // this.props.history.push(`/edit-case?id=${this.state.childForm.case_id}`)
+        this.props.history.push(`/edit-case?id=${this.state.childForm.case_id}`)
     }
 
     // pushes new state to children array to create multiple children
@@ -132,7 +131,7 @@ class ChildForm extends Component {
               
                   {checkChildren}
                   {this.props.reduxState.childrenReducer.map((children,index) =>
-                    <div className="formDivs" key={index}>
+                    <div className="formDivs">
 
                     <label>NAME</label> 
                     <input type="text"
@@ -159,7 +158,6 @@ class ChildForm extends Component {
 
                 {/* clears input fields to enable adding another child  */}
                 {/* <button 
-
                 className="formButton"
                 style={{width: 200}}
                 onClick={this.addInput}> Add Another Child
@@ -189,4 +187,4 @@ const mapStateToProps = reduxState => ({
     reduxState,
 });
   
-  export default withRouter(connect(mapStateToProps)(ChildForm));
+export default withRouter(connect(mapStateToProps)(ChildForm));
